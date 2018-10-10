@@ -16,13 +16,23 @@ from keras import backend as K
 
 def _main():
 
+   
+    # Set testing mode (dropout/batchnormalization)
     K.set_learning_phase(TEST_PHASE)
-    
-    
-     # Load json and create model
-    json_model_path = os.path.join(FLAGS.experiment_rootdir, FLAGS.json_model_fname)
-    model = utils.jsonToModel(json_model_path)
 
+    # Generate testing data
+    test_datagen = utils_test.DroneDataGenerator(rescale=1./255)
+    test_generator = test_datagen.flow_from_directory(FLAGS.test_dir,
+                          shuffle=False,
+                          color_mode=FLAGS.img_mode,
+                          target_size=(FLAGS.img_width, FLAGS.img_height),
+                          crop_size=(FLAGS.crop_img_height, FLAGS.crop_img_width),
+                          batch_size = FLAGS.batch_size)
+
+    # Load json and create model
+    json_model_path = os.path.join(FLAGS.experiment_rootdir, FLAGS.json_model_fname)
+    model = utils_test.jsonToModel(json_model_path)
+    
     # Load weights
     weights_load_path = os.path.join(FLAGS.experiment_rootdir, FLAGS.weights_fname)
     try:
@@ -30,17 +40,16 @@ def _main():
         print("Loaded model from {}".format(weights_load_path))
     except:
         print("Impossible to find weight path. Returning untrained model")
-        
-    
-     # Compile model
+
+
+    # Compile model
     model.compile(loss='mse', optimizer='adam')
-    
-    
-      # Get predictions and ground truth
+
+    # Get predictions and ground truth
     n_samples = test_generator.samples
     nb_batches = int(np.ceil(n_samples / FLAGS.batch_size))
 
-    predictions, ground_truth, t = utils.compute_predictions_and_gt(
+    predictions, ground_truth, t = utils_test.compute_predictions_and_gt(
             model, test_generator, nb_batches, verbose = 1)
 
     # Param t. t=1 steering, t=0 collision
@@ -70,5 +79,6 @@ def _main():
     # Write predicted and real steerings
     dict_test = {'pred_steerings': pred_steerings.tolist(),
                  'real_steerings': real_steerings.tolist()}
-    utils.write_to_file(dict_test,os.path.join(FLAGS.experiment_rootdir,
+    utils_test.write_to_file(dict_test,os.path.join(FLAGS.experiment_rootdir,
                                                'predicted_and_real_steerings.json'))
+
