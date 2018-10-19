@@ -61,14 +61,153 @@ def write_to_file(dictionary, fname):
 #############EIGENE FUKTIONEN#####################################
 
 class CaroloDataGenerator(ImageDataGenerator):
+    """
+    Generate minibatches of images and labels with real-time augmentation.
+    
+    """
+    def flow_from_directory(self, directory,
+             color_mode='grayscale', batch_size=32,):
+        return CaroloDataIterator(directory, self,
+                color_mode=color_mode,
+                batch_size=batch_size)
+               
     
     
     
-    def flow_from_direcotry(self,directory):
-        return NotImplementedError
+    
+class CaroloDataIterator(Iterator):
+    """
+    Class for managing data loading.of images and labels
 
+       directory: Path to the root directory to read data from.
+       image_data_generator: Image Generator.
+       target_size: tuple of integers, dimensions to resize input images to.
+       crop_size: tuple of integers, dimensions to crop input images.
+       color_mode: One of `"rgb"`, `"grayscale"`. Color mode to read images.
+       batch_size: The desired batch size
+       shuffle: Whether to shuffle data or not
+       seed : numpy seed to shuffle data
+       follow_links: Bool, whether to follow symbolic links or not
+
+    # TODO: Add functionality to save images to have a look at the augmentation
+    """
+    def __init__(self, directory, image_data_generator,color_mode='grayscale',
+                 batch_size=32):
+       
+        self.directory = directory
+        self.image_data_generator = image_data_generator
+      
+        #Since all images from Carolo Car are png, hardcode this
+        self.extension = 'png'
+        
+        if color_mode not in {'grayscale'}:
+            raise ValueError('Invalid color mode:', color_mode,
+                             '; expected "grayscale".')
+
+        self.samples = 0
+        
+        
+        # Idea = associate each filename with a corresponding steering or label
+        self.filenames = []
+        self.ground_truth = []
+
+        self._load_carolo_data(directory)
+
+        assert self.samples >0, 'Keine Daten gefunden'
+        
+        self.ground_truth = np.array(self.ground_truth, dtype = K.floatx())
+
+       
+        super(CaroloDataIterator, self).__init__(self.samples,
+                batch_size, shuffle=None)
     
-    def load_img(self,file_path):
+   
+    
+    
+    def load_carolo_data(self,directory):
+        """Laden der Bilddaten mit zugehörigen Steuerdaten (Labels) 
+        
+            Bilddaten werden in Unterordner arolo_test_data_full" erwartet.
+            Steuerdaten werden in Unterordner steering_data" erwartet.
+        
+        """
+    
+        steerings_filename = os.path.join(directory, "steering_data")
+        image_filename = os.path.join(directory,"carolo_test_data_full")
+
+        try:
+            ground_truth = np.loadtxt(steerings_filename, delimiter='|||')
+        except OSError as e:
+                print("Neither steerings nor labels found in dir {}".format(
+                directory))
+                raise IOError
+
+        #sorted_files= sorted(os.listdir(image_filename))
+    
+        for frame_number, fname in enumerate(sorted_files):
+                is_valid = False
+                for extension in self.formats:
+                    if fname.lower().endswith('.' + self.extension):
+                        is_valid = True
+                        break
+                if is_valid:
+                    absolute_path = os.path.join(directory, fname)
+                    self.filenames.append(os.path.relpath(absolute_path,
+                            self.directory))
+                    
+                    #TODO steering data has to be scaled
+                    self.ground_truth.append(ground_truth[frame_number])
+                    self.samples += 1
+    
+    
+    def _get_batches_of_transformed_samples(self,index_array):
+        """
+        Generates a batch of data from images and associated steerings
+       
+        """
+    
+        current_batch_size = index_array.shape[0]
+        # Image transformation is not under thread lock, so it can be done in
+        # parallel
+        batch_x = np.zeros((current_batch_size,) + self.image_shape,
+                dtype=K.floatx())
+        batch_steer = np.zeros((current_batch_size, 2,),
+                dtype=K.floatx())
+        grayscale = self.color_mode == 'grayscale'
+
+        # Build batch of image data
+        for i, j in enumerate(index_array):
+            fname = self.filenames[j]
+            x = img_utils.load_img(os.path.join(self.directory, fname),
+                    grayscale=grayscale,)
+
+#            x = self.image_data_generator.random_transform(x)
+#            x = self.image_data_generator.standardize(x)
+            batch_x[i] = x
+
+         #Since images are not labelled with collision data,
+         #we just load steering data
+            batch_steer[i,0] =1.0
+            batch_steer[i,1] = self.ground_truth[index_array[i]]
+            batch_coll[i] = np.array([1.0, 0.0])
+
+
+        batch_y = [batch_steer, batch_coll]
+        return batch_x, batch_y
+
+        
+        
+def generate_predictions_and_gt(model, generator,steps):
+    
+    raise NotImplementedError
+ 
+
+
+
+
+
+
+def load_img(self,file_path):
         
         #set grayscale erstmal immer auf true, da nur grayscale images
         grayscale = True
@@ -83,39 +222,9 @@ class CaroloDataGenerator(ImageDataGenerator):
     
     
         return np.asarray(img, dtype=np.float32)
-    
-    
-    
-    def loadCaroloData(self,img_path,steerings_path):
-        """Laden der Bilddaten mit zugehörigen Steuerdaten (Labels) 
-        
-        """
-        image_path_list = []
-        
-        all_img = []
-        
-        #load images first 
-        for file in os.listdir(img_path):
-            image_path_list.append(os.path.join(img_path, file))
-        
-        
-        for index,image_path in enumerate(image_path_list):
-            all_img.append(self.load_img(image_path))
-            
-        
-        all_img = np.asarray(all_img)
-        #now steerings
-        steerings = self.get_scaled_steering_data_from_img(steerings_path) 
-        
-        return all_img, steerings
-    
-    
-    
-    
-    
-            
+               
     # TODO: gleich ganzes array übergeben?
-    def scale_steering_data(self,carolo_steering_value):
+def scale_steering_data(self,carolo_steering_value):
         """
         Carolo-Car steering values (1000 - 2000) are scaled to 
         DroNet steering values (-1,1)
@@ -123,8 +232,7 @@ class CaroloDataGenerator(ImageDataGenerator):
         """
         return ((carolo_steering_value-1500)/500) 
     
-    
-    def get_scaled_steering_data_from_img(self,image_path):
+def get_scaled_steering_data_from_img(self,image_path):
         """
         
         """
@@ -138,7 +246,6 @@ class CaroloDataGenerator(ImageDataGenerator):
         for imagePath in image_path_list:
             
             filename = imagePath
-        
             #image = cv2.imread(filename,0)
             #print(filename)
             filename_split = filename.split('_')
@@ -151,7 +258,7 @@ class CaroloDataGenerator(ImageDataGenerator):
         return steering_data  
     
     #TODO Steuerdaten laden und in array speichern
-    def load_steerings(steering_path):                        
+def load_steerings(steering_path):                        
         """
         """
         raise NotImplementedError
