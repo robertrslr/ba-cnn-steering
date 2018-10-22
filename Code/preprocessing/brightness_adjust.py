@@ -14,48 +14,25 @@ import numpy as np
 import os, os.path
 
 
+
 def main():
     
-    imageDir = "C:/Users/user/Desktop/BA/BA/clahe_equalization"
-    image_path_list = []
+    image_files = 'C:/Users/user/Desktop/BA/BA/carolo_test_data_full'
+    file_dict = dict()
+    for filename in os.listdir(image_files):
+           
+        filename_split = filename.split('_')
+        file_dict[int(filename_split[1])] = filename
+    print(file_dict)
+        
     
-    #Value by which the greyscale brightness is adjusted, value 
-    #is added to the current greyscale value 
-    value = 35
-    numb = 0
-    
-    for file in os.listdir(imageDir):
-        image_path_list.append(os.path.join(imageDir, file))
+def scale_steering_data(carolo_steering_value):
+        """
+        Carolo-Car steering values (1000 - 2000) are scaled to 
+        DroNet steering values (-1,1)
         
-   
-    for imagePath in image_path_list:
-        filename = imagePath
-        image = cv2.imread(filename,0)
-        print(filename)
-        
-        
-        img_brighter = np.where((255 - image) < value,255,image+value)
-        #if image is None:
-        #print("Unable to open "+ filename)
-        #exit(-1)
-        #cropped = image[0:240,200:550]
-        #dim = (200,200)
-        #resized = cv2.resize(cropped,dim,interpolation = cv2.INTER_AREA)
-       
-        #print(img_brighter)
-        
-       
-      
-        path_bright_adj= 'C:/Users/user/Desktop/BA/BAbrightness_test'
-        
-        
-        
-        cv2.imwrite(os.path.join(path_bright_adj,str(numb)+'.jpg'),img_brighter)
-   
-        numb = numb +1
-#def adjust_brightness():
-    
-
+        """
+        return ((carolo_steering_value-1500)/500) 
 
 if __name__ == "__main__":
     main()

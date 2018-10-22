@@ -108,8 +108,8 @@ class CaroloDataIterator(Iterator):
         
         
         # Idea = associate each filename with a corresponding steering or label
-        self.filenames = []
-        self.ground_truth = []
+        self.filenames = dict()
+        self.ground_truth = dict()
 
         self._load_carolo_data(directory)
 
@@ -127,38 +127,56 @@ class CaroloDataIterator(Iterator):
     def load_carolo_data(self,directory):
         """Laden der Bilddaten mit zugehörigen Steuerdaten (Labels) 
         
-            Bilddaten werden in Unterordner arolo_test_data_full" erwartet.
+            Bilddaten werden in Unterordner carolo_test_data_full" erwartet.
             Steuerdaten werden in Unterordner steering_data" erwartet.
         
         """
     
-        steerings_filename = os.path.join(directory, "steering_data")
-        image_filename = os.path.join(directory,"carolo_test_data_full")
+        steerings_filename = os.path.join(directory, 
+                                          "steering_data/steering_labels.txt")
+        image_filename = os.path.join(directory,
+                                      "carolo_test_data_full")
 
-        try:
-            ground_truth = np.loadtxt(steerings_filename, delimiter='|||')
-        except OSError as e:
-                print("Neither steerings nor labels found in dir {}".format(
-                directory))
-                raise IOError
-
-        #sorted_files= sorted(os.listdir(image_filename))
-    
-        for frame_number, fname in enumerate(sorted_files):
-                is_valid = False
-                for extension in self.formats:
-                    if fname.lower().endswith('.' + self.extension):
-                        is_valid = True
-                        break
-                if is_valid:
-                    absolute_path = os.path.join(directory, fname)
-                    self.filenames.append(os.path.relpath(absolute_path,
-                            self.directory))
+       
+        #Steuerdaten laden und skalieren
+        self.ground_truth = self.create_steering_dict(steerings_filename)
                     
-                    #TODO steering data has to be scaled
-                    self.ground_truth.append(ground_truth[frame_number])
-                    self.samples += 1
+        self.filenames = self.create_file_dict(image_filename)
+        
+        
     
+    
+    def create_file_dict(self,image_files):
+        
+        file_dict = dict()
+        
+        
+        for filename in os.listdir(image_files):
+           
+            filename_split = filename.split('_')
+        
+            file_dict[int(filename_split[1])] = filename
+                           #framenumber         
+            self.samples += 1
+        
+        return file_dict
+    
+    def create_steering_dict(self,steering_file):
+        """Creates a Dictionary of the steering values and their associated
+           frame number
+        """
+        
+        temp_steering = np.loadtxt(steering_file, delimiter='|||')
+        
+        steering_dict = dict()
+        
+        for tupel in temp_steering:
+            steering_dict[int(tupel[0])] = scale_steering_data(tupel[1])
+        
+        return steering_dict
+        
+        
+        
     
     def _get_batches_of_transformed_samples(self,index_array):
         """
@@ -173,6 +191,7 @@ class CaroloDataIterator(Iterator):
                 dtype=K.floatx())
         batch_steer = np.zeros((current_batch_size, 2,),
                 dtype=K.floatx())
+        
         grayscale = self.color_mode == 'grayscale'
 
         # Build batch of image data
@@ -197,7 +216,7 @@ class CaroloDataIterator(Iterator):
 
         
         
-def generate_predictions_and_gt(model, generator,steps):
+def generate_pred_and_gt(model, generator,steps):
     
     raise NotImplementedError
  
@@ -236,6 +255,7 @@ def get_scaled_steering_data_from_img(self,image_path):
         """
         
         """
+        
         image_path_list = []
     
         for file in os.listdir(image_path):
