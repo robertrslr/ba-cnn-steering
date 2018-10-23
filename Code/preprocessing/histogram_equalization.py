@@ -28,7 +28,7 @@ from matplotlib import pyplot as plt
 
 def main():
     
-    imageDir = "C:/Users/user/Desktop/Fahrtbilder/cleanData"
+    imageDir = "C:/Users/user/Desktop/BA/BA/carolo_test_data_full"
     image_path_list = []
     
     #Value by which the greyscale brightness is adjusted, value 
@@ -42,7 +42,7 @@ def main():
     for imagePath in image_path_list:
         filename = imagePath
         image = cv2.imread(filename,0)
-        print(filename)
+       
         
         split = filename.split('\\')
         
@@ -50,21 +50,21 @@ def main():
         
         #hist = cv2.calcHist([image],[0],None,[256],[0,256])
       
-        plt.hist(image.ravel(),256,[0,256])
-        plt.show()
+        #plt.hist(image.ravel(),256,[0,256])
+        #plt.show()
         
         equ = cv2.equalizeHist(image)
         
-        plt.hist(equ.ravel(),256,[0,256])
-        plt.show()
+        #plt.hist(equ.ravel(),256,[0,256])
+        #plt.show()
         
-        path_hist= 'C:/Users/user/Desktop/BA/BA/histogram_equalization'
+        path_hist= 'C:/Users/user/Desktop/BA/BA/carolo_full_hist_equ'
         
         
         
-        #cv2.imwrite(os.path.join(path_hist,split[1]+'.jpg'),equ)
+        cv2.imwrite(os.path.join(path_hist,split[1]),equ)
    
-        numb = numb +1
+        
         
         
         
@@ -74,7 +74,7 @@ def main():
         
         path_clahe = 'C:/Users/user/Desktop/BA/BA/clahe_equalization'
         
-        #cv2.imwrite(os.path.join(path_clahe,str(numb)+'.jpg'),cl1)
+        #cv2.imwrite(os.path.join(path_clahe,str(numb)),cl1)
         
         #plt.hist(cl1.ravel(),256,[0.256])
         #plt.show()

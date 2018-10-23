@@ -50,25 +50,16 @@ def _main():
     # Set testing mode (dropout/batchnormalization)
     K.set_learning_phase(TEST_PHASE)
     
-    test_datagen = ImageDataGenerator(rescale=1./255)
+    test_datagen = utils_test.CaroloDataGenerator(rescale=1./255)
     
-    
-    
-    
-    
-#    test_generator = test_datagen.flow_from_directory(
-#            'C:/Users/user/Desktop/BA/BA/data',
-#            target_size=(200,200),
-#            color_mode='grayscale',
-#            class_mode=None,
-#            batch_size=32,
-#            #shuffle=False,
-#            #seed=None,
-#            save_to_dir='C:/Users/user/Desktop/BA/BA/loaded_by_keras')
-    
-    
+    test_generator = test_datagen.flow_from_directory(
+            'C:/Users/user/Desktop/BA/BA',
+            color_mode='grayscale',
+            batch_size=32
+            )
     
    # json_model_path = os.path.join(FLAGS.experiment_rootdir, FLAGS.json_model_fname)
+    
     model = utils_test.jsonToModel('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/model_struct.json')
     
     
@@ -84,26 +75,20 @@ def _main():
     
     
     
-    
-    pred_st = []
-    pred_col=[] #not needed
-    
-    
-    pred_st,pred_col=model.predict_generator(test_generator,verbose=1)
-    
-    print(pred_st)
-    
-    Carolo = utils_test.CaroloDataGenerator()
-    
-    ground_truth=Carolo.get_scaled_steering_data_from_img('C:/Users/user/Desktop/BA/BA/carolo_test_data')
-    
-    print(ground_truth)
+    n_samples = test_generator.samples
+    nb_batches = int(np.ceil(n_samples / 32))#batch size = 32
+
+    predictions, ground_truth, t = utils_test.generate_pred_and_gt(
+            model, test_generator, nb_batches)
     
     pred_truth_compare =[]
-    index = 0
-    for data in pred_st:
-        pred_truth_compare.append("%s|||%s" % (pred_st[index],ground_truth[index]))
-        index = index +1
+    ground_truth_st = []
+    
+    for data in ground_truth:
+        ground_truth_st.append(data[0])
+    for i,data in enumerate(predictions):
+        pred_truth_compare.append("%s|||%s" % (data[0],ground_truth_st[i]))
+        
         
     joined = "\n".join(pred_truth_compare)
     #print(AlleTupel)
