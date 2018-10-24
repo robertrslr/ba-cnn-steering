@@ -72,70 +72,71 @@ def _main():
     
     
     model.compile(loss='mse',optimizer='adam')
-    
+
     
     
     n_samples = test_generator.samples
     nb_batches = int(np.ceil(n_samples / 32))#batch size = 32
 
+    #compute the predictions for all batches (nb_batches) 
     predictions, ground_truth, t = utils_test.generate_pred_and_gt(
             model, test_generator, nb_batches)
     
     pred_truth_compare =[]
-    ground_truth_st = []
     
+    real_steerings = []
+    predicted_steerings = []
+    
+    
+    
+#    DroNet yields negative values for right turn and positive for left turn.
+#    For Carolo its the other way round.
+#    So Carolo Values have to be adjusted for that.
     for data in ground_truth:
-        ground_truth_st.append(data[0])
+        real_steerings.append(utils_test.switch_sign(data[0]))
     for i,data in enumerate(predictions):
-        pred_truth_compare.append("%s|||%s" % (data[0],ground_truth_st[i]))
+        predicted_steerings.append(data[0])
+        pred_truth_compare.append("%s|||%s" % (data[0],real_steerings[i]))
         
         
     joined = "\n".join(pred_truth_compare)
     #print(AlleTupel)
+    
+    utils_test.make_and_save_histograms(predicted_steerings,real_steerings)
+    
     f = open("C:/Users/user/Desktop/BA/BA/test_compare.txt", "w")
     f.write(joined)
     f.close() 
-    
-    
-        
-    
-    """
-    #np.savetxt("steering_predictions",pred,delimiter="|||")
-    
-    
-    
-    ################################################################################
-    
 
-
+    
+    ###########################################################################
 
     # ************************* Steering evaluation ***************************
-    """
-    """
-    # Predicted and real steerings
-    pred_steerings = predictions[t_mask,0]
-    real_steerings = ground_truth[t_mask,0]
-
-    # Compute random and constant baselines for steerings
-    random_steerings = random_regression_baseline(real_steerings)
-    constant_steerings= constant_baseline(real_steerings)
-
-    # Create dictionary with filenames
-    dict_fname = {'test_regression.json': pred_steerings,
-                  'random_regression.json': random_steerings,
-                  'constant_regression.json': constant_steerings}
-
-    # Evaluate predictions: EVA, residuals, and highest errors
-    for fname, pred in dict_fname.items():
-        abs_fname = os.path.join(FLAGS.experiment_rootdir, fname)
-        evaluate_regression(pred, real_steerings, abs_fname)
-
-    # Write predicted and real steerings
-    dict_test = {'pred_steerings': pred_steerings.tolist(),
-                 'real_steerings': real_steerings.tolist()}
-    utils_test.write_to_file(dict_test,os.path.join(FLAGS.experiment_rootdir,
-                                               'predicted_and_real_steerings.json'))
-    """
+#   
+#    # Predicted and real steerings
+#    pred_steerings = predictions[t_mask,0]
+#    real_steerings = ground_truth[t_mask,0]
+#
+#    # Compute random and constant baselines for steerings
+#    random_steerings = random_regression_baseline(real_steerings)
+#    constant_steerings= constant_baseline(real_steerings)
+#
+#    # Create dictionary with filenames
+#    dict_fname = {'test_regression.json': pred_steerings,
+#                  'random_regression.json': random_steerings,
+#                  'constant_regression.json': constant_steerings}
+#
+#    # Evaluate predictions: EVA, residuals, and highest errors
+#    for fname, pred in dict_fname.items():
+#        abs_fname = os.path.join(FLAGS.experiment_rootdir, fname)
+#        evaluate_regression(pred, real_steerings, abs_fname)
+#
+#    # Write predicted and real steerings
+#    dict_test = {'pred_steerings': pred_steerings.tolist(),
+#                 'real_steerings': real_steerings.tolist()}
+#    utils_test.write_to_file(dict_test,os.path.join(FLAGS.experiment_rootdir,
+#                                               'predicted_and_real_steerings.json'))
+    
    ########################################################################################
     
 def main(argv):
