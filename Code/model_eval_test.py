@@ -4,13 +4,11 @@ Created on Fri Oct  5 13:00:06 2018
 @author: RR
 """
 
-import gflags
 import numpy as np
 import os
 import sys
 import glob
-from random import randint
-from sklearn import metrics
+
 
 from keras.preprocessing.image import ImageDataGenerator
 from keras import backend as K
@@ -20,12 +18,79 @@ from keras.backend.tensorflow_backend import set_session
 
 import utils_test
 from constants import TEST_PHASE
-from flags import FLAGS
 
 
+import plot_evaluation
+import constants
+
+# Functions to evaluate steering prediction (DroNet)
+
+def explained_variance_1d(ypred,y):
+    """
+    Var[ypred - y] / var[y].
+    https://www.quora.com/What-is-the-meaning-proportion-of-variance-explained-in-linear-regression
+    """
+    assert y.ndim == 1 and ypred.ndim == 1
+    vary = np.var(y)
+    return np.nan if vary==0 else 1 - np.var(y-ypred)/vary
 
 
+def compute_explained_variance(predictions, real_values):
+    """
+    Computes the explained variance of prediction for each
+    steering and the average of them
+    """
+    assert np.all(predictions.shape == real_values.shape)
+    ex_variance = explained_variance_1d(predictions, real_values)
+    print("EVA = {}".format(ex_variance))
+    return ex_variance
 
+
+def compute_sq_residuals(predictions, real_values):
+    assert np.all(predictions.shape == real_values.shape)
+    sq_res = np.square(predictions - real_values)
+    sr = np.mean(sq_res, axis = -1)
+    print("MSE = {}".format(sr))
+    return sq_res
+
+
+def compute_rmse(predictions, real_values):
+    assert np.all(predictions.shape == real_values.shape)
+    mse = np.mean(np.square(predictions - real_values))
+    rmse = np.sqrt(mse)
+    print("RMSE = {}".format(rmse))
+    return rmse
+
+
+def compute_highest_regression_errors(predictions, real_values, n_errors=20):
+    """
+    Compute the indexes with highest error
+    """
+    assert np.all(predictions.shape == real_values.shape)
+    sq_res = np.square(predictions - real_values)
+    highest_errors = sq_res.argsort()[-n_errors:][::-1]
+    return highest_errors
+
+
+def random_regression_baseline(real_values):
+    mean = np.mean(real_values)
+    std = np.std(real_values)
+    return np.random.normal(loc=mean, scale=abs(std), size=real_values.shape)
+
+
+def constant_baseline(real_values):
+    mean = np.mean(real_values)
+    return mean * np.ones_like(real_values)
+
+
+def evaluate_regression(predictions, real_values, fname):
+    evas = compute_explained_variance(predictions, real_values)
+    rmse = compute_rmse(predictions, real_values)
+    highest_errors = compute_highest_regression_errors(predictions, real_values,
+            n_errors=20)
+    dictionary = {"evas": evas.tolist(), "rmse": rmse.tolist(),
+                  "highest_errors": highest_errors.tolist()}
+    utils_test.write_to_file(dictionary, fname)
 
 #############################################################################################
 
@@ -42,6 +107,14 @@ def gpu_dynamic_growth_activation():
 
 def _main():
     
+    
+    #Erwartete Struktur:
+    #BA/
+    #      carolo_images
+    #      steering_labels     
+    
+    ba_directory = 'C:/Users/user/Desktop/BA/BA'
+    
     #allow memory on gpu to grow dynamically
     gpu_dynamic_growth_activation()
     
@@ -53,7 +126,7 @@ def _main():
     test_datagen = utils_test.CaroloDataGenerator(rescale=1./255)
     
     test_generator = test_datagen.flow_from_directory(
-            'C:/Users/user/Desktop/BA/BA',
+            constants.EXPERIMENT_DIRECTORY,
             color_mode='grayscale',
             batch_size=32
             )
@@ -76,6 +149,7 @@ def _main():
     
     
     n_samples = test_generator.samples
+ 
     nb_batches = int(np.ceil(n_samples / 32))#batch size = 32
 
     #compute the predictions for all batches (nb_batches) 
@@ -102,7 +176,7 @@ def _main():
     joined = "\n".join(pred_truth_compare)
     #print(AlleTupel)
     
-    utils_test.make_and_save_histograms(predicted_steerings,real_steerings)
+    plot_evaluation.make_and_save_histograms(predicted_steerings,real_steerings)
     
     f = open("C:/Users/user/Desktop/BA/BA/test_compare.txt", "w")
     f.write(joined)
@@ -112,30 +186,30 @@ def _main():
     ###########################################################################
 
     # ************************* Steering evaluation ***************************
-#   
-#    # Predicted and real steerings
-#    pred_steerings = predictions[t_mask,0]
-#    real_steerings = ground_truth[t_mask,0]
-#
-#    # Compute random and constant baselines for steerings
-#    random_steerings = random_regression_baseline(real_steerings)
-#    constant_steerings= constant_baseline(real_steerings)
-#
-#    # Create dictionary with filenames
-#    dict_fname = {'test_regression.json': pred_steerings,
-#                  'random_regression.json': random_steerings,
-#                  'constant_regression.json': constant_steerings}
-#
-#    # Evaluate predictions: EVA, residuals, and highest errors
-#    for fname, pred in dict_fname.items():
-#        abs_fname = os.path.join(FLAGS.experiment_rootdir, fname)
-#        evaluate_regression(pred, real_steerings, abs_fname)
-#
-#    # Write predicted and real steerings
-#    dict_test = {'pred_steerings': pred_steerings.tolist(),
-#                 'real_steerings': real_steerings.tolist()}
-#    utils_test.write_to_file(dict_test,os.path.join(FLAGS.experiment_rootdir,
-#                                               'predicted_and_real_steerings.json'))
+
+    predicted_steerings = np.asarray(predicted_steerings,dtype=np.float32)
+    real_steerings = np.asarray(real_steerings,dtype=np.float32)
+
+
+    #Compute random and constant baselines for steerings
+    random_steerings = random_regression_baseline(real_steerings)
+    constant_steerings= constant_baseline(real_steerings)
+
+    # Create dictionary with filenames
+    dict_fname = {'test_regression.json': predicted_steerings,
+                  'random_regression.json': random_steerings,
+                  'constant_regression.json': constant_steerings}
+
+    # Evaluate predictions: EVA, residuals, and highest errors
+    for fname, pred in dict_fname.items():
+        abs_fname = os.path.join(ba_directory, fname)
+        evaluate_regression(pred, real_steerings, abs_fname)
+
+    # Write predicted and real steerings
+    dict_test = {'pred_steerings': predicted_steerings.tolist(),
+                 'real_steerings': real_steerings.tolist()}
+    utils_test.write_to_file(dict_test,os.path.join(ba_directory,
+                                               'predicted_and_real_steerings.json'))
     
    ########################################################################################
     

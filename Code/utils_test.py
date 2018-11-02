@@ -14,20 +14,13 @@ import tensorflow as tf
 import json
 import cv2
 
-import matplotlib.pyplot as plt
+
 
 from keras import backend as K
 from keras.preprocessing.image import Iterator
 from keras.preprocessing.image import ImageDataGenerator
 from keras.utils.generic_utils import Progbar
 from keras.models import model_from_json
-
-
-
-
-
-
-
 
 def modelToJson(model, json_model_path):
     """
@@ -111,18 +104,52 @@ class CaroloDataIterator(Iterator):
         # Idea = associate each filename with a corresponding steering or label
         self.filenames = []
         self.ground_truth = []
-
+        
+        if not os.path.exists(os.path.join(directory,"steering_labels.txt")):
+            extract_steering_values_from_img()
+        
         self._load_carolo_data(directory)
         
 
-        assert self.samples >0, 'Keine Daten gefunden'
+        assert self.samples > 0, 'Keine Daten gefunden'
         
         #self.ground_truth = np.array(self.ground_truth, dtype = K.floatx())
                
         super(CaroloDataIterator, self).__init__(self.samples,
                 batch_size, shuffle=None,seed = None)
     
+       
     
+    
+    def _load_carolo_data(self,directory):
+        """Laden der Bilddaten mit zugehörigen Steuerdaten (Labels) 
+        
+            Bilddaten werden in Unterordner carolo_test_data_full" erwartet.
+            Steuerdaten werden in Unterordner steering_data" erwartet.
+        
+        """
+        
+        ground_truth = dict()
+        filenames = dict()
+        
+        steerings_filename = os.path.join(directory, 
+                                          "steering_labels.txt")
+        image_filename = os.path.join(directory,
+                                      "carolo_images")
+
+        
+        #Steuerdaten laden und skalieren
+        ground_truth = self.create_steering_dict(steerings_filename)
+                    
+        filenames = self.create_file_dict(image_filename)
+        
+        #make dictionaries to lists while making sure,
+        #that only ground_truth for existing images 
+        #is taken
+        for j,ID in enumerate(filenames):
+           self.filenames.append(filenames[ID])
+           self.ground_truth.append(ground_truth[ID])
+
     def create_file_dict(self,image_files):
         """Creates a Dictionary of the filenames and their associated 
             frame numbers
@@ -154,41 +181,15 @@ class CaroloDataIterator(Iterator):
         
         return steering_dict
         
+    
     def next(self):
         with self.lock:
             index_array = next(self.index_generator)
         
-        return self._get_batches_of_transformed_samples(index_array)   
+        return self._get_batches_of_transformed_samples(index_array)    
     
     
-    def _load_carolo_data(self,directory):
-        """Laden der Bilddaten mit zugehörigen Steuerdaten (Labels) 
-        
-            Bilddaten werden in Unterordner carolo_test_data_full" erwartet.
-            Steuerdaten werden in Unterordner steering_data" erwartet.
-        
-        """
-        
-        ground_truth = dict()
-        filenames = dict()
-        
-        steerings_filename = os.path.join(directory, 
-                                          "steering_data/steering_labels.txt")
-        image_filename = os.path.join(directory,
-                                      "small_set")
-
-        
-        #Steuerdaten laden und skalieren
-        ground_truth = self.create_steering_dict(steerings_filename)
-                    
-        filenames = self.create_file_dict(image_filename)
-        
-        #make dictionaries to lists
-        for j,ID in enumerate(filenames):
-           self.filenames.append(filenames[ID])
-           self.ground_truth.append(ground_truth[ID])
-
-        
+    
     
     def _get_batches_of_transformed_samples(self,index_array):
         """
@@ -196,7 +197,7 @@ class CaroloDataIterator(Iterator):
        
         """
         
-        image_dir = os.path.join(self.directory,"small_set")
+        image_dir = os.path.join(self.directory,"carolo_images")
         current_batch_size = index_array.shape[0]
         
                                                  #target size                                               
@@ -208,7 +209,12 @@ class CaroloDataIterator(Iterator):
                 dtype=K.floatx())
         
         #grayscale = self.color_mode == 'grayscale'
-
+        #possible augmentation:
+        
+        
+        
+        
+        
         # Build batch of image data
         for i, j in enumerate(index_array):
             fname = self.filenames[j]
@@ -216,9 +222,10 @@ class CaroloDataIterator(Iterator):
             x = load_img(os.path.join(image_dir, fname))
           
             #adjust brightness option
-            x = adjust_brightness(x,50)
-
-  #          x = self.image_data_generator.random_transform(x)
+            x = adjust_brightness(x,100)
+            
+            #transform not necessary
+            #x = self.image_data_generator.random_transform(x)
             x = self.image_data_generator.standardize(x)
             batch_x[i] = x
 
@@ -232,8 +239,10 @@ class CaroloDataIterator(Iterator):
         batch_y = [batch_steer, batch_coll]
         return batch_x, batch_y
 
-        
-        
+
+
+
+
 def generate_pred_and_gt(model, generator,steps):
     """
     Predictions and associated ground truth are generated from the samples 
@@ -296,6 +305,12 @@ def generate_pred_and_gt(model, generator,steps):
                           np.concatenate(all_ts[0])
 
 
+
+
+def extract_steering_values_from_img():
+    
+    raise NotImplementedError
+
 def load_img(file_path):
         
         #set grayscale erstmal immer auf true, da nur grayscale images
@@ -339,7 +354,7 @@ def get_scaled_steering_data_from_img(image_path):
             #image = cv2.imread(filename,0)
             #print(filename)
             filename_split = filename.split('_')
-            #print(filename.split('_'))
+            print(filename.split('_'))
             scaled_steering = scale_steering_data(int(filename_split[5]))
         
             steering_data.append(scaled_steering)
@@ -359,7 +374,6 @@ def switch_sign(value):
     0.0 remains 0.0
   
     """
-    
     if value == 0.0:
         return value
     elif value < 0.0:
@@ -369,29 +383,5 @@ def switch_sign(value):
     
     return 
     
-    
-def make_and_save_histograms(pred_steerings, real_steerings,
-                             img_name = "histograms.png"):
-    """
-    Plot and save histograms from predicted steerings and real steerings.
-    
-    # Arguments
-        pred_steerings: List of predicted steerings.
-        real_steerings: List of real steerings.
-        img_name: Name of the png file to save the figure.
-        
-        Function imported from DroNet Code.
-    """
-    pred_steerings = np.array(pred_steerings)
-    real_steerings = np.array(real_steerings)
-    max_h = np.maximum(np.max(pred_steerings), np.max(real_steerings))
-    min_h = np.minimum(np.min(pred_steerings), np.min(real_steerings))
-    bins = np.linspace(min_h, max_h, num=50)
-    plt.hist(pred_steerings, bins=bins, alpha=0.5, label='Predicted', color='b')
-    plt.hist(real_steerings, bins=bins, alpha=0.5, label='Real', color='r')
-    #plt.title('Steering angle')
-    plt.legend(fontsize=10)
-    plt.savefig(img_name, bbox_inches='tight')
-    
-    
+
 
