@@ -10,6 +10,7 @@ import sys
 import glob
 
 
+
 from keras.preprocessing.image import ImageDataGenerator
 from keras import backend as K
 
@@ -18,6 +19,7 @@ from keras.backend.tensorflow_backend import set_session
 
 import utils_test
 from constants import TEST_PHASE
+
 
 
 import plot_evaluation
@@ -107,14 +109,6 @@ def gpu_dynamic_growth_activation():
 
 def _main():
     
-    
-    #Erwartete Struktur:
-    #BA/
-    #      carolo_images
-    #      steering_labels     
-    
-    ba_directory = 'C:/Users/user/Desktop/BA/BA'
-    
     #allow memory on gpu to grow dynamically
     gpu_dynamic_growth_activation()
     
@@ -131,12 +125,10 @@ def _main():
             batch_size=32
             )
     
-   # json_model_path = os.path.join(FLAGS.experiment_rootdir, FLAGS.json_model_fname)
     
     model = utils_test.jsonToModel('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/model_struct.json')
     
     
-    #weights_load_path = os.path.join(FLAGS.experiment_rootdir, FLAGS.weights_fname)
     try:
         model.load_weights('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/best_weights.h5')
         #print("Loaded model from {}".format(weights_load_path))
@@ -202,24 +194,24 @@ def _main():
 
     # Evaluate predictions: EVA, residuals, and highest errors
     for fname, pred in dict_fname.items():
-        abs_fname = os.path.join(ba_directory, fname)
+        abs_fname = os.path.join(constants.EXPERIMENT_DIRECTORY, fname)
         evaluate_regression(pred, real_steerings, abs_fname)
 
     # Write predicted and real steerings
     dict_test = {'pred_steerings': predicted_steerings.tolist(),
                  'real_steerings': real_steerings.tolist()}
-    utils_test.write_to_file(dict_test,os.path.join(ba_directory,
+    utils_test.write_to_file(dict_test,os.path.join(constants.EXPERIMENT_DIRECTORY,
                                                'predicted_and_real_steerings.json'))
     
    ########################################################################################
     
 def main(argv):
     # Utility main to load flags
-    try:
-      argv = FLAGS(argv)  # parse flags
-    except gflags.FlagsError:
-      print ('Usage: %s ARGS\\n%s' % (sys.argv[0], FLAGS))
-      sys.exit(1)
+#    try:
+#      argv = FLAGS(argv)  # parse flags
+#    except gflags.FlagsError:
+#      print ('Usage: %s ARGS\\n%s' % (sys.argv[0], FLAGS))
+#      sys.exit(1)
     _main()
 
 

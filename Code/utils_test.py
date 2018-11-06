@@ -2,7 +2,7 @@
 """
 Created on Wed Oct 10 13:36:56 2018
 
-@author: --
+@author: RR
 """
 
 
@@ -21,6 +21,8 @@ from keras.preprocessing.image import Iterator
 from keras.preprocessing.image import ImageDataGenerator
 from keras.utils.generic_utils import Progbar
 from keras.models import model_from_json
+
+import constants
 
 def modelToJson(model, json_model_path):
     """
@@ -105,9 +107,6 @@ class CaroloDataIterator(Iterator):
         self.filenames = []
         self.ground_truth = []
         
-        if not os.path.exists(os.path.join(directory,"steering_labels.txt")):
-            extract_steering_values_from_img()
-        
         self._load_carolo_data(directory)
         
 
@@ -132,10 +131,14 @@ class CaroloDataIterator(Iterator):
         ground_truth = dict()
         filenames = dict()
         
-        steerings_filename = os.path.join(directory, 
-                                          "steering_labels.txt")
         image_filename = os.path.join(directory,
                                       "carolo_images")
+        
+        steerings_filename = os.path.join(image_filename, 
+                                          "steering_labels.txt")
+       
+        if not os.path.exists(steerings_filename):
+            make_steering_list(image_filename)
 
         
         #Steuerdaten laden und skalieren
@@ -153,23 +156,31 @@ class CaroloDataIterator(Iterator):
     def create_file_dict(self,image_files):
         """Creates a Dictionary of the filenames and their associated 
             frame numbers
+            
+           Filenames are expected to be in Carolo file format. 
         """
         file_dict = dict()
         
         
         for filename in os.listdir(image_files):
+            
+            whatever,file_extension = os.path.splitext(filename)
+            if file_extension ==".png":
            
-            filename_split = filename.split('_')
-        
-            file_dict[int(filename_split[1])] = filename
-                           #framenumber         
-            self.samples += 1
+                filename_split = filename.split('_')
+                file_dict[int(filename_split[1])] = filename
+                                   #framenumber         
+                self.samples += 1
+            else :
+                continue
         
         return file_dict
     
     def create_steering_dict(self,steering_files):
         """Creates a Dictionary of the steering values and their associated
            frame numbers
+           
+           Filenames are expected to be in Carolo file format. 
         """
         
         temp_steering = np.loadtxt(steering_files, delimiter='|||')
@@ -207,22 +218,22 @@ class CaroloDataIterator(Iterator):
                 dtype=K.floatx())
         batch_coll  = np.zeros((current_batch_size, 2,),
                 dtype=K.floatx())
-        
-        #grayscale = self.color_mode == 'grayscale'
+    
         #possible augmentation:
-        
-        
-        
-        
         
         # Build batch of image data
         for i, j in enumerate(index_array):
             fname = self.filenames[j]
             
             x = load_img(os.path.join(image_dir, fname))
-          
+            
+            #TODO CANT be done here as x is image as a numpy array
+            #x = histogram_equalization(x)
+            
+            
             #adjust brightness option
-            x = adjust_brightness(x,100)
+            x = adjust_brightness(x,constants.BRIGHTNESS_ADJUST)
+            #cv2.imwrite(os.path.join(constants.EVALUATION_PATH,"TEST.png"),x)
             
             #transform not necessary
             #x = self.image_data_generator.random_transform(x)
@@ -307,9 +318,37 @@ def generate_pred_and_gt(model, generator,steps):
 
 
 
-def extract_steering_values_from_img():
+def make_steering_list(image_directory):
+    """
+    Extracts steering angles from images in carolo file format.
     
-    raise NotImplementedError
+    # Argument 
+        image_directory : the directory containing the images 
+        which are to included in the steering file
+    
+    """
+    image_path_list = []
+    for file in os.listdir(image_directory):
+        image_path_list.append(os.path.join(image_directory, file))
+    
+    tupel =[]
+    for imagePath in image_path_list:
+            
+        filename = imagePath
+        
+    
+        SplittedFilename = filename.split('_')
+        
+    
+        tupel.append("%s|||%s" % (SplittedFilename[3],SplittedFilename[5]))
+                                        #Bildnummer|||Lenkwinkel
+                            
+                            
+    steering_file  = "\n".join(tupel)
+    f = open(os.path.join(image_directory,"steering_labels.txt"), "w")
+    f.write(steering_file)
+    f.close() 
+     
 
 def load_img(file_path):
         
@@ -321,6 +360,10 @@ def load_img(file_path):
         if grayscale:
             if len(img.shape) != 2:
                 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                
+        if constants.RAW_IMAGE:
+          img = central_image_crop(img,constants.CROP_WIDTH,constants.CROP_HEIGHT)
+        
     
         if grayscale:
             img = img.reshape((img.shape[0], img.shape[1], 1))
@@ -338,6 +381,7 @@ def scale_steering_data(carolo_steering_value):
     
 def get_scaled_steering_data_from_img(image_path):
         """
+        Retrieves scaled steering data from an Image.
         
         """
         
@@ -382,6 +426,57 @@ def switch_sign(value):
         return -value
     
     return 
-    
 
+def crop_image_height(img,crop_height):
+    """
+    Image img cropped in height, starting from the top.
+    """
+    
+    img =img[crop_height:img.shape[0],img.shape[1]]
+    
+    return img
+    
+def crop_image_width(img,crop_width):
+    """
+    Image img cropped in width, starting from the centre to both sides.
+    """
+    half_the_width = int(img.shape[1] / 2)
+    img = img[img.shape[0],
+               half_the_width - int(crop_width / 2):
+               half_the_width + int(crop_width / 2)]
+               
+    return img
+
+def central_image_crop(img, crop_width=200, crop_heigth=200):
+    """
+    Crop the input image centered in width and starting from the top in height.
+    
+    # Arguments:
+        crop_width: Width of the crop.
+        crop_heigth: Height of the crop.
+        
+    # Returns:
+        Cropped image.
+    """
+    half_the_width = int(img.shape[1] / 2)
+    img = img[0: crop_heigth,
+              half_the_width - int(crop_width / 2):
+              half_the_width + int(crop_width / 2)]
+    return img
+    
+def histogram_equalization(img,algorithm = "normal"):
+    """
+    Normalises histogram of Image img.
+    
+    Two possible algorithms : "normal","clahe"
+    
+    """
+    
+    if  algorithm == "normal":
+        equ = cv2.equalizeHist(img)
+    elif algorithm == "clahe":
+        clahe = cv2.createCLAHE()
+        equ = clahe.apply(img)
+        
+    return equ
 

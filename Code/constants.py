@@ -21,6 +21,22 @@ EPOCHS = 100
 LOGGING_RATE = 10
 
 
+RAW_IMAGE = True 
+
+
+# Image values
+
+CROP_WIDTH = 200
+CROP_HEIGHT = 200
+
+
+#value by which the brightness will be increased
+# (if negative, image will be darker)
+BRIGHTNESS_ADJUST = 100
+
+
+
+
 # Input
 #gflags.DEFINE_integer('img_width', 320, 'Target Image Width')
 #gflags.DEFINE_integer('img_height', 240, 'Target Image Height')
