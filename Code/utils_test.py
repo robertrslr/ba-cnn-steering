@@ -230,10 +230,10 @@ class CaroloDataIterator(Iterator):
             #TODO CANT be done here as x is image as a numpy array
             #x = histogram_equalization(x)
             
-            
+            cv2.imwrite(os.path.join(constants.EVALUATION_PATH,"TEST.png"),x)
             #adjust brightness option
             x = adjust_brightness(x,constants.BRIGHTNESS_ADJUST)
-            #cv2.imwrite(os.path.join(constants.EVALUATION_PATH,"TEST.png"),x)
+            
             
             #transform not necessary
             #x = self.image_data_generator.random_transform(x)
@@ -363,6 +363,7 @@ def load_img(file_path):
                 
         if constants.RAW_IMAGE:
           img = central_image_crop(img,constants.CROP_WIDTH,constants.CROP_HEIGHT)
+          img = histogram_equalization(img)
         
     
         if grayscale:
