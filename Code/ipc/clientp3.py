@@ -18,6 +18,13 @@ if os.path.exists("/tmp/python_unix_sockets_example"):
                 if "DONE" == x:
                     print("Shutting down.")
                     break
+                datagram = client.recv(1024)
+                if not datagram:
+                    break
+                else:
+                    print("-" * 20)
+                    print(datagram.decode('utf-8'))
+                
         except KeyboardInterrupt as k:
             print("Shutting down.")
             client.close()

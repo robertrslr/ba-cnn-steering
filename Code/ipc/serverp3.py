@@ -1,4 +1,4 @@
- -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 import socket
 import os
 
@@ -10,6 +10,8 @@ server = socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM)
 server.bind("/tmp/python_unix_sockets_example")
 
 print("Listening...")
+x = "Hello from Python Server"
+i = 1
 while True:
     datagram = server.recv(1024)
     if not datagram:
@@ -17,6 +19,13 @@ while True:
     else:
         print("-" * 20)
         print(datagram.decode('utf-8'))
+        if i>0:
+            server.send(x.encode('utf-8'))
+            i=0
+        msg = input("> ")
+        if "" != x:
+            print("SEND:", x)
+            server.send(x.encode('utf-8'))
         if "DONE" == datagram.decode('utf-8'):
             break
 print("-" * 20)
