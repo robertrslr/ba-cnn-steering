@@ -1,3 +1,4 @@
+
 """
 Unix Domain Socket Server 
 
@@ -36,7 +37,7 @@ while True:
         # Receive the data in small chunks and retransmit it
         while True:
             data = connection.recv(64)
-            print >>sys.stderr, 'received "%s"' % data
+            print >>sys.stderr, 'received "%s"' %  str(data)
             if data:
                 msg = input("Nachricht eingeben: ")
                 print >>sys.stderr, 'Nachricht wird an client gesendet'
