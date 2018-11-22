@@ -1,25 +1,50 @@
+"""
+Unix Domain Socket Server 
 
 
-#
-#   Hello World server in Python
-#   Binds REP socket to tcp://*:5555
-#   Expects b"Hello" from client, replies with b"World"
-#
+"""
 
-import time
-import zmq
+import socket 
+import sys 
+import os
 
-context = zmq.Context()
-socket = context.socket(zmq.REP)
-socket.bind("tcp://*:5555")
+server_address= " PATH TO FOLDER  "
+
+#Falls der socket schon existiert, versuche ihn zu unlinken
+try:
+    os.unlink(server_address)
+except OSError:
+    if os.path.exists(server_address):
+        raise Exception
+        
+sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        
+# Bind the socket to the port
+print >>sys.stderr, 'starting up on %s' % server_address
+sock.bind(server_address)
+
+# Listen for incoming connections
+sock.listen(1)
 
 while True:
-    #  Wait for next request from client
-    message = socket.recv()
-    print("Received request: %s" % message)
+    # Wait for a connection
+    print >>sys.stderr, 'waiting for a connection'
+    connection, client_address = sock.accept()
+    try:
+        print >>sys.stderr, 'connection from', client_address
 
-    #  Do some 'work'
-    time.sleep(1)
+        # Receive the data in small chunks and retransmit it
+        while True:
+            data = connection.recv(16)
+            print >>sys.stderr, 'received "%s"' % data
+            if data:
+                print >>sys.stderr, 'sending data back to the client'
+                connection.sendall(data)
+            else:
+                print >>sys.stderr, 'no more data from', client_address
+                break
+            
+    finally:
+        # Clean up the connection
+        connection.close()
 
-    #  Send reply back to client
-    socket.send(b"World")
