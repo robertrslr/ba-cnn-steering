@@ -19,18 +19,18 @@ except socket.error as msg:
     print(sys.stderr, msg)
     sys.exit(1)
     
-
-while True: 
-    data = sock.recv(64)
-    print >>sys.stderr, 'received "%s"' % data
-    if data: 
-        msg = input ("Nachricht an Server eingeben: ")
-        print >>sys.stderr, 'sending "%s"' % message
-        sock.sendall(msg)
-    else:
-        print >>sys.stderr, 'no more data from', client_adress	
-        break 
-
-    finally:
-        print >>sys.stderr, 'closing socket'
-        sock.close()
+try:
+    while True: 
+        data = sock.recv(64)
+        print >>sys.stderr, 'received "%s"' % data
+        if data: 
+            msg = input ("Nachricht an Server eingeben: ")
+            print >>sys.stderr, 'sending "%s"' % msg
+            sock.sendall(msg)
+        else:
+            print >>sys.stderr, 'server gone, no more data'	
+            break 
+    
+finally:
+    print >>sys.stderr, 'closing socket'
+    sock.close()

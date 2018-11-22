@@ -32,13 +32,13 @@ while True:
     connection, client_address = sock.accept()
     try:
         print >>sys.stderr, 'connection from', client_address
-	connection.sendall("Hello from Python Server")
+        connection.sendall("Hello from Python Server")
         # Receive the data in small chunks and retransmit it
         while True:
             data = connection.recv(64)
             print >>sys.stderr, 'received "%s"' % data
             if data:
-		msg = input("Nachricht eingeben: ")
+                msg = input("Nachricht eingeben: ")
                 print >>sys.stderr, 'Nachricht wird an client gesendet'
                 connection.sendall(msg)
             else:
