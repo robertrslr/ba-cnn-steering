@@ -10,7 +10,7 @@ import sys
 sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
 
 # Connect the socket to the port where the server is listening
-server_address = '/tmp/caroloIPC.uds'
+server_address = "/tmp/caroloIPC.uds"
 print >>sys.stderr, 'connecting to %s' % server_address
 
 try:
@@ -19,21 +19,18 @@ except socket.error as msg:
     print(sys.stderr, msg)
     sys.exit(1)
     
-try:
-    
-    # Send data
-    message = 'This is the message.  It will be repeated.'
-    print >>sys.stderr, 'sending "%s"' % message
-    sock.sendall(message)
 
-    amount_received = 0
-    amount_expected = len(message)
-    
-    while amount_received < amount_expected:
-        data = sock.recv(16)
-        amount_received += len(data)
-        print >>sys.stderr, 'received "%s"' % data
+while True: 
+    data = sock.recv(64)
+    print >>sys.stderr, 'received "%s"' % data
+    if data: 
+        msg = input ("Nachricht an Server eingeben: ")
+        print >>sys.stderr, 'sending "%s"' % message
+        sock.sendall(msg)
+    else:
+        print >>sys.stderr, 'no more data from', client_adress	
+        break 
 
-finally:
-    print >>sys.stderr, 'closing socket'
-    sock.close()
+    finally:
+        print >>sys.stderr, 'closing socket'
+        sock.close()
