@@ -8,7 +8,7 @@ import socket
 import sys 
 import os
 
-server_address= " PATH TO FOLDER  "
+server_address= "./uds_socket "
 
 #Falls der socket schon existiert, versuche ihn zu unlinken
 try:
