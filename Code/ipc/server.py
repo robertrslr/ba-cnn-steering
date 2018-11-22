@@ -8,7 +8,7 @@ import socket
 import sys 
 import os
 
-server_address= "./uds_socket "
+server_address= "/tmp/caroloIPC.uds"
 
 #Falls der socket schon existiert, versuche ihn zu unlinken
 try:
@@ -32,14 +32,15 @@ while True:
     connection, client_address = sock.accept()
     try:
         print >>sys.stderr, 'connection from', client_address
-
+	connection.sendall("Hello from Python Server")
         # Receive the data in small chunks and retransmit it
         while True:
-            data = connection.recv(16)
+            data = connection.recv(64)
             print >>sys.stderr, 'received "%s"' % data
             if data:
-                print >>sys.stderr, 'sending data back to the client'
-                connection.sendall(data)
+		msg = input("Nachricht eingeben: ")
+                print >>sys.stderr, 'Nachricht wird an client gesendet'
+                connection.sendall(msg)
             else:
                 print >>sys.stderr, 'no more data from', client_address
                 break
