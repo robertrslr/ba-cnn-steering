@@ -69,7 +69,7 @@ if nRet != ueye.IS_SUCCESS:
 width = rectAOI.s32Width
 height = rectAOI.s32Height
 
-#ueye.IS_SET_MASTER_GAIN_FACTOR(100)
+
 
 # Prints out some information about the camera and the sensor
 print("Camera model:\t\t", sInfo.strSensorName.decode('utf-8'))
@@ -114,7 +114,7 @@ else:
 #---------------------------------------------------------------------------------------------------------------------------------------
 
 
-equ_conadj = np.zeros((height.value,width.value,1))
+#equ_conadj = np.zeros((height.value,width.value,1))
 # Continuous image display
 while(nRet == ueye.IS_SUCCESS):
 
@@ -128,32 +128,27 @@ while(nRet == ueye.IS_SUCCESS):
 
     # ...reshape it in an numpy array...
     frame = np.reshape(array,(height.value, width.value, bytes_per_pixel))
-    frame_equ   = np.reshape(equ,(height.value, width.value, bytes_per_pixel))
+    frame_equ = np.reshape(equ,(height.value, width.value, bytes_per_pixel))
     
     #basic contrast adjustment
     
     alpha = 1.0 # simple contrast control
     beta = 0    # simple brightness control
-    """
-    for y in range(frame_equ.shape[0]):
-        for x in range(frame_equ.shape[1]):
-            temp =frame_equ[y,x]*alpha
-            if(temp<0):
-                equ_conadj[y,x]= 0
-            elif(temp>255):
-                equ_conadj[y,x]=255
-            else:
-                equ_conadj[y,x]=temp   
-    """
+
+
+
     # ...resize the image by a half
     frame = cv2.resize(frame,(0,0),fx=0.5, fy=0.5)
     #frame_equ = cv2.resize(equ,(0,0),fx=0.5, fy = 0.5)
-    
-    equ_conadj_cut = equ_conadj   
+
+
+    """
+    equ_conadj_cut = frame_equ
     half_the_width = int(equ_conadj_cut.shape[1] / 2)
     equ_conadj_cut = equ_conadj_cut[0: 200,
               half_the_width - int(200 / 2):
               half_the_width + int(200 / 2)]
+    """
     #frame_equ_cut = utils_test.central_image_crop(frame_equ,200,200)
 
         
@@ -168,7 +163,7 @@ while(nRet == ueye.IS_SUCCESS):
     #...and finally display it
     cv2.imshow("SimpleLive_Python_uEye_OpenCV", frame)
     cv2.imshow("hist_equ",frame_equ)
-    cv2.imshow("hist_equ_cut",equ_conadj_cut)
+    #cv2.imshow("hist_equ_cut",equ_conadj_cut)
 
     # Press q if you want to end the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):
