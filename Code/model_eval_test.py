@@ -138,8 +138,6 @@ def _main():
     
     model.compile(loss='mse',optimizer='adam')
 
-    
-    
     n_samples = test_generator.samples
  
     nb_batches = int(np.ceil(n_samples / 32))#batch size = 32

@@ -6,11 +6,16 @@ import os
 import sys
 import glob
 import cv2
+import time
 
 from pyueye import ueye
 
+import proto_client_socket
+
 sys.path.append("../")
 import utils_test
+
+
 
 
 from keras import backend as K
@@ -46,13 +51,13 @@ if nRet != ueye.IS_SUCCESS:
 
 nRet = ueye.is_SetDisplayMode(hCam, ueye.IS_SET_DM_DIB)
 
-#for monochrome camera models use Y8 mode
+# for monochrome camera models use Y8 mode
 m_nColorMode = ueye.IS_CM_MONO8
 nBitsPerPixel = ueye.INT(8)
 bytes_per_pixel = int(nBitsPerPixel / 8)
 print("Monochrome Mode")
 
-#Area of interest can be set here
+# Area of interest can be set here
 nRet = ueye.is_AOI(hCam, ueye.IS_AOI_IMAGE_GET_AOI, rectAOI, ueye.sizeof(rectAOI))
 if nRet != ueye.IS_SUCCESS:
     print("is_AOI ERROR")
@@ -61,8 +66,8 @@ if nRet != ueye.IS_SUCCESS:
 width = rectAOI.s32Width
 height = rectAOI.s32Height
 
-#gain factor can be set here
-#ueye.IS_SET_MASTER_GAIN_FACTOR(100)
+# gain factor can be set here
+# ueye.IS_SET_MASTER_GAIN_FACTOR(100)
 
 # Prints out some information about the camera and the sensor
 print("Camera model:\t\t", sInfo.strSensorName.decode('utf-8'))
@@ -105,36 +110,36 @@ else:
 
 #--------------------------------------------------------------------------------------------------
 
-#Load Weights and Model
+# Load Weights and Model
 
-#zero means test phase, trust me
+# zero means test phase, trust me
 K.set_learning_phase(0)
 
 model = utils_test.jsonToModel('../../best_model_DroNet/model_struct.json')
     
 try:
     model.load_weights('../../best_model_DroNet/best_weights.h5')
-    #print("Loaded model from {}".format(weights_load_path))
+    # print("Loaded model from {}".format(weights_load_path))
 except:
-  print("Impossible to find weight path. Returning untrained model")
+    print("Impossible to find weight path. Returning untrained model")
     
 
 model.compile(loss='mse',optimizer='adam')
 
 
-    
-#model.predict(picture,batchsize = 1)
-
-#--------------------------------------------------------------------------------------------------
-#equ_conadj = np.zeros((height.value, width.value, 1))
 
 
-#Intialize array for normalization
+# --------------------------------------------------------------------------------------------------
+# equ_conadj = np.zeros((height.value, width.value, 1))
+
+
+# Intialize array for normalization
 working_img_norm = np.zeros((200,200,1),dtype=np.float32)
-#Keras Sequential predict() function only accepts array of input data as input
+# Keras Sequential predict() function only accepts array of input data as input
 one_image_batch = np.zeros((1,)+(200, 200 ,1),
                 dtype=K.floatx())
-
+# variable for stoptime for framerate calculation
+old_time = 0
 # Continuous prediction and image display
 while (nRet == ueye.IS_SUCCESS):
 
@@ -143,17 +148,17 @@ while (nRet == ueye.IS_SUCCESS):
     array = ueye.get_data(pcImageMemory, width, height, nBitsPerPixel, pitch, copy=False)
 
 
-    #equ = cv2.equalizeHist(array)
+    # equ = cv2.equalizeHist(array)
 
     bytes_per_pixel = int(nBitsPerPixel / 8)
 
     # ...reshape it in an numpy array...
     frame = np.reshape(array, (height.value, width.value, bytes_per_pixel))
 
-    #frame_equ = np.reshape(equ, (height.value, width.value, bytes_per_pixel))
+    # frame_equ = np.reshape(equ, (height.value, width.value, bytes_per_pixel))
 
 
-    # ...resize the image by a half
+    #  ...resize the image by a half
     frame = cv2.resize(frame, (0, 0), fx=0.5, fy=0.5)
     # frame_equ = cv2.resize(equ,(0,0),fx=0.5, fy = 0.5)
 
@@ -166,20 +171,24 @@ while (nRet == ueye.IS_SUCCESS):
               half_the_width + int(200 / 2)]
     equ_conadj_cut = equ_conadj_cut.reshape((equ_conadj_cut.shape[0], equ_conadj_cut.shape[1], 1))
 
-    #cv2.imshow("image", equ_conadj_cut)
+    cv2.imshow("image", equ_conadj_cut)
 
-    #now, lets do the actual magic
-    #convert to numpy array
+    # now, lets do the actual magic
+    # convert to numpy array
     working_img = np.asarray(equ_conadj_cut, dtype=np.float32)
-    #normalise to values between 0 and 1
+    # normalise to values between 0 and 1
     working_img *= 1./255
     one_image_batch[0]=working_img
-    #pump the picture through the network
+    # pump the picture through the network
     prediction_st_col = model.predict(one_image_batch,batch_size = 1)
 
     prediction_st = prediction_st_col[0]
 
-    print("Prediction:", prediction_st[0],end='\r')
+    stop_time = time.time()
+    framerate = 1/(stop_time - old_time)
+    old_time = stop_time
+    print("Prediction:", prediction_st[0], "Framerate :", int(framerate), end='\r')
+    proto_client_socket.steering_value = prediction_st
 
     # Press q if you want to end the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):
