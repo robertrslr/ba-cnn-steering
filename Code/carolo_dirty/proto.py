@@ -180,7 +180,7 @@ while (nRet == ueye.IS_SUCCESS):
     working_img *= 1./255
     one_image_batch[0]=working_img
     # pump the picture through the network
-    prediction_st_col = model.predict(one_image_batch,batch_size = 1)
+    prediction_st_col = model.predict(one_image_batch, batch_size=1)
 
     prediction_st = prediction_st_col[0]
 

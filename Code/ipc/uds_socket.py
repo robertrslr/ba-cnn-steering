@@ -2,8 +2,11 @@
 import socket
 import os
 
-steering_value = 0.0
+"""
+Module handles connection to the cpp module steering the car.
+"""
 
+steering_value = 0.0
 
 print("Connecting...")
 if os.path.exists("/tmp/caroloIPC.uds"):
@@ -15,7 +18,7 @@ if os.path.exists("/tmp/caroloIPC.uds"):
     while True:
         try:
             client.send(steering_value)
-          
+
         except KeyboardInterrupt as k:
             print("Shutting down.")
             client.close()
