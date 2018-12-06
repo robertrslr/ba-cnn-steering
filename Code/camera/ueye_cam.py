@@ -82,16 +82,15 @@ class ueye_cam:
 
         print("Initialized!")
 
-    """
-    def set_pixel_clock(self, clock_mhz):
-        clk_float = ueye.INT(clock_mhz)
-        ueye.is_PixelClock(self.hCam, ueye.IS_PIXELCLOCK_CMD_SET, clk_float, ueye.sizeof(clk_float))
-
     def set_frame_rate(self, fps):
         dfps = ueye.DOUBLE(0)
         ueyeFps = ueye.DOUBLE(fps)
         ueye.is_SetFrameRate(self.hCam, ueyeFps, dfps)
         print("new Framerate: ", dfps)
+
+    def set_pixel_clock(self, clock_mhz):
+        clk_float = ueye.INT(clock_mhz)
+        ueye.is_PixelClock(self.hCam, ueye.IS_PIXELCLOCK_CMD_SET, clk_float, ueye.sizeof(clk_float))
 
     def set_exposure(self, exp):
         exp_double = ueye.DOUBLE(exp)
@@ -101,8 +100,8 @@ class ueye_cam:
     def set_hw_gain_factor(self, gain):
         gain_int = ueye.INT(gain)
         ueye.is_SetHWGainFactor(self.hCam, ueye.IS_SET_MASTER_GAIN_FACTOR, gain_int);
-        
-    """
+
+
 
     def read(self):
         nRet = ueye.is_WaitEvent(self.hCam, ueye.IS_SET_EVENT_FRAME, 1000)

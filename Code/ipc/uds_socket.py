@@ -1,29 +1,43 @@
 # -*- coding: utf-8 -*-
 import socket
 import os
+import struct
+from datetime import date
 
-"""
-Module handles connection to the cpp module steering the car.
-"""
 
-steering_value = 0.0
+class uds_socket():
+    def __init__(self,socket_path="/tmp/caroloIPC.uds",socket_family=socket.AF_UNIX,
+                 socket_type=socket.SOCK_STREAM):
+        if os.path.exists(socket_path):
+            self.client = socket.socket(socket_family, socket_type)
+            self.client.connect(socket_path)
+            print("UDS Socket Client connected to",socket_path)
+            print("Ctrl-C to quit.")
+        else:
+            print("Couldn't Connect!")
 
-print("Connecting...")
-if os.path.exists("/tmp/caroloIPC.uds"):
-    client = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    client.connect("/tmp/caroloIPC.uds")
-    print("Ready.")
-    print("Ctrl-C to quit.")
-    print("Sending 'DONE' shuts down the server and quits.")
-    while True:
+
+    def send_data(self,data,pack = True):
+
+        #TODO pack data into struct
+
         try:
-            client.send(steering_value)
-
+            if pack:
+                packed_data = self.pack_float_value(data)
+                print(packed_data)
+            else:
+                #self.client.send(data)
+                print(data)
         except KeyboardInterrupt as k:
             print("Shutting down.")
-            client.close()
-            break
-else:
-    print("Couldn't Connect!")
-print("Done")
+            self.client.close()
 
+    def pack_float_value(self, float):
+        """
+        Packs a float value in a struct.
+        :param data:
+        :return:
+        """
+
+        packed_float = struct.pack("<f", float)
+        return packed_float

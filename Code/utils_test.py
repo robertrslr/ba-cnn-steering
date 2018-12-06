@@ -22,7 +22,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.utils.generic_utils import Progbar
 from keras.models import model_from_json
 
-import constants
+from Code import constants
 
 def modelToJson(model, json_model_path):
     """
