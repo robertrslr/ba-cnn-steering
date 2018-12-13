@@ -61,7 +61,6 @@ def main():
     #socket initialisieren
     socket = uds_socket()
 
-
     one_image_batch = np.zeros((1,) + (200, 200, 1),
                                dtype=K.floatx())
 
@@ -88,16 +87,11 @@ def main():
 
         #get data out of nested array structure
         for value in prediction_st:
-            socket.send_data(value[0])
+            socket.send_data(utils_test.switch_sign(value[0]))
 
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-
-
-
-
-
 
 if __name__ == "__main__":
     main()
