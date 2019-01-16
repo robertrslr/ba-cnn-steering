@@ -20,13 +20,11 @@ class uds_socket():
 
         try:
             if pack:
-                #packed_data = self.pack_float_value(data)
                 packed_data = str(data)
                 self.client.send(packed_data.encode('utf-8'))
-                print(packed_data)
             else:
-                #self.client.send(data)
-                print(data)
+                self.client.send(data)
+                #print(data)
         except KeyboardInterrupt as k:
             print("Shutting down.")
             self.client.close()

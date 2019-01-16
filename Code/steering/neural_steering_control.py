@@ -75,7 +75,7 @@ def main():
         #predict function needs image in an array, so we'll give it what it wants
         one_image_batch[0] = image
 
-        cv2.imshow("image", image)
+        #cv2.imshow("image", image)
 
         prediction_st_col = model.predict(one_image_batch, batch_size=1)
 
