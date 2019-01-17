@@ -61,8 +61,6 @@ def resnet8(img_width, img_height, img_channels, output_dim):
 
     x1 = Conv2D(32, (1, 1), strides=[2,2], padding='same')(x1)
     x3 = add([x1, x2])
-    
-    x3.trainable = False
 
     # Second residual block
     x4 = keras.layers.normalization.BatchNormalization()(x3)

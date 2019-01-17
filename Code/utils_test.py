@@ -121,7 +121,8 @@ class CaroloDataIterator(Iterator):
     
     
     def _load_carolo_data(self,directory):
-        """Laden der Bilddaten mit zugehörigen Steuerdaten (Labels) 
+        """
+        Laden der Bilddaten mit zugehörigen Steuerdaten (Labels) 
         
             Bilddaten werden in Unterordner carolo_test_data_full" erwartet.
             Steuerdaten werden in Unterordner steering_data" erwartet.

@@ -9,15 +9,15 @@ import tensorflow as tf
 import numpy as np
 import os
 import sys
-import gflags
 
 from keras.callbacks import ModelCheckpoint
 from keras import optimizers
 
-import logz
+
 import cnn_models
-import utils
-import log_utils
+import utils_test 
+import constants
+
 
 import dronet_model
 
