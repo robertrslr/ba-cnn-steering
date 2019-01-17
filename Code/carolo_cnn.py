@@ -16,7 +16,8 @@ from keras import optimizers
 
 import cnn_models
 import utils_test 
-import constants
+import constants 
+import adapted_dronet_model
 
 
 import dronet_model
@@ -35,7 +36,7 @@ def getModel(img_width, img_height, img_channels, output_dim, weights_path):
     # Returns
        model: A Model instance.
     """
-    model = dronet_model.resnet8(img_width, img_height, img_channels, output_dim)
+    model = adapted_dronet_model.partly_frozen_resnet8(img_width, img_height, img_channels, output_dim)
 
     if weights_path:
         try:
@@ -62,32 +63,32 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     """
 
     # Initialize loss weights
-    model.alpha = tf.Variable(1, trainable=False, name='alpha', dtype=tf.float32)
-    model.beta = tf.Variable(0, trainable=False, name='beta', dtype=tf.float32)
+    #model.alpha = tf.Variable(1, trainable=False, name='alpha', dtype=tf.float32)
+    #model.beta = tf.Variable(0, trainable=False, name='beta', dtype=tf.float32)
 
     # Initialize number of samples for hard-mining
-    model.k_mse = tf.Variable(FLAGS.batch_size, trainable=False, name='k_mse', dtype=tf.int32)
-    model.k_entropy = tf.Variable(FLAGS.batch_size, trainable=False, name='k_entropy', dtype=tf.int32)
+    model.k_mse = tf.Variable(constants.BATCH_SIZE, trainable=False, name='k_mse', dtype=tf.int32)
+    #model.k_entropy = tf.Variable(constants.batch_size, trainable=False, name='k_entropy', dtype=tf.int32)
     
 
     optimizer = optimizers.Adam(decay=1e-5)
 
     # Configure training process
-    model.compile(loss=[utils.hard_mining_mse(model.k_mse),
-                        utils.hard_mining_entropy(model.k_entropy)],
-                        optimizer=optimizer, loss_weights=[model.alpha, model.beta])
+    model.compile(loss=utils_test.hard_mining_mse(model.k_mse),
+                        optimizer=optimizer)
 
     # Save model with the lowest validation loss
-    weights_path = os.path.join(FLAGS.experiment_rootdir, 'weights_{epoch:03d}.h5')
+    weights_path = os.path.join(constants.EXPERIMENT_DIRECTORY, 'weights_{epoch:03d}.h5')
     writeBestModel = ModelCheckpoint(filepath=weights_path, monitor='val_loss',
                                      save_best_only=True, save_weights_only=True)
 
     # Save model every 'log_rate' epochs.
     # Save training and validation losses.
-    logz.configure_output_dir(FLAGS.experiment_rootdir)
-    saveModelAndLoss = log_utils.MyCallback(filepath=FLAGS.experiment_rootdir,
-                                            period=FLAGS.log_rate,
-                                            batch_size=FLAGS.batch_size)
+    
+    #logz.configure_output_dir(constants.EXPERIMENT_DIRECTORY)
+    #saveModelAndLoss = log_utils.MyCallback(filepath=FLAGS.experiment_rootdir,
+    #                                        period=FLAGS.log_rate,
+    #                                        batch_size=FLAGS.batch_size)
 
     # Train model
     steps_per_epoch = int(np.ceil(train_data_generator.samples / FLAGS.batch_size))
