@@ -70,8 +70,8 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     model.k_mse = tf.Variable(constants.BATCH_SIZE, trainable=False, name='k_mse', dtype=tf.int32)
     #model.k_entropy = tf.Variable(constants.batch_size, trainable=False, name='k_entropy', dtype=tf.int32)
     
-
-    optimizer = optimizers.Adam(decay=1e-5)
+    #COnfigure optimizer with small learning rate for fine tuning
+    optimizer = optimizers.Adam(lr=0.001,decay=1e-5)
 
     # Configure training process
     model.compile(loss=utils_test.hard_mining_mse(model.k_mse),
@@ -91,12 +91,12 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     #                                        batch_size=FLAGS.batch_size)
 
     # Train model
-    steps_per_epoch = int(np.ceil(train_data_generator.samples / FLAGS.batch_size))
-    validation_steps = int(np.ceil(val_data_generator.samples / FLAGS.batch_size))
+    steps_per_epoch = int(np.ceil(train_data_generator.samples / constants.BATCH_SIZE))
+    validation_steps = int(np.ceil(val_data_generator.samples / constants.BATCH_SIZE))
 
     model.fit_generator(train_data_generator,
-                        epochs=FLAGS.epochs, steps_per_epoch = steps_per_epoch,
-                        callbacks=[writeBestModel, saveModelAndLoss],
+                        epochs=constants.EPOCHS50, steps_per_epoch = steps_per_epoch,
+                        callbacks=writeBestModel,
                         validation_data=val_data_generator,
                         validation_steps = validation_steps,
                         initial_epoch=initial_epoch)
@@ -106,54 +106,45 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
 def main():
     
     # Input image dimensions
-    img_width, img_height = FLAGS.img_width, FLAGS.img_height
+    #img_width, img_height = constants.ORIGINAL_IMG_WIDTH, constants.ORIGINAL_IMG_HEIGHT
 
     # Cropped image dimensions
-    crop_img_width, crop_img_height = FLAGS.crop_img_width, FLAGS.crop_img_height
-
-    # Image mode
-    if FLAGS.img_mode=='rgb':
-        img_channels = 3
-    elif FLAGS.img_mode == 'grayscale':
-        img_channels = 1
-    else:
-        raise IOError("Unidentified image mode: use 'grayscale' or 'rgb'")
+    crop_img_width, crop_img_height = constants.CROP_WIDTH, constants.CROP_HEIGHT
 
     # Output dimension (one for steering and one for collision)
     output_dim = 1
+    
+    img_channels = constants.IMG_CHANNELS
 
     # Generate training data with real-time augmentation
-    train_datagen = utils.DroneDataGenerator(rotation_range = 0.2,
-                                             rescale = 1./255,
-                                             width_shift_range = 0.2,
-                                             height_shift_range=0.2)
+    train_datagen = utils_test.DroneDataGenerator(rotation_range = 0.2,
+                                                rescale = 1./255,
+                                                width_shift_range = 0.2,
+                                                height_shift_range=0.2)
 
-    train_generator = train_datagen.flow_from_directory(FLAGS.train_dir,
+    train_generator = train_datagen.flow_from_directory(constants.TRAINING_DIRECTORY,
                                                         shuffle = True,
-                                                        color_mode=FLAGS.img_mode,
-                                                        target_size=(img_width, img_height),
-                                                        crop_size=(crop_img_height, crop_img_width),
-                                                        batch_size = FLAGS.batch_size)
+                                                        color_mode=constants.COLORMODE,
+                                                        batch_size = constants.BATCH_SIZE)
 
     # Generate validation data with real-time augmentation
-    val_datagen = utils.DroneDataGenerator(rescale = 1./255)
+    val_datagen = utils_test.DroneDataGenerator(rescale = 1./255)
 
-    val_generator = val_datagen.flow_from_directory(FLAGS.val_dir,
+    val_generator = val_datagen.flow_from_directory(constants.VALIDATION_DIRECTORY,
                                                         shuffle = True,
-                                                        color_mode=FLAGS.img_mode,
-                                                        target_size=(img_width, img_height),
-                                                        crop_size=(crop_img_height, crop_img_width),
-                                                        batch_size = FLAGS.batch_size)
+                                                        color_mode=constants.COLORMODE,
+                                                        batch_size = constants.BATCH_SIZE)
+
 
     # Weights to restore
     weights_path = os.path.join(FLAGS.experiment_rootdir, FLAGS.weights_fname)
     initial_epoch = 0
-    if not FLAGS.restore_model:
+    if not constants.RESTORE_MODEL:
         # In this case weights will start from random
         weights_path = None
     else:
         # In this case weigths will start from the specified model
-        initial_epoch = FLAGS.initial_epoch
+        initial_epoch = constants.INITIAL_EPOCH
 
     # Define model
     model = getModel(crop_img_width, crop_img_height, img_channels,
@@ -161,7 +152,7 @@ def main():
 
     # Serialize model into json
     json_model_path = os.path.join(FLAGS.experiment_rootdir, FLAGS.json_model_fname)
-    utils.modelToJson(model, json_model_path)
+    utils_test.modelToJson(model, json_model_path)
 
     # Train model
     trainModel(train_generator, val_generator, model, initial_epoch)

@@ -4,7 +4,7 @@ import cv2
 def central_crop(image, crop_heigth = 200, crop_width = 200):
     """
      Crops the image into 200*200 pixels, starting from the top in height and
-     from the middle in width.
+     from the center in width.
 
     :param image: the image that will be cropped
     :param crop_height: height of the crop
@@ -28,8 +28,10 @@ def prepare_raw_image(frame):
     """
     #make image smaller
     frame = cv2.resize(frame, (0, 0), fx=0.7, fy=0.7)
+    
     #compute histogram equalization
     #frame = cv2.equalizeHist(frame)
+    
     #crop image to final size
     image = central_crop(frame)
     #reshape to have three dimensions (needed by Keras)
