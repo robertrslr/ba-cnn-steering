@@ -137,21 +137,24 @@ def main():
 
 
     # Weights to restore
-    weights_path = os.path.join(FLAGS.experiment_rootdir, FLAGS.weights_fname)
+    weights_path = os.path.join(constants.DRONET_MODEL_DIRECTORY,
+                                constants.DRONET_WEIGHTS_FILE)
     initial_epoch = 0
     if not constants.RESTORE_MODEL:
         # In this case weights will start from random
         weights_path = None
     else:
         # In this case weigths will start from the specified model
-        initial_epoch = constants.INITIAL_EPOCH
+        initial_epoch = constants.EPOCHS100
 
     # Define model
     model = getModel(crop_img_width, crop_img_height, img_channels,
                         output_dim, weights_path)
 
     # Serialize model into json
-    json_model_path = os.path.join(FLAGS.experiment_rootdir, FLAGS.json_model_fname)
+    json_model_path = os.path.join(constants.DRONET_MODEL_DIRECTORY,
+                                   constants.DRONET_MODEL_FILE)
+    
     utils_test.modelToJson(model, json_model_path)
 
     # Train model
