@@ -63,10 +63,12 @@ class CaroloDataGenerator(ImageDataGenerator):
     
     """
     def flow_from_directory(self, directory,
-             color_mode='grayscale', batch_size=32,):
+                            shuffle=False,
+                            color_mode='grayscale',
+                            batch_size=32,):
         return CaroloDataIterator(directory, self,
-                color_mode=color_mode,
-                batch_size=batch_size)
+                                  color_mode=color_mode,
+                                  batch_size=batch_size)
                
     
     
@@ -89,7 +91,7 @@ class CaroloDataIterator(Iterator):
    
     """
     def __init__(self, directory, image_data_generator,color_mode='grayscale',
-                 batch_size=32):
+                 batch_size=32, shuffle=False):
        
         self.directory = directory
         self.image_data_generator = image_data_generator
@@ -103,7 +105,7 @@ class CaroloDataIterator(Iterator):
 
         self.samples = 0
         
-        # Idea = associate each filename with a corresponding steering or label
+        # Idea: associate each filename with a corresponding steering or label
         self.filenames = []
         self.ground_truth = []
         
@@ -115,7 +117,7 @@ class CaroloDataIterator(Iterator):
         #self.ground_truth = np.array(self.ground_truth, dtype = K.floatx())
                
         super(CaroloDataIterator, self).__init__(self.samples,
-                batch_size, shuffle=None,seed = None)
+                batch_size, shuffle=None, seed=None)
     
        
     
@@ -212,7 +214,7 @@ class CaroloDataIterator(Iterator):
         image_dir = os.path.join(self.directory,"carolo_images")
         current_batch_size = index_array.shape[0]
         
-                                                 #target size                                               
+        #target size
         batch_x = np.zeros((current_batch_size,)+(200,200,1),
                 dtype=K.floatx())
         batch_steer = np.zeros((current_batch_size, 2,),
@@ -317,8 +319,6 @@ def generate_pred_and_gt(model, generator,steps):
                           np.concatenate(all_ts[0])
 
 
-
-
 def make_steering_list(image_directory):
     """
     Extracts steering angles from images in carolo file format.
@@ -351,7 +351,7 @@ def make_steering_list(image_directory):
     f.close() 
      
 
-def load_img(file_path):
+def load_img(file_path, do_hist=False):
         
         #set grayscale erstmal immer auf true, da nur grayscale images
         grayscale = True
@@ -363,15 +363,16 @@ def load_img(file_path):
                 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 
         if constants.RAW_IMAGE:
-          img = central_image_crop(img,constants.CROP_WIDTH,constants.CROP_HEIGHT)
-          img = histogram_equalization(img)
-        
-    
+            img = central_image_crop(img, constants.CROP_WIDTH, constants.CROP_HEIGHT)
+            if do_hist:
+                img = histogram_equalization(img)
+
         if grayscale:
             img = img.reshape((img.shape[0], img.shape[1], 1))
     
         return np.asarray(img, dtype=np.float32)
-               
+
+
     # TODO: gleich ganzes array übergeben?
 def scale_steering_data(carolo_steering_value):
         """
@@ -380,7 +381,8 @@ def scale_steering_data(carolo_steering_value):
         
         """
         return ((carolo_steering_value-1500)/500) 
-    
+
+
 def get_scaled_steering_data_from_img(image_path):
         """
         Retrieves scaled steering data from an Image.
@@ -411,7 +413,7 @@ def get_scaled_steering_data_from_img(image_path):
 
 def adjust_brightness(image, brightness_value):
     
-    return np.where((255 - image) < brightness_value,255,image+brightness_value)
+    return np.where((255 - image) < brightness_value, 255, image+brightness_value)
 
 
 def switch_sign(value):
@@ -429,7 +431,8 @@ def switch_sign(value):
     
     return 
 
-def crop_image_height(img,crop_height):
+
+def crop_image_height(img, crop_height):
     """
     Image img cropped in height, starting from the top.
     """
@@ -437,8 +440,9 @@ def crop_image_height(img,crop_height):
     img =img[crop_height:img.shape[0],img.shape[1]]
     
     return img
-    
-def crop_image_width(img,crop_width):
+
+
+def crop_image_width(img, crop_width):
     """
     Image img cropped in width, starting from the centre to both sides.
     """
@@ -448,6 +452,7 @@ def crop_image_width(img,crop_width):
                half_the_width + int(crop_width / 2)]
                
     return img
+
 
 def central_image_crop(img, crop_width=200, crop_heigth=200):
     """
@@ -465,8 +470,9 @@ def central_image_crop(img, crop_width=200, crop_heigth=200):
               half_the_width - int(crop_width / 2):
               half_the_width + int(crop_width / 2)]
     return img
-    
-def histogram_equalization(img,algorithm = "normal"):
+
+
+def histogram_equalization(img, algorithm="normal"):
     """
     Normalises histogram of Image img.
     
@@ -474,7 +480,7 @@ def histogram_equalization(img,algorithm = "normal"):
     
     """
     
-    if  algorithm == "normal":
+    if algorithm == "normal":
         equ = cv2.equalizeHist(img)
     elif algorithm == "clahe":
         clahe = cv2.createCLAHE()
