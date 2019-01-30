@@ -12,10 +12,7 @@ import os
 from keras.callbacks import ModelCheckpoint
 from keras import optimizers
 
-
-import utils_test 
-import constants 
-import adapted_dronet_model
+from Code import utilities, constants,adapted_dronet_model
 
 
 def getModel(img_width, img_height, img_channels, output_dim, weights_path):
@@ -67,10 +64,10 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     #model.k_entropy = tf.Variable(constants.batch_size, trainable=False, name='k_entropy', dtype=tf.int32)
     
     #COnfigure optimizer with small learning rate for fine tuning
-    optimizer = optimizers.Adam(lr=0.001,decay=1e-5)
+    optimizer = optimizers.Adam(lr=0.001, decay=1e-5)
 
     # Configure training process
-    model.compile(loss=utils_test.hard_mining_mse(model.k_mse),
+    model.compile(loss=utilities.hard_mining_mse(model.k_mse),
                         optimizer=optimizer)
 
     # Save model with the lowest validation loss
@@ -102,7 +99,7 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
 def main():
     
     # Input image dimensions
-    #img_width, img_height = constants.ORIGINAL_IMG_WIDTH, constants.ORIGINAL_IMG_HEIGHT
+    # img_width, img_height = constants.ORIGINAL_IMG_WIDTH, constants.ORIGINAL_IMG_HEIGHT
 
     # Cropped image dimensions
     crop_img_width, crop_img_height = constants.CROP_WIDTH, constants.CROP_HEIGHT
@@ -113,23 +110,23 @@ def main():
     img_channels = constants.IMG_CHANNELS
 
     # Generate training data with real-time augmentation
-    train_datagen = utils_test.DroneDataGenerator(rotation_range = 0.2,
-                                                rescale = 1./255,
-                                                width_shift_range = 0.2,
-                                                height_shift_range=0.2)
+    train_datagen = utilities.CaroloDataGenerator(rotation_range = 0.2,
+                                                  rescale = 1./255,
+                                                  width_shift_range = 0.2,
+                                                  height_shift_range=0.2)
 
     train_generator = train_datagen.flow_from_directory(constants.TRAINING_DIRECTORY,
-                                                        shuffle = True,
+                                                        shuffle=True,
                                                         color_mode=constants.COLORMODE,
                                                         batch_size = constants.BATCH_SIZE)
 
     # Generate validation data with real-time augmentation
-    val_datagen = utils_test.DroneDataGenerator(rescale = 1./255)
+    val_datagen = utilities.CaroloDataGenerator(rescale=1./255)
 
     val_generator = val_datagen.flow_from_directory(constants.VALIDATION_DIRECTORY,
-                                                        shuffle = True,
-                                                        color_mode=constants.COLORMODE,
-                                                        batch_size = constants.BATCH_SIZE)
+                                                    shuffle=True,
+                                                    color_mode=constants.COLORMODE,
+                                                    batch_size=constants.BATCH_SIZE)
 
 
     # Weights to restore
@@ -150,8 +147,8 @@ def main():
     # Serialize model into json
     json_model_path = os.path.join(constants.DRONET_MODEL_DIRECTORY,
                                    constants.DRONET_MODEL_FILE)
-    
-    utils_test.modelToJson(model, json_model_path)
+
+    utilities.modelToJson(model, json_model_path)
 
     # Train model
     trainModel(train_generator, val_generator, model, initial_epoch)
