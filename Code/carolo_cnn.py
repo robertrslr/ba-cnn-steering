@@ -8,19 +8,15 @@ Created on Mon Nov  5 16:21:13 2018
 import tensorflow as tf
 import numpy as np
 import os
-import sys
 
 from keras.callbacks import ModelCheckpoint
 from keras import optimizers
 
 
-import cnn_models
 import utils_test 
 import constants 
 import adapted_dronet_model
 
-
-import dronet_model
 
 def getModel(img_width, img_height, img_channels, output_dim, weights_path):
     """
