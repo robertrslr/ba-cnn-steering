@@ -33,7 +33,7 @@ def getModel(img_width, img_height, img_channels, output_dim, weights_path):
 
     if weights_path:
         try:
-            model.load_weights(weights_path)
+            model.load_weights(weights_path,by_name=True)
             print("Loaded model from {}".format(weights_path))
         except:
             print("Impossible to find weight path. Returning untrained model")
@@ -131,7 +131,7 @@ def main():
 
     # Weights to restore
     weights_path = os.path.join(constants.DRONET_MODEL_DIRECTORY,
-                                constants.DRONET_WEIGHTS_FILE)
+                                constants.DRONET_WEIGHT_FILE)
     initial_epoch = 0
     if not constants.RESTORE_MODEL:
         # In this case weights will start from random
@@ -154,3 +154,5 @@ def main():
     trainModel(train_generator, val_generator, model, initial_epoch)
     
     
+if __name__ == "__main__":
+    main()

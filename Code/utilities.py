@@ -6,13 +6,11 @@ Created on Wed Oct 10 13:36:56 2018
 """
 
 
-
-import re
 import os
 import numpy as np
-import tensorflow as tf
 import json
 import cv2
+import tensorflow as tf
 
 
 
@@ -52,6 +50,44 @@ def write_to_file(dictionary, fname):
         json.dump(dictionary,f)
         print("Written file {}".format(fname))
         
+
+def hard_mining_mse(k):
+    """
+    Compute MSE for steering evaluation and hard-mining for the current batch.
+    # Arguments
+        k: number of samples for hard-mining.
+    # Returns
+        custom_mse: average MSE for the current batch.
+    """
+
+    def custom_mse(y_true, y_pred):
+        # Parameter t indicates the type of experiment
+        t = y_true[:,0]
+
+        # Number of steering samples
+        samples_steer = tf.cast(tf.equal(t,1), tf.int32)
+        n_samples_steer = tf.reduce_sum(samples_steer)
+
+        if n_samples_steer == 0:
+            return 0.0
+        else:
+            # Predicted and real steerings
+            pred_steer = tf.squeeze(y_pred, squeeze_dims=-1)
+            true_steer = y_true[:,1]
+
+            # Steering loss
+            l_steer = tf.multiply(t, K.square(pred_steer - true_steer))
+
+            # Hard mining
+            k_min = tf.minimum(k, n_samples_steer)
+            _, indices = tf.nn.top_k(l_steer, k=k_min)
+            max_l_steer = tf.gather(l_steer, indices)
+            hard_l_steer = tf.divide(tf.reduce_sum(max_l_steer), tf.cast(k,tf.float32))
+
+            return hard_l_steer
+
+    return custom_mse
+        
         
         
         
@@ -70,10 +106,7 @@ class CaroloDataGenerator(ImageDataGenerator):
                                   color_mode=color_mode,
                                   batch_size=batch_size)
                
-    
-    
-    
-    
+
 class CaroloDataIterator(Iterator):
     """
     Class for managing data loading.of images and labels
@@ -102,7 +135,8 @@ class CaroloDataIterator(Iterator):
         if color_mode not in {'grayscale'}:
             raise ValueError('Invalid color mode:', color_mode,
                              '; expected "grayscale".')
-
+        self.shuffle = shuffle
+        
         self.samples = 0
         
         # Idea: associate each filename with a corresponding steering or label
@@ -117,7 +151,7 @@ class CaroloDataIterator(Iterator):
         #self.ground_truth = np.array(self.ground_truth, dtype = K.floatx())
                
         super(CaroloDataIterator, self).__init__(self.samples,
-                batch_size, shuffle=None, seed=None)
+                batch_size, self.shuffle, seed=None)
     
        
     
@@ -135,7 +169,7 @@ class CaroloDataIterator(Iterator):
         filenames = dict()
         
         image_filename = os.path.join(directory,
-                                      "carolo_images")
+                                      "images")
         
         steerings_filename = os.path.join(image_filename, 
                                           "steering_labels.txt")
@@ -211,7 +245,7 @@ class CaroloDataIterator(Iterator):
        
         """
         
-        image_dir = os.path.join(self.directory,"carolo_images")
+        image_dir = os.path.join(self.directory,"images")
         current_batch_size = index_array.shape[0]
         
         #target size
@@ -228,29 +262,27 @@ class CaroloDataIterator(Iterator):
         for i, j in enumerate(index_array):
             fname = self.filenames[j]
             
-            x = load_img(os.path.join(image_dir, fname))
+            x = load_img(os.path.join(image_dir, fname), do_hist=True)
             
-            #TODO CANT be done here as x is image as a numpy array
-            #x = histogram_equalization(x)
+            #cv2.imwrite(os.path.join(constants.EVALUATION_PATH,"TEST.png"),x)
             
-            cv2.imwrite(os.path.join(constants.EVALUATION_PATH,"TEST.png"),x)
             #adjust brightness option
-            x = adjust_brightness(x,constants.BRIGHTNESS_ADJUST)
-            
+            #x = adjust_brightness(x,constants.BRIGHTNESS_ADJUST)
             
             #transform not necessary
             #x = self.image_data_generator.random_transform(x)
             x = self.image_data_generator.standardize(x)
             batch_x[i] = x
 
-         #Since images are not labelled with collision data,
-         #we just load steering data
+            #Since images are not labelled with collision data,
+            #we just load steering data
             batch_steer[i,0] =1.0
             batch_steer[i,1] = self.ground_truth[index_array[i]]
             batch_coll[i] = np.array([1.0, 0.0])
 
-
-        batch_y = [batch_steer, batch_coll]
+        batch_y = batch_steer
+        #batch_y = [batch_steer, batch_coll]
+        
         return batch_x, batch_y
 
 
@@ -321,7 +353,8 @@ def generate_pred_and_gt(model, generator,steps):
 
 def make_steering_list(image_directory):
     """
-    Extracts steering angles from images in carolo file format.
+    Extracts steering angles from images in carolo file format and 
+    writes them to "steering_labels.txt" in the same directory.
     
     # Argument 
         image_directory : the directory containing the images 
@@ -337,11 +370,10 @@ def make_steering_list(image_directory):
             
         filename = imagePath
         
-    
         SplittedFilename = filename.split('_')
         
-    
-        tupel.append("%s|||%s" % (SplittedFilename[3],SplittedFilename[5]))
+        #TODO find a way to safely extract image number and steering angle every time
+        tupel.append("%s|||%s" % (SplittedFilename[1],SplittedFilename[3]))
                                         #Bildnummer|||Lenkwinkel
                             
                             
@@ -364,8 +396,9 @@ def load_img(file_path, do_hist=False):
                 
         if constants.RAW_IMAGE:
             img = central_image_crop(img, constants.CROP_WIDTH, constants.CROP_HEIGHT)
-            if do_hist:
-                img = histogram_equalization(img)
+        
+        if do_hist:
+            img = histogram_equalization(img)
 
         if grayscale:
             img = img.reshape((img.shape[0], img.shape[1], 1))
