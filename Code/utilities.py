@@ -6,13 +6,11 @@ Created on Wed Oct 10 13:36:56 2018
 """
 
 
-
-import re
 import os
 import numpy as np
-import tensorflow as tf
 import json
 import cv2
+import tensorflow as tf
 
 
 
@@ -22,7 +20,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.utils.generic_utils import Progbar
 from keras.models import model_from_json
 
-import constants
+from Code import constants
 
 def modelToJson(model, json_model_path):
     """
@@ -52,6 +50,44 @@ def write_to_file(dictionary, fname):
         json.dump(dictionary,f)
         print("Written file {}".format(fname))
         
+
+def hard_mining_mse(k):
+    """
+    Compute MSE for steering evaluation and hard-mining for the current batch.
+    # Arguments
+        k: number of samples for hard-mining.
+    # Returns
+        custom_mse: average MSE for the current batch.
+    """
+
+    def custom_mse(y_true, y_pred):
+        # Parameter t indicates the type of experiment
+        t = y_true[:,0]
+
+        # Number of steering samples
+        samples_steer = tf.cast(tf.equal(t,1), tf.int32)
+        n_samples_steer = tf.reduce_sum(samples_steer)
+
+        if n_samples_steer == 0:
+            return 0.0
+        else:
+            # Predicted and real steerings
+            pred_steer = tf.squeeze(y_pred, squeeze_dims=-1)
+            true_steer = y_true[:,1]
+
+            # Steering loss
+            l_steer = tf.multiply(t, K.square(pred_steer - true_steer))
+
+            # Hard mining
+            k_min = tf.minimum(k, n_samples_steer)
+            _, indices = tf.nn.top_k(l_steer, k=k_min)
+            max_l_steer = tf.gather(l_steer, indices)
+            hard_l_steer = tf.divide(tf.reduce_sum(max_l_steer), tf.cast(k,tf.float32))
+
+            return hard_l_steer
+
+    return custom_mse
+        
         
         
         
@@ -63,15 +99,14 @@ class CaroloDataGenerator(ImageDataGenerator):
     
     """
     def flow_from_directory(self, directory,
-             color_mode='grayscale', batch_size=32,):
+                            shuffle=False,
+                            color_mode='grayscale',
+                            batch_size=32,):
         return CaroloDataIterator(directory, self,
-                color_mode=color_mode,
-                batch_size=batch_size)
+                                  color_mode=color_mode,
+                                  batch_size=batch_size)
                
-    
-    
-    
-    
+
 class CaroloDataIterator(Iterator):
     """
     Class for managing data loading.of images and labels
@@ -89,7 +124,7 @@ class CaroloDataIterator(Iterator):
    
     """
     def __init__(self, directory, image_data_generator,color_mode='grayscale',
-                 batch_size=32):
+                 batch_size=32, shuffle=False):
        
         self.directory = directory
         self.image_data_generator = image_data_generator
@@ -100,10 +135,11 @@ class CaroloDataIterator(Iterator):
         if color_mode not in {'grayscale'}:
             raise ValueError('Invalid color mode:', color_mode,
                              '; expected "grayscale".')
-
+        self.shuffle = shuffle
+        
         self.samples = 0
         
-        # Idea = associate each filename with a corresponding steering or label
+        # Idea: associate each filename with a corresponding steering or label
         self.filenames = []
         self.ground_truth = []
         
@@ -115,13 +151,14 @@ class CaroloDataIterator(Iterator):
         #self.ground_truth = np.array(self.ground_truth, dtype = K.floatx())
                
         super(CaroloDataIterator, self).__init__(self.samples,
-                batch_size, shuffle=None,seed = None)
+                batch_size, self.shuffle, seed=None)
     
        
     
     
     def _load_carolo_data(self,directory):
-        """Laden der Bilddaten mit zugehörigen Steuerdaten (Labels) 
+        """
+            Laden der Bilddaten mit zugehörigen Steuerdaten (Labels) 
         
             Bilddaten werden in Unterordner carolo_test_data_full" erwartet.
             Steuerdaten werden in Unterordner steering_data" erwartet.
@@ -132,7 +169,7 @@ class CaroloDataIterator(Iterator):
         filenames = dict()
         
         image_filename = os.path.join(directory,
-                                      "carolo_images")
+                                      "images")
         
         steerings_filename = os.path.join(image_filename, 
                                           "steering_labels.txt")
@@ -208,10 +245,10 @@ class CaroloDataIterator(Iterator):
        
         """
         
-        image_dir = os.path.join(self.directory,"carolo_images")
+        image_dir = os.path.join(self.directory,"images")
         current_batch_size = index_array.shape[0]
         
-                                                 #target size                                               
+        #target size
         batch_x = np.zeros((current_batch_size,)+(200,200,1),
                 dtype=K.floatx())
         batch_steer = np.zeros((current_batch_size, 2,),
@@ -225,29 +262,27 @@ class CaroloDataIterator(Iterator):
         for i, j in enumerate(index_array):
             fname = self.filenames[j]
             
-            x = load_img(os.path.join(image_dir, fname))
+            x = load_img(os.path.join(image_dir, fname), do_hist=True)
             
-            #TODO CANT be done here as x is image as a numpy array
-            #x = histogram_equalization(x)
+            #cv2.imwrite(os.path.join(constants.EVALUATION_PATH,"TEST.png"),x)
             
-            cv2.imwrite(os.path.join(constants.EVALUATION_PATH,"TEST.png"),x)
             #adjust brightness option
-            x = adjust_brightness(x,constants.BRIGHTNESS_ADJUST)
-            
+            #x = adjust_brightness(x,constants.BRIGHTNESS_ADJUST)
             
             #transform not necessary
             #x = self.image_data_generator.random_transform(x)
             x = self.image_data_generator.standardize(x)
             batch_x[i] = x
 
-         #Since images are not labelled with collision data,
-         #we just load steering data
+            #Since images are not labelled with collision data,
+            #we just load steering data
             batch_steer[i,0] =1.0
             batch_steer[i,1] = self.ground_truth[index_array[i]]
             batch_coll[i] = np.array([1.0, 0.0])
 
-
-        batch_y = [batch_steer, batch_coll]
+        batch_y = batch_steer
+        #batch_y = [batch_steer, batch_coll]
+        
         return batch_x, batch_y
 
 
@@ -316,11 +351,10 @@ def generate_pred_and_gt(model, generator,steps):
                           np.concatenate(all_ts[0])
 
 
-
-
 def make_steering_list(image_directory):
     """
-    Extracts steering angles from images in carolo file format.
+    Extracts steering angles from images in carolo file format and 
+    writes them to "steering_labels.txt" in the same directory.
     
     # Argument 
         image_directory : the directory containing the images 
@@ -336,11 +370,10 @@ def make_steering_list(image_directory):
             
         filename = imagePath
         
-    
         SplittedFilename = filename.split('_')
         
-    
-        tupel.append("%s|||%s" % (SplittedFilename[3],SplittedFilename[5]))
+        #TODO find a way to safely extract image number and steering angle every time
+        tupel.append("%s|||%s" % (SplittedFilename[1],SplittedFilename[3]))
                                         #Bildnummer|||Lenkwinkel
                             
                             
@@ -350,7 +383,7 @@ def make_steering_list(image_directory):
     f.close() 
      
 
-def load_img(file_path):
+def load_img(file_path, do_hist=False):
         
         #set grayscale erstmal immer auf true, da nur grayscale images
         grayscale = True
@@ -362,15 +395,17 @@ def load_img(file_path):
                 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 
         if constants.RAW_IMAGE:
-          img = central_image_crop(img,constants.CROP_WIDTH,constants.CROP_HEIGHT)
-          img = histogram_equalization(img)
+            img = central_image_crop(img, constants.CROP_WIDTH, constants.CROP_HEIGHT)
         
-    
+        if do_hist:
+            img = histogram_equalization(img)
+
         if grayscale:
             img = img.reshape((img.shape[0], img.shape[1], 1))
     
         return np.asarray(img, dtype=np.float32)
-               
+
+
     # TODO: gleich ganzes array übergeben?
 def scale_steering_data(carolo_steering_value):
         """
@@ -379,7 +414,8 @@ def scale_steering_data(carolo_steering_value):
         
         """
         return ((carolo_steering_value-1500)/500) 
-    
+
+
 def get_scaled_steering_data_from_img(image_path):
         """
         Retrieves scaled steering data from an Image.
@@ -410,7 +446,7 @@ def get_scaled_steering_data_from_img(image_path):
 
 def adjust_brightness(image, brightness_value):
     
-    return np.where((255 - image) < brightness_value,255,image+brightness_value)
+    return np.where((255 - image) < brightness_value, 255, image+brightness_value)
 
 
 def switch_sign(value):
@@ -428,7 +464,8 @@ def switch_sign(value):
     
     return 
 
-def crop_image_height(img,crop_height):
+
+def crop_image_height(img, crop_height):
     """
     Image img cropped in height, starting from the top.
     """
@@ -436,8 +473,9 @@ def crop_image_height(img,crop_height):
     img =img[crop_height:img.shape[0],img.shape[1]]
     
     return img
-    
-def crop_image_width(img,crop_width):
+
+
+def crop_image_width(img, crop_width):
     """
     Image img cropped in width, starting from the centre to both sides.
     """
@@ -447,6 +485,7 @@ def crop_image_width(img,crop_width):
                half_the_width + int(crop_width / 2)]
                
     return img
+
 
 def central_image_crop(img, crop_width=200, crop_heigth=200):
     """
@@ -464,8 +503,9 @@ def central_image_crop(img, crop_width=200, crop_heigth=200):
               half_the_width - int(crop_width / 2):
               half_the_width + int(crop_width / 2)]
     return img
-    
-def histogram_equalization(img,algorithm = "normal"):
+
+
+def histogram_equalization(img, algorithm="normal"):
     """
     Normalises histogram of Image img.
     
@@ -473,7 +513,7 @@ def histogram_equalization(img,algorithm = "normal"):
     
     """
     
-    if  algorithm == "normal":
+    if algorithm == "normal":
         equ = cv2.equalizeHist(img)
     elif algorithm == "clahe":
         clahe = cv2.createCLAHE()

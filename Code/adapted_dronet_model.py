@@ -22,7 +22,7 @@ from keras import regularizers
 #
 #
 
-def resnet8(img_width, img_height, img_channels, output_dim):
+def partly_frozen_resnet8(img_width, img_height, img_channels, output_dim):
     """
     Define model architecture.
     
@@ -41,8 +41,7 @@ def resnet8(img_width, img_height, img_channels, output_dim):
 
     x1 = Conv2D(32, (5, 5), strides=[2,2], padding='same')(img_input)
     x1 = MaxPooling2D(pool_size=(3, 3), strides=[2,2])(x1)
-    
-    x1.trainable = False
+
     
     # First residual block
     x2 = keras.layers.normalization.BatchNormalization()(x1)
@@ -56,8 +55,6 @@ def resnet8(img_width, img_height, img_channels, output_dim):
     x2 = Conv2D(32, (3, 3), padding='same',
                 kernel_initializer="he_normal",
                 kernel_regularizer=regularizers.l2(1e-4))(x2)
-    
-    x2.trainable = False
 
     x1 = Conv2D(32, (1, 1), strides=[2,2], padding='same')(x1)
     x3 = add([x1, x2])
@@ -75,15 +72,20 @@ def resnet8(img_width, img_height, img_channels, output_dim):
                 kernel_initializer="he_normal",
                 kernel_regularizer=regularizers.l2(1e-4))(x4)
 
-    x4.trainable = False
     
     x3 = Conv2D(64, (1, 1), strides=[2,2], padding='same')(x3)
     x5 = add([x3, x4])
     
-   
+    #create seperate 
+    frozen_model = Model(inputs=[img_input], outputs =[x5])
+    
+    for layer in frozen_model.layers:
+        layer.trainable = False
+        
+    xconnect = frozen_model.output
 
     # Third residual block
-    x6 = keras.layers.normalization.BatchNormalization()(x5)
+    x6 = keras.layers.normalization.BatchNormalization()(xconnect)
     x6 = Activation('relu')(x6)
     x6 = Conv2D(128, (3, 3), strides=[2,2], padding='same',
                 kernel_initializer="he_normal",
@@ -95,7 +97,7 @@ def resnet8(img_width, img_height, img_channels, output_dim):
                 kernel_initializer="he_normal",
                 kernel_regularizer=regularizers.l2(1e-4))(x6)
 
-    x5 = Conv2D(128, (1, 1), strides=[2,2], padding='same')(x5)
+    x5 = Conv2D(128, (1, 1), strides=[2,2], padding='same')(xconnect)
     x7 = add([x5, x6])
 
     x = Flatten()(x7)
@@ -110,7 +112,8 @@ def resnet8(img_width, img_height, img_channels, output_dim):
     coll = Activation('sigmoid')(coll)
 
     # Define steering-collision model
-    model = Model(inputs=[img_input], outputs=[steer, coll])
+    model = Model(inputs=[frozen_model.input], outputs=[steer])
+    
     print(model.summary())
 
     return model

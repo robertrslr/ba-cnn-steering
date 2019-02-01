@@ -20,7 +20,7 @@ while True:
         print("-" * 20)
         print(datagram.decode('utf-8'))
         if i>0:
-            server.send(x.encode('utf-8'))
+           # server.send(x.encode('utf-8'))
             i=0
         msg = input("> ")
         if "" != x:

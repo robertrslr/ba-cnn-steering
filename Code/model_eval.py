@@ -17,13 +17,8 @@ from keras import backend as K
 import tensorflow as tf
 from keras.backend.tensorflow_backend import set_session
 
-import utils_test
-from constants import TEST_PHASE
+from Code import utilities,constants,plot_evaluation
 
-
-
-import plot_evaluation
-import constants
 
 # Functions to evaluate steering prediction (DroNet)
 
@@ -92,7 +87,7 @@ def evaluate_regression(predictions, real_values, fname):
             n_errors=20)
     dictionary = {"evas": evas.tolist(), "rmse": rmse.tolist(),
                   "highest_errors": highest_errors.tolist()}
-    utils_test.write_to_file(dictionary, fname)
+    utilities.write_to_file(dictionary, fname)
 
 #############################################################################################
 
@@ -109,15 +104,15 @@ def gpu_dynamic_growth_activation():
 
 def _main():
     
-    #allow memory on gpu to grow dynamically
+    # allow memory on gpu to grow dynamically
     gpu_dynamic_growth_activation()
     
     K.clear_session()
   
     # Set testing mode (dropout/batchnormalization)
-    K.set_learning_phase(TEST_PHASE)
+    K.set_learning_phase(constants.TEST_PHASE)
     
-    test_datagen = utils_test.CaroloDataGenerator(rescale=1./255)
+    test_datagen = utilities.CaroloDataGenerator(rescale=1./255)
     
     test_generator = test_datagen.flow_from_directory(
             constants.EXPERIMENT_DIRECTORY,
@@ -126,7 +121,7 @@ def _main():
             )
     
     
-    model = utils_test.jsonToModel('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/model_struct.json')
+    model = utilities.jsonToModel('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/model_struct.json')
     
     
     try:
@@ -138,14 +133,12 @@ def _main():
     
     model.compile(loss='mse',optimizer='adam')
 
-    
-    
     n_samples = test_generator.samples
  
     nb_batches = int(np.ceil(n_samples / 32))#batch size = 32
 
-    #compute the predictions for all batches (nb_batches) 
-    predictions, ground_truth, t = utils_test.generate_pred_and_gt(
+    # compute the predictions for all batches (nb_batches)
+    predictions, ground_truth, t = utilities.generate_pred_and_gt(
             model, test_generator, nb_batches)
     
     pred_truth_compare =[]
@@ -159,7 +152,7 @@ def _main():
 #    For Carolo its the other way round.
 #    So Carolo Values have to be adjusted for that.
     for data in ground_truth:
-        real_steerings.append(utils_test.switch_sign(data[0]))
+        real_steerings.append(utilities.switch_sign(data[0]))
     for i,data in enumerate(predictions):
         predicted_steerings.append(data[0])
         pred_truth_compare.append("%s|||%s" % (data[0],real_steerings[i]))
@@ -179,11 +172,11 @@ def _main():
 
     # ************************* Steering evaluation ***************************
 
-    predicted_steerings = np.asarray(predicted_steerings,dtype=np.float32)
-    real_steerings = np.asarray(real_steerings,dtype=np.float32)
+    predicted_steerings = np.asarray(predicted_steerings, dtype=np.float32)
+    real_steerings = np.asarray(real_steerings, dtype=np.float32)
 
 
-    #Compute random and constant baselines for steerings
+    # Compute random and constant baselines for steerings
     random_steerings = random_regression_baseline(real_steerings)
     constant_steerings= constant_baseline(real_steerings)
 
@@ -200,7 +193,7 @@ def _main():
     # Write predicted and real steerings
     dict_test = {'pred_steerings': predicted_steerings.tolist(),
                  'real_steerings': real_steerings.tolist()}
-    utils_test.write_to_file(dict_test,os.path.join(constants.EXPERIMENT_DIRECTORY,
+    utilities.write_to_file(dict_test,os.path.join(constants.EXPERIMENT_DIRECTORY,
                                                'predicted_and_real_steerings.json'))
     
    ########################################################################################
