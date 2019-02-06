@@ -13,7 +13,6 @@ import cv2
 import tensorflow as tf
 
 
-
 from keras import backend as K
 from keras.preprocessing.image import Iterator
 from keras.preprocessing.image import ImageDataGenerator
@@ -21,6 +20,7 @@ from keras.utils.generic_utils import Progbar
 from keras.models import model_from_json
 
 from Code import constants
+
 
 def modelToJson(model, json_model_path):
     """

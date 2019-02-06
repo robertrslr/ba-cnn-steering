@@ -25,11 +25,11 @@ REPOSITORY_DIRECTORY ="../"
 
 #---------------------NETWORK PATHS---------------------
 
-DRONET_WEIGHT_FILE = "best_weights.h5"
+DRONET_WEIGHTS_FILE = "best_weights.h5"
 DRONET_MODEL_FILE =  "model_struct.json"
 
-CAROLONET_WEIGHTS_FILE = ""
-CAROLONET_MODEL_FILE = ""
+CAROLONET_WEIGHTS_FILE = "best_weights.h5"
+CAROLONET_MODEL_FILE = "model_struct.json"
 #----------------NET WORK CONFIGURATIONS----------------
 BATCH_SIZE = 32
 
@@ -38,6 +38,10 @@ INITIAL_EPOCH = 0
 EPOCHS100 = 100
 
 EPOCHS50 = 50
+
+EPOCHS10 = 10
+
+EPOCHS110 = 110
 
 LOGGING_RATE = 10
 

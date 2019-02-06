@@ -7,11 +7,7 @@ Created on Fri Oct  5 13:00:06 2018
 import numpy as np
 import os
 import sys
-import glob
 
-
-
-from keras.preprocessing.image import ImageDataGenerator
 from keras import backend as K
 
 import tensorflow as tf
@@ -98,9 +94,6 @@ def gpu_dynamic_growth_activation():
                                     # (nothing gets printed in Jupyter, only if you run it standalone)
     sess = tf.Session(config=config)
     set_session(sess)  # set this TensorFlow session as the default session for Keras
-
-
-
 
 def _main():
     

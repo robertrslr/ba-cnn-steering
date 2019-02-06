@@ -6,14 +6,25 @@ Created on Mon Nov  5 16:21:13 2018
 """
 
 import tensorflow as tf
+from keras.backend.tensorflow_backend import set_session
 import numpy as np
 import os
 
 from keras.callbacks import ModelCheckpoint
 from keras import optimizers
 
-from Code import utilities, constants,adapted_dronet_model
+from Code import utilities, constants,adapted_dronet_model,custom_callback
 
+from tensorflow.python.client import device_lib
+
+
+def gpu_dynamic_growth_activation():
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True  # dynamically grow the memory used on the GPU
+    config.log_device_placement = True  # to log device placement (on which device the operation ran)
+                                    # (nothing gets printed in Jupyter, only if you run it standalone)
+    sess = tf.Session(config=config)
+    set_session(sess)  # set this TensorFlow session as the default session for Keras
 
 def getModel(img_width, img_height, img_channels, output_dim, weights_path):
     """
@@ -29,16 +40,19 @@ def getModel(img_width, img_height, img_channels, output_dim, weights_path):
     # Returns
        model: A Model instance.
     """
-    model = adapted_dronet_model.partly_frozen_resnet8(img_width, img_height, img_channels, output_dim)
-
+    dronet_model = utilities.jsonToModel('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/model_struct.json')
+    carolo_model = adapted_dronet_model.partly_frozen_resnet8(img_width, img_height, img_channels, output_dim)
     if weights_path:
         try:
-            model.load_weights(weights_path,by_name=True)
+            dronet_model.load_weights('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/best_weights.h5')
+            for layerDronet,layerCarolonet in zip(dronet_model.layers,carolo_model.layers):
+                layerCarolonet.set_weights(layerDronet.get_weights())
+    
             print("Loaded model from {}".format(weights_path))
         except:
             print("Impossible to find weight path. Returning untrained model")
 
-    return model
+    return carolo_model
     
     
     
@@ -54,6 +68,7 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
        model: Target image channels.
        initial_epoch: Dimension of model output.
     """
+
 
     # Initialize loss weights
     #model.alpha = tf.Variable(1, trainable=False, name='alpha', dtype=tf.float32)
@@ -79,17 +94,17 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     # Save training and validation losses.
     
     #logz.configure_output_dir(constants.EXPERIMENT_DIRECTORY)
-    #saveModelAndLoss = log_utils.MyCallback(filepath=FLAGS.experiment_rootdir,
-    #                                        period=FLAGS.log_rate,
-    #                                        batch_size=FLAGS.batch_size)
+    saveModelAndLoss = custom_callback.MyCallback(filepath=constants.EXPERIMENT_DIRECTORY,
+                                            period=10,
+                                            batch_size=constants.BATCH_SIZE)
 
     # Train model
     steps_per_epoch = int(np.ceil(train_data_generator.samples / constants.BATCH_SIZE))
     validation_steps = int(np.ceil(val_data_generator.samples / constants.BATCH_SIZE))
 
     model.fit_generator(train_data_generator,
-                        epochs=constants.EPOCHS50, steps_per_epoch = steps_per_epoch,
-                        callbacks=writeBestModel,
+                        epochs=constants.EPOCHS110, steps_per_epoch = steps_per_epoch,
+                        callbacks=[writeBestModel,saveModelAndLoss],
                         validation_data=val_data_generator,
                         validation_steps = validation_steps,
                         initial_epoch=initial_epoch)
@@ -97,6 +112,9 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
 
     
 def main():
+    
+    #print(device_lib.list_local_devices())
+    gpu_dynamic_growth_activation()
     
     # Input image dimensions
     # img_width, img_height = constants.ORIGINAL_IMG_WIDTH, constants.ORIGINAL_IMG_HEIGHT
@@ -130,8 +148,8 @@ def main():
 
 
     # Weights to restore
-    weights_path = os.path.join(constants.DRONET_MODEL_DIRECTORY,
-                                constants.DRONET_WEIGHT_FILE)
+    weights_path = os.path.join(constants.CAROLONET_MODEL_DIRECTORY,
+                                constants.CAROLONET_WEIGHTS_FILE)
     initial_epoch = 0
     if not constants.RESTORE_MODEL:
         # In this case weights will start from random
@@ -145,8 +163,8 @@ def main():
                         output_dim, weights_path)
 
     # Serialize model into json
-    json_model_path = os.path.join(constants.DRONET_MODEL_DIRECTORY,
-                                   constants.DRONET_MODEL_FILE)
+    json_model_path = os.path.join(constants.CAROLONET_MODEL_DIRECTORY,
+                                   constants.CAROLONET_MODEL_FILE)
 
     utilities.modelToJson(model, json_model_path)
 
