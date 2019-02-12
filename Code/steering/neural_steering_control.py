@@ -26,7 +26,7 @@ def load_model_and_weights():
     model = utilities.jsonToModel('../../model_Carolo/model_struct.json')
 
     try:
-        model.load_weights('../../model_Test/weights_108.h5')
+        model.load_weights('../../model_Test/weights_149.h5')
         # print("Loaded model from {}".format(weights_load_path))
     except:
         print("Impossible to find weight path. Returning untrained model")
