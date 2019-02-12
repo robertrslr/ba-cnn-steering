@@ -60,7 +60,7 @@ def main():
 
     #socket initialisieren
 
-    #socket = uds_socket()
+    socket = uds_socket()
 
     one_image_batch = np.zeros((1,) + (200, 200, 1),
                                dtype=K.floatx())
@@ -76,7 +76,7 @@ def main():
         #predict function needs image in array form, so we'll give it what it wants
         one_image_batch[0] = image
 
-        cv2.imshow("image", image)
+        #cv2.imshow("image", image)
 
         prediction_st_col = model.predict(one_image_batch, batch_size=1)
 
@@ -87,8 +87,8 @@ def main():
         print("Prediction:", prediction_st[0], "Framerate :", int(framerate), end='\r')
 
         #get data out of nested array structure
-#        for value in prediction_st:
-#             socket.send_data(utilities.switch_sign(value[0]))
+        for value in prediction_st:
+             socket.send_data(utilities.switch_sign(value[0]))
 
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
