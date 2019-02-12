@@ -33,15 +33,16 @@ CAROLONET_MODEL_FILE = "model_struct.json"
 #----------------NET WORK CONFIGURATIONS----------------
 BATCH_SIZE = 32
 
-INITIAL_EPOCH = 0
+INITIAL_EPOCH = 100
 
-EPOCHS100 = 100
 
-EPOCHS50 = 50
+# Epochs for finetuning (counted as starting from 100 (inital))
+EPOCHS200 = 200
 
-EPOCHS10 = 10
+EPOCHS150 = 150
 
 EPOCHS110 = 110
+
 
 LOGGING_RATE = 10
 

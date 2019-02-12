@@ -28,7 +28,7 @@ def gpu_dynamic_growth_activation():
 
 def getModel(img_width, img_height, img_channels, output_dim, weights_path):
     """
-    Initialize model.
+    Initialize model. For this, the original architecture is copied 
 
     # Arguments
        img_width: Target image widht.
@@ -103,7 +103,7 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     validation_steps = int(np.ceil(val_data_generator.samples / constants.BATCH_SIZE))
 
     model.fit_generator(train_data_generator,
-                        epochs=constants.EPOCHS110, steps_per_epoch = steps_per_epoch,
+                        epochs=constants.EPOCHS150, steps_per_epoch = steps_per_epoch,
                         callbacks=[writeBestModel,saveModelAndLoss],
                         validation_data=val_data_generator,
                         validation_steps = validation_steps,
@@ -128,10 +128,7 @@ def main():
     img_channels = constants.IMG_CHANNELS
 
     # Generate training data with real-time augmentation
-    train_datagen = utilities.CaroloDataGenerator(rotation_range = 0.2,
-                                                  rescale = 1./255,
-                                                  width_shift_range = 0.2,
-                                                  height_shift_range=0.2)
+    train_datagen = utilities.CaroloDataGenerator(rescale = 1./255)
 
     train_generator = train_datagen.flow_from_directory(constants.TRAINING_DIRECTORY,
                                                         shuffle=True,
@@ -156,7 +153,7 @@ def main():
         weights_path = None
     else:
         # In this case weigths will start from the specified model
-        initial_epoch = constants.EPOCHS100
+        initial_epoch = constants.INITIAL_EPOCH
 
     # Define model
     model = getModel(crop_img_width, crop_img_height, img_channels,
