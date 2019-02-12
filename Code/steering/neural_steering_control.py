@@ -22,10 +22,10 @@ def load_model_and_weights():
     # zero means test phase, trust me
     K.set_learning_phase(0)
 
-    model = utilities.jsonToModel('../../best_model_DroNet/model_struct.json')
+    model = utilities.jsonToModel('../../model_Carolo/model_struct.json')
 
     try:
-        model.load_weights('../../best_model_DroNet/best_weights.h5')
+        model.load_weights('../../model_Test/weights_108.h5')
         # print("Loaded model from {}".format(weights_load_path))
     except:
         print("Impossible to find weight path. Returning untrained model")
@@ -78,13 +78,13 @@ def main():
 
         #cv2.imshow("image", image)
 
-        prediction_st_col = model.predict(one_image_batch, batch_size=1)
+        prediction_st = model.predict(one_image_batch, batch_size=1)
 
-        prediction_st = prediction_st_col[0]
+        #prediction_st = prediction_st_col[0]
 
         framerate, time_last_round = calc_framerate(time.time(), time_last_round)
 
-        print("Prediction:", prediction_st[0], "Framerate :", int(framerate), end='\r')
+        print("Prediction:", prediction_st, "Framerate :", int(framerate), end='\r')
 
         #get data out of nested array structure
         for value in prediction_st:
