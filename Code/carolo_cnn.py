@@ -28,7 +28,7 @@ def gpu_dynamic_growth_activation():
 
 def getModel(img_width, img_height, img_channels, output_dim, weights_path):
     """
-    Initialize model. For this, the original architecture is copied 
+    Initialize model. For this, the original architecture is copied layer by layer.
 
     # Arguments
        img_width: Target image widht.

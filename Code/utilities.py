@@ -225,8 +225,9 @@ class CaroloDataIterator(Iterator):
         steering_dict = dict()
         
         for tupel in temp_steering:
-            steering_dict[int(tupel[0])] = scale_steering_data(tupel[1])
-        
+            #before loading, the sign is inverted and the data is scaled
+            steering_dict[int(tupel[0])] = switch_sign(scale_steering_data(tupel[1]))
+            print("scaled and inverted: ",steering_dict[int(tupel[0])])
         return steering_dict
         
     
