@@ -263,7 +263,7 @@ class CaroloDataIterator(Iterator):
         for i, j in enumerate(index_array):
             fname = self.filenames[j]
             
-            x = load_img(os.path.join(image_dir, fname), do_hist=True)
+            x = load_img(os.path.join(image_dir, fname), do_hist=True,raw_image=constants.RAW_IMAGE)
             
             #cv2.imwrite(os.path.join(constants.EVALUATION_PATH,"TEST.png"),x)
             
@@ -384,7 +384,7 @@ def make_steering_list(image_directory):
     f.close() 
      
 
-def load_img(file_path, do_hist=False):
+def load_img(file_path, do_hist=False, raw_image=False):
         
         #set grayscale erstmal immer auf true, da nur grayscale images
         grayscale = True
@@ -395,7 +395,7 @@ def load_img(file_path, do_hist=False):
             if len(img.shape) != 2:
                 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                 
-        if constants.RAW_IMAGE:
+        if raw_image:
             img = central_image_crop(img, constants.CROP_WIDTH, constants.CROP_HEIGHT)
         
         if do_hist:
