@@ -3,10 +3,19 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/Code/model_eval.py" line="27" />
     <bookmark url="file://$PROJECT_DIR$/Code/ipc/uds_socket.py" line="37" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/Code/steering/neural_steering_control.py" line="81" />
+    <bookmark url="file://$PROJECT_DIR$/Code/steering/neural_steering_control.py" line="77" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f16311e-7287-47d2-ab17-4a9772d9c17b" name="Default Changelist" comment="script for camera DroNet test improved">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/twc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/camera/carolo_pre_pro.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/camera/carolo_pre_pro.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/evaluation/visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/evaluation/visualization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/steering/neural_steering_control.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/steering/neural_steering_control.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_Test/weights_108.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_Test/weights_147.h5" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,26 +28,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Code/carolo_cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-73">
+            <state relative-caret-position="242">
               <caret line="143" column="63" selection-start-line="143" selection-start-column="63" selection-end-line="143" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Code/utilities.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Code/steering/neural_steering_control.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="395" column="59" selection-start-line="395" selection-start-column="16" selection-end-line="395" selection-end-column="59" />
+            <state relative-caret-position="270">
+              <caret line="87" column="45" lean-forward="true" selection-start-line="87" selection-start-column="45" selection-end-line="87" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Code/steering/neural_steering_control.py">
+        <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/vis/visualization/saliency.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="66" column="48" lean-forward="true" selection-start-line="65" selection-start-column="4" selection-end-line="66" selection-end-column="48" />
+            <state relative-caret-position="152">
+              <caret line="165" selection-start-line="165" selection-end-line="165" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="2714" selection-start-line="2714" selection-end-line="2714" />
             </state>
           </provider>
         </entry>
@@ -46,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Code/camera/carolo_pre_pro.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="16" lean-forward="true" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+            <state relative-caret-position="225">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -55,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Code/evaluation/visualization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="21" column="65" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
+            <state relative-caret-position="1155">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
               <folding>
                 <element signature="e#83#101#0" expanded="true" />
               </folding>
@@ -100,17 +118,17 @@
         <option value="$PROJECT_DIR$/Code/camera/ueye.py" />
         <option value="$PROJECT_DIR$/Code/camera/test.py" />
         <option value="$PROJECT_DIR$/Code/utils_test.py" />
-        <option value="$PROJECT_DIR$/Code/camera/carolo_pre_pro.py" />
         <option value="$PROJECT_DIR$/Code/camera/ueye_cam.py" />
         <option value="$PROJECT_DIR$/Code/ipc/uds_socket_thread.py" />
         <option value="$PROJECT_DIR$/Code/ipc/uds_socket.py" />
         <option value="$PROJECT_DIR$/Code/model_eval_test.py" />
         <option value="$PROJECT_DIR$/Code/carolo_cnn.py" />
         <option value="$PROJECT_DIR$/Code/model_eval.py" />
-        <option value="$PROJECT_DIR$/Code/steering/neural_steering_control.py" />
-        <option value="$PROJECT_DIR$/Code/constants.py" />
         <option value="$PROJECT_DIR$/Code/utilities.py" />
+        <option value="$PROJECT_DIR$/Code/constants.py" />
+        <option value="$PROJECT_DIR$/Code/camera/carolo_pre_pro.py" />
         <option value="$PROJECT_DIR$/Code/evaluation/visualization.py" />
+        <option value="$PROJECT_DIR$/Code/steering/neural_steering_control.py" />
       </list>
     </option>
   </component>
@@ -139,6 +157,11 @@
               <item name="ba-cnn-steering" type="b2602c69:ProjectViewProjectNode" />
               <item name="ba-cnn-steering" type="462c0819:PsiDirectoryNode" />
               <item name="Code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ba-cnn-steering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ba-cnn-steering" type="462c0819:PsiDirectoryNode" />
+              <item name="model_Test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ba-cnn-steering" type="b2602c69:ProjectViewProjectNode" />
@@ -176,7 +199,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.visualization">
+  <component name="RunManager" selected="Python.neural_steering_control">
     <configuration name="ba-cnn-steering" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="ba-cnn-steering" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -313,8 +336,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.visualization" />
         <item itemvalue="Python.neural_steering_control" />
+        <item itemvalue="Python.visualization" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.proto" />
         <item itemvalue="Python.proto_ueye" />
@@ -347,8 +370,8 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32900432" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.51406926" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.44805196" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.39935064" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" />
@@ -356,33 +379,12 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.15098469" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.043290045" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="2" weight="0.32900432" />
-      <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="5" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.30411255" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="script for camera DroNet test improved" />
     <option name="LAST_COMMIT_MESSAGE" value="script for camera DroNet test improved" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Code/ipc/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/Code/carolo_dirty/__init__.py" />
     <entry file="file://$PROJECT_DIR$/Code/carolo_dirty/proto_client_socket" />
     <entry file="file://$PROJECT_DIR$/Code/carolo_dirty/proto_ueye.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -450,16 +452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="726">
           <caret line="557" column="61" lean-forward="true" selection-start-line="557" selection-start-column="61" selection-end-line="557" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code/camera/ueye_cam.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -540,22 +532,8 @@
     <entry file="file://$PROJECT_DIR$/Code/preprocessing/img_utils.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Code/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/saliency/im_211017_206746.640625_1515_1570.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-1247971763/cv2/cv2/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="4982" column="4" selection-start-line="4982" selection-start-column="4" selection-end-line="4982" selection-end-column="4" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Code/adapted_dronet_model.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -584,69 +562,10 @@
     <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/vis/utils/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/vis/optimizer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="152" selection-start-line="152" selection-end-line="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="2714" selection-start-line="2714" selection-end-line="2714" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code/utilities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="395" column="59" selection-start-line="395" selection-start-column="16" selection-end-line="395" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/vis/visualization/saliency.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1148">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/lib/shape_base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5">
           <caret line="522" column="78" lean-forward="true" selection-start-line="522" selection-start-column="78" selection-end-line="522" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code/carolo_cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73">
-          <caret line="143" column="63" selection-start-line="143" selection-start-column="63" selection-end-line="143" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code/steering/neural_steering_control.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="66" column="48" lean-forward="true" selection-start-line="65" selection-start-column="4" selection-end-line="66" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code/camera/carolo_pre_pro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="16" lean-forward="true" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/vis/visualization/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>
@@ -657,13 +576,109 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/vis/visualization/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/utilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3190">
+          <caret line="395" column="59" selection-start-line="395" selection-start-column="16" selection-end-line="395" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/camera/ueye_cam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-784">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-1247971763/cv2/cv2/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1819">
+          <caret line="7132" column="4" selection-start-line="7132" selection-start-column="4" selection-end-line="7132" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="68" column="17" lean-forward="true" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/camera/carolo_pre_pro.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/keras/initializers.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/keras/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/vis/optimizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="65" column="17" lean-forward="true" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/vis/visualization/saliency.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="165" selection-start-line="165" selection-end-line="165" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="2714" selection-start-line="2714" selection-end-line="2714" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Code/evaluation/visualization.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="21" column="65" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
+        <state relative-caret-position="1155">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
           <folding>
             <element signature="e#83#101#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/carolo_cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="143" column="63" selection-start-line="143" selection-start-column="63" selection-end-line="143" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/steering/neural_steering_control.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="87" column="45" lean-forward="true" selection-start-line="87" selection-start-column="45" selection-end-line="87" selection-end-column="45" />
         </state>
       </provider>
     </entry>

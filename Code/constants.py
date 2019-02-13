@@ -72,4 +72,8 @@ CROP_HEIGHT = 200
 # (if negative, image will be darker)
 BRIGHTNESS_ADJUST = 100
 
+#--------------------Camera Configuration------------------------
 
+PIXEL_CLOCK = 36
+
+FRAMERATE = 60

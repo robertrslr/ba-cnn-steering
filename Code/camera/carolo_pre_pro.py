@@ -28,14 +28,14 @@ def prepare_raw_image(frame):
     """
     #make image smaller
     frame = cv2.resize(frame, (0, 0), fx=0.7, fy=0.7)
-    
+
     #compute histogram equalization
     #frame = cv2.equalizeHist(frame)
     
     #crop image to final size
     image = central_crop(frame)
     #reshape to have three dimensions (needed by Keras)
-    image = np.reshape(image,(image.shape[0], image.shape[1], 1))
+    image = np.reshape(image, (image.shape[0], image.shape[1], 1))
     #normalise values to satisfy 0<=value<=1
     image = np.asarray(image, dtype=np.float32)
     image *= 1./255
