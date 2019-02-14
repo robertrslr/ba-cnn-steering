@@ -20,6 +20,8 @@ def visualize_attention_on_image(raw_image, normalised_image, model, layer_index
     """
     Shows the saliency map of an image, overlayed over the input image
 
+    ATTENTION: seems so to be influenced by the learning phase, learning phase has to be 1(for learning)
+
     :param image:
     :param model:
     :param layer_index:
@@ -45,20 +47,25 @@ def visualize_attention_on_image(raw_image, normalised_image, model, layer_index
         plt.title(titles[i])
 
         plt.imshow(heatmap)
+        cv2.imshow("heatmap", heatmap)
+        cv2.waitKey()
 
         # alpha-blending heatmap into image
         #plt.imshow(overlay(raw_image, heatmap, alpha=0.7))
-
+    plt.title('raw image')
+    plt.imshow(raw_image)
     plt.show()
 
 
 def main():
 
-    one_image_batch = np.zeros((1,) + (200, 200, 1),
-                               dtype=K.floatx())
+
 
     model = utilities.jsonToModel("../../model_DroNet/model_struct.json")
     model.load_weights("../../model_DroNet/best_weights.h5")
+
+    one_image_batch = np.zeros((1,) + (200, 200, 1),
+                               dtype=K.floatx())
 
     img = cv2.imread("../../saliency/im_211017_206746.640625_1515_1570.png")
 
@@ -77,7 +84,7 @@ def main():
     one_image_batch[0] = normalised_image
 
     visualize_attention_on_image(raw_image=equ_hist_img, normalised_image=one_image_batch,
-                                 model=model, layer_index=25, filter_indices=0, type="cam")
+                                 model=model, layer_index=30, filter_indices=0, type="cam")
 
 
 

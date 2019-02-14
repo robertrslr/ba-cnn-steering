@@ -2,6 +2,8 @@
   <dictionary name="twc">
     <words>
       <w>carolo</w>
+      <w>framerate</w>
+      <w>greyscale</w>
       <w>heatmap</w>
       <w>saliency</w>
       <w>struct</w>
