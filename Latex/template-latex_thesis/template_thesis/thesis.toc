@@ -1,6 +1,0 @@
-\select@language {ngerman}
-\contentsline {chapter}{Abbildungsverzeichnis}{iv}{section*.2}
-\contentsline {chapter}{Tabellenverzeichnis}{v}{section*.4}
-\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
-\contentsline {chapter}{\numberline {A}Anhang}{2}{appendix.A}
-\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{3}{appendix.A}
