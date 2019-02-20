@@ -206,11 +206,10 @@ class CaroloDataIterator(Iterator):
            
                 filename_split = filename.split('_')
                 file_dict[int(filename_split[1])] = filename
-                                   #framenumber         
+                                   #framenumber       
                 self.samples += 1
             else :
                 continue
-        
         return file_dict
     
     def create_steering_dict(self,steering_files):
@@ -227,7 +226,7 @@ class CaroloDataIterator(Iterator):
         for tupel in temp_steering:
             #before loading, the sign is inverted and the data is scaled
             steering_dict[int(tupel[0])] = switch_sign(scale_steering_data(tupel[1]))
-            print("scaled and inverted: ",steering_dict[int(tupel[0])])
+            #print("scaled and inverted: ",steering_dict[int(tupel[0])])
         return steering_dict
         
     
