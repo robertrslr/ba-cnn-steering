@@ -36,8 +36,8 @@ def flip_images(filepath_images,filepath_save):
             filename_split[1] = new_framenumber
             filename_split[3] = str(flipped_angle)
             new_filename = '_'.join(filename_split)
-            cv2.imwrite(new_filename,flipped_image)
-            print(filepath_images+"/"+new_filename," written")
+            cv2.imwrite(os.path.join(filepath_images,new_filename),flipped_image)
+            print(os.path.join(filepath_images,new_filename)," written")
             
         elif(steering_angle<1500):
             diff = 1500-steering_angle
@@ -45,11 +45,11 @@ def flip_images(filepath_images,filepath_save):
             filename_split[1] = new_framenumber
             filename_split[3] = str(flipped_angle)
             new_filename = '_'.join(filename_split)
-            cv2.imwrite(new_filename,flipped_image)
-            print((filepath_images+"/"+new_filename)," written")
+            cv2.imwrite(os.path.join(filepath_images,new_filename),flipped_image)
+            print(os.path.join(filepath_images,new_filename)," written")
         elif steering_angle==1500:
             continue
-        break
+       
         
     
     
@@ -62,7 +62,7 @@ def plot_steering_angle_distribution(steering_file):
     """
     temp_steering = np.loadtxt(steering_file, delimiter='|||')
         
-    steering_values = np.zeros((7000,),dtype=float)
+    steering_values = np.zeros((11332,),dtype=float)
         
     for i,tupel in enumerate(temp_steering):
           #before loading, the sign is inverted and the data is scaled
@@ -75,12 +75,14 @@ def plot_steering_angle_distribution(steering_file):
 
 def main():
     
-    image_files = '../../../test_data/carolo_test_data_full'
+    image_files = '../../../testData/fullAndFlipped'
   
     steering_file = '../../../carolo_experiment/carolo_images_OUT/steering_labels.txt'
         
-    #plot_steering_angle_distribution(steering_file)
-    flip_images(image_files,None)
+    plot_steering_angle_distribution(os.path.join(image_files,'steering_labels.txt'))
+    #flip_images(image_files,None)
+    
+    
 
 
 if __name__ == "__main__":
