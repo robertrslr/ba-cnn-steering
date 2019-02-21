@@ -30,12 +30,12 @@ def load_model_and_weights():
     # zero means test phase, trust me
 
     #Important to activate before prediction on live images
-    K.set_learning_phase(0)
+    #K.set_learning_phase(0)
 
     model = utilities.jsonToModel('../../model_Carolo/model_struct.json')
 
     try:
-        model.load_weights('../../model_Test/weights_149.h5')
+        model.load_weights('../../model_Test/weights_148.h5')
         # print("Loaded model from {}".format(weights_load_path))
     except:
         print("Impossible to find weight path. Returning untrained model")
@@ -68,7 +68,7 @@ def main():
     ueye.set_frame_rate(constants.FRAMERATE)
 
     # socket initialisieren und Verbindung aufbauen
-    #socket = uds_socket()
+    socket = uds_socket()
 
     one_image_batch = np.zeros((1,) + (200, 200, 1),
                                dtype=K.floatx())
@@ -87,7 +87,7 @@ def main():
         #heatmap = visualize_cam(model=model, layer_idx=30, filter_indices=None, seed_input=one_image_batch, grad_modifier=None)
 
         #cv2.imshow("heatmap", heatmap)
-        cv2.imshow("image", image)
+        #cv2.imshow("image", image)
 
         #t1 = clock()  #----aktuelle Systemzeit = Anfangszeit
         prediction_st = model.predict(one_image_batch, batch_size=1)
@@ -101,11 +101,12 @@ def main():
         print("Prediction:", prediction_st, "Framerate:", int(framerate), end='\r')
 
         #get data out of nested array structure
-        #for value in prediction_st:
-         #    socket.send_data(utilities.switch_sign(value[0]))
+        for value in prediction_st:
+             socket.send_data(utilities.switch_sign(value[0]))
 
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
+            print("Stopped")
             break
 
 if __name__ == "__main__":
