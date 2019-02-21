@@ -11,7 +11,10 @@ from keras import backend as K
 
 import cv2
 
-from vis.visualization import visualize_saliency, visualize_cam, overlay
+import tensorflow as tf
+from keras.backend.tensorflow_backend import set_session
+
+from vis.visualization import visualize_saliency, visualize_cam
 
 from Code import utilities
 
@@ -47,8 +50,12 @@ def visualize_attention_on_image(raw_image, normalised_image, model, layer_index
         plt.title(titles[i])
 
         plt.imshow(heatmap)
-        cv2.imshow("heatmap", heatmap)
-        cv2.waitKey()
+        
+        #--------------------------------
+        #Open CV (can be commented in)
+        #cv2.imshow("heatmap", heatmap)
+        #cv2.waitKey()
+        #--------------------------------
 
         # alpha-blending heatmap into image
         #plt.imshow(overlay(raw_image, heatmap, alpha=0.7))
@@ -56,19 +63,12 @@ def visualize_attention_on_image(raw_image, normalised_image, model, layer_index
     plt.imshow(raw_image)
     plt.show()
 
-
-def main():
-
-
-
-    model = utilities.jsonToModel("../../model_DroNet/model_struct.json")
-    model.load_weights("../../model_DroNet/best_weights.h5")
-
+def preprocess_image(img):
+    """
+    Takes an image and returns it ready to be used as input for the network.
+    """
     one_image_batch = np.zeros((1,) + (200, 200, 1),
                                dtype=K.floatx())
-
-    img = cv2.imread("../../saliency/im_211017_206746.640625_1515_1570.png")
-
     # Pre Processing the image TODO modularisieren (ordentliches generisches pre pro)!
     greyscale_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -82,13 +82,34 @@ def main():
 
     # model expects input as batch, so make a one-image-batch
     one_image_batch[0] = normalised_image
+    
+    return one_image_batch
 
-    visualize_attention_on_image(raw_image=equ_hist_img, normalised_image=one_image_batch,
+
+def main():
+
+    #------------------------------
+    #seems to be necessary somehow
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True  # dynamically grow the memory used on the GPU
+    config.log_device_placement = True  # to log device placement (on which device the operation ran)
+                                    # (nothing gets printed in Jupyter, only if you run it standalone)
+    sess = tf.Session(config=config)
+    set_session(sess)  # set this TensorFlow session as the default session for Keras
+    #----------------------------------
+
+    model = utilities.jsonToModel("../../model_DroNet/model_struct.json")
+    model.load_weights("../../model_DroNet/best_weights.h5")
+    
+    #allow dynamic growth of memory on gpu, otherwise an error occurs
+    
+
+    img = cv2.imread("../../saliency/im_249417_286357.750000_1542_1540.png")
+    
+    preprocessed_one_image_batch = preprocess_image(img)
+
+    visualize_attention_on_image(img,normalised_image=preprocessed_one_image_batch,
                                  model=model, layer_index=30, filter_indices=0, type="cam")
-
-
-
-
 
 
 if __name__ == "__main__":

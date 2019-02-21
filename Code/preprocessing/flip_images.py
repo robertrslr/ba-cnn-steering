@@ -17,6 +17,7 @@ def flip_images(filepath_images,filepath_save):
     
     
     for i,filename in enumerate(os.listdir(filepath_images)):
+
            
         image = cv2.imread(filepath_images+"/"+filename,0)
         #horinzontal fl
