@@ -30,7 +30,7 @@ def load_model_and_weights():
     # zero means test phase, trust me
 
     #Important to activate before prediction on live images
-    #K.set_learning_phase(0)
+    K.set_learning_phase(0)
 
     model = utilities.jsonToModel('../../model_Carolo/model_struct.json')
 
