@@ -10,7 +10,7 @@ sys.path.append("../../")
 
 from time import *
 
-from Code import utilities,constants
+from Code import utilities, constants
 from keras import backend as K
 from Code.camera.ueye_cam import ueye_cam
 from Code.camera import carolo_pre_pro as pp
