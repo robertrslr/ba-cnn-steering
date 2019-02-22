@@ -158,7 +158,7 @@ def main():
     model = utilities.jsonToModel("../../model_Carolo/model_struct.json")
     model.load_weights("../../model_Test/weights_148.h5")
 
-    img = cv2.imread("../../saliency/im_2419383566_232542.265625_1377_1570.png")
+    img = cv2.imread("../../saliency/im_240627_217113.890625_1544_1570.png")
 
     preprocessed_one_image_batch, input_image = preprocess_image(img)
 
