@@ -16,7 +16,7 @@ from keras.backend.tensorflow_backend import set_session
 
 from skimage import data, color, io, img_as_float
 
-from vis.visualization import visualize_saliency, visualize_cam
+from vis.visualization import visualize_saliency, visualize_cam, visualize_activation
 
 from Code import utilities
 
@@ -51,6 +51,13 @@ def visualize_attention_on_image(raw_image, normalised_image,
                                     filter_indices=filter_indices,
                                     seed_input=normalised_image,
                                     grad_modifier=modifier)
+        elif type == "activation":
+            heatmap = visualize_activation(model, layer_idx=layer_index,
+                                           filter_indices=filter_indices,
+                                           seed_input=normalised_image,
+                                           input_range=(0, 1),
+                                           grad_modifier=modifier)
+            
         else:
             print("Select 'saliency' or 'cam' as visualization type!")
             break
@@ -158,7 +165,7 @@ def main():
     model = utilities.jsonToModel("../../model_Carolo/model_struct.json")
     model.load_weights("../../model_Test/weights_148.h5")
 
-    img = cv2.imread("../../saliency/im_240627_217113.890625_1544_1570.png")
+    img = cv2.imread("../../saliency/im_206194_173679.812500_1288_1570.png")
 
     preprocessed_one_image_batch, input_image = preprocess_image(img)
 
