@@ -167,7 +167,7 @@ def main():
     
     
 
-    img = cv2.imread("../../saliency/im_2442124700_251877.187500_1331_1570.png")
+    img = cv2.imread("../../saliency/im_186588_98375.835938_1437_1570.png")
 
     preprocessed_one_image_batch, input_image = preprocess_image(img)
 
