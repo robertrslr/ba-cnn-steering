@@ -163,7 +163,7 @@ def main():
     # ----------------------------------
 
     model = utilities.jsonToModel("../../model_Carolo/model_struct.json")
-    model.load_weights("../../model_Test/best_weights_148.h5")
+    model.load_weights("../../model_Test/weights_197.h5")
     
     
 
