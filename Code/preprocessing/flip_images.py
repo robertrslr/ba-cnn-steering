@@ -85,7 +85,7 @@ def super_dirty_val_train_split(image_path,copy_path,sample_count):
     
     s = set()
     
-    n = validation_count + 200
+    n = validation_count +100
     
     while n>0:
         s.add(random.randrange(0,sample_count))
@@ -123,7 +123,7 @@ def main():
     #plot_steering_angle_distribution(os.path.join(steering_file,'steering_labels.txt'),6000)
     #flip_images(image_files,None)
     
-    super_dirty_val_train_split(image_files,'../../../testData/fullAndFlippedVal',11361)
+    super_dirty_val_train_split('../../../testData/caroloFullHistEqu','../../../testData/caroloFullHistEquVal',5829)
     
     
 

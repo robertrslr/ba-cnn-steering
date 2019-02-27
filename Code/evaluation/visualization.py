@@ -57,7 +57,7 @@ def visualize_attention_on_image(raw_image, normalised_image,
                                            seed_input=normalised_image,
                                            input_range=(0, 1),
                                            grad_modifier=modifier)
-            
+
         else:
             print("Select 'saliency' or 'cam' as visualization type!")
             break
@@ -163,16 +163,18 @@ def main():
     # ----------------------------------
 
     model = utilities.jsonToModel("../../model_Carolo/model_struct.json")
-    model.load_weights("../../model_Test/weights_148.h5")
+    model.load_weights("../../model_Test/best_weights_148.h5")
+    
+    
 
-    img = cv2.imread("../../saliency/im_206194_173679.812500_1288_1570.png")
+    img = cv2.imread("../../saliency/im_2442124700_251877.187500_1331_1570.png")
 
     preprocessed_one_image_batch, input_image = preprocess_image(img)
 
     visualize_attention_on_image(input_image,
                                  normalised_image=preprocessed_one_image_batch,
                                  model=model, layer_index=30,
-                                 filter_indices=None, type="cam")
+                                 filter_indices=0, type="cam")
 
 
 if __name__ == "__main__":
