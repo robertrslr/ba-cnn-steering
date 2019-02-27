@@ -63,7 +63,7 @@ def visualize_attention_on_image(raw_image, normalised_image,
             break
         
         #plt.figure()
-        #.title(titles[i])
+        #plt.title(titles[i])
 
         #plt.imshow(heatmap)
 
