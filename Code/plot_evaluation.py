@@ -19,7 +19,7 @@ def make_and_save_histograms(pred_steerings, real_steerings,
         real_steerings: List of real steerings.
         img_name: Name of the png file to save the figure.
         
-        Function imported from DroNet Code.
+        !Function imported from DroNet Code.!
     """
     pred_steerings = np.array(pred_steerings)
     real_steerings = np.array(real_steerings)

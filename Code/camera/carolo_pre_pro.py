@@ -35,7 +35,9 @@ def prepare_raw_image(frame):
     
     #crop image to final size
     image = central_crop(frame)
-    cv2.imwrite('../../../debuggingImageDump/'+str(time.clock())+'.png', image)
+    
+    #cv2.imwrite('../../../debuggingImageDump/'+str(time.clock())+'.png', image)
+    
     #reshape to have three dimensions (needed by Keras)
     image = np.reshape(image, (image.shape[0], image.shape[1], 1))
     #normalise values to satisfy 0<=value<=1

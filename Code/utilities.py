@@ -58,6 +58,8 @@ def hard_mining_mse(k):
         k: number of samples for hard-mining.
     # Returns
         custom_mse: average MSE for the current batch.
+        
+        !Function imported from DroNet Code.!
     """
 
     def custom_mse(y_true, y_pred):

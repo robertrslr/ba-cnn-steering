@@ -18,10 +18,12 @@ from Code import utilities,constants,plot_evaluation
 
 # Functions to evaluate steering prediction (DroNet)
 
-def explained_variance_1d(ypred,y):
+def explained_variance_1d(ypred, y):
     """
     Var[ypred - y] / var[y].
     https://www.quora.com/What-is-the-meaning-proportion-of-variance-explained-in-linear-regression
+
+    !Function imported from DroNet Code.!
     """
     assert y.ndim == 1 and ypred.ndim == 1
     vary = np.var(y)
@@ -32,6 +34,8 @@ def compute_explained_variance(predictions, real_values):
     """
     Computes the explained variance of prediction for each
     steering and the average of them
+    
+    !Function imported from DroNet Code.!
     """
     assert np.all(predictions.shape == real_values.shape)
     ex_variance = explained_variance_1d(predictions, real_values)
@@ -40,6 +44,9 @@ def compute_explained_variance(predictions, real_values):
 
 
 def compute_sq_residuals(predictions, real_values):
+    """
+    !Function imported from DroNet Code.!
+    """
     assert np.all(predictions.shape == real_values.shape)
     sq_res = np.square(predictions - real_values)
     sr = np.mean(sq_res, axis = -1)
@@ -48,6 +55,9 @@ def compute_sq_residuals(predictions, real_values):
 
 
 def compute_rmse(predictions, real_values):
+    """
+    !Function imported from DroNet Code.!
+    """
     assert np.all(predictions.shape == real_values.shape)
     mse = np.mean(np.square(predictions - real_values))
     rmse = np.sqrt(mse)
@@ -58,6 +68,8 @@ def compute_rmse(predictions, real_values):
 def compute_highest_regression_errors(predictions, real_values, n_errors=20):
     """
     Compute the indexes with highest error
+    
+    !Function imported from DroNet Code.!
     """
     assert np.all(predictions.shape == real_values.shape)
     sq_res = np.square(predictions - real_values)
@@ -66,17 +78,26 @@ def compute_highest_regression_errors(predictions, real_values, n_errors=20):
 
 
 def random_regression_baseline(real_values):
+    """
+    !Function imported from DroNet Code.!
+    """
     mean = np.mean(real_values)
     std = np.std(real_values)
     return np.random.normal(loc=mean, scale=abs(std), size=real_values.shape)
 
 
 def constant_baseline(real_values):
+    """
+    !Function imported from DroNet Code.!
+    """
     mean = np.mean(real_values)
     return mean * np.ones_like(real_values)
 
 
 def evaluate_regression(predictions, real_values, fname):
+    """
+    !Function imported from DroNet Code.!
+    """
     evas = compute_explained_variance(predictions, real_values)
     rmse = compute_rmse(predictions, real_values)
     highest_errors = compute_highest_regression_errors(predictions, real_values,
