@@ -81,15 +81,6 @@ def main():
         frame = ueye.read()
         #preprocess image
         image = pp.prepare_raw_image(frame)
-        
-        # Debugging image save every 1000 iterations (NOT HERE, image is noormalized 
-        #and will be black)
-        #--------------------------------
-        #temp_counter=+1
-        #if temp_counter >= 100:
-        #    temp_counter=0
-        #    cv2.imwrite('../../debuggingImageDump/'+str(time.clock), image)
-        #----------------------------------
 
         #predict function needs image in array form, so we'll give it what it wants
         one_image_batch[0] = image
