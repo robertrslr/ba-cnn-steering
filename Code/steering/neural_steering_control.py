@@ -35,7 +35,7 @@ def load_model_and_weights():
     model = utilities.jsonToModel('../../model_Carolo/model_struct.json')
 
     try:
-        model.load_weights('../../model_Test/best_weights_148.h5')
+        model.load_weights('../../model_Test/weights_197.h5')
         # print("Loaded model from {}".format(weights_load_path))
     except:
         print("Impossible to find weight path. Returning untrained model")
@@ -82,12 +82,13 @@ def main():
         #preprocess image
         image = pp.prepare_raw_image(frame)
         
-        # Debugging image save every 1000 iterations
+        # Debugging image save every 1000 iterations (NOT HERE, image is noormalized 
+        #and will be black)
         #--------------------------------
-        temp_counter=+1
-        if temp_counter >= 100:
-            temp_counter=0
-            cv2.imwrite('../../debuggingImageDump/'+str(time.clock), image)
+        #temp_counter=+1
+        #if temp_counter >= 100:
+        #    temp_counter=0
+        #    cv2.imwrite('../../debuggingImageDump/'+str(time.clock), image)
         #----------------------------------
 
         #predict function needs image in array form, so we'll give it what it wants
