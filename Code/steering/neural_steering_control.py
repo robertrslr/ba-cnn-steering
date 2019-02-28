@@ -74,7 +74,6 @@ def main():
                                dtype=K.floatx())
 
     time_last_round = 0
-    temp_counter = 0
     while True:
 
         #get a camera frame fromt the live video capture
@@ -96,7 +95,7 @@ def main():
         #dt = t2 - t1  #---Zeitdifferenz = Endzeit - Anfangszeit
 
         #prediction_st = prediction_st_col[0]
-        current_time = time.clock()
+        current_time = clock()
         framerate, time_last_round = calc_framerate(current_time, time_last_round)
 
         print("Prediction:", prediction_st, "Framerate:", int(framerate), end='\r')
