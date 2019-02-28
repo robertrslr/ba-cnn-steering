@@ -6,6 +6,7 @@ Created on Wed Feb 13 10:50:53 2019
 """
 import numpy as np
 from matplotlib import pyplot as plt
+import os
 
 from keras import backend as K
 
@@ -151,6 +152,24 @@ def overlay_colour_on_greyscale(image_color, image_greyscale, title="Overlay"):
     return img_overlay
 
 
+
+def visualize_attention(image_folder_path, model):
+    """
+    Calls the visualize_attention_on_image method on every image in the folder specified
+    by 'folder_path'.
+    """
+    
+    for filename in os.listdir(image_folder_path):
+        
+        image = cv2.imread(image_folder_path+"/"+filename)
+        
+        preprocessed_one_image_batch, input_image = preprocess_image(image)
+
+        visualize_attention_on_image(input_image,
+                                     normalised_image=preprocessed_one_image_batch,
+                                     model=model, layer_index=30,
+                                     filter_indices=0, type="cam")
+
 def main():
     # ------------------------------
     # seems to be necessary somehow
@@ -164,17 +183,13 @@ def main():
 
     model = utilities.jsonToModel("../../model_Carolo/model_struct.json")
     model.load_weights("../../model_Test/weights_197.h5")
+
+    visualizationPath = '../../saliency/'
+    visualize_attention(visualizationPath, model)
+
+    #img = cv2.imread("../../saliency/im_186588_98375.835938_1437_1570.png")
+
     
-    
-
-    img = cv2.imread("../../saliency/im_186588_98375.835938_1437_1570.png")
-
-    preprocessed_one_image_batch, input_image = preprocess_image(img)
-
-    visualize_attention_on_image(input_image,
-                                 normalised_image=preprocessed_one_image_batch,
-                                 model=model, layer_index=30,
-                                 filter_indices=0, type="cam")
 
 
 if __name__ == "__main__":

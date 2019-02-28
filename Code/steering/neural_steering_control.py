@@ -74,12 +74,21 @@ def main():
                                dtype=K.floatx())
 
     time_last_round = 0
+    temp_counter = 0
     while True:
 
         #get a camera frame fromt the live video capture
         frame = ueye.read()
         #preprocess image
         image = pp.prepare_raw_image(frame)
+        
+        # Debugging image save every 1000 iterations
+        #--------------------------------
+        temp_counter=+1
+        if temp_counter >= 100:
+            temp_counter=0
+            cv2.imwrite('../../debuggingImageDump/'+str(time.clock), image)
+        #----------------------------------
 
         #predict function needs image in array form, so we'll give it what it wants
         one_image_batch[0] = image
@@ -95,7 +104,7 @@ def main():
         #dt = t2 - t1  #---Zeitdifferenz = Endzeit - Anfangszeit
 
         #prediction_st = prediction_st_col[0]
-        current_time = clock()
+        current_time = time.clock()
         framerate, time_last_round = calc_framerate(current_time, time_last_round)
 
         print("Prediction:", prediction_st, "Framerate:", int(framerate), end='\r')
