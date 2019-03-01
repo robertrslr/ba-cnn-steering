@@ -72,10 +72,18 @@ def plot_steering_angle_distribution(steering_file, sample_count):
     sns.distplot(steering_values,kde=False) 
 
 
-def super_dirty_val_train_split(image_path,copy_path,sample_count):
+def val_train_split(image_path,copy_path,sample_count):
     """
     This will be deleted as sone as it has done what it should.
     """
+    print("!WARNING!", "This will delete images from ", image_path, "!")
+    check = input("If you are sure about this, type 'yes' and press Enter.\ny")
+    if(check != "yes"):
+        print("Stopped!")
+        return
+    elif(check == "yes"):
+        print("Alright.")
+    
     images = os.listdir(image_path)
     
     validation_ratio = 0.2
@@ -85,7 +93,7 @@ def super_dirty_val_train_split(image_path,copy_path,sample_count):
     
     s = set()
     
-    n = validation_count +100
+    n = validation_count 
     
     while n>0:
         s.add(random.randrange(0,sample_count))
@@ -96,7 +104,6 @@ def super_dirty_val_train_split(image_path,copy_path,sample_count):
     print(len(l))
     list_index = 0
     for i,image in enumerate(images):
-        
         #print("for-index:",i," list-index:",list_index," list-value:",l[list_index])
         if i==l[list_index]:
             im_data = cv2.imread(os.path.join(image_path,image),0)
@@ -123,7 +130,7 @@ def main():
     #plot_steering_angle_distribution(os.path.join(steering_file,'steering_labels.txt'),6000)
     #flip_images(image_files,None)
     
-    super_dirty_val_train_split('../../../testData/caroloFullHistEqu','../../../testData/caroloFullHistEquVal',5829)
+    val_train_split('../../../caroloExperiment/images','../../../caroloExperiment/RANDOM',5391)
     
     
 

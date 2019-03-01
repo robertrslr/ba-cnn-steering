@@ -13,7 +13,7 @@ import os
 from keras.callbacks import ModelCheckpoint
 from keras import optimizers
 
-from Code import utilities, constants,adapted_dronet_model,custom_callback
+from Code import utilities, constants,adapted_dronet_model,custom_callback,plot_evaluation
 
 from tensorflow.python.client import device_lib
 
@@ -93,7 +93,7 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     # Save model every 'log_rate' epochs.
     # Save training and validation losses.
     
-    #logz.configure_output_dir(constants.EXPERIMENT_DIRECTORY)
+   
     saveModelAndLoss = custom_callback.MyCallback(filepath=constants.EXPERIMENT_DIRECTORY,
                                             period=10,
                                             batch_size=constants.BATCH_SIZE)
@@ -102,13 +102,16 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     steps_per_epoch = int(np.ceil(train_data_generator.samples / constants.BATCH_SIZE))
     validation_steps = int(np.ceil(val_data_generator.samples / constants.BATCH_SIZE))
 
-    model.fit_generator(train_data_generator,
+    history = model.fit_generator(train_data_generator,
                         epochs=constants.EPOCHS150, steps_per_epoch = steps_per_epoch,
                         callbacks=[writeBestModel,saveModelAndLoss],
                         validation_data=val_data_generator,
                         validation_steps = validation_steps,
                         initial_epoch=initial_epoch)
     
+    print(history.history.keys())
+    plot_evaluation.plot_session_loss(history)
+    plot_evaluation.plot_session_accuracy(history)
 
     
 def main():

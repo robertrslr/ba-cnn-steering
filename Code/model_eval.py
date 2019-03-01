@@ -135,11 +135,11 @@ def _main():
             )
     
     
-    model = utilities.jsonToModel('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/model_struct.json')
+    model = utilities.jsonToModel('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_Carolo/model_struct.json')
     
     
     try:
-        model.load_weights('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/best_weights.h5')
+        model.load_weights('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_Test/weights_197.h5')
         #print("Loaded model from {}".format(weights_load_path))
     except:
         print("Impossible to find weight path. Returning untrained model")
@@ -160,33 +160,29 @@ def _main():
     real_steerings = []
     predicted_steerings = []
     
-    
-    
-#    DroNet yields negative values for right turn and positive for left turn.
-#    For Carolo its the other way round.
-#    So Carolo Values have to be adjusted for that.
+    #Left/Right shift for Positive/Neagtive Values done while loading the images
     for data in ground_truth:
-        real_steerings.append(utilities.switch_sign(data[0]))
-    for i,data in enumerate(predictions):
-        predicted_steerings.append(data[0])
-        pred_truth_compare.append("%s|||%s" % (data[0],real_steerings[i]))
+        real_steerings.append(data[0])
+    #for i,data in enumerate(predictions):
+    #    predicted_steerings.append(data[0])
+     #   pred_truth_compare.append("%s|||%s" % (data[0],real_steerings[i]))
         
         
     joined = "\n".join(pred_truth_compare)
     #print(AlleTupel)
     
-    plot_evaluation.make_and_save_histograms(predicted_steerings,real_steerings)
+    plot_evaluation.make_and_save_histograms(predictions,real_steerings)
     
-    f = open("C:/Users/user/Desktop/BA/BA/test_compare.txt", "w")
-    f.write(joined)
-    f.close() 
+    #f = open("C:/Users/user/Desktop/BA/BA/test_compare.txt", "w")
+    #f.write(joined)
+    #f.close() 
 
     
     ###########################################################################
 
     # ************************* Steering evaluation ***************************
 
-    predicted_steerings = np.asarray(predicted_steerings, dtype=np.float32)
+    predicted_steerings = np.asarray(predictions, dtype=np.float32)
     real_steerings = np.asarray(real_steerings, dtype=np.float32)
 
 

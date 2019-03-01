@@ -32,4 +32,21 @@ def make_and_save_histograms(pred_steerings, real_steerings,
     plt.legend(fontsize=10)
     plt.savefig(img_name, bbox_inches='tight')
     
+
+def plot_session_loss(history):
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()
     
+def plot_session_accuracy(history):
+    plt.plot(history.history['acc'])
+    plt.plot(history.history['val_acc'])
+    plt.title('model accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()
