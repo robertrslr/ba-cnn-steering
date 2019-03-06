@@ -111,7 +111,7 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     
     print(history.history.keys())
     plot_evaluation.plot_session_loss(history)
-    plot_evaluation.plot_session_accuracy(history)
+   
 
     
 def main():

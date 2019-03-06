@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.25)  1 MAR 2019 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.25)  6 MAR 2019 15:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1164,37 +1164,45 @@ File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
 \AM@templatesizebox=\box73
 )
 (../style/configurationcommands.sty)) (../style/convenience.sty)
-\glswrite=\write4
-\glo@main@file=\write5
-\openout5 = `thesis.glo'.
+(c:/texlive/2018/texmf-dist/tex/latex/multibib/multibib.sty
+Package: multibib 2008/12/10 v1.4 Multiple bibliographies for one document.
+\mb@biblabelwidth=\count347
+)
+\@auxoutI=\write4
+ (./I.aux)
+\openout4 = `I.aux'.
 
-Package glossaries Info: Writing glossary file thesis.glo on input line 17.
-\glo@acronym@file=\write6
-\openout6 = `thesis.acn'.
+\glswrite=\write5
+\glo@main@file=\write6
+\openout6 = `thesis.glo'.
 
-Package glossaries Info: Writing glossary file thesis.acn on input line 17.
-\glo@symbols@file=\write7
-\openout7 = `thesis.slo'.
+Package glossaries Info: Writing glossary file thesis.glo on input line 20.
+\glo@acronym@file=\write7
+\openout7 = `thesis.acn'.
 
-Package glossaries Info: Writing glossary file thesis.slo on input line 17.
+Package glossaries Info: Writing glossary file thesis.acn on input line 20.
+\glo@symbols@file=\write8
+\openout8 = `thesis.slo'.
+
+Package glossaries Info: Writing glossary file thesis.slo on input line 20.
 
 (./thesisglossaries.tex) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
 
@@ -1280,16 +1288,16 @@ File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
 (c:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count347
+\scratchcounter=\count348
 \scratchdimen=\dimen306
 \scratchbox=\box74
-\nofMPsegments=\count348
-\nofMParguments=\count349
+\nofMPsegments=\count349
+\nofMParguments=\count350
 \everyMPshowfont=\toks50
-\MPscratchCnt=\count350
+\MPscratchCnt=\count351
 \MPscratchDim=\dimen307
-\MPnumerator=\count351
-\makeMPintoPDFobject=\count352
+\MPnumerator=\count352
+\makeMPintoPDFobject=\count353
 \everyMPtoPDFconversion=\toks51
 ) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1354,22 +1362,22 @@ ABD: EveryShipout initializing macros
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box75
-Package hyperref Info: Link coloring ON on input line 20.
+Package hyperref Info: Link coloring ON on input line 23.
 (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (c:/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count353
+\c@section@level=\count354
 )
-LaTeX Info: Redefining \ref on input line 20.
-LaTeX Info: Redefining \pageref on input line 20.
-LaTeX Info: Redefining \nameref on input line 20.
+LaTeX Info: Redefining \ref on input line 23.
+LaTeX Info: Redefining \pageref on input line 23.
+LaTeX Info: Redefining \nameref on input line 23.
 
 (./thesis.out) (./thesis.out)
-\@outlinefile=\write8
-\openout8 = `thesis.out'.
+\@outlinefile=\write9
+\openout9 = `thesis.out'.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/pdflscape.sty
@@ -1380,12 +1388,12 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 20.
+LaTeX Font Info:    Try loading font information for U+msa on input line 23.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 20.
+LaTeX Font Info:    Try loading font information for U+msb on input line 23.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1408,28 +1416,28 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <11> not available
 ) (../style/titlepage.tex [1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/
 pdftex.map}
 
-\openout4 = `thesis.ist'.
+\openout5 = `thesis.ist'.
 
 
 
  <../style/HAW_Marke_schwarz.pdf>]) (../style/abstractpage.tex [2]) [3
 
 ] (./thesis.toc)
-\tf@toc=\write9
-\openout9 = `thesis.toc'.
+\tf@toc=\write10
+\openout10 = `thesis.toc'.
 
 
 [4
 
 ] (./thesis.lof)
-\tf@lof=\write10
-\openout10 = `thesis.lof'.
+\tf@lof=\write11
+\openout11 = `thesis.lof'.
 
  [5
 
 ] (./thesis.lot)
-\tf@lot=\write11
-\openout11 = `thesis.lot'.
+\tf@lot=\write12
+\openout12 = `thesis.lot'.
 
 
 No file thesis.acr.
@@ -1443,17 +1451,17 @@ chapter 1.
 
 ]
 chapter 2.
-<figures/Architecture-ALVINN.png, id=138, 365.365pt x 438.63875pt>
+<figures/Architecture-ALVINN.png, id=137, 343.2825pt x 322.95656pt>
 File: figures/Architecture-ALVINN.png Graphic file (type png)
 <use figures/Architecture-ALVINN.png>
-Package pdftex.def Info: figures/Architecture-ALVINN.png  used on input line 14
+Package pdftex.def Info: figures/Architecture-ALVINN.png  used on input line 16
 .
-(pdftex.def)             Requested size: 255.75375pt x 307.04501pt.
+(pdftex.def)             Requested size: 274.62636pt x 258.36559pt.
 ) (./chapters/3-Idee.tex [2
 
-] [3 <./figures/Architecture-ALVINN.png (PNG copy)>]
+] [3 <./figures/Architecture-ALVINN.png>]
 chapter 3.
-<figures/Aufbau.png, id=151, 384.43625pt x 176.66pt>
+<figures/Aufbau.png, id=150, 384.43625pt x 176.66pt>
 File: figures/Aufbau.png Graphic file (type png)
 <use figures/Aufbau.png>
 Package pdftex.def Info: figures/Aufbau.png  used on input line 28.
@@ -1477,48 +1485,51 @@ chapter 7.
 ) (./thesis.bbl [9
 
 ]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 14.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 16.
  (c:/texlive/2018/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-Overfull \hbox (202.08673pt too wide) in paragraph at lines 12--17
+))
+(./I.bbl [10
+
+]
+Overfull \hbox (206.01653pt too wide) in paragraph at lines 12--17
 \T1/pcr/m/n/10.95 net / figure / Architecture-[]of-[]the-[]neural-[]network-[]i
 n-[]ALVINN-[]Reprinted-[]with-[]permission-[]from-[]125 _
  []
 
-) (./appendix/example_appendix.tex [10
+) (./appendix/example_appendix.tex [11
 
 ]
 chapter A.
 )
 No file thesis.gls.
-(../style/statement_i.tex [11
+(../style/statement_i.tex [12
 
 ]
 LaTeX Font Info:    Try loading font information for T1+cmss on input line 4.
 
 (c:/texlive/2018/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [12
+) [13
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 85.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 85.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 97.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 97.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 85.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 85.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 97.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 97.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 7B90AD6C7840E9FDFF842FEC630FFB76;887.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 85.
+(rerunfilecheck)             Checksum: 9A6020B60721D054D232B498D20AC64A;897.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 97.
  ) 
 Here is how much of TeX's memory you used:
- 41063 strings out of 492639
- 817789 string characters out of 6133087
- 1015400 words of memory out of 5000000
- 44263 multiletter control sequences out of 15000+600000
+ 41130 strings out of 492639
+ 818673 string characters out of 6133087
+ 1016940 words of memory out of 5000000
+ 44319 multiletter control sequences out of 15000+600000
  566121 words of font info for 74 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 82i,19n,77p,9118b,757s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 82i,19n,77p,9118b,773s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
 ive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fon
 ts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/p
@@ -1534,10 +1545,10 @@ per/sfti0900.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti10
 95.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texli
 ve/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2018/texmf-d
 ist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on thesis.pdf (18 pages, 484360 bytes).
+Output written on thesis.pdf (19 pages, 452215 bytes).
 PDF statistics:
- 274 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 44 named destinations out of 1000 (max. 500000)
+ 279 PDF objects out of 1000 (max. 8388607)
+ 234 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
  156 words of extra memory for PDF output out of 10000 (max. 10000000)
 

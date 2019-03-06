@@ -11,8 +11,11 @@
 %---------------------------------------
 \usepackage{url}
 
-
 \newcommand\note[1]{\textcolor{red}{#1}} % text within the \note command will be red (implicating a TODO)
+
+
+\usepackage[labeled]{multibib}             %% ermöglicht mehrere Literaturverzeichnisse (inkl. unterschiedl. Zitatkennzeichnung)
+\newcites{I}{Internetquellen}    %% Umbenennen der zusätzlichen Verzeichnisse
 %---------------------------------------
 \makeglossaries           % create all glossary entries (remember: run makeglossaries manually)
 \loadglsentries{thesisglossaries.tex}  % load acronym, symbol and glossarie entries
@@ -70,8 +73,17 @@
 
 
 %\bibliographystyle{plain}
+%Paper (also books etc.)
 \bibliographystyle{dinat}
 \bibliography{literature}
+
+%Internet
+%\renewcommand{\refname}{Internetquellenverzeichnis}
+\bibliographystyleI{dinat}
+\bibliographyI{internet}
+
+
+
 
 
 % Appendix
