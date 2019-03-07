@@ -182,7 +182,7 @@ def main():
     # ----------------------------------
 
     model = utilities.jsonToModel("../../model_Carolo/model_struct.json")
-    model.load_weights("../../model_Test/weights_197.h5")
+    model.load_weights("../../model_Test/NEUweights_199.h5")
 
     visualizationPath = '../../saliency/'
     visualize_attention(visualizationPath, model)

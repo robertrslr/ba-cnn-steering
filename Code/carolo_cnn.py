@@ -41,7 +41,7 @@ def getModel(img_width, img_height, img_channels, output_dim, weights_path):
        model: A Model instance.
     """
     dronet_model = utilities.jsonToModel('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/model_struct.json')
-    carolo_model = adapted_dronet_model.partly_frozen_resnet8(img_width, img_height, img_channels, output_dim)
+    carolo_model = adapted_dronet_model.unfrozen_resnet8(img_width, img_height, img_channels, output_dim)
     if weights_path:
         try:
             dronet_model.load_weights('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/best_weights.h5')
@@ -79,7 +79,7 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     #model.k_entropy = tf.Variable(constants.batch_size, trainable=False, name='k_entropy', dtype=tf.int32)
     
     #COnfigure optimizer with small learning rate for fine tuning
-    optimizer = optimizers.Adam(lr=0.001, decay=1e-5)
+    optimizer = optimizers.Adam(lr=0.0001, decay=1e-5)
 
     # Configure training process
     model.compile(loss=utilities.hard_mining_mse(model.k_mse),
@@ -103,7 +103,7 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     validation_steps = int(np.ceil(val_data_generator.samples / constants.BATCH_SIZE))
 
     history = model.fit_generator(train_data_generator,
-                        epochs=constants.EPOCHS150, steps_per_epoch = steps_per_epoch,
+                        epochs=constants.EPOCHS200, steps_per_epoch = steps_per_epoch,
                         callbacks=[writeBestModel,saveModelAndLoss],
                         validation_data=val_data_generator,
                         validation_steps = validation_steps,
@@ -131,7 +131,9 @@ def main():
     img_channels = constants.IMG_CHANNELS
 
     # Generate training data with real-time augmentation
-    train_datagen = utilities.CaroloDataGenerator(rescale = 1./255)
+    train_datagen = utilities.CaroloDataGenerator(rotation_range = 0.2,
+                                                  rescale = 1./255,
+                                                  height_shift_range=0.2)
 
     train_generator = train_datagen.flow_from_directory(constants.TRAINING_DIRECTORY,
                                                         shuffle=True,
