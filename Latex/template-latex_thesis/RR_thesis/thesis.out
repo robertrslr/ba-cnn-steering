@@ -5,14 +5,16 @@
 \BOOKMARK [0][-]{chapter.2}{Neuronale Navigation mit Bilddaten}{}% 5
 \BOOKMARK [1][-]{section.2.1}{Relevante Technik/Hintergrund}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.2}{Ans\344tze}{chapter.2}% 7
-\BOOKMARK [0][-]{chapter.3}{Idee}{}% 8
-\BOOKMARK [1][-]{section.3.1}{DroNet ETH Z\374rich}{chapter.3}% 9
-\BOOKMARK [1][-]{section.3.2}{Carolo-Cup}{chapter.3}% 10
-\BOOKMARK [1][-]{section.3.3}{Die Strecke}{chapter.3}% 11
-\BOOKMARK [1][-]{section.3.4}{Das Fahrzeug}{chapter.3}% 12
-\BOOKMARK [0][-]{chapter.4}{Entwurf}{}% 13
-\BOOKMARK [0][-]{chapter.5}{Szenarien}{}% 14
-\BOOKMARK [0][-]{chapter.6}{Auswertung und Zusammenfassung}{}% 15
-\BOOKMARK [0][-]{chapter.7}{Res\374mee}{}% 16
-\BOOKMARK [0][-]{appendix.A}{Anhang}{}% 17
-\BOOKMARK [0][-]{appendix.A}{Selbstst\344ndigkeitserkl\344rung}{}% 18
+\BOOKMARK [2][-]{subsection.2.2.1}{ALVINN}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.2}{NVIDIA DAVE-2}{section.2.2}% 9
+\BOOKMARK [0][-]{chapter.3}{Idee}{}% 10
+\BOOKMARK [1][-]{section.3.1}{DroNet ETH Z\374rich}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{Carolo-Cup}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.3}{Die Strecke}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.4}{Das Fahrzeug}{chapter.3}% 14
+\BOOKMARK [0][-]{chapter.4}{Entwurf}{}% 15
+\BOOKMARK [0][-]{chapter.5}{Szenarien}{}% 16
+\BOOKMARK [0][-]{chapter.6}{Auswertung und Zusammenfassung}{}% 17
+\BOOKMARK [0][-]{chapter.7}{Res\374mee}{}% 18
+\BOOKMARK [0][-]{appendix.A}{Anhang}{}% 19
+\BOOKMARK [0][-]{appendix.A}{Selbstst\344ndigkeitserkl\344rung}{}% 20

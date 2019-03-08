@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{4}
 % this bibliography was produced with the style dinat.bst v2.5
 \makeatletter
 \newcommand{\dinatlabel}[1]%
@@ -6,6 +6,17 @@
 \makeatother
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax\def\url#1{\texttt{#1}}\fi
+
+\bibitem[Bojarski u.\,a.(2016)Bojarski, Del~Testa, Dworakowski, Firner, Flepp,
+  Goyal, Jackel, Monfort, Muller, Zhang u.\,a.]{bojarski2016end}
+\dinatlabel{Bojarski u.\,a. 2016} \textsc{Bojarski}, Mariusz~;
+  \textsc{Del~Testa}, Davide~; \textsc{Dworakowski}, Daniel~; \textsc{Firner},
+  Bernhard~; \textsc{Flepp}, Beat~; \textsc{Goyal}, Prasoon~; \textsc{Jackel},
+  Lawrence~D.~; \textsc{Monfort}, Mathew~; \textsc{Muller}, Urs~;
+  \textsc{Zhang}, Jiakai u.\,a.:
+\newblock End to end learning for self-driving cars.
+\newblock In: \emph{arXiv preprint arXiv:1604.07316}
+\newblock (2016)
 
 \bibitem[Chollet(2018)]{chollet2018deep}
 \dinatlabel{Chollet 2018} \textsc{Chollet}, F.:
