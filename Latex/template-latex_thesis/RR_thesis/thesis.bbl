@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{8}
 % this bibliography was produced with the style dinat.bst v2.5
 \makeatletter
 \newcommand{\dinatlabel}[1]%
@@ -65,5 +65,11 @@
 \newblock Alvinn: An autonomous land vehicle in a neural network.
 \newblock In: \emph{Advances in neural information processing systems}, 1989,
   S.~305--313
+
+\bibitem[Walter(1950)]{walter1950imitation}
+\dinatlabel{Walter 1950} \textsc{Walter}, W~G.:
+\newblock An imitation of life.
+\newblock In: \emph{Scientific American}
+\newblock 182 (1950), Nr.~5, S.~42--45
 
 \end{thebibliography}
