@@ -1,22 +1,41 @@
-% first example chapter
+
 % @author Jan Robert Rösler 
 %
 \chapter{Neuronale Navigation mit Bilddaten}
 
 \section{Relevante Technik/Hintergrund}
-Hier soll zunächst eine kurze Beschreibung der für Neuronale Navigation auf Bilddaten relevanten Technik erfolgen. Grundlegendes wird nur der Vollständigkeit halber erwähnt, speziellere Aspekte kurz vorgestellt. 
+Hier erfolgt zunächst eine kurze Beschreibung der für Neuronale Navigation auf Bilddaten relevanten Technik. Grundlegendes wird nur der Vollständigkeit halber erwähnt, speziellere Aspekte kurz vorgestellt. 
 
-CNN 
-REGRESSION
+\subsection{Deep Learning}
+
+\subsection{CNN}
+\textit{Convolutional Neural Networks}, oder kurz CNN, haben sich gerade im Bereich der Bildverarbeitung als überlegen bewiesen. Aus der Biologie inspiriert, findet hier besonders das Prinzip des rezeptiven Feldes Anwendung. Die Aktivität jedes Neurons wird mithilfe einer Faltung berechnet, räumliche Informationen und Zusammenhänge werden so besser erhalten. 2012 konnte ein CNN, AlexNet \cite{krizhevsky2012imagenet}, beim ImageNet-Wettbewerb den Benchmark-Rekord von 25,8 \% auf 16,4 \% drücken, seitdem sind alle gut platzierten Modelle CNNs.
+CNNs sollen hier nicht detailliert erklärt werden, das Verständnis wird als Grundlage vorausgesetzt.
+
+\subsection{ResNet}
+\textit{Residual Neural Networks}, oder kurz ResNet, ist eine weitere Technik, die ihren Urprung in der Biologie hat. Verhalten so genannter Pyramidenzellen, Nervenzellen im menschlichen Gehirn, wird nachgebildet, indem Abkürzungen zwischen Layer eingebaut werden. Residual Netze wurden 2015 entwickelt, insbesondere ließ sich mit diesem Ansatz das trainieren tiefer Netze verbessern \cite{DBLP:journals/corr/HeZRS15}. \ref{img:ResBlock} zeigt den schematischen Aufbau eines so genannten Residual Blocks. 
 
 
-RESIDUAL (BLOCK)
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{figures/ResidualBlock.png}
+	\caption{Residual Block}
+	Quelle: \citeI{ResBlock}
+	\label{img:ResBlock}
+\end{figure}
 
+
+DBLP:journals/corr/HeZRS15
+
+\subsection{Fine tuning}
 LAYER FREEZING 
-
-PreProcessing (?)
-
 Fine Tuning 
+
+
+
+
+
+
 
 
 
@@ -56,7 +75,7 @@ Im Ergebnis konnte das Netz nach 40 Epochen Training auf simulierten Fahrbahnbil
 \subsection{NVIDIA DAVE-2}
 
 Forschungserkenntnisse der folgenden Jahre trieben die Entwicklung voran und...
-Im Jahr 2016 veröffentlicht das Technologieunternehmen \textsc{NVIDIA} einen eigenen Ansatz \cite{bojarski2016end}, basierend auf Versuchen mit dem \glqq DARPA Autonomous Vehicle \grqq{} (DAVE) \cite{DarpaDave} wird dieser \glqq Dave-2 \grqq{} genannt.//
+Im Jahr 2016 veröffentlicht das Technologieunternehmen \textsc{NVIDIA} einen eigenen Ansatz \cite{bojarski2016end}, basierend auf Versuchen mit dem \glqq DARPA Autonomous Vehicle \grqq{} (DAVE) \citeI{DarpaDave} wird dieser \glqq Dave-2 \grqq{} genannt.//
 Daten werden hier durch Fahrten auf echten Straßen gesammelt, wofür drei Kameras in der Windschutzscheibe eines Autos angebracht wird und Steuerungsdaten über den CAN bus des Fahrzeuges ausgelesen werden. Mit diesen Daten wird ein CNN trainiert \ref{img:NVIDIA}, was dann an einer Straßen-Simulation getestet wird. Hervorzuheben ist hier besonders die Verwendung von Convolutional Neural Networks (CNN) und die, im Gegensatz zum bereits erwähnten Ansatz 27 Jahre zuvor, stark gesteigerte Rechenleistung. Folglich können nicht nur Bilder besserer Qualität verarbeitet werden, die Netzarchitektur mit 9 Layern und 250.00 Parametern wäre 1989 nicht in annehmbarer Zeit trainierbar gewesen. Außerdem stellt sich NVIDIA dem Anspruch, eine neuronale Steuerung für öffentliche Straßen zu entwerfen, nicht nur für ein sehr begrenztes Testszenario.
 
 

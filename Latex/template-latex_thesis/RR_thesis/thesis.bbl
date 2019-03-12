@@ -1,4 +1,4 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{7}
 % this bibliography was produced with the style dinat.bst v2.5
 \makeatletter
 \newcommand{\dinatlabel}[1]%
@@ -34,6 +34,31 @@
 \newblock \emph{Deep Learning}.
 \newblock MIT Press, 2016. --
 \newblock \url{http://www.deeplearningbook.org}
+
+\bibitem[He u.\,a.(2015)He, Zhang, Ren und Sun]{DBLP:journals/corr/HeZRS15}
+\dinatlabel{He u.\,a. 2015} \textsc{He}, Kaiming~; \textsc{Zhang}, Xiangyu~;
+  \textsc{Ren}, Shaoqing~; \textsc{Sun}, Jian:
+\newblock Deep Residual Learning for Image Recognition.
+\newblock In: \emph{CoRR}
+\newblock abs/1512.03385 (2015). --
+\newblock URL \url{http://arxiv.org/abs/1512.03385}
+
+\bibitem[Krizhevsky u.\,a.(2012)Krizhevsky, Sutskever und
+  Hinton]{krizhevsky2012imagenet}
+\dinatlabel{Krizhevsky u.\,a. 2012} \textsc{Krizhevsky}, Alex~;
+  \textsc{Sutskever}, Ilya~; \textsc{Hinton}, Geoffrey~E.:
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In: \emph{Advances in neural information processing systems}, 2012,
+  S.~1097--1105
+
+\bibitem[Loquercio u.\,a.(2018)Loquercio, Maqueda, del Blanco und
+  Scaramuzza]{loquercio2018dronet}
+\dinatlabel{Loquercio u.\,a. 2018} \textsc{Loquercio}, Antonio~;
+  \textsc{Maqueda}, Ana~I.~; \textsc{Blanco}, Carlos~R. del~;
+  \textsc{Scaramuzza}, Davide:
+\newblock Dronet: Learning to fly by driving.
+\newblock In: \emph{IEEE Robotics and Automation Letters}
+\newblock 3 (2018), Nr.~2, S.~1088--1095
 
 \bibitem[Pomerleau(1989)]{pomerleau1989alvinn}
 \dinatlabel{Pomerleau 1989} \textsc{Pomerleau}, Dean~A.:
