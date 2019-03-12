@@ -51,14 +51,14 @@
 \newblock In: \emph{Advances in neural information processing systems}, 2012,
   S.~1097--1105
 
-\bibitem[Loquercio u.\,a.(2018)Loquercio, Maqueda, del Blanco und
-  Scaramuzza]{loquercio2018dronet}
+\bibitem[Loquercio u.\,a.(2018)Loquercio, Maqueda, Blanco und
+  Scaramuzza]{Loquercio_2018}
 \dinatlabel{Loquercio u.\,a. 2018} \textsc{Loquercio}, Antonio~;
-  \textsc{Maqueda}, Ana~I.~; \textsc{Blanco}, Carlos~R. del~;
+  \textsc{Maqueda}, Ana~I.~; \textsc{Blanco}, Carlos R.~D.~;
   \textsc{Scaramuzza}, Davide:
-\newblock Dronet: Learning to fly by driving.
-\newblock In: \emph{IEEE Robotics and Automation Letters}
-\newblock 3 (2018), Nr.~2, S.~1088--1095
+\newblock Dronet: Learning to Fly by Driving.
+\newblock In: \emph{{IEEE} Robotics and Automation Letters}
+\newblock (2018)
 
 \bibitem[Pomerleau(1989)]{pomerleau1989alvinn}
 \dinatlabel{Pomerleau 1989} \textsc{Pomerleau}, Dean~A.:

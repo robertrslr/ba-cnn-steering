@@ -169,6 +169,13 @@ def visualize_attention(image_folder_path, model):
                                      normalised_image=preprocessed_one_image_batch,
                                      model=model, layer_index=30,
                                      filter_indices=0, type="cam")
+        
+def visualize_attention_on_epochs(image_path):
+    """
+    Show the development of attention on the image.
+    Calculates attention on one image for weights from different epochs
+    """
+    #TODO
 
 def main():
     # ------------------------------
