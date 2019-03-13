@@ -22,4 +22,5 @@
 \contentsline {chapter}{\numberline {6}Auswertung und Zusammenfassung}{13}{chapter.6}
 \contentsline {chapter}{\numberline {7}Res\IeC {\"u}mee}{14}{chapter.7}
 \contentsline {chapter}{\numberline {A}Anhang}{17}{appendix.A}
-\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{18}{appendix.A}
+\contentsline {chapter}{Glossar}{18}{section*.14}
+\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{19}{chapter*.15}
