@@ -7,7 +7,7 @@ In diesem Kapitel wird der vollständige Entwurf einer Steuerung für ein RC Fah
 Wie im vorangegangenen Kapitel erläutert, entstand die Idee für die Steuerung eines RC-Fahrzeuges mit Neuronalen Netzen im Kontext einer Arbeit der ETH Zürich.
 Das dort entworfene DroNet wurde bereits kurz vorgestellt und wird die Basis für die neuronale Steuerung sein. Zunächst sollen darum die technischen Aspekte von DroNet hervorgehoben werden: \\
 
-DroNet ist ein 8-Layer Convolutional Neural Network, das insbesondere aus drei Residual-Blöcken besteht und für den Input eines 200x200 Pixel Bildes in Graustufen zwei Outputs produziert, einmal einen Lenkwinkel aus dem Intervall [-1,1] (hierbei gilt; Werte <0 entsprechen einer Rechtskurve, Werte >0 einer Linkskurve)  und einmal die Kollisionswahrscheinlichkeit in Prozent (als Klassifizierungsproblem in Prozentschritten, nicht kontinuierlich).\\
+DroNet ist ein 8-Layer Convolutional Neural Network, das insbesondere aus drei Residual-Blöcken besteht und für den Input eines 200x200 Pixel Bildes in Graustufen zwei Outputs produziert, einmal einen Lenkwinkel aus dem Intervall [-1,1] (hierbei gilt; Werte~<0 entsprechen einer Rechtskurve, Werte~>0 einer Linkskurve)  und einmal die Kollisionswahrscheinlichkeit in Prozent (als Klassifizierungsproblem in Prozentschritten, nicht kontinuierlich).\\
 DroNet hat \num{3.2e5} Parameter und schafft eine Verarbeitungsrate von 20 fps ( Die Drohne, auf der DroNet getestet wurde lieferte Bilder mit 30 Hz).
 Wie im vorigen Kapitel bereits erwähnt, wurde DroNet auf einem frei verfügbaren Datensatz trainiert. Im Paper werden dann Ergebnisse mit anderen Netzwerken verglichen, die mit dem selben Datensatz trainiert wurden, um die Performance zu Vergleichen. Ein solcher Vergleich ist für diese Arbeit jedoch nicht sinnvoll, da es um die Anwendung auf ein spezifisches, reales Szenario geht. 
 
@@ -25,21 +25,31 @@ Eine funktionsfähige Hardware Abstraktion für den Motor und die Steuerungsserv
 \end{figure}
 
 Die Teststrecke, die an der HAW zur Verfügung steht, ist ein Rundkurs mit verschiedenen Kurven und einem Kreuzungszenario \note{Collage mit Bildern}. Die Länge der äußeren Fahrbahn beträgt 36,1 Meter, die innere Fahrbahn ist 31,3 Meter lang.\\
-
+Die Fahrbahn mit weißen Band auf schwarzem Untergrund abgeklebt und entspricht der Erscheinung einer Straße, mit unterbrochener Mittellinie. Einige Besonderheiten der Strecke, wie zum Beispiel Parklücken, sind Teil der Aufgaben des Carolo-Cups, spielen in dieser Arbeit aber keine Rolle.
 
 
 \section{Trainingsdaten}
+Um Trainingsdaten, also Bilder der Teststrecke mit dazugehörigem Lenkwinkel zu bekommen, wird auf einen Algorithmus eines Carolo-Cup Teams (Tean NaN) der HAW zurückgegriffen. Trainingsdaten per Hand zu generieren erwies sich als sehr schwierig, per Fernsteuerung lässt sich kaum sauber und kontinuierlich durch den Rundkurs steuern.\\
+Auf mehreren Fahrten über den Rundkurs mit dem Algorithmus von Team NaN, wurden so über 20.000 Bilder gesammelt. Da die Steuerung nicht völlig sauber funktionierte und die Bildfolgen mehrfach Ausreisser enthielten, mussten Bilder per Hand aussortiert werden. Am Ende dieser Vorauswahl standen etwas über 6000 Bilder für das Training zur Verfügung. Die Auflösung der Aufnahmen ist 752x480 Pixel. Die untere Hälfte der Bilder ist durch eine kamerainterne Vorverarbeitung bereits geschwärzt, Team NaN hat für ihre weitere Verarbeitung so direkt den Teil des Bildes ausgeblendet, auf dem das Fahrzeug selbst zu sehen ist. Da dieser Teil des Bildes im weiteren ohnehin weggeschnitten wird, hat das keine Auswirkungen. \\
+Ein Beispiel aus diesen Fahrbahnaufnahmen zeigt Abbildung~\ref{img:rohbild}, die Aufnahme ist automatisch in Graustufen, da die Kamera nur in diesem Farbmodus aufnimmt.
+Diese Rohdaten sind die Basis für das Training und müssen dazu einer Vorverarbeitung unterzogen werden. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4]{figures/Rohbild.png}
+	\caption{Rohaufnahme der Fahrbahn}
+	\label{img:rohbild}
+\end{figure}
 
 
-
-\section{Software und Training}
+\section{Preprocessing und Fine Tuning}
 
 
 Adaption auf das Carolo Cup Fahrzeug
 
 
 
-Fahren auf der Strecke 
+
 
 \note{Hervorhaben, welche Teile des DroNet Codes ich weiterverwede. Hard Mining, Auswertungsfunktionen, Architektur}
 
@@ -55,16 +65,11 @@ Kommunikation zwischen C und pYthon
 
 \note{BILD der STrecke}
 
-\section{Carolo-Cup}
-aufgabenstellung beim carolocp
-haus eigene strecke etc
+\section{Steuerung}
 
-\section{Die Strecke}
-
-\section{Das Fahrzeug}
-Das Fahrzeug, was von einem Carolo-Cup Team der HAW aufgebaut wurde, wird hier vorgestellt.
-
-
+Kamerakonfiguration
+Steuerungskomponenten
+Kommunikation C++/Python
 
 
 
