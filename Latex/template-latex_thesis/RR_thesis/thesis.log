@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.25)  13 MAR 2019 13:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.25)  26 MAR 2019 17:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**thesis
+**thesis.tex
 (./thesis.tex
 LaTeX2e <2018-04-01> patch level 5
 (c:/texlive/2018/texmf-dist/tex/latex/koma-script/scrreprt.cls
@@ -1404,7 +1404,7 @@ LaTeX Font Info:    Try loading font information for T1+phv on input line 9.
 (c:/texlive/2018/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
-<../style/HAW_Marke_schwarz.pdf, id=107, 387.4475pt x 142.5325pt>
+<../style/HAW_Marke_schwarz.pdf, id=111, 387.4475pt x 142.5325pt>
 File: ../style/HAW_Marke_schwarz.pdf Graphic file (type pdf)
 <use ../style/HAW_Marke_schwarz.pdf>
 Package pdftex.def Info: ../style/HAW_Marke_schwarz.pdf  used on input line 27.
@@ -1449,7 +1449,7 @@ chapter 1.
 
 ]) (./chapters/2-Neuronale-Navigation-mit-Bilddaten.tex [2]
 chapter 2.
-<figures/ResidualBlock.png, id=205, 572.1375pt x 330.23375pt>
+<figures/ResidualBlock.png, id=210, 572.1375pt x 330.23375pt>
 File: figures/ResidualBlock.png Graphic file (type png)
 <use figures/ResidualBlock.png>
 Package pdftex.def Info: figures/ResidualBlock.png  used on input line 21.
@@ -1457,31 +1457,37 @@ Package pdftex.def Info: figures/ResidualBlock.png  used on input line 21.
 [3
 
 ] [4 <./figures/ResidualBlock.png (PNG copy)>]
-<figures/Architecture-ALVINN.png, id=224, 343.2825pt x 322.95656pt>
+<figures/Architecture-ALVINN.png, id=229, 343.2825pt x 322.95656pt>
 File: figures/Architecture-ALVINN.png Graphic file (type png)
 <use figures/Architecture-ALVINN.png>
 Package pdftex.def Info: figures/Architecture-ALVINN.png  used on input line 60
 .
 (pdftex.def)             Requested size: 177.75908pt x 167.23367pt.
-<figures/Strasse-ALVINN.png, id=226, 267.24844pt x 250.68657pt>
+<figures/Strasse-ALVINN.png, id=231, 267.24844pt x 250.68657pt>
 File: figures/Strasse-ALVINN.png Graphic file (type png)
 <use figures/Strasse-ALVINN.png>
 Package pdftex.def Info: figures/Strasse-ALVINN.png  used on input line 66.
 (pdftex.def)             Requested size: 177.75908pt x 166.75037pt.
- [5 <./figures/Architecture-ALVINN.png> <./figures/Strasse-ALVINN.PNG>]
-<figures/NVIDIA-Training.png, id=242, 626.34pt x 292.09125pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--80
+
+ []
+
+[5 <./figures/Architecture-ALVINN.png> <./figures/Strasse-ALVINN.PNG>]
+<figures/NVIDIA-Training.png, id=248, 626.34pt x 292.09125pt>
 File: figures/NVIDIA-Training.png Graphic file (type png)
 <use figures/NVIDIA-Training.png>
-Package pdftex.def Info: figures/NVIDIA-Training.png  used on input line 85.
+Package pdftex.def Info: figures/NVIDIA-Training.png  used on input line 87.
 (pdftex.def)             Requested size: 313.16922pt x 146.04526pt.
-) (./chapters/3-Idee.tex [6 <./figures/NVIDIA-Training.png>]
+)
+(./chapters/3-Idee.tex [6 <./figures/NVIDIA-Training.png>]
 chapter 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
 
-<figures/Architecture-DRONET.png, id=253, 866.48718pt x 363.60844pt>
+<figures/Architecture-DRONET.png, id=259, 866.48718pt x 363.60844pt>
 File: figures/Architecture-DRONET.png Graphic file (type png)
 <use figures/Architecture-DRONET.png>
 Package pdftex.def Info: figures/Architecture-DRONET.png  used on input line 15
@@ -1504,7 +1510,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--30
 
  []
 
-<figures/Aufbau.png, id=263, 384.43625pt x 176.66pt>
+<figures/Aufbau.png, id=269, 384.43625pt x 176.66pt>
 File: figures/Aufbau.png Graphic file (type png)
 <use figures/Aufbau.png>
 Package pdftex.def Info: figures/Aufbau.png  used on input line 35.
@@ -1514,23 +1520,31 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) (./chapters/4-Entwurf.tex [8] [9 <./figures/Aufbau.png>]
 chapter 4.
-<figures/Fahrzeug.png, id=273, 869.2475pt x 652.4375pt>
-File: figures/Fahrzeug.png Graphic file (type png)
-<use figures/Fahrzeug.png>
-Package pdftex.def Info: figures/Fahrzeug.png  used on input line 44.
-(pdftex.def)             Requested size: 260.77626pt x 195.73276pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--9
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--19
+
+ []
+
 [10
 
-]) (./chapters/5-Szenarien.tex [11 <./figures/Fahrzeug.png (PNG copy)>]
+]
+<figures/Fahrzeug.png, id=285, 869.2475pt x 652.4375pt>
+File: figures/Fahrzeug.png Graphic file (type png)
+<use figures/Fahrzeug.png>
+Package pdftex.def Info: figures/Fahrzeug.png  used on input line 22.
+(pdftex.def)             Requested size: 260.77626pt x 195.73276pt.
+ [11 <./figures/Fahrzeug.png (PNG copy)>])
+(./chapters/5-Szenarien-und-Auswertung.tex [12]
 chapter 5.
-) (./chapters/6-Auswertung-und-Zusammenfassung.tex [12
+) (./chapters/6-Resümee.tex [13
 
 ]
 chapter 6.
-) (./chapters/7-Resümee.tex [13
-
-]
-chapter 7.
 ) (./thesis.bbl [14
 
 ]
@@ -1569,46 +1583,47 @@ File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ] [19
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 97.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 97.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 96.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 97.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 97.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 96.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 96.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 39BBF3DD0F15EA4F12F2CF15A2C17599;1451.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 97.
+(rerunfilecheck)             Checksum: 24539978B59BE66380757ED058923913;1535.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
  ) 
 Here is how much of TeX's memory you used:
- 41245 strings out of 492639
- 820959 string characters out of 6133087
- 1019845 words of memory out of 5000000
+ 41243 strings out of 492639
+ 820875 string characters out of 6133087
+ 1018845 words of memory out of 5000000
  44391 multiletter control sequences out of 15000+600000
  568433 words of font info for 77 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 82i,19n,82p,9114b,942s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 82i,19n,82p,9118b,942s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
 ive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2018/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr8.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1
-095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c
-:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/
-2018/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb><c:/texlive/2018/texmf
--dist/fonts/type1/public/cm-super/sfcc1095.pfb><c:/texlive/2018/texmf-dist/font
-s/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2018/texmf-dist/fonts/type1/pu
-blic/cm-super/sfrm1000.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-su
-per/sfrm1095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm12
-00.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfsl1095.pfb><c:
-/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><c:/texlive/2
-018/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2018/texmf-
-dist/fonts/type1/public/cm-super/sfti0900.pfb><c:/texlive/2018/texmf-dist/fonts
-/type1/public/cm-super/sfti1095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw
-/courier/ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a
-.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on thesis.pdf (26 pages, 1103324 bytes).
+fonts/cm/cmr8.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><
+c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive
+/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2018/texm
+f-dist/fonts/type1/public/cm-super/sfbx2074.pfb><c:/texlive/2018/texmf-dist/fon
+ts/type1/public/cm-super/sfcc1095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/p
+ublic/cm-super/sfrm0900.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-s
+uper/sfrm1000.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1
+095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c
+:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfsl1095.pfb><c:/texlive/
+2018/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><c:/texlive/2018/texmf
+-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2018/texmf-dist/font
+s/type1/public/cm-super/sfti0900.pfb><c:/texlive/2018/texmf-dist/fonts/type1/pu
+blic/cm-super/sfti1095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/
+ucrr8a.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/
+texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on thesis.pdf (26 pages, 1114289 bytes).
 PDF statistics:
- 425 PDF objects out of 1000 (max. 8388607)
- 359 compressed objects within 4 object streams
- 75 named destinations out of 1000 (max. 500000)
- 253 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 436 PDF objects out of 1000 (max. 8388607)
+ 369 compressed objects within 4 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 261 words of extra memory for PDF output out of 10000 (max. 10000000)
 

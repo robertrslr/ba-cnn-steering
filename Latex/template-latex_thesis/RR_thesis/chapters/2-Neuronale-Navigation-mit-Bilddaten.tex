@@ -13,10 +13,9 @@ Hier erfolgt zunächst eine kurze Beschreibung der für Neuronale Navigation auf
 CNNs sollen hier nicht detailliert erklärt werden, das Verständnis wird als Grundlage vorausgesetzt.
 
 \subsection{ResNet}
-\textit{Residual Neural Networks}, oder kurz ResNet, ist eine weitere Technik, die ihren Urprung in der Biologie hat. Verhalten so genannter Pyramidenzellen, Nervenzellen im menschlichen Gehirn, wird nachgebildet, indem Abkürzungen zwischen Layer eingebaut werden. Residual Netze wurden 2015 entwickelt, insbesondere ließ sich mit diesem Ansatz das trainieren tiefer Netze verbessern \cite{DBLP:journals/corr/HeZRS15}. \ref{img:ResBlock} zeigt den schematischen Aufbau eines so genannten Residual Blocks. 
+\textit{Residual Neural Networks}, oder kurz ResNet, ist eine weitere Technik, die ihren Urprung in der Biologie hat. Das Verhalten so genannter Pyramidenzellen, Nervenzellen im menschlichen Gehirn, wird nachgebildet, indem Abkürzungen zwischen Layer eingebaut werden. Residual Netze wurden 2015 entwickelt, insbesondere ließ sich mit diesem Ansatz das Trainieren tiefer Netze verbessern \cite{DBLP:journals/corr/HeZRS15}. \ref{img:ResBlock} zeigt den schematischen Aufbau eines so genannten Residual Blocks. 
 
-
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5]{figures/ResidualBlock.png}
 	\caption{Residual Block}
@@ -24,8 +23,10 @@ CNNs sollen hier nicht detailliert erklärt werden, das Verständnis wird als Gr
 	\label{img:ResBlock}
 \end{figure}
 
+Je tiefer ein Neuronales Netz ist, desto schwieriger wird das Trainieren aller Layer, ein Problem in diesem Zusammehang ist das \glqq Vanishing Gradient Problem \grqq{}. Für tiefe Layer wird der berechnete Gradient so verschwindend klein, dass irgendwann keine Änderung der Gewichte in den Layern mehr stattfindet, so stagniert das Training und es können keine weiteren Fortschritte erzielt werden.\\
+Der Residual-Ansatz fügt einem normalen Block gewichteter Layer eine Abkürzung hinzu, auf das normale Mapping H(x) für den Input x wird zusätzlich der Input selbst addiert
 
-DBLP:journals/corr/HeZRS15
+
 
 \subsection{Fine tuning}
 LAYER FREEZING 

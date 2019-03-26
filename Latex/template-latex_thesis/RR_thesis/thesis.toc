@@ -15,12 +15,13 @@
 \contentsline {chapter}{\numberline {3}Idee}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}DroNet und Carolo-Cup}{7}{section.3.1}
 \contentsline {chapter}{\numberline {4}Entwurf}{10}{chapter.4}
-\contentsline {section}{\numberline {4.1}Carolo-Cup}{10}{section.4.1}
-\contentsline {section}{\numberline {4.2}Die Strecke}{11}{section.4.2}
-\contentsline {section}{\numberline {4.3}Das Fahrzeug}{11}{section.4.3}
-\contentsline {chapter}{\numberline {5}Szenarien}{12}{chapter.5}
-\contentsline {chapter}{\numberline {6}Auswertung und Zusammenfassung}{13}{chapter.6}
-\contentsline {chapter}{\numberline {7}Res\IeC {\"u}mee}{14}{chapter.7}
+\contentsline {section}{\numberline {4.1}Hardware und Strecke}{10}{section.4.1}
+\contentsline {section}{\numberline {4.2}Software und Training}{11}{section.4.2}
+\contentsline {section}{\numberline {4.3}Carolo-Cup}{12}{section.4.3}
+\contentsline {section}{\numberline {4.4}Die Strecke}{12}{section.4.4}
+\contentsline {section}{\numberline {4.5}Das Fahrzeug}{12}{section.4.5}
+\contentsline {chapter}{\numberline {5}Szenarien und Auswertung}{13}{chapter.5}
+\contentsline {chapter}{\numberline {6}Res\IeC {\"u}mee}{14}{chapter.6}
 \contentsline {chapter}{\numberline {A}Anhang}{17}{appendix.A}
 \contentsline {chapter}{Glossar}{18}{section*.14}
 \contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{19}{chapter*.15}
