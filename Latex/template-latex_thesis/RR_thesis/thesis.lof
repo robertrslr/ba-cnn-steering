@@ -1,15 +1,16 @@
-\select@language {ngerman}
+\babel@toc {ngerman}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Residual Block\relax }}{4}{figure.caption.6}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces ALVINN Architektur (a) und simulierte Fahrbahn (b)\relax }}{5}{figure.caption.7}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Komponenten des Trainings\relax }}{6}{figure.caption.8}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces ALVINN Architektur (a) und simulierte Fahrbahn (b)\relax }}{6}{figure.caption.7}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Komponenten des Trainings\relax }}{7}{figure.caption.8}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Architektur \textsc {DroNet}\relax }}{7}{figure.caption.9}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Einfacher schematischer Aufbau \relax }}{9}{figure.caption.10}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Architektur \textsc {DroNet}\relax }}{8}{figure.caption.9}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Einfacher schematischer Aufbau \relax }}{10}{figure.caption.10}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Das Carolo-Cup Fahrzeug\relax }}{11}{figure.caption.11}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Rohaufnahme der Fahrbahn\relax }}{12}{figure.caption.12}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Das Carolo-Cup Fahrzeug\relax }}{12}{figure.caption.11}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Ein Ausschnitt der Teststrecke\relax }}{13}{figure.caption.12}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Kameraaufnahme der Fahrbahn\relax }}{14}{figure.caption.13}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

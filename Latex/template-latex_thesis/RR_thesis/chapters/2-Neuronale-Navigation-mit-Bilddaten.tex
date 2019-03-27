@@ -8,12 +8,14 @@ Hier erfolgt zunächst eine kurze Beschreibung der für Neuronale Navigation auf
 
 \subsection{Deep Learning}
 
+
+
 \subsection{CNN}
-\textit{Convolutional Neural Networks}, oder kurz CNN, haben sich gerade im Bereich der Bildverarbeitung als überlegen bewiesen. Aus der Biologie inspiriert, findet hier besonders das Prinzip des rezeptiven Feldes Anwendung. Die Aktivität jedes Neurons wird mithilfe einer Faltung berechnet, räumliche Informationen und Zusammenhänge werden so besser erhalten. 2012 konnte ein CNN, AlexNet \cite{krizhevsky2012imagenet}, beim ImageNet-Wettbewerb den Benchmark-Rekord von 25,8 \% auf 16,4 \% drücken, seitdem sind alle gut platzierten Modelle CNNs.
+\textit{Convolutional Neural Networks}, oder kurz CNN, haben sich gerade im Bereich der Bildverarbeitung als überlegen bewiesen. Aus der Biologie inspiriert, findet hier besonders das Prinzip des rezeptiven Feldes Anwendung. Die Aktivität jedes Neurons wird mithilfe einer Faltung berechnet, räumliche Informationen und Zusammenhänge werden so besser erhalten. 2012 konnte ein CNN, AlexNet \cite{krizhevsky2012imagenet}, beim ImageNet-Wettbewerb den Benchmark-Rekord von 25,8 \% auf 16,4 \% drücken, seitdem sind alle gut platzierten Modelle CNNs. Nicht nur in der Bilderkennung, sondern auch in der Spracherkennung (Parsen, Satzmodellierung, Machinelle Übersetzung) gelten CNNs als State-of-the-Art Methode und finden Anwendung in modernsten Technologien.\\
 CNNs sollen hier nicht detailliert erklärt werden, das Verständnis wird als Grundlage vorausgesetzt.
 
 \subsection{ResNet}
-\textit{Residual Neural Networks}, oder kurz ResNet, ist eine weitere Technik, die ihren Urprung in der Biologie hat. Das Verhalten so genannter Pyramidenzellen, Nervenzellen im menschlichen Gehirn, wird nachgebildet, indem Abkürzungen zwischen Layer eingebaut werden. Residual Netze wurden 2015 entwickelt, insbesondere ließ sich mit diesem Ansatz das Trainieren tiefer Netze verbessern \cite{DBLP:journals/corr/HeZRS15}. \ref{img:ResBlock} zeigt den schematischen Aufbau eines so genannten Residual Blocks. 
+\textit{Residual Neural Networks}, oder kurz ResNet, ist eine weitere Technik, die ihren Ursprung in der Biologie hat. Das Verhalten so genannter Pyramidenzellen, Nervenzellen im menschlichen Gehirn, wird nachgebildet, indem Abkürzungen zwischen Layer eingebaut werden. Residual Netze wurden 2015 entwickelt, insbesondere ließ sich mit diesem Ansatz das Trainieren tiefer Netze verbessern \cite{DBLP:journals/corr/HeZRS15}. Abbildung~\ref{img:ResBlock} zeigt den schematischen Aufbau eines so genannten Residual Blocks. 
 
 \begin{figure}[h]
 	\centering
@@ -24,20 +26,14 @@ CNNs sollen hier nicht detailliert erklärt werden, das Verständnis wird als Gr
 \end{figure}
 
 Je tiefer ein Neuronales Netz ist, desto schwieriger wird das Trainieren aller Layer, ein Problem in diesem Zusammehang ist das \glqq Vanishing Gradient Problem \grqq{}. Für tiefe Layer wird der berechnete Gradient so verschwindend klein, dass irgendwann keine Änderung der Gewichte in den Layern mehr stattfindet, so stagniert das Training und es können keine weiteren Fortschritte erzielt werden.\\
-Der Residual-Ansatz fügt einem normalen Block gewichteter Layer eine Abkürzung hinzu, auf das normale Mapping H(x) für den Input x wird zusätzlich der Input selbst addiert
-
+Der Residual-Ansatz fügt einem normalen Block gewichteter Layer eine Abkürzung hinzu. Wie in Abbildung~\ref{img:ResBlock} zu sehen, wird der Input x des Blocks direkt auf den Output addiert. Nimmt man an, dass es für den Input x eine richtige Gewichtsverteilung H(x) der Layer im Block gibt, die erlernt werden soll, dann ist der Unterschied zwischen dem Input und dieser optimalen Verteilung F(x)=H(x)-x. F(x) ist das \glqq Residual \grqq{}, stellt man die Funktion um, erhält man H(x)=F(x)+x. Statt der optimalen Gewichtsverteilung für den Block, lernt das Netz jetzt F(x), also gerade den Unterschied zur Identitätsfunktion des Inputs x.\\
+Die Annahme der Autoren (\cite{DBLP:journals/corr/HeZRS15}) war, dass diese Residual-Funktion besser zu erlernen sei, als das originale Mapping. Selbst wenn das gelernte Residual F(x)=0, bekommt man für den Input x immernoch die Identitätsfunktion, also x selbst heraus. Das dieses Mapping meistens näher an der gewünschten optimalen Gewichtsverteilung liegt, war eine weitere Annahme.\\
+In Versuchen mit Neuronalen Netzen verschiedener Tiefe konnten diese Annahmen bestätigt werden. 
 
 
 \subsection{Fine tuning}
-LAYER FREEZING 
-Fine Tuning 
-
-
-
-
-
-
-
+Fine Tuning beschreibt einen Prozess, in dem ein bereits trainiertes Neuronales Netz für eine ähnliche Aufgabe abgestimmt wird. Dabei können Teile der Layer des ursprünglichen Netzes ersetzt werden, oder neue hinzugefügt werden. Insbesondere bei Klassifizierungsaufgaben wird dazu häufig die Kategorisierung verändert, um zum Beispiel die von einem Netz erlernten Eigenschaften auf neue Kategorien anzuwenden.\\
+In diesem Zusammenhang wird auch \glqq Layer-Freezing \grqq{}, also das einfrieren von Layern vor dem Training verwendet. Eingefrorene Layer aktualisieren ihre Gewichte nicht und sind damit vom Trainingsprozess ausgeschlossen. So soll verhindert werden, dass bereits erlernte Eigenschaften eines Netzes, wie \glqq Katzenohr \grqq{} oder auch \glqq Linie \grqq{} nicht verloren gehen. Dazu werden frühere Layer meist eingefroren, spätere auf einem neuen Datensatz trainiert, um die bereits erlernten Eigenschaften zu nutzen und nicht zu verändern und Eigenschaften für die neue, ähnliche Aufgabe zu erlernen.
 
 
 \section{Ansätze}
@@ -81,9 +77,7 @@ Daten werden hier durch Fahrten auf echten Straßen gesammelt, wofür drei Kamer
 
 Abbildung~\ref{img:NVIDIA} zeigt die Komponenten des Trainingsprozesses. 
 
-
-
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5]{figures/NVIDIA-Training.png}
 	\caption{Komponenten des Trainings}
@@ -93,10 +87,5 @@ Abbildung~\ref{img:NVIDIA} zeigt die Komponenten des Trainingsprozesses.
 
 
 
-
-
-Glossar
-
-Convolutional Neural Network CNN
 
 
