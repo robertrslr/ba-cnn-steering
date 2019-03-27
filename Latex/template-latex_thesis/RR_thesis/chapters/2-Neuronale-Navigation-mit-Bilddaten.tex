@@ -7,7 +7,8 @@
 Hier erfolgt zunächst eine kurze Beschreibung der für Neuronale Navigation auf Bilddaten relevanten Technik. Grundlegendes wird nur der Vollständigkeit halber erwähnt, speziellere Aspekte kurz vorgestellt. 
 
 \subsection{Deep Learning}
-
+Im Bereich des Maschinellen Lernens stellt das Deep Learning einen besonders populären Subbereich dar. Viele bekannte Anwendungen, die in den Medien auch als Künstliche Intelligenz bezeichnet werden, nutzen diese Technik. Eine Hierarchie aus Konzepten zu bauen, bei denen komplizierte Konzepte aus dem Produkt vieler einfacher Konzepte entstehen, erwies sich für das Lernen von Datenrepräsentationen als besonders geeignet. Diese Aufeinanderschichten von Berechnungsschritten in so genannten Layern, bildet ein tiefer Graph ab, auch Neuronales Netz genannt. Die Bezeichnung Deep Learning bezieht sich auf diese Struktur, mit der das Wissen aus Erfahrungswerten, den Trainingsdaten, extrahiert werden kann.\\
+Deep Learning gliedert sich selbst in viele Unterthemen auf, eine Darstellung der Geschichte und Technikentwicklung soll hier nicht gegeben werden. Basiswissen zu maschinellem Lernen wird vorausgesetzt, Deep Learning im Speziellen wird in entsprechender Literatur detailliert erklärt, für diese Arbeit diente vor allem ein Hauptbuch (\cite{Goodfellow-et-al-2016}) als begleitende Wissenquelle.
 
 
 \subsection{CNN}
@@ -50,6 +51,7 @@ Zudem interpretiert ALVINN die Aufgabe des Spurfolgens nicht als Regressionsprob
 Grob gesagt gibt das Neuron mit dem höchsten Aktivierungslevel die Fahrtrichtung (den einzuschlagenden Lenkwinkel) an.
 Im Ergebnis konnte das Netz nach 40 Epochen Training auf simulierten Fahrbahnbildern, zu sehen in \ref{img:ALVINNb}, einen 400 Meter Weg durch einen Wald mit \SI{1/2}{\meter/\second} sicher abfahren.
 
+
 \begin{figure}
 	\centering
 	\begin{subfigure}{.5\textwidth}
@@ -79,7 +81,7 @@ Abbildung~\ref{img:NVIDIA} zeigt die Komponenten des Trainingsprozesses.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.5]{figures/NVIDIA-Training.png}
+	\includegraphics[scale=0.6]{figures/NVIDIA-Training.png}
 	\caption{Komponenten des Trainings}
 	Quelle: \citeI{NVIDIA-Components}
 	\label{img:NVIDIA}

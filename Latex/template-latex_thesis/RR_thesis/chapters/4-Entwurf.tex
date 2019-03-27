@@ -37,6 +37,7 @@ Der Teststreckenraum ist fensterlos, es wurde sowohl bei Aufnahme der Trainingsb
 	\label{img:teststrecke}
 \end{figure}
 
+Bildverarbeitung und Training des Netzes werden auf einem Windows Computer mit einer GeForce GTX 950 Grafikkarte berechnet. Da mit einer relativ kleinen Bildanzahl gearbeitet wird und das Neuronale Netz sehr kompakt ist, wird keine High-end Grafikkarte benötigt.
 
 
 \section{Trainingsdaten}
@@ -54,14 +55,32 @@ Diese Rohdaten sind die Basis für das Training und müssen dazu einer Vorverarb
 \end{figure}
 
 
-\section{Preprocessing und Fine Tuning}
-Um die Bilder für das Training aufzubereiten, wird eine Verarbeitungspipeline eingerichtet, die in der gleichen Form auch für die Vorverarbeitung im Steuerungsmodus genutzt wird.
+\section{Vorverarbeitung und Fine Tuning}
+
+\subsection{Software}
+Die Bildverarbeitung und das Training sind mit Python programmiert. Für Operationen auf Bildern wird die OpenCV Bibliothek verwendet. Das Neuronale Netz und die Struktur für Verarbeitung der Bilder und Training sind mit Keras implementiert.\\
+Einzelne Funktionen zur Auswertung und für das Training sind aus dem Repository der DroNet Gruppe der ETH Zürich übernommen, diese sind im Code entsprechend kenntlich gemacht.\\
+Die Abstraktion für den Motorcontroller auf dem Fahrzeug ist in C++ implementiert, die Steuerungskontrolle auf Fahrzeugseite ist daher in C entwickelt.\\
+Die Python Module laufen auf einem Windows Computer in einer virtuellen Umgebung, die mit Anaconda verwaltet wird. Es sind 2 Umgebungen mit Python 3.6.5 eingerichtet. Auf dem Fahrzeug (NUC) kommt zusätzlich Visual Studio Code zum Einsatz, so wie eine Debugging Umgebung mit PyCharm für die Python Module.
+
+\subsection{Preprocessing}
+Um die Bilder für das Training aufzubereiten, wird eine Verarbeitungspipeline eingerichtet, die in der gleichen Form auch für die Vorverarbeitung im Steuerungsmodus genutzt wird. Die Bilder, die das Netz zum Training zu \glqq sehen \grqq{} bekommt, sollen die gleiche Verarbeitung durchlaufen wie die Live-Bilder, die später zum Steuern benutzt werden.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{figures/Architecture-DRONET-FROZEN.png}
+	\caption{Angepasste Architektur}
+	\label{img:dronetfrozen}
+\end{figure}
+
+
 
 Adaption auf das Carolo Cup Fahrzeug
 
+GRUNDSATZ: , Chollet depp learning zitieren
 
-
-
+\subsection{Fine Tuning}
 
 \note{Hervorhaben, welche Teile des DroNet Codes ich weiterverwede. Hard Mining, Auswertungsfunktionen, Architektur}
 
