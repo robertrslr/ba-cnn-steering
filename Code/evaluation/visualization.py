@@ -46,7 +46,8 @@ def visualize_attention_on_image(raw_image, normalised_image,
             heatmap = visualize_saliency(model, layer_idx=layer_index,
                                          filter_indices=filter_indices,
                                          seed_input=normalised_image,
-                                         grad_modifier=modifier)
+                                         grad_modifier=modifier,
+                                         backprop_modifier='guided')
         elif type == "cam":
             heatmap = visualize_cam(model, layer_idx=layer_index,
                                     filter_indices=filter_indices,
@@ -168,7 +169,7 @@ def visualize_attention(image_folder_path, model):
         visualize_attention_on_image(input_image,
                                      normalised_image=preprocessed_one_image_batch,
                                      model=model, layer_index=30,
-                                     filter_indices=0, type="cam")
+                                     filter_indices=0, type="saliency")
         
 def visualize_attention_on_epochs(image_path):
     """
@@ -189,12 +190,16 @@ def main():
     # ----------------------------------
 
     model = utilities.jsonToModel("../../model_Carolo/model_struct.json")
-    model.load_weights("../../model_Test/NEUweights_199.h5")
+    model.load_weights("../../model_Test/best_weights_197.h5")
+    
+    for idx,layer in enumerate(model.layers):
+        print(idx,":",layer)
 
     visualizationPath = '../../saliency/'
     visualize_attention(visualizationPath, model)
 
-    #img = cv2.imread("../../saliency/im_186588_98375.835938_1437_1570.png")
+    #img = cv2.imread("../../saliency/im_186588_98375.835938_1437_1570
+    .png")
 
     
 
