@@ -169,7 +169,7 @@ def visualize_attention(image_folder_path, model):
         visualize_attention_on_image(input_image,
                                      normalised_image=preprocessed_one_image_batch,
                                      model=model, layer_index=30,
-                                     filter_indices=0, type="saliency")
+                                     filter_indices=0, type="cam")
         
 def visualize_attention_on_epochs(image_path):
     """
@@ -198,8 +198,7 @@ def main():
     visualizationPath = '../../saliency/'
     visualize_attention(visualizationPath, model)
 
-    #img = cv2.imread("../../saliency/im_186588_98375.835938_1437_1570
-    .png")
+    #img = cv2.imread("../../saliency/im_186588_98375.835938_1437_1570.png")
 
     
 
