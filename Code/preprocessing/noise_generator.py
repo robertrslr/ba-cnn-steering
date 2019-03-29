@@ -24,6 +24,7 @@ import numpy as np
 import os
 import cv2
 from Code import utilities
+from random import randint
 
 
 
@@ -36,7 +37,7 @@ def noisy(noise_typ,image):
         gauss = np.random.normal(mean, sigma, (row, col, ch))
         gauss = gauss.reshape(row, col, ch) 
         noisy = image + gauss 
-        noisy = noisy.astype(np.uint8)
+        print(noisy)
         return noisy
     elif noise_typ == "s&p":
         row, col, ch = image.shape
@@ -65,9 +66,23 @@ def noisy(noise_typ,image):
         gauss = np.random.randn(row, col, ch)
         gauss = gauss.reshape(row, col, ch)        
         noisy = image + image * gauss
+        print(noisy)
         return noisy
   
-    
+
+def generate_random_noise(normalised_image):
+
+    rand = randint(0, 4)
+    if 2 <= rand <= 4:
+        return normalised_image
+    elif rand == 0:
+        return noisy("gauss", normalised_image)
+    elif rand == 1:
+        return noisy("speckle", normalised_image)
+    else:
+        return "Fehler"
+
+
 def main():
     
     image = cv2.imread('../../saliency/im_186588_98375.835938_1437_1570.png')
@@ -90,8 +105,7 @@ def main():
     cv2.waitKey()
     cv2.imshow("speckle", noisy('speckle', equ_hist_img_reshaped))
     cv2.waitKey()
-    cv2.destroyAllWindows()
-    
+    cv2.destroyAllWindows()  
     
 if __name__ == "__main__":
     main()

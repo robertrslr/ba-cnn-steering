@@ -41,7 +41,7 @@ def getModel(img_width, img_height, img_channels, output_dim, weights_path):
        model: A Model instance.
     """
     dronet_model = utilities.jsonToModel('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/model_struct.json')
-    carolo_model = adapted_dronet_model.unfrozen_resnet8(img_width, img_height, img_channels, output_dim)
+    carolo_model = adapted_dronet_model.partly_frozen_resnet8(img_width, img_height, img_channels, output_dim)
     if weights_path:
         try:
             dronet_model.load_weights('C:/Users/user/Desktop/BA/BA/ba-cnn-steering/model_DroNet/best_weights.h5')
@@ -103,7 +103,7 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     validation_steps = int(np.ceil(val_data_generator.samples / constants.BATCH_SIZE))
 
     history = model.fit_generator(train_data_generator,
-                        epochs=constants.EPOCHS200, steps_per_epoch = steps_per_epoch,
+                        epochs=constants.EPOCHS150, steps_per_epoch = steps_per_epoch,
                         callbacks=[writeBestModel,saveModelAndLoss],
                         validation_data=val_data_generator,
                         validation_steps = validation_steps,

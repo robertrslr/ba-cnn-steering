@@ -145,7 +145,6 @@ def overlay_colour_on_greyscale(image_color, image_greyscale, title="Overlay"):
                                       figsize=(10, 10))
     ax0.imshow(img, cmap=plt.cm.gray)
     ax1.imshow(color_mask)
-
     ax2.imshow(img_overlay)
     plt.title(title)
     plt.show()
@@ -169,7 +168,7 @@ def visualize_attention(image_folder_path, model):
         visualize_attention_on_image(input_image,
                                      normalised_image=preprocessed_one_image_batch,
                                      model=model, layer_index=30,
-                                     filter_indices=0, type="cam")
+                                     filter_indices=0, type="saliency")
         
 def visualize_attention_on_epochs(image_path):
     """
@@ -190,10 +189,11 @@ def main():
     # ----------------------------------
 
     model = utilities.jsonToModel("../../model_Carolo/model_struct.json")
-    model.load_weights("../../model_Test/best_weights_197.h5")
+    model.load_weights("../../model_Test/T6weights_145.h5")
     
     for idx,layer in enumerate(model.layers):
         print(idx,":",layer)
+
 
     visualizationPath = '../../saliency/'
     visualize_attention(visualizationPath, model)

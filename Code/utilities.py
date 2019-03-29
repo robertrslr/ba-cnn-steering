@@ -20,6 +20,7 @@ from keras.utils.generic_utils import Progbar
 from keras.models import model_from_json
 
 from Code import constants
+from Code.preprocessing import noise_generator
 
 
 def modelToJson(model, json_model_path):
@@ -106,8 +107,9 @@ class CaroloDataGenerator(ImageDataGenerator):
                             batch_size=32,):
         return CaroloDataIterator(directory, self,
                                   color_mode=color_mode,
-                                  batch_size=batch_size)
-               
+                                  batch_size=batch_size,
+                                  shuffle=shuffle)
+
 
 class CaroloDataIterator(Iterator):
     """
@@ -123,10 +125,9 @@ class CaroloDataIterator(Iterator):
        seed : numpy seed to shuffle data
        follow_links: Bool, whether to follow symbolic links or not
 
-   
     """
-    def __init__(self, directory, image_data_generator,color_mode='grayscale',
-                 batch_size=32, shuffle=False):
+    def __init__(self, directory, image_data_generator, color_mode='grayscale',
+                 batch_size=32, shuffle=False, noise=False):
        
         self.directory = directory
         self.image_data_generator = image_data_generator
@@ -138,13 +139,18 @@ class CaroloDataIterator(Iterator):
             raise ValueError('Invalid color mode:', color_mode,
                              '; expected "grayscale".')
         self.shuffle = shuffle
-        
+
+        if "training" in self.directory:
+            self.noise = True
+        elif "validation" in self.directory:
+            self.noise = False
+
         self.samples = 0
-        
+
         # Idea: associate each filename with a corresponding steering or label
         self.filenames = []
         self.ground_truth = []
-        
+   
         self._load_carolo_data(directory)
         
 
@@ -265,15 +271,14 @@ class CaroloDataIterator(Iterator):
             fname = self.filenames[j]
             
             x = load_img(os.path.join(image_dir, fname), do_hist=True,raw_image=constants.RAW_IMAGE)
+           
             
-            #cv2.imwrite(os.path.join(constants.EVALUATION_PATH,"TEST.png"),x)
-            
-            #adjust brightness option
-            #x = adjust_brightness(x,constants.BRIGHTNESS_ADJUST)
-            
-            #transform not necessary
-            #x = self.image_data_generator.random_transform(x)
+            x = self.image_data_generator.random_transform(x)
             x = self.image_data_generator.standardize(x)
+            # Noise only applied to training samples
+            if self.noise is True:
+                x = noise_generator.generate_random_noise(x)
+            
             batch_x[i] = x
 
             #Since images are not labelled with collision data,
