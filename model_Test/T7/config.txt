@@ -1,0 +1,6 @@
+T7
+Leanring Rate Adam 0.0001
+150 Epochen
+Random Transform
+Shuffle
+noise(jetzt richtig normalisiert auf values [0,1])

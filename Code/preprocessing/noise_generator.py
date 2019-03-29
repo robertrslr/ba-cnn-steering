@@ -37,8 +37,7 @@ def noisy(noise_typ,image):
         gauss = np.random.normal(mean, sigma, (row, col, ch))
         gauss = gauss.reshape(row, col, ch) 
         noisy = image + gauss 
-        print(noisy)
-        return noisy
+        return np.clip(noisy, 0, 1)
     elif noise_typ == "s&p":
         row, col, ch = image.shape
         s_vs_p = 0.5
@@ -55,22 +54,27 @@ def noisy(noise_typ,image):
         coords = [np.random.randint(0, i - 1, int(num_pepper))
                   for i in image.shape]
         out[coords] = 0
-        return out
+        return np.clip(out, 0, 1)
     elif noise_typ == "poisson":
         vals = len(np.unique(image))
         vals = 2 ** np.ceil(np.log2(vals))
         noisy = np.random.poisson(image * vals) / float(vals)
-        return noisy
+        return np.clip(noisy, 0, 1)
     elif noise_typ =="speckle":
         row, col, ch = image.shape
         gauss = np.random.randn(row, col, ch)
         gauss = gauss.reshape(row, col, ch)        
         noisy = image + image * gauss
-        print(noisy)
-        return noisy
+        return np.clip(noisy, 0, 1)
   
 
 def generate_random_noise(normalised_image):
+    """
+    Zufällige Noise Generierung für ein Bild.
+    3/5 der Fälle bleibt das Bild wie es ist.
+    1/5 Gauss-Noise.
+    1/5 Speckle-Noise.
+    """
 
     rand = randint(0, 4)
     if 2 <= rand <= 4:
