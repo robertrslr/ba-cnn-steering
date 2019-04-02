@@ -98,7 +98,7 @@ def main():
         current_time = clock()
         framerate, time_last_round = calc_framerate(current_time, time_last_round)
 
-        print("Prediction:", prediction_st, "Framerate:", int(framerate), end='\r')
+        print("Prediction:", ":.2f}".format(prediction_st), "Framerate:", int(framerate), end='\r')
 
         #get data out of nested array structure
         for value in prediction_st:

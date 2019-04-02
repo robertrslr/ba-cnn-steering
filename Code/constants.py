@@ -9,7 +9,7 @@ Constants (Paths, values and configuratiions)
 
 #---------------------GENERAL PATHS----------------------
 
-EXPERIMENT_DIRECTORY = "../../caroloExperiment"
+EXPERIMENT_DIRECTORY = "../../caroloExperiment/T11"
 
 TRAINING_DIRECTORY = "../../training"
 
@@ -46,7 +46,7 @@ EPOCHS120 = 120
 
 LOGGING_RATE = 10
 
-RAW_IMAGE = True 
+RAW_IMAGE = False 
 
 TEST_PHASE = 0
 TRAIN_PHASE = 1

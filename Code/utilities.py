@@ -127,7 +127,7 @@ class CaroloDataIterator(Iterator):
 
     """
     def __init__(self, directory, image_data_generator, color_mode='grayscale',
-                 batch_size=32, shuffle=False, noise=False):
+                 batch_size=32, shuffle=True, noise=False):
        
         self.directory = directory
         self.image_data_generator = image_data_generator
@@ -270,7 +270,7 @@ class CaroloDataIterator(Iterator):
         for i, j in enumerate(index_array):
             fname = self.filenames[j]
             
-            x = load_img(os.path.join(image_dir, fname), do_hist=True,raw_image=constants.RAW_IMAGE)
+            x = load_img(os.path.join(image_dir, fname), do_hist=False,raw_image=constants.RAW_IMAGE)
            
             
             #x = self.image_data_generator.random_transform(x)

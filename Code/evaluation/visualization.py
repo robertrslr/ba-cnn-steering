@@ -189,7 +189,7 @@ def main():
     # ----------------------------------
 
     model = utilities.jsonToModel("../../model_Carolo/model_struct.json")
-    model.load_weights("../../model_Test/T7/weights_145.h5")
+    model.load_weights("../../model_Test/T9/weights_182.h5")
     
     for idx,layer in enumerate(model.layers):
         print(idx,":",layer)
