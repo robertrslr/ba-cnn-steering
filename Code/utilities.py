@@ -273,7 +273,7 @@ class CaroloDataIterator(Iterator):
             x = load_img(os.path.join(image_dir, fname), do_hist=True,raw_image=constants.RAW_IMAGE)
            
             
-            x = self.image_data_generator.random_transform(x)
+            #x = self.image_data_generator.random_transform(x)
             x = self.image_data_generator.standardize(x)
             # Noise only applied to training samples
             if self.noise is True:

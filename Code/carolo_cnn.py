@@ -103,7 +103,7 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     validation_steps = int(np.ceil(val_data_generator.samples / constants.BATCH_SIZE))
 
     history = model.fit_generator(train_data_generator,
-                        epochs=constants.EPOCHS150, steps_per_epoch = steps_per_epoch,
+                        epochs=constants.EPOCHS200, steps_per_epoch = steps_per_epoch,
                         callbacks=[writeBestModel,saveModelAndLoss],
                         validation_data=val_data_generator,
                         validation_steps = validation_steps,

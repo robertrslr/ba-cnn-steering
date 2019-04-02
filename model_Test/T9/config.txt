@@ -1,0 +1,10 @@
+T8
+Leanring Rate Adam 0.0001
+200 Epochen
+Shuffle
+noise(jetzt richtig normalisiert auf values [0,1])
+
+
+KEIN
+Random transform
+Histogramausgleich
