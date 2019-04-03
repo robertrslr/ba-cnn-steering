@@ -9,7 +9,7 @@ Constants (Paths, values and configuratiions)
 
 #---------------------GENERAL PATHS----------------------
 
-EXPERIMENT_DIRECTORY = "../../caroloExperiment/T14"
+EXPERIMENT_DIRECTORY = "../../caroloExperiment/T17"
 
 TRAINING_DIRECTORY = "../../training"
 
