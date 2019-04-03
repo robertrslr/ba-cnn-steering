@@ -168,7 +168,7 @@ def visualize_attention(image_folder_path, model):
         visualize_attention_on_image(input_image,
                                      normalised_image=preprocessed_one_image_batch,
                                      model=model, layer_index=30,
-                                     filter_indices=0, type="cam")
+                                     filter_indices=0, type="saliency")
         
 def visualize_attention_on_epochs(image_path):
     """
@@ -189,7 +189,7 @@ def main():
     # ----------------------------------
 
     model = utilities.jsonToModel("../../model_Carolo/model_struct.json")
-    model.load_weights("../../model_Test/T9/weights_182.h5")
+    model.load_weights("../../model_Test/best_weights_197.h5")
     
     for idx,layer in enumerate(model.layers):
         print(idx,":",layer)

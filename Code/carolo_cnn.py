@@ -11,7 +11,7 @@ import numpy as np
 import os
 
 from keras.callbacks import ModelCheckpoint
-from keras import optimizers
+from keras import optimizers, backend as K
 
 from Code import utilities, constants,adapted_dronet_model,custom_callback,plot_evaluation
 
@@ -79,11 +79,11 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     #model.k_entropy = tf.Variable(constants.batch_size, trainable=False, name='k_entropy', dtype=tf.int32)
     
     #COnfigure optimizer with small learning rate for fine tuning
-    optimizer = optimizers.Adam(lr=0.001, decay=1e-5)
+    optimizer = optimizers.Adam(lr=0.0001, decay=1e-5)
 
     # Configure training process
     model.compile(loss=utilities.hard_mining_mse(model.k_mse),
-                        optimizer=optimizer)
+                  optimizer=optimizer, metrics=[coeff_determination])
 
     # Save model with the lowest validation loss
     weights_path = os.path.join(constants.EXPERIMENT_DIRECTORY, 'weights_{epoch:03d}.h5')
@@ -111,6 +111,14 @@ def trainModel(train_data_generator, val_data_generator, model, initial_epoch):
     
     print(history.history.keys())
     plot_evaluation.plot_session_loss(history)
+    
+    
+    
+def coeff_determination(y_true, y_pred):
+    SS_res =  K.sum(K.square( y_true-y_pred ))
+    SS_tot = K.sum(K.square( y_true - K.mean(y_true) ) )
+    print("Sum Squared regression Error: ",SS_res," Sum Squared Total Error: ",SS_tot)
+    return ( 1 - SS_res/(SS_tot + K.epsilon()) )
    
 
     

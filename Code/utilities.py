@@ -276,8 +276,8 @@ class CaroloDataIterator(Iterator):
             #x = self.image_data_generator.random_transform(x)
             x = self.image_data_generator.standardize(x)
             # Noise only applied to training samples
-            if self.noise is True:
-                x = noise_generator.generate_random_noise(x)
+            #if self.noise is True:
+            #    x = noise_generator.generate_random_noise(x)
             
             batch_x[i] = x
 
