@@ -35,7 +35,7 @@ def load_model_and_weights():
     model = utilities.jsonToModel('../../model_Carolo/model_struct.json')
 
     try:
-        model.load_weights('../../model_Test/best_weights_197.h5')
+        model.load_weights('../../model_Test/T16weights_189.h5')
         # print("Loaded model from {}".format(weights_load_path))
     except:
         print("Impossible to find weight path. Returning untrained model")
@@ -98,7 +98,7 @@ def main():
         current_time = clock()
         framerate, time_last_round = calc_framerate(current_time, time_last_round)
 
-        print("Prediction:", ":.2f}".format(prediction_st), "Framerate:", int(framerate), end='\r')
+        print("Prediction:", "{:.2f}".format(float(prediction_st)), "Framerate:", int(framerate), end='\r')
 
         #get data out of nested array structure
         for value in prediction_st:
