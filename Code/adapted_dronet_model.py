@@ -59,8 +59,17 @@ def partly_frozen_resnet8(img_width, img_height, img_channels, output_dim):
     x1 = Conv2D(32, (1, 1), strides=[2,2], padding='same')(x1)
     x3 = add([x1, x2])
 
+    #create seperate 
+    frozen_model = Model(inputs=[img_input], outputs =[x3])
+    
+    for layer in frozen_model.layers:
+        layer.trainable = False
+        
+    xconnect = frozen_model.output
+
+
     # Second residual block
-    x4 = keras.layers.normalization.BatchNormalization()(x3)
+    x4 = keras.layers.normalization.BatchNormalization()(xconnect)
     x4 = Activation('relu')(x4)
     x4 = Conv2D(64, (3, 3), strides=[2,2], padding='same',
                 kernel_initializer="he_normal",
@@ -73,19 +82,12 @@ def partly_frozen_resnet8(img_width, img_height, img_channels, output_dim):
                 kernel_regularizer=regularizers.l2(1e-4))(x4)
 
     
-    x3 = Conv2D(64, (1, 1), strides=[2,2], padding='same')(x3)
-    x5 = add([x3, x4])
+    xconnect = Conv2D(64, (1, 1), strides=[2,2], padding='same')(xconnect)
+    x5 = add([xconnect, x4])
     
-    #create seperate 
-    frozen_model = Model(inputs=[img_input], outputs =[x5])
-    
-    for layer in frozen_model.layers:
-        layer.trainable = False
-        
-    xconnect = frozen_model.output
 
     # Third residual block
-    x6 = keras.layers.normalization.BatchNormalization()(xconnect)
+    x6 = keras.layers.normalization.BatchNormalization()(x5)
     x6 = Activation('relu')(x6)
     x6 = Conv2D(128, (3, 3), strides=[2,2], padding='same',
                 kernel_initializer="he_normal",
