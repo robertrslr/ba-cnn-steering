@@ -20,13 +20,15 @@
 \contentsline {section}{\numberline {4.3}Vorverarbeitung und Fine Tuning}{15}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Software}{15}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Preprocessing}{16}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Fine Tuning}{16}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.3}Fine Tuning}{17}{subsection.4.3.3}
 \contentsline {section}{\numberline {4.4}Steuerung}{17}{section.4.4}
-\contentsline {chapter}{\numberline {5}Szenarien und Auswertung}{18}{chapter.5}
-\contentsline {subsection}{\numberline {5.0.1}Testfahrten}{18}{subsection.5.0.1}
-\contentsline {subsection}{\numberline {5.0.2}Sonderszenarien}{18}{subsection.5.0.2}
-\contentsline {paragraph}{\nonumberline Kreuzung}{18}{section*.16}
-\contentsline {paragraph}{\nonumberline Fahrbahn wiederfinden}{18}{section*.17}
-\contentsline {subsection}{\numberline {5.0.3}Saliency}{18}{subsection.5.0.3}
-\contentsline {chapter}{\numberline {6}Res\IeC {\"u}mee}{19}{chapter.6}
-\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{23}{chapter*.19}
+\contentsline {paragraph}{\nonumberline Kommunikation}{18}{section*.16}
+\contentsline {chapter}{\numberline {5}Szenarien und Auswertung}{19}{chapter.5}
+\contentsline {subsection}{\numberline {5.0.1}Metriken}{19}{subsection.5.0.1}
+\contentsline {subsection}{\numberline {5.0.2}Testfahrten}{19}{subsection.5.0.2}
+\contentsline {subsection}{\numberline {5.0.3}Sonderszenarien}{19}{subsection.5.0.3}
+\contentsline {paragraph}{\nonumberline Kreuzung}{19}{section*.18}
+\contentsline {paragraph}{\nonumberline Fahrbahn wiederfinden}{19}{section*.19}
+\contentsline {subsection}{\numberline {5.0.4}Saliency}{19}{subsection.5.0.4}
+\contentsline {chapter}{\numberline {6}Res\IeC {\"u}mee}{20}{chapter.6}
+\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{24}{chapter*.21}

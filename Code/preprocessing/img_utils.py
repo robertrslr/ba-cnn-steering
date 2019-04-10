@@ -125,13 +125,12 @@ def main():
     
     image_files = '../../../testData/fullAndFlipped'
   
-    steering_file = '../../../carolo_experiment/carolo_images_OUT'
+    steering_file = '../../../../../Fahrtbilder/cleancroppedDatabetterVersion'
         
-    #plot_steering_angle_distribution(os.path.join(steering_file,'steering_labels.txt'),6000)
+    plot_steering_angle_distribution(os.path.join(steering_file,'steering_labels.txt'),6000)
     #flip_images(image_files,None)
     
-    val_train_split('../../../testDataOriginal/training/images','../../../testDataOriginal/validation/images',5390)
-    
+    #val_train_split('../../../testDataOriginal/training/images','../../../testDataOriginal/validation/images',5390)
     
 
 
