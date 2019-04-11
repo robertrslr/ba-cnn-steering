@@ -42,8 +42,8 @@ Im folgenden wird auf zwei Ansätze der Navigation mit Neuronalen Netzen eingega
 
 \subsection{ALVINN}
 
-Versuche durch neuronale Verarbeitung von reinen Bilddaten in einem Szenario zu navigieren, gab es bereits 1989 in Pomerleau's Arbeit, die man auf diesem Gebiet als Pionierarbeit verstehen kann.\cite{pomerleau1989alvinn}.
-Das Netzwerk ALVINN (Autonomous Land Vehicle In a Neural Network) sollte das NAVLAB steuern, ein Testfahrzeug für Autonome Navigation der Carnegie Mellon University.
+Versuche durch neuronale Verarbeitung von reinen Bilddaten in einem Szenario zu navigieren, gab es bereits 1989 in Pomerleau's Arbeit, die man auf diesem Gebiet als Pionierarbeit verstehen kann\cite{pomerleau1989alvinn}.
+Das Netzwerk \gls{ac:alvinn} sollte das \gls{gl:navlab} steuern, ein Testfahrzeug für Autonome Navigation der Carnegie Mellon University.
 In \ref{img:ALVINNa} lässt sich die Architektur nachvollziehen. 
 Der rein visuelle Input (die Blautstufenintensität eines Pixels bestimmt das Aktivierungslevel des Inputneurons) wird untersützt durch eine laserbasierte Abstandsmessung und ein Inputneuron für die Kodierung der \glqq Straßenintensität\grqq{}, also ob die Straße heller oder dunkler wird.
 Aus heutiger Sicht ist das Netz mit nur einer hidden Layer mit 29 Neronen sehr klein, die im weiteren angesprochenen Architekturen haben deutlich mehr Layer und mehrere Hunderttausend Parameter. 

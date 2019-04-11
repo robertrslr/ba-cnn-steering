@@ -1,0 +1,32 @@
+\BOOKMARK [0][-]{section*.2}{Abbildungsverzeichnis}{}% 1
+\BOOKMARK [0][-]{section*.4}{Tabellenverzeichnis}{}% 2
+\BOOKMARK [0][-]{section*.6}{Abk\374rzungen}{}% 3
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 4
+\BOOKMARK [1][-]{section.1.1}{Autonome Navigation mit Bilddaten}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Neuronale Navigation mit Bilddaten}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Relevante Technik/Hintergrund}{chapter.2}% 7
+\BOOKMARK [2][-]{subsection.2.1.1}{Deep Learning}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.2}{CNN}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.3}{ResNet}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.4}{Fine tuning}{section.2.1}% 11
+\BOOKMARK [1][-]{section.2.2}{Ans\344tze}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.1}{ALVINN}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.2}{NVIDIA DAVE-2}{section.2.2}% 14
+\BOOKMARK [0][-]{chapter.3}{Idee}{}% 15
+\BOOKMARK [1][-]{section.3.1}{DroNet und Carolo-Cup}{chapter.3}% 16
+\BOOKMARK [0][-]{chapter.4}{Entwurf}{}% 17
+\BOOKMARK [1][-]{section.4.1}{Hardware und Strecke}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.2}{Trainingsdaten}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.3}{Vorverarbeitung und Fine Tuning}{chapter.4}% 20
+\BOOKMARK [2][-]{subsection.4.3.1}{Software}{section.4.3}% 21
+\BOOKMARK [2][-]{subsection.4.3.2}{Preprocessing}{section.4.3}% 22
+\BOOKMARK [2][-]{subsection.4.3.3}{Fine Tuning}{section.4.3}% 23
+\BOOKMARK [1][-]{section.4.4}{Steuerung}{chapter.4}% 24
+\BOOKMARK [0][-]{chapter.5}{Szenarien und Auswertung}{}% 25
+\BOOKMARK [1][-]{subsection.5.0.1}{Metriken}{chapter.5}% 26
+\BOOKMARK [2][-]{subsection.5.0.2}{Testfahrten}{subsection.5.0.1}% 27
+\BOOKMARK [2][-]{subsection.5.0.3}{Sonderszenarien}{subsection.5.0.1}% 28
+\BOOKMARK [2][-]{subsection.5.0.4}{Saliency}{subsection.5.0.1}% 29
+\BOOKMARK [0][-]{chapter.6}{Res\374mee}{}% 30
+\BOOKMARK [0][-]{section*.34}{Glossar}{}% 31
+\BOOKMARK [0][-]{chapter*.35}{Selbstst\344ndigkeitserkl\344rung}{}% 32

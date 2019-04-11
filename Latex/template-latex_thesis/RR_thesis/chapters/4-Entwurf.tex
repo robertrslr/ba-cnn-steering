@@ -6,14 +6,15 @@ In diesem Kapitel wird der vollständige Entwurf einer Steuerung für ein RC Fah
 
 Wie im vorangegangenen Kapitel erläutert, entstand die Idee für die Steuerung eines RC-Fahrzeuges mit Neuronalen Netzen im Kontext einer Arbeit der ETH Zürich.
 Das dort entworfene DroNet wurde bereits kurz vorgestellt und wird die Basis für die neuronale Steuerung sein. Zunächst sollen darum die technischen Aspekte von DroNet hervorgehoben werden: \\
-
-DroNet ist ein 8-Layer Convolutional Neural Network, das insbesondere aus drei Residual-Blöcken besteht und für den Input eines 200x200 Pixel Bildes in Graustufen zwei Outputs produziert, einmal einen Lenkwinkel aus dem Intervall [-1,1] (hierbei gilt; Werte~<0 entsprechen einer Rechtskurve, Werte~>0 einer Linkskurve)  und einmal die Kollisionswahrscheinlichkeit in Prozent (als Klassifizierungsproblem in Prozentschritten, nicht kontinuierlich).\\
+DroNet ist ein 8-Layer Convolutional Neural Network, das insbesondere aus drei Residual-Blöcken besteht und für den Input eines 200x200 Pixel Bildes in Graustufen zwei Outputs produziert, einmal einen Lenkwinkel aus dem Intervall $\interval{-1}{1}$ (hierbei gilt; Werte~< 0 entsprechen einer Rechtskurve, Werte~> 0 einer Linkskurve)  und einmal die Kollisionswahrscheinlichkeit in Prozent (als Klassifizierungsproblem in Prozentschritten, nicht kontinuierlich).\\
 DroNet hat \num{3.2e5} Parameter und schafft eine Verarbeitungsrate von 20 fps ( Die Drohne, auf der DroNet getestet wurde lieferte Bilder mit 30 Hz).
-Wie im vorigen Kapitel bereits erwähnt, wurde DroNet auf einem frei verfügbaren Datensatz trainiert. Im Paper werden dann Ergebnisse mit anderen Netzwerken verglichen, die mit dem selben Datensatz trainiert wurden, um die Performance zu Vergleichen. Ein solcher Vergleich ist für diese Arbeit jedoch nicht sinnvoll, da es um die Anwendung auf ein spezifisches, reales Szenario geht. 
+Wie im vorigen Kapitel bereits erwähnt, wurde DroNet auf einem frei verfügbaren Datensatz trainiert.\\
+Im Paper werden die Ergebnisse mit anderen Netzwerken verglichen, die mit dem selben Datensatz trainiert wurden. Anhand verschiedener Metriken zur Messung der Bestimmungsgenauigkeit, wird die Performance auf dem Datensatz bestimmt. Ein solcher Vergleich ist für diese Arbeit jedoch nicht sinnvoll, da es um die Anwendung auf ein spezifisches, reales Szenario geht.
+\newpage 
 
 \section{Hardware und Strecke}
-
-Das vom HAW-Team aufgebaute Fahrzeug für den Carolo-Cup (Abbildung~\ref{img:Carolo-Fahrzeug} zeigt die Seitenansicht), besteht, abgesehen von Chassis, Motorelektronik und Servos, im Kern aus einem Intel NUC, auf dem die vollständige Bildverarbeitung und Logik berechnet wird und der Kamera, die die Bilder liefert (montiert an einem Alustab). Die Kamera ist eine \textsc{ueye} Schwarweißkamera der Firma IDS, die über USB mit dem NUC verbunden ist. 
+\paragraph{Fahrzeug}
+Das vom HAW-Team aufgebaute Fahrzeug für den Carolo-Cup (Abbildung~\ref{img:Carolo-Fahrzeug} zeigt die Seitenansicht), besteht, abgesehen von Chassis, Motorelektronik und Servos, im Kern aus einem Intel \gls{ac:nuc}, auf dem die vollständige Bildverarbeitung und Logik berechnet wird und der Kamera, die die Bilder liefert (montiert an einem Alustab). Die Kamera ist eine \textsc{ueye} Schwarzweißkamera der Firma \gls{ac:ids}, die über USB mit dem NUC verbunden ist. 
 Die Kontrolle per Fernsteuerung, zum Eingreifen im Fehlerfall und zum Positionieren des Fahrzeugs kommuniziert über Funk direkt mit dem Motorcontroller.\\
 Auf dem Intel NUC ist ein Unix Betriebssystem eingerichtet.
 Eine funktionsfähige Hardware Abstraktion für den Motor und die Steuerungsservos ist vom Carolo-Cup Team bereits entwickelt und steht mir im Weiteren zur Verfügung, diese ist in C++ implementiert.\\
@@ -24,26 +25,26 @@ Eine funktionsfähige Hardware Abstraktion für den Motor und die Steuerungsserv
 	\caption{Das Carolo-Cup Fahrzeug}
 	\label{img:Carolo-Fahrzeug}
 \end{figure}
-
-Die Teststrecke, die an der HAW zur Verfügung steht, ist ein Rundkurs mit verschiedenen Kurven und einem Kreuzungszenario \note{Collage mit Bildern}. Die Länge der äußeren Fahrbahn beträgt 36,1 Meter, die innere Fahrbahn ist 31,3 Meter lang.\\
+\paragraph{Strecke}
+Die Teststrecke, die an der HAW zur Verfügung steht, ist ein Rundkurs mit verschiedenen Kurven und einem Kreuzungszenario. Die Länge der äußeren Fahrbahn beträgt 36,1 Meter, die innere Fahrbahn ist 31,3 Meter lang.\\
 Die Fahrbahn mit weißen Band auf schwarzem Untergrund abgeklebt und entspricht der Erscheinung einer Straße, mit unterbrochener Mittellinie. Einige Besonderheiten der Strecke, wie zum Beispiel Parklücken, sind Teil der Aufgaben des Carolo-Cups, spielen in dieser Arbeit aber keine Rolle.
 Die Abbildung~\ref{img:teststrecke} zeigt einen Ausschnitt der Fahrbahn, zu sehen ist eine fast kreisförmige Kurve und die Kreuzungssituation. 
 Der Teststreckenraum ist fensterlos, es wurde sowohl bei Aufnahme der Trainingsbilder, als auch bei den Testfahrten darauf geachtet, dass die volle Deckenbeleuchtung an ist, um für optimale und gleichbleibende Beleuchtungsverhältnisse zu sorgen.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.2]{figures/Teststrecke-Ausschnitt.jpg}
+	\includegraphics[scale=0.15]{figures/Teststrecke-Ausschnitt.jpg}
 	\caption{Ein Ausschnitt der Teststrecke}
 	\label{img:teststrecke}
 \end{figure}
-
+\paragraph{Rechnerhardware}
 Bildverarbeitung und Training des Netzes werden auf einem Windows Computer (Windows 10) mit einer GeForce GTX 950 Grafikkarte berechnet. Da mit einer relativ kleinen Bildanzahl gearbeitet wird und das Neuronale Netz sehr kompakt in Hinblick auf die Parameteranzahl ist, wird keine High-end Grafikkarte benötigt.
 
 
 \section{Trainingsdaten}
 
-Um Trainingsdaten, also Bilder der Teststrecke mit dazugehörigem Lenkwinkel zu bekommen, wird auf einen Algorithmus eines Carolo-Cup Teams (TeamWorstCase) der HAW zurückgegriffen. Trainingsdaten per Hand zu generieren erwies sich als sehr schwierig, per Fernsteuerung lässt sich kaum sauber und kontinuierlich durch den Rundkurs steuern.\\
-Auf mehreren Fahrten über den Rundkurs mit dem Algorithmus von Team \textsc{TeamWorstCase}, wurden über 20.000 Bilder gesammelt. Da die Steuerung nicht völlig sauber funktionierte und die Bildfolgen mehrfach Ausreisser enthielten, mussten Bilder per Hand aussortiert werden. Am Ende dieser Vorauswahl standen etwas über 6000 Bilder für das Training zur Verfügung. Die Auflösung der Aufnahmen ist 752x480 Pixel. Die untere Hälfte der Bilder ist durch eine kamerainterne Vorverarbeitung bereits geschwärzt, Team \textsc{TeamWorstCase} hat für ihre weitere Verarbeitung so direkt den Teil des Bildes ausgeblendet, auf dem das Fahrzeug selbst zu sehen ist. Da dieser Teil des Bildes im weiteren ohnehin weggeschnitten wird, hat das keine Auswirkungen. \\
+Um Trainingsdaten, also Bilder der Teststrecke mit dazugehörigem Lenkwinkel zu bekommen, wird auf einen Algorithmus eines Carolo-Cup Teams (\textsc{TeamWorstCase}) der HAW zurückgegriffen. Trainingsdaten per Hand zu generieren erwies sich als sehr schwierig, per Fernsteuerung lässt sich kaum sauber und kontinuierlich durch den Rundkurs steuern.\\
+Auf mehreren Fahrten über den Rundkurs mit dem Algorithmus von \textsc{TeamWorstCase}, wurden über 20.000 Bilder gesammelt. Da die Steuerung nicht völlig sauber funktionierte und die Bildfolgen mehrfach Ausreisser enthielten, mussten Bilder per Hand aussortiert werden. Am Ende dieser Vorauswahl standen etwas über 6.000 Bilder für das Training zur Verfügung. Die Auflösung der Aufnahmen ist 752x480 Pixel. Die untere Hälfte der Bilder ist durch eine kamerainterne Vorverarbeitung bereits geschwärzt, \textsc{TeamWorstCase} hat für ihre weitere Verarbeitung so direkt den Teil des Bildes ausgeblendet, auf dem das Fahrzeug selbst zu sehen ist. Da dieser Teil des Bildes im weiteren ohnehin weggeschnitten wird, hat das keine Auswirkungen. \\
 Ein Beispiel aus diesen Fahrbahnaufnahmen zeigt Abbildung~\ref{img:rohbild}, die Aufnahme ist automatisch in Graustufen, da die Kamera nur in diesem Farbmodus aufnimmt.
 Diese Rohdaten sind die Basis für das Training und müssen dazu einer Vorverarbeitung unterzogen werden. 
 
@@ -58,17 +59,32 @@ Diese Rohdaten sind die Basis für das Training und müssen dazu einer Vorverarb
 \section{Vorverarbeitung und Fine Tuning}
 
 \subsection{Software}
-Die Bildverarbeitung und das Training sind mit Python programmiert. Für Operationen auf Bildern wird die OpenCV Bibliothek verwendet. Das Neuronale Netz und die Struktur für Verarbeitung der Bilder und Training sind mit Keras implementiert.\\
+Die Bildverarbeitung und das Training sind mit Python programmiert. Für Operationen auf Bildern wird die \gls{gl:opencv} Bibliothek verwendet. Das Neuronale Netz und die Struktur für Verarbeitung der Bilder und Training sind mit Keras implementiert.\\
 Einzelne Funktionen zur Auswertung und für das Training sind aus dem Repository der DroNet Gruppe der ETH Zürich übernommen, diese sind im Code entsprechend kenntlich gemacht.\\
 Die Abstraktion für den Motorcontroller auf dem Fahrzeug ist in C++ implementiert, die Steuerungskontrolle auf Fahrzeugseite ist daher in C entwickelt.\\
-Die Python Module laufen auf einem Windows Computer in einer virtuellen Umgebung, die mit Anaconda verwaltet wird. Es sind 2 Umgebungen mit Python 3.6.5 eingerichtet. Auf dem Fahrzeug (NUC) kommt zusätzlich Visual Studio Code zum Einsatz, so wie eine Debugging Umgebung mit PyCharm für die Python Module.
+Die Python Module laufen auf einem Windows Computer in einer virtuellen Umgebung, die mit \gls{gl:anaconda} verwaltet wird. Es sind 2 Umgebungen mit Python 3.6.5 eingerichtet. Auf dem Fahrzeug (NUC) kommt zusätzlich \gls{ac:vscode} zum Einsatz, so wie eine Debugging Umgebung mit \gls{gl:pycharm} für die Python Module.
 
 \subsection{Preprocessing}
 
-Um die Bilder für das Training aufzubereiten, wird eine Verarbeitungspipeline eingerichtet, die in der gleichen Form auch für die Vorverarbeitung im Steuerungsmodus genutzt wird. Die Bilder, die das Netz zum Training zu \glqq sehen \grqq{} bekommt, sollen die gleiche Verarbeitung durchlaufen wie die Live-Bilder, die später zum Steuern benutzt werden.\\
-Zunächst wird die Verteilung der Lenkwinkel betrachtet, in Abbildung~\ref{fig:steuerungswinkel} grafisch aufbereitet. Die x-Achse bildet den Lenkwinkel aus [-1,1] ab, die y-Achse die Anzahl der Trainingsbilder mit dem jeweiligen Lenkwinkel. Grafik~\ref{fig:anglesa} zeigt die Verteilung der Lenkwinkel (zu entsprechenden Bildern) in der gesamten Trainingsbildermenge. Es wird sofort ersichtlich, dass die Mehrheit der gesammelten Lenkdaten von einer Fahrt geradeaus, mit Lenkwinkel um 0.0, stammen. Um eine möglichst ausgeglichene Verteilung zu erreichen wird eine Anpassung vorgenommen.\\
+Um die Bilder für das Training aufzubereiten, wird eine Verarbeitungspipeline eingerichtet, die in der gleichen Form auch für die Vorverarbeitung im Steuerungsmodus genutzt wird. Die Bilder, die das Netz zum Training zu \glqq sehen \grqq{} bekommt, sollen die gleiche Verarbeitung durchlaufen wie die Live-Bilder, die später zum Steuern benutzt werden.
+
+\paragraph{Lenkwinkelskalierung}
+Zunächst wird die Verteilung der Lenkwinkel betrachtet. Allerdings muss hier noch eine Skalierung erfolgen, denn die im Carolo-Cup-Fahrzeug verwendete Kodierung entspricht nicht der Kodierung, in der das neuronale Netz trainiert wurde. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{figures/Lenkwinkelskalierung.png}
+	\caption{Skalierung der Lenkwinkel-Wertebereiche}
+	\label{img:skalierunglenkwinkel}
+\end{figure}
+
+Wie Abbildung~\ref{img:skalierunglenkwinkel} zeigt, müssen die Wertebereiche umgerechnet werden. Für jeden Lenkwinkel wird zunächst mit $(Wert-1500)/500$ auf den Bereich $\interval{0}{1}$ skaliert, dann werden alle $Werte\neq0.0$ mit -1.0 multipliziert. Damit erhält man Werte im Intervall $\interval{-1}{1}$, wobei natürlich die Interpretation der negativen Werte als Rechtslenkung und der positiven Werte als Linkslenkung beachtet werden muss.
+
+\paragraph{Bilderset}
+In Abbildung~\ref{fig:steuerungswinkel} ist die Lenkwinkelverteilung grafisch aufbereitet. Die x-Achse bildet den Lenkwinkel aus $\interval{-1}{1}$ ab, die y-Achse die Anzahl der Trainingsbilder mit dem jeweiligen Lenkwinkel. Grafik~\ref{fig:anglesa} zeigt die Verteilung der Lenkwinkel (zu entsprechenden Bildern) in der gesamten Trainingsbildermenge. Es wird sofort ersichtlich, dass die Mehrheit der gesammelten Lenkdaten von einer Fahrt geradeaus, mit Lenkwinkel um 0.0, stammen. Um eine möglichst ausgeglichene Verteilung zu erreichen wird eine Anpassung vorgenommen.\\
 Alle Bilder, mit Ausnahme derer, die mit einem Lenkwinkel von 0.0 assoziiert sind, werden gespiegelt. So kann die Trainingsdatenmenge verdoppelt werden und gleichzeitig eine ausgeglichene Verteilung der Lenkwinkel erreicht werden. Grafik~\ref{fig:anglesb} zeigt die Verteilung nach der Anpassung.\\
-Die Spiegelung sorgt automatisch dafür, dass Aufnahmen der rechten Fahrbahnseite zu Aufnahmen der Linken werden. Diese Erweiterung der Trainingsdaten auf beide Spuren wird aber nicht als Problem betrachtet, die Annahme ist, dass Fahrbahneigenschaften unabhängig der Fahrbahnseite gelernt werden können und das Training dadurch robuster wird.
+Die Spiegelung sorgt automatisch dafür, dass Aufnahmen der rechten Fahrbahnseite zu Aufnahmen der Linken werden. Diese Erweiterung der Trainingsdaten auf beide Spuren wird aber nicht als Problem betrachtet, die Annahme ist, dass Fahrbahneigenschaften unabhängig der Fahrbahnseite gelernt werden können und das Training dadurch robuster wird. So entsteht ein Traningsbilder-Set von knapp 11.000 Bildern.
+
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}{.5\textwidth}
@@ -83,16 +99,17 @@ Die Spiegelung sorgt automatisch dafür, dass Aufnahmen der rechten Fahrbahnseit
 	 	  \caption{}
 		  \label{fig:anglesb}
 	\end{subfigure}%
-	\caption{Verteilung der Lenkwinkel im Bilderset}
+	\caption{Lenkwinkelverteilung im Bilderset}
 	\label{fig:steuerungswinkel}
 \end{figure}%
 
-Zu jedem Bild muss der dazugehörige Lenkwinkel als Label dem Lernprozess zur Verfügung gestellt werden. Beim Sammeln der Daten sind alle Parameter (Geschwindigkeit, Lenkwinkel, Framenummer) in der Bildbezeichnung hinterlegt worden. Mit einer Parsing Funktion wird die Bezeichnung gefiltert, die Lenkwinkel werden zusammen mit der Framenummer als eindeutigem Identifikator in einer Textdatei gespeichert. Die Textdatei wird für jeden Bildordner, Traning-, Validierung- und Testordner angelegt. Die Lenkdaten stehen somit direkt, auch für eine Analyse wie der oben erstellten Verteilung, zur Verfügung.\\
+Zu jedem Bild muss der dazugehörige Lenkwinkel als Label dem Lernprozess zur Verfügung gestellt werden. Beim Sammeln der Daten sind alle Parameter (Geschwindigkeit, Lenkwinkel, Framenummer) in der Bildbezeichnung hinterlegt worden. Mit einer Parsing Funktion wird die Bezeichnung gefiltert, die Lenkwinkel werden zusammen mit der Framenummer als eindeutigem Identifikator in einer Textdatei gespeichert. Die Textdatei wird für jeden Bildordner, Traning-, Validierung- und Testordner angelegt. Die Lenkdaten stehen somit direkt, auch für eine Analyse wie der oben erstellten Verteilung, zur Verfügung.
 
+\paragraph{Bildverarbeitung}
 Mit den so vorbereiteten Daten wird im Weiteren eine Pipeline mit Bildoperationen eingerichtet. Die Abbildung~\ref{fig:dronetfrozen} macht die Struktur der Verarbeitung deutlich.\\
 Als Bildquellen kommen entweder die ueye-Kamera auf dem Fahrzeug in Frage, oder die Traningsdaten. Im einem ersten Schritt werden die Bilder skaliert und dann auf die Bildgröße 200x200 Bildpunkte zugeschnitten. Hier wurde speziell darauf geachtet, den Bildausschnitt mit dem größten Informationsgehalt zu erhalten, also möglichst viel der Fahrbahn im zugeschnittenen Bild.\\
 Die Aufnahmen sind recht dunkel, selbst bei voll eingeschaltetem Raumlicht waren keine besseren Aufnahmen zu bekommen. Hier wird ein Histogrammausgleich für jedes Bild angewandt. Die Verteilung der Grauwerte wird so besser auf den gesamten Wertebereich aufgezogen, die Bilder werden heller.\\
-Anschließend werden die Grauwerte auf den Wertebereich [0,1] normalisiert. Für die Berechnung in CNNs ein üblicher Schritt, die Produkte der Multiplikationen bleiben in einem kleinen Wertebereich und ermöglichen so ein effizienteres Traning. Außerdem wird noch eine Umformung des Bildarrays von einem zweidimensionalen zu einem dreidimensionalen vorgenommen, dies ist im weiteren ebenfalls für die Verarbeitung im Netz von Bedeutung, auch wenn hier nur eine 1 für eine Graustufendimension angefügt wird.
+Anschließend werden die Grauwerte auf den Wertebereich $\interval{0}{1}$ normalisiert. Für die Berechnung in CNNs ein üblicher Schritt, die Produkte der Multiplikationen bleiben in einem kleinen Wertebereich und ermöglichen so ein effizienteres Traning. Außerdem wird noch eine Umformung des Bildarrays von einem zweidimensionalen zu einem dreidimensionalen vorgenommen, dies ist im weiteren ebenfalls für die Verarbeitung im Netz von Bedeutung, auch wenn hier nur eine 1 für die eine Farbwertdimension (Grauwert) angefügt wird.
 
 \begin{figure}[h]
 	\centering
@@ -101,13 +118,12 @@ Anschließend werden die Grauwerte auf den Wertebereich [0,1] normalisiert. Für
 	\label{fig:dronetfrozen}
 \end{figure}
 
+Für das Training wird auf einem Teil der Bilder ein Filter angewendet, der das Bild optisch verwischen lässt, um das Lernen robuster zu machen. Hierzu werden zufällige Werte aus einer (Gausschen-)Normalverteilung mit Mittelpunkt 0 gezogen und auf die Pixelwerte addiert. Für positive Werte werden die Pixel somit heller, für negative dunkler. So wird ein körniges, unscharfes Erscheinen des Bildes erreicht.
 
-
-
-\note{GRUNDSATZ: , Chollet depp learning zitieren}
 
 \subsection{Fine Tuning}
 
+\paragraph{Netzarchitektur}
 Das CNN DroNet, welches als Grundlage verwendet wird, ist bereits mit Bildern von Fahrbahnen aus dem regulären Straßenverkehr trainiert. Eigenschaften einer Fahrbahn sind also, so die Annahme, bereits in der Gewichtsverteilung der einzelnen Layer repräsentiert. Die für diese Arbeit interessante Strecke fällt natürlich auch in die Kategorie Fahrbahn, allerdings unterscheiden sich die Aufnahmen der Teststrecke von denen, einer echten Fahrbahn. Es ist keine Bebauung vorhanden, ebenso gibt es keine anderen Verkehrsteilnehmer und die Art der Straßenführung unterscheidet sich von realen Situationen.\\
 Statt die Gewichtsmatrizen des gesamten Netzwerkes anzupassen, wird nur ein Fine-Tuning des letzten Residual Blocks vorgenommen. Die architektonische Aufteilung in diese Blöcke ermöglicht ein gutes Aufteilen des Netzes in einen Teil mit festgesetzten bzw. eingefrorenen Gewichten und den Teil, der trainiert wird.\\
 Abbildung~\ref{img:dronetfrozen} veranschaulicht diese Aufteilung. Der Teil des Netzes in roten Klammern wird vom Training ausgeschlossen, der grün eingeklammerte Block wird trainiert. Die Annahme ist, dass die ersten beiden Blöcke bereits allgemeine Eigenschaften einer Fahrbahn erlernt haben, die gut auf neue Szenarien generalisieren. Der letzte Residual Block enthält knapp 70\% der Parameter des gesamten Netzes, die Annahme ist, das hier die allgemeinen Eigenschaften zu einer komplexeren Repräsentation zusammenwachsen, die gut auf die Testfahrbahn generalisiert.\\
@@ -120,11 +136,9 @@ Zusätzlich wird die Ausgabe des Netzes verändert. Die Kollisionswahrscheinlich
 	\label{img:dronetfrozen}
 \end{figure}
 
+\paragraph{Lernarchitektur}
 
-
-
-\note{Hervorhaben, welche Teile des DroNet Codes ich weiterverwede. Hard Mining, Auswertungsfunktionen, Adam, learning rsate decay, KEINE shifts}
-
+\note{Hier entsteht noch eine Erklärung der Lernarchitektur und der Netz-Parameter,die für das Fine Tuning verwendet werden}
 
 \begin{figure}[h]
 	\centering
@@ -133,12 +147,13 @@ Zusätzlich wird die Ausgabe des Netzes verändert. Die Kollisionswahrscheinlich
 	\label{img:lernarchitektur}
 \end{figure}
 
+\newpage
 
 \section{Steuerung}
 
 Um aus der Hardware, also der Fahrzeugplattform und der Software, dem neuronalen Netz, eine Steuerungseinheit zu machen, müssen beide Teile verbunden werden. Hierbei ist besonders die Kommunikation wichtig, die Lenkdaten müssen von der erzeugenden Komponente (CNN) zur ausführenden Komponente (Hardwareabstraktion) übertragen werden. Die Steuerungsarchitektur ist in Abbildung~\ref{fig:steuerung} zu sehen.\\
 Über eine Python Schnittstelle zur ueye-Kamera wird die Kamera konfiguriert und Bilddaten ausgelesen. Nach der bereits besprochenen Vorverarbeitung (Preprocessing) werden die Daten an das neuronale Netz (CNN) weitergereicht.\\ 
-Der hier bestimmte Lenkwinkel wird nun zur in C/C++ programmierten Steuerung weitergegeben. Dazu werden \gls{ac:uds} verwendet. Die Kommunikation erfolgt statt über eine IP-Adresse über einen File Deskriptor im Unix Betriebssystem. Ein Stream-Protokoll (SOCK_STREAM entspricht TCP) nutzt den File-Deskriptor als Kommunikationsendpunkt für die Interprozesskommunikation. Der UDS-Client auf der Python-Seite schickt die Lenkdaten direkt an einen UDS-Server auf der C/C++ Seite. Dabei werden die Daten als UTF-8 kodierte Bytestreams verschickt. Die so erhaltenen Daten werden vom UDS-Server entpackt.\\
+Der hier bestimmte Lenkwinkel wird nun zur in C/C++ programmierten Steuerung weitergegeben. Dazu werden \gls{ac:uds} verwendet. Die Kommunikation erfolgt statt über eine IP-Adresse über einen File Deskriptor im Unix Betriebssystem. Ein Stream-Protokoll (entspricht TCP) nutzt den File-Deskriptor als Kommunikationsendpunkt für die Interprozesskommunikation. Der UDS-Client auf der Python-Seite schickt die Lenkdaten direkt an einen UDS-Server auf der C/C++ Seite. Dabei werden die Daten als UTF-8 kodierte Bytestreams verschickt. Die so erhaltenen Daten werden vom UDS-Server entpackt.\\
 Für die direkte Ansteuerung des Lenkungsservos wird der erhaltene Wert auf zwei Nachkommastellen gekürzt und dann direkt an die Hardware weitergegeben. Es erfolgt keine zeitliche Kontrolle auf Zugehörigkeit einzelner Lenkdaten zu Kamerbildern. Die Steuerung soll möglichst hohen Durchsatz haben um möglichst viele Frames in einer Sekunde zur Lenkwinkelermittung nutzen zu können, daher werden immer die aktuellsten erhaltenen Lenkdaten genutzt. Wird ein Datum nicht übertragen, ist es aufgrund der dynamischen Fahrsituation ohnehin schon weniger als eine Sekunde später nicht mehr zur Lenkung zu gebrauchen.
 
 \begin{figure}[h]
@@ -148,12 +163,8 @@ Für die direkte Ansteuerung des Lenkungsservos wird der erhaltene Wert auf zwei
 	\label{fig:steuerung}
 \end{figure}
 
+Die so gebaute Steuerungskomponente kann zum Fahren des Fahrzeuges verwendet werden. Die Komponenten werden über eine ssh-Verbindung gestartet, die Kontrolle für den autonomen Modus wird dem Fahrzeug über die Funkfernbedienung übergeben. So ist auch ein Eingriff per Hand möglich.\\
+Die Qualität der Steuerung und das Fahrverhalten ist im Weiteren Gegenstand einer Analyse, in der auch aufgezeigt wird, welche Fahrbahn-Eigenschaften das neuronale Netz interpretiert.
 
 
-
-
-
-
-
-Kurzer Blick auf  Self driving car steering angle4 prediction und berkeley (large scale video sets) (vielleicht auchSPÄTER)
 
