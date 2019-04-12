@@ -20,4 +20,6 @@
 \contentsline {figure}{\numberline {4.10}{\ignorespaces Komponentenstruktur und Verbindung der Neuronalen Steuerung\relax }}{23}{figure.caption.30}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Traningsfehler (train) und Validierungsfehler (val) \IeC {\"u}ber 100 Epochen\relax }}{24}{figure.caption.31}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Fehlerszenarien\relax }}{27}{figure.caption.36}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Kreuzungsszenario aus Sicht der Fahrzeugkamera\relax }}{28}{figure.caption.38}
 \addvspace {10\p@ }

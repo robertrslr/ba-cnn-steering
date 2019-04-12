@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.25)  12 APR 2019 17:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.10.25)  12 APR 2019 20:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1407,7 +1407,7 @@ LaTeX Font Info:    Try loading font information for T1+phv on input line 9.
 (c:/texlive/2018/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
-<../style/HAW_Marke_schwarz.pdf, id=139, 387.4475pt x 142.5325pt>
+<../style/HAW_Marke_schwarz.pdf, id=135, 387.4475pt x 142.5325pt>
 File: ../style/HAW_Marke_schwarz.pdf Graphic file (type pdf)
 <use ../style/HAW_Marke_schwarz.pdf>
 Package pdftex.def Info: ../style/HAW_Marke_schwarz.pdf  used on input line 27.
@@ -1463,19 +1463,19 @@ chapter 2.
 [3
 
 ]
-<figures/ResidualBlock.png, id=285, 572.1375pt x 330.23375pt>
+<figures/ResidualBlock.png, id=288, 572.1375pt x 330.23375pt>
 File: figures/ResidualBlock.png Graphic file (type png)
 <use figures/ResidualBlock.png>
 Package pdftex.def Info: figures/ResidualBlock.png  used on input line 23.
 (pdftex.def)             Requested size: 286.06804pt x 165.11646pt.
  [4 <./figures/ResidualBlock.png (PNG copy)>] [5]
-<figures/Architecture-ALVINN.png, id=306, 343.2825pt x 322.95656pt>
+<figures/Architecture-ALVINN.png, id=309, 343.2825pt x 322.95656pt>
 File: figures/Architecture-ALVINN.png Graphic file (type png)
 <use figures/Architecture-ALVINN.png>
 Package pdftex.def Info: figures/Architecture-ALVINN.png  used on input line 59
 .
 (pdftex.def)             Requested size: 177.75908pt x 167.23367pt.
-<figures/Strasse-ALVINN.png, id=308, 267.24844pt x 250.68657pt>
+<figures/Strasse-ALVINN.png, id=311, 267.24844pt x 250.68657pt>
 File: figures/Strasse-ALVINN.png Graphic file (type png)
 <use figures/Strasse-ALVINN.png>
 Package pdftex.def Info: figures/Strasse-ALVINN.png  used on input line 65.
@@ -1486,7 +1486,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--79
  []
 
 [6]
-<figures/NVIDIA-Training.png, id=326, 626.34pt x 292.09125pt>
+<figures/NVIDIA-Training.png, id=329, 626.34pt x 292.09125pt>
 File: figures/NVIDIA-Training.png Graphic file (type png)
 <use figures/NVIDIA-Training.png>
 Package pdftex.def Info: figures/NVIDIA-Training.png  used on input line 84.
@@ -1503,7 +1503,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
 
-<figures/Architecture-DRONET.png, id=344, 866.48718pt x 363.60844pt>
+<figures/Architecture-DRONET.png, id=347, 866.48718pt x 363.60844pt>
 File: figures/Architecture-DRONET.png Graphic file (type png)
 <use figures/Architecture-DRONET.png>
 Package pdftex.def Info: figures/Architecture-DRONET.png  used on input line 15
@@ -1526,7 +1526,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--30
 
  []
 
-<figures/Aufbau.png, id=361, 384.43625pt x 176.66pt>
+<figures/Aufbau.png, id=364, 384.43625pt x 176.66pt>
 File: figures/Aufbau.png Graphic file (type png)
 <use figures/Aufbau.png>
 Package pdftex.def Info: figures/Aufbau.png  used on input line 35.
@@ -1547,39 +1547,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--22
 
  []
 
-<figures/Fahrzeug.png, id=382, 869.2475pt x 652.4375pt>
+<figures/Fahrzeug.png, id=385, 869.2475pt x 652.4375pt>
 File: figures/Fahrzeug.png Graphic file (type png)
 <use figures/Fahrzeug.png>
 Package pdftex.def Info: figures/Fahrzeug.png  used on input line 25.
 (pdftex.def)             Requested size: 260.77626pt x 195.73276pt.
 [13 <./figures/Fahrzeug.png (PNG copy)>]
-<figures/Teststrecke-Ausschnitt.jpg, id=391, 2023.56pt x 1517.67pt>
+<figures/Teststrecke-Ausschnitt.jpg, id=394, 2023.56pt x 1517.67pt>
 File: figures/Teststrecke-Ausschnitt.jpg Graphic file (type jpg)
 <use figures/Teststrecke-Ausschnitt.jpg>
 Package pdftex.def Info: figures/Teststrecke-Ausschnitt.jpg  used on input line
  37.
 (pdftex.def)             Requested size: 303.5209pt x 227.64067pt.
  [14 <./figures/Teststrecke-Ausschnitt.jpg>]
-<figures/Rohbild.png, id=398, 754.82pt x 481.8pt>
+<figures/Rohbild.png, id=401, 754.82pt x 481.8pt>
 File: figures/Rohbild.png Graphic file (type png)
 <use figures/Rohbild.png>
 Package pdftex.def Info: figures/Rohbild.png  used on input line 54.
 (pdftex.def)             Requested size: 301.92265pt x 192.71658pt.
  [15 <./figures/Rohbild.png (PNG copy)>]
-<figures/Lenkwinkelskalierung.png, id=408, 268.00125pt x 102.3825pt>
+<figures/Lenkwinkelskalierung.png, id=411, 268.00125pt x 102.3825pt>
 File: figures/Lenkwinkelskalierung.png Graphic file (type png)
 <use figures/Lenkwinkelskalierung.png>
 Package pdftex.def Info: figures/Lenkwinkelskalierung.png  used on input line 7
 8.
 (pdftex.def)             Requested size: 160.80197pt x 61.42996pt.
  [16 <./figures/Lenkwinkelskalierung.png>]
-<figures/steeringAngleDistribution.png, id=421, 379.4175pt x 252.945pt>
+<figures/steeringAngleDistribution.png, id=424, 379.4175pt x 252.945pt>
 File: figures/steeringAngleDistribution.png Graphic file (type png)
 <use figures/steeringAngleDistribution.png>
 Package pdftex.def Info: figures/steeringAngleDistribution.png  used on input l
 ine 94.
 (pdftex.def)             Requested size: 209.12683pt x 139.42122pt.
-<figures/steeringAngleDistributionFlipped.png, id=422, 379.4175pt x 252.945pt>
+<figures/steeringAngleDistributionFlipped.png, id=425, 379.4175pt x 252.945pt>
 File: figures/steeringAngleDistributionFlipped.png Graphic file (type png)
 <use figures/steeringAngleDistributionFlipped.png>
 Package pdftex.def Info: figures/steeringAngleDistributionFlipped.png  used on 
@@ -1587,7 +1587,7 @@ input line 100.
 (pdftex.def)             Requested size: 209.12683pt x 139.42122pt.
  [17 <./figures/steeringAngleDistribution.png> <./figures/steeringAngleDistribu
 tionFlipped.png>]
-<figures/Pipeline.png, id=432, 753.81625pt x 272.01625pt>
+<figures/Pipeline.png, id=435, 753.81625pt x 272.01625pt>
 File: figures/Pipeline.png Graphic file (type png)
 <use figures/Pipeline.png>
 Package pdftex.def Info: figures/Pipeline.png  used on input line 118.
@@ -1598,24 +1598,24 @@ Overfull \hbox (3.88055pt too wide) in paragraph at lines 118--119
  []
 
 [18 <./figures/Pipeline.png>]
-<figures/200x200.png, id=440, 200.75pt x 200.75pt>
+<figures/200x200.png, id=443, 200.75pt x 200.75pt>
 File: figures/200x200.png Graphic file (type png)
 <use figures/200x200.png>
 Package pdftex.def Info: figures/200x200.png  used on input line 130.
 (pdftex.def)             Requested size: 124.22118pt x 124.22478pt.
-<figures/200x200Hist.png, id=441, 160.6pt x 161.60374pt>
+<figures/200x200Hist.png, id=444, 160.6pt x 161.60374pt>
 File: figures/200x200Hist.png Graphic file (type png)
 <use figures/200x200Hist.png>
 Package pdftex.def Info: figures/200x200Hist.png  used on input line 136.
 (pdftex.def)             Requested size: 124.22118pt x 124.99994pt.
-<figures/200x200Gauss.png, id=442, 150.5625pt x 151.3153pt>
+<figures/200x200Gauss.png, id=445, 150.5625pt x 151.3153pt>
 File: figures/200x200Gauss.png Graphic file (type png)
 <use figures/200x200Gauss.png>
 Package pdftex.def Info: figures/200x200Gauss.png  used on input line 142.
 (pdftex.def)             Requested size: 124.22118pt x 124.8482pt.
  [19 <./figures/200x200.png (PNG copy)> <./figures/200x200Hist.png> <./figures/
 200x200Gauss.PNG>]
-<figures/Architecture-DRONET-FROZEN.png, id=451, 867.24pt x 364.36125pt>
+<figures/Architecture-DRONET-FROZEN.png, id=455, 867.24pt x 364.36125pt>
 File: figures/Architecture-DRONET-FROZEN.png Graphic file (type png)
 <use figures/Architecture-DRONET-FROZEN.png>
 Package pdftex.def Info: figures/Architecture-DRONET-FROZEN.png  used on input 
@@ -1632,13 +1632,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 169--174
  []
 
 [20 <./figures/Architecture-DRONET-FROZEN.png>]
-<figures/Lernarchitektur.png, id=464, 564.1075pt x 262.9825pt>
+<figures/Lernarchitektur.png, id=467, 564.1075pt x 262.9825pt>
 File: figures/Lernarchitektur.png Graphic file (type png)
 <use figures/Lernarchitektur.png>
 Package pdftex.def Info: figures/Lernarchitektur.png  used on input line 177.
 (pdftex.def)             Requested size: 418.25368pt x 194.98921pt.
  [21 <./figures/Lernarchitektur.png>]
-<figures/Steuerung.png, id=472, 915.42pt x 593.21625pt>
+<figures/Steuerung.png, id=475, 915.42pt x 593.21625pt>
 File: figures/Steuerung.png Graphic file (type png)
 <use figures/Steuerung.png>
 Package pdftex.def Info: figures/Steuerung.png  used on input line 193.
@@ -1650,27 +1650,64 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ) (./chapters/5-Auswertung-und-Szenarien.tex [22] [23 <./figures/Steuerung.png>
 ]
 chapter 5.
-<figures/loss.png, id=484, 390.45876pt x 279.0425pt>
+<figures/loss.png, id=487, 390.45876pt x 279.0425pt>
 File: figures/loss.png Graphic file (type png)
 <use figures/loss.png>
 Package pdftex.def Info: figures/loss.png  used on input line 12.
 (pdftex.def)             Requested size: 273.31926pt x 195.3284pt.
 [24
 
- <./figures/loss.png>] [25]) (./chapters/6-Resümee.tex [26]
+ <./figures/loss.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+[25] [26]
+Overfull \hbox (23.52505pt too wide) in paragraph at lines 72--75
+ []\T1/cmr/bx/n/10.95 Fahrbahn wie-der-fin-den[] \T1/cmr/m/n/10.95 Im Hin-blick
+ auf die Ein-gangs an-ge-spro-che-ne mög-li-che Overfitting-
+ []
+
+<figures/szenario1.jpg, id=510, 2023.56pt x 1517.67pt>
+File: figures/szenario1.jpg Graphic file (type jpg)
+<use figures/szenario1.jpg>
+Package pdftex.def Info: figures/szenario1.jpg  used on input line 81.
+(pdftex.def)             Requested size: 167.3021pt x 125.46869pt.
+<figures/szenario2.jpg, id=511, 2023.56pt x 1517.67pt>
+File: figures/szenario2.jpg Graphic file (type jpg)
+<use figures/szenario2.jpg>
+Package pdftex.def Info: figures/szenario2.jpg  used on input line 87.
+(pdftex.def)             Requested size: 167.3021pt x 125.46869pt.
+[27 <./figures/szenario1.jpg> <./figures/szenario2.jpg>]
+<figures/szenarioKreuzung.png, id=518, 200.75pt x 200.75pt>
+File: figures/szenarioKreuzung.png Graphic file (type png)
+<use figures/szenarioKreuzung.png>
+Package pdftex.def Info: figures/szenarioKreuzung.png  used on input line 103.
+(pdftex.def)             Requested size: 140.52403pt x 140.52403pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+
+ []
+
+[28 <./figures/szenarioKreuzung.png (PNG copy)>]
+
+Package natbib Warning: Citation `raghakotkerasvis' on page 29 undefined on inp
+ut line 115.
+
+) (./chapters/6-Resümee.tex [29]
 chapter 6.
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--9
 
  []
 
-) (./thesis.bbl [27
+) (./thesis.bbl [30
 
-] [28]
+] [31]
 LaTeX Font Info:    Try loading font information for T1+pcr on input line 27.
  (c:/texlive/2018/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)) (./I.bbl [29
+)) (./I.bbl [32
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 12--15
@@ -1684,12 +1721,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--15
 tp : / / net-[]scale . com / doc /
  []
 
-) (./thesis.gls [30
+) (./thesis.gls [33
 
-] [31
+] [34
 
 
-]) (../style/statement_i.tex [32] [33
+]) (../style/statement_i.tex [35] [36
 
 ])
 
@@ -1701,15 +1738,19 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 95.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 95.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 95.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 6A18E95E7630DE680B1463703F42D8BA;1975.
+(rerunfilecheck)             Checksum: 45FDE9D64310EDFF5BD68468F92DC614;1918.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 95.
  ) 
 Here is how much of TeX's memory you used:
- 42068 strings out of 492639
- 837296 string characters out of 6133087
- 1030175 words of memory out of 5000000
- 45140 multiletter control sequences out of 15000+600000
- 568433 words of font info for 77 fonts, out of 8000000 for 9000
+ 42106 strings out of 492639
+ 838018 string characters out of 6133087
+ 1030617 words of memory out of 5000000
+ 45165 multiletter control sequences out of 15000+600000
+ 569963 words of font info for 79 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  82i,20n,82p,9118b,942s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
@@ -1733,10 +1774,10 @@ blic/cm-super/sfti0900.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-su
 per/sfti1095.pfb><c:/texlive/2018/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb
 ><c:/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/20
 18/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on thesis.pdf (41 pages, 1982487 bytes).
+Output written on thesis.pdf (44 pages, 2924815 bytes).
 PDF statistics:
- 655 PDF objects out of 1000 (max. 8388607)
- 548 compressed objects within 6 object streams
- 138 named destinations out of 1000 (max. 500000)
- 382 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 686 PDF objects out of 1000 (max. 8388607)
+ 573 compressed objects within 6 object streams
+ 146 named destinations out of 1000 (max. 500000)
+ 389 words of extra memory for PDF output out of 10000 (max. 10000000)
 
