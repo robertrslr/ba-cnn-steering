@@ -67,7 +67,7 @@ def generate_random_noise(normalised_image):
 
 def main():
     
-    image = cv2.imread('../../saliency/im_186588_98375.835938_1437_1570.png')
+    image = cv2.imread('../../saliency/im_211017_206746.640625_1515_1570.png')
     
     greyscale_img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
