@@ -14,8 +14,10 @@
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Skalierung der Lenkwinkel-Wertebereiche\relax }}{16}{figure.caption.20}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Lenkwinkelverteilung im Bilderset\relax }}{17}{figure.caption.22}
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Bildverarbeitungsschritte\relax }}{18}{figure.caption.24}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Angepasste Architektur\relax }}{20}{figure.caption.26}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Struktur des Lernprozesses\relax }}{21}{figure.caption.28}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Komponentenstruktur und Verbindung der Neuronalen Steuerung\relax }}{22}{figure.caption.29}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Beispiele verschiedener Bearbeitungsstufen, zugeschnitten (a), nach Histogrammausgleich (b) und nach Rausch-Filter (c) \relax }}{19}{figure.caption.25}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Angepasste Architektur\relax }}{20}{figure.caption.27}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Struktur des Lernprozesses\relax }}{21}{figure.caption.29}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Komponentenstruktur und Verbindung der Neuronalen Steuerung\relax }}{23}{figure.caption.30}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Traningsfehler (train) und Validierungsfehler (val) \IeC {\"u}ber 100 Epochen\relax }}{24}{figure.caption.31}
 \addvspace {10\p@ }
