@@ -1,4 +1,4 @@
-\babel@toc {ngerman}{}
+\select@language {ngerman}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Residual Block\relax }}{4}{figure.caption.8}
@@ -22,4 +22,5 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Traningsfehler (train) und Validierungsfehler (val) \IeC {\"u}ber 100 Epochen\relax }}{24}{figure.caption.31}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Fehlerszenarien\relax }}{27}{figure.caption.36}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Kreuzungsszenario aus Sicht der Fahrzeugkamera\relax }}{28}{figure.caption.38}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Ausschlaggebende Bildbereiche\relax }}{30}{figure.caption.39}
 \addvspace {10\p@ }

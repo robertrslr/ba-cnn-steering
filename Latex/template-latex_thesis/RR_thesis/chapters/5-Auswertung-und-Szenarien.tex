@@ -111,14 +111,37 @@ Fehlt die Seitenlinie zur Orientierung, erschwert das die Lenkwinkelbestimmung. 
 
 \section{Saliency}
 Gerade vor dem Hintergrund der Analyse des Netzes  ist es interessant zu Wissen, welche Bereiche des Bildes für die Bestimmung des Lenkwinkels tatsächlich von Bedeutung sind. Als Mensch kennt man das Konzept einer Fahrbahnmarkierung und der daraus entstehenden Fahrspur sehr genau. Man könnte davon ausgehen, dass für ein neuronales Netz diese Bereiche eines Bildes deswegen ebenfalls besonders interessant sind, um die Fahrtrichtung zu bestimmen.\\
+Auch in Bezug auf die in vorangegangenem Kapitel besprochenen Problematiken, liegt ein gesteigertes Interesse vor, die wichtigen Bereiche der Fahrbahnbilder ausfindig zu machen.\\
+Für die Visualisierung werden so genannte Saliency-Maps verwendet. Diese wurden 2013 in einem Papert \cite{simonyan2013deep} erstmals vorgestellt. Die Idee ist, jene Bildpunkte zu identifizieren, welche für die größten Veränderungen im Output sorgen. Für diese Arbeit bedeutet das, genau die Bildpunkte visuell hervorzuheben, welche für eine große Veränderung im Lenkwinkeloutput sorgen. Dafür wird die Veränderung (Gradient) des Outputs (Lenkwinkel) in Bezug auf das Eingabebild berechnet, also das Verhältnis einer Änderung im Output zu einer Änderung im Input: $\frac{\partial Output}{\partial Input}$.    Für diese Analyse wird Keras-vis \citeI{raghakotkerasvis} genutzt, eine Visualisierungs-API für Keras.\\
+Um die Repräsentation der Bildeigenschaften im Netz deutlich zu machen, wird eine Saliency Map für jeden der drei Residual-Blöcke bestimmt. So lässt sich nachvollziehen, wie sich die ausschlaggebenden Bildbereiche auf dem Weg durch das Netz verändern. In Abbildung~\ref{img:saliency} sind diese drei Saliency Maps für ein Beispielbild einer Linkskurve dargestellt.\\
+Die hellen Bildbereiche sind eben die, die für eine Erhöhung des Outputs sorgen, also für einen positiven Lenkwinkel. Zur Erinnerung, ein positiver Lenkwinkel codiert eine Linkskurve. Die Saliency-Map wurde für die jeweils letzte Convolutional-Layer des Blocks berechnet.
 
-\citeI{raghakotkerasvis}
-- Saliency Besipiele Zeigen was für Features erlernt wurden. (Eventuell auch von vorangegangenen Layern)
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{\textwidth}
+	\centering
+		  \includegraphics[width=0.8\linewidth]{figures/firstBlock.png}
+	 	  \caption{Residual-Block 1}
+		  \label{fig:saliena}
+	\end{subfigure}\\
+	\begin{subfigure}{\textwidth}
+	\centering
+		  \includegraphics[width=0.8\linewidth]{figures/secondBlock.png}
+	 	  \caption{Residual Block 2}
+		  \label{fig:salienb}
+	\end{subfigure}\\
+	\begin{subfigure}{\textwidth}
+	\centering
+		  \includegraphics[width=0.8\linewidth]{figures/thirdBlock.png}
+	 	  \caption{Residual Block 3}
+		  \label{fig:salienc}
+	\end{subfigure}%
+	\caption{Ausschlaggebende Bildbereiche}
+	\label{img:saliency}
+\end{figure}%
 
 
 
 
 
 
-
-Kurzer Blick auf  Self driving car steering angle4 prediction und berkeley (large scale video sets) (vielleicht auchSPÄTER)

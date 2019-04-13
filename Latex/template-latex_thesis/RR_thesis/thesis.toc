@@ -1,4 +1,4 @@
-\babel@toc {ngerman}{}
+\select@language {ngerman}
 \contentsline {chapter}{Abbildungsverzeichnis}{v}{section*.2}
 \contentsline {chapter}{Tabellenverzeichnis}{vi}{section*.4}
 \contentsline {chapter}{Abk\IeC {\"u}rzungen}{viii}{section*.6}
@@ -39,6 +39,6 @@
 \contentsline {paragraph}{\nonumberline Fahrbahn wiederfinden}{27}{section*.35}
 \contentsline {paragraph}{\nonumberline Kreuzung}{28}{section*.37}
 \contentsline {section}{\numberline {5.4}Saliency}{29}{section.5.4}
-\contentsline {chapter}{\numberline {6}Res\IeC {\"u}mee}{30}{chapter.6}
-\contentsline {chapter}{Glossar}{34}{section*.41}
-\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{36}{chapter*.42}
+\contentsline {chapter}{\numberline {6}Res\IeC {\"u}mee}{31}{chapter.6}
+\contentsline {chapter}{Glossar}{36}{section*.42}
+\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{38}{chapter*.43}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{10}
 % this bibliography was produced with the style dinat.bst v2.5
 \makeatletter
 \newcommand{\dinatlabel}[1]%
@@ -17,6 +17,15 @@
 \newblock End to end learning for self-driving cars.
 \newblock In: \emph{arXiv preprint arXiv:1604.07316}
 \newblock (2016)
+
+\bibitem[Chollet(2018)]{chollet2018deep}
+\dinatlabel{Chollet 2018} \textsc{Chollet}, F.:
+\newblock \emph{Deep Learning mit Python und Keras: Das Praxis-Handbuch vom
+  Entwickler der Keras-Bibliothek}.
+\newblock mitp-Verlag, 2018
+\newblock (mitp Professional). --
+\newblock URL \url{https://books.google.de/books?id=ouVcDwAAQBAJ}. --
+\newblock ISBN 9783958458406
 
 \bibitem[Goodfellow u.\,a.(2016)Goodfellow, Bengio und
   Courville]{Goodfellow-et-al-2016}
@@ -63,6 +72,15 @@
 \newblock Alvinn: An autonomous land vehicle in a neural network.
 \newblock In: \emph{Advances in neural information processing systems}, 1989,
   S.~305--313
+
+\bibitem[Simonyan u.\,a.(2013)Simonyan, Vedaldi und
+  Zisserman]{simonyan2013deep}
+\dinatlabel{Simonyan u.\,a. 2013} \textsc{Simonyan}, Karen~; \textsc{Vedaldi},
+  Andrea~; \textsc{Zisserman}, Andrew:
+\newblock Deep inside convolutional networks: Visualising image classification
+  models and saliency maps.
+\newblock In: \emph{arXiv preprint arXiv:1312.6034}
+\newblock (2013)
 
 \bibitem[Walter(1950)]{walter1950imitation}
 \dinatlabel{Walter 1950} \textsc{Walter}, W~G.:

@@ -1,4 +1,4 @@
-This is makeindex, version 2.15 [TeX Live 2018/W32TeX] (kpathsea + Thai support).
+This is makeindex, version 2.15 [TeX Live 2016/W32TeX] (kpathsea + Thai support).
 Scanning style file ./thesis.ist.............................done (29 attributes redefined, 0 ignored).
 Scanning input file thesis.acn....done (10 entries accepted, 0 rejected).
 Sorting entries....done (30 comparisons).

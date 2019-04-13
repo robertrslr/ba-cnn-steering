@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{4}
 % this bibliography was produced with the style dinat.bst v2.5
 \makeatletter
 \newcommand{\dinatlabel}[1]%
@@ -27,5 +27,12 @@
   \url{https://cdn-images-1.medium.com/max/1600/1*D0F3UitQ2l5Q0Ak-tjEdJg.png}.
   --
 \newblock Accessed: 2019-03-10
+
+\bibitem[Kotikalapudi und contributors(2017)]{raghakotkerasvis}
+\dinatlabel{Kotikalapudi und contributors 2017} \textsc{Kotikalapudi},
+  Raghavendra~; \textsc{contributors}:
+\newblock \emph{keras-vis}.
+\newblock \url{https://github.com/raghakot/keras-vis}.
+\newblock 2017
 
 \end{thebibliography}
