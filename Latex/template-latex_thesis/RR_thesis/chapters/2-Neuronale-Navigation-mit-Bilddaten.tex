@@ -73,10 +73,9 @@ Im Ergebnis konnte das Netz nach 40 Epochen Training auf simulierten Fahrbahnbil
 
 \subsection{NVIDIA DAVE-2}
 
-Forschungserkenntnisse der folgenden Jahre trieben die Entwicklung voran und...\note{TODO}
+Forschungserkenntnisse der folgenden Jahre trieben die technische Entwicklung voran, auch im Bereich der autonomen Navigation tat sich viel. Zur Orienterung wird eine aktuellere Forschungsarbeit vorgestellt, die einige Aufmerksamkeit auf sich zog.
 Im Jahr 2016 veröffentlicht das Technologieunternehmen \textsc{NVIDIA} einen eigenen Ansatz \cite{bojarski2016end}, basierend auf Versuchen mit dem \glqq DARPA Autonomous Vehicle \grqq{} (DAVE) \citeI{DarpaDave} wird dieser \glqq Dave-2 \grqq{} genannt.//
 Daten werden hier durch Fahrten auf echten Straßen gesammelt, wofür drei Kameras in der Windschutzscheibe eines Autos angebracht und Steuerungsdaten über den CAN-Bus des Fahrzeuges ausgelesen werden. Mit diesen Daten wird ein CNN trainiert (\ref{img:NVIDIA}), was dann an einer Straßen-Simulation getestet wird. Hervorzuheben ist hier besonders die Verwendung von Convolutional Neural Networks (CNN) und die, im Gegensatz zum bereits erwähnten Ansatz 27 Jahre zuvor, stark gesteigerte Rechenleistung. Folglich können nicht nur Bilder besserer Qualität verarbeitet werden, die Netzarchitektur mit 9 Layern und 250.00 Parametern wäre 1989 nicht in annehmbarer Zeit trainierbar gewesen. Außerdem stellt sich NVIDIA dem Anspruch, eine neuronale Steuerung für öffentliche Straßen zu entwerfen, nicht nur für ein sehr begrenztes Testszenario.\\
-
 Abbildung~\ref{img:NVIDIA} zeigt die Komponenten des Trainingsprozesses. 
 
 \begin{figure}[h]
@@ -87,7 +86,8 @@ Abbildung~\ref{img:NVIDIA} zeigt die Komponenten des Trainingsprozesses.
 	\label{img:NVIDIA}
 \end{figure}
 
-
+Mit dem so tranierten CNN wurden sehr gute Ergebnisse erzielt. Sowohl in der Simulation, als auch auf Testfahrten in realen Straßensituationen, steuerte das neuronale Netz ein Auto nahezu fehlerfrei.
+Einige der Ansätze und Erkenntnisse aus dieser Arbeit lasse ich für den Entwurf und die Bewertung meiner Arbeit mit einfließen.
 
 
 
