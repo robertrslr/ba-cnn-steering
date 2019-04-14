@@ -1,13 +1,15 @@
 \glossaryentry{ALVINN?\glossentry{gl:alvinn}|setentrycounter[]{page}\glsnumberformat}{viii}
+\glossaryentry{CNN?\glossentry{gl:cnn}|setentrycounter[]{page}\glsnumberformat}{viii}
 \glossaryentry{IDS?\glossentry{gl:ids}|setentrycounter[]{page}\glsnumberformat}{viii}
 \glossaryentry{Intel NUC?\glossentry{gl:nuc}|setentrycounter[]{page}\glsnumberformat}{viii}
 \glossaryentry{UDS?\glossentry{gl:uds}|setentrycounter[]{page}\glsnumberformat}{viii}
 \glossaryentry{VSCode?\glossentry{gl:vscode}|setentrycounter[]{page}\glsnumberformat}{viii}
+\glossaryentry{CNN?\glossentry{gl:cnn}|setentrycounter[]{page}\glsnumberformat}{3}
 \glossaryentry{ALVINN?\glossentry{gl:alvinn}|setentrycounter[]{page}\glsnumberformat}{6}
 \glossaryentry{NAVLAB?\glossentry{gl:navlab}|setentrycounter[]{page}\glsnumberformat}{6}
 \glossaryentry{ETH Zürich?\glossentry{gl:eth}|setentrycounter[]{page}\glsnumberformat}{9}
 \glossaryentry{Udacity?\glossentry{gl:udacity}|setentrycounter[]{page}\glsnumberformat}{9}
-\glossaryentry{DroNet?\glossentry{gl:dronet}|setentrycounter[]{page}\glsnumberformat}{9}
+\glossaryentry{DroNet?\glossentry{gl:dronet}|setentrycounter[]{page}\glsnumberformat}{10}
 \glossaryentry{HAW Hamburg?\glossentry{gl:haw}|setentrycounter[]{page}\glsnumberformat}{10}
 \glossaryentry{Carolo-Cup?\glossentry{gl:carolo}|setentrycounter[]{page}\glsnumberformat}{10}
 \glossaryentry{Intel NUC?\glossentry{gl:nuc}|setentrycounter[]{page}\glsnumberformat}{13}

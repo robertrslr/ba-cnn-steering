@@ -2,12 +2,12 @@
 % @author Jan Robert Rösler 
 %
 \chapter{Entwurf}
-In diesem Kapitel wird der vollständige Entwurf einer Steuerung für ein RC Fahrzeug dargestellt.\\
-Für dieses Kapitel war besonders Buch des Erfinders von Keras, Francois Chollet, hilfreich \cite{chollet2018deep}.
+In diesem Kapitel wird der vollständige Entwurf einer Steuerung für ein RC Fahrzeug dargestellt.
+Für dieses Kapitel war besonders Buch des Erfinders von Keras, Francois Chollet, hilfreich \cite{chollet2018deep}.\\
 
 Wie im vorangegangenen Kapitel erläutert, entstand die Idee für die Steuerung eines RC-Fahrzeuges mit Neuronalen Netzen im Kontext einer Arbeit der ETH Zürich.
 Das dort entworfene DroNet wurde bereits kurz vorgestellt und wird die Basis für die neuronale Steuerung sein. Zunächst sollen darum die technischen Aspekte von DroNet hervorgehoben werden: \\
-DroNet ist ein 8-Layer Convolutional Neural Network, das insbesondere aus drei Residual-Blöcken besteht und für den Input eines 200x200 Pixel Bildes in Graustufen zwei Outputs produziert, einmal einen Lenkwinkel aus dem Intervall $\interval{-1}{1}$ (hierbei gilt; Werte~< 0 entsprechen einer Rechtskurve, Werte~> 0 einer Linkskurve)  und einmal die Kollisionswahrscheinlichkeit in Prozent (als Klassifizierungsproblem in Prozentschritten, nicht kontinuierlich).\\
+DroNet ist ein 8-Layer Convolutional Neural Network, das insbesondere aus drei Residual-Blöcken besteht und für den Input eines 200x200 Pixel Bildes in Graustufen zwei Outputs produziert, einmal einen Lenkwinkel aus dem Intervall $\interval{-1}{1}$ (hierbei gilt; Werte~<~0 entsprechen einer Rechtskurve, Werte~>~0 einer Linkskurve)  und einmal die Kollisionswahrscheinlichkeit in Prozent (als Klassifizierungsproblem in Prozentschritten, nicht kontinuierlich).\\
 DroNet hat \num{3.2e5} Parameter und schafft eine Verarbeitungsrate von 20 fps ( Die Drohne, auf der DroNet getestet wurde lieferte Bilder mit 30 Hz).
 Wie im vorigen Kapitel bereits erwähnt, wurde DroNet auf einem frei verfügbaren Datensatz trainiert.\\
 Im Paper werden die Ergebnisse mit anderen Netzwerken verglichen, die mit dem selben Datensatz trainiert wurden. Anhand verschiedener Metriken zur Messung der Bestimmungsgenauigkeit, wird die Performance auf dem Datensatz bestimmt. Ein solcher Vergleich ist für diese Arbeit jedoch nicht sinnvoll, da es um die Anwendung auf ein spezifisches, reales Szenario geht.
