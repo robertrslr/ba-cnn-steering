@@ -6,7 +6,7 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Komponenten des Trainings\relax }}{8}{figure.caption.10}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Architektur \textsc {DroNet}\relax }}{9}{figure.caption.11}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Einfacher schematischer Aufbau \relax }}{11}{figure.caption.12}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Einfacher schematischer Aufbau \relax }}{10}{figure.caption.12}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Das Carolo-Cup Fahrzeug\relax }}{13}{figure.caption.14}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Ein Ausschnitt der Teststrecke\relax }}{14}{figure.caption.16}
@@ -22,5 +22,6 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Traningsfehler (train) und Validierungsfehler (val) \IeC {\"u}ber 100 Epochen\relax }}{24}{figure.caption.31}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Fehlerszenarien\relax }}{27}{figure.caption.36}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Kreuzungsszenario aus Sicht der Fahrzeugkamera\relax }}{28}{figure.caption.38}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Ausschlaggebende Bildbereiche\relax }}{30}{figure.caption.39}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Ausschlaggebende Bildbereiche\relax }}{30}{figure.caption.40}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Saliency-Map einer Kreuzungssituation\relax }}{31}{figure.caption.42}
 \addvspace {10\p@ }
