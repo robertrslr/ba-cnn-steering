@@ -18,8 +18,9 @@ Festzustellen ist, dass beide Fehlerwerte sich zunächst stark fallend $0.0$ ann
 
 Bei kritischer Betrachtung muss angemerkt werden, dass die Regressionkurve, im konkreten Fall die Annäherung des Lenkwinkels, sehr rapide fällt.  Dieses kann Zeichen eines Overfittings sein. Die Bilder der Teststrecke könnten in der Menge zu homogen sein, die Teststrecke ist im Angesicht der dort aufgenommenen Bildermenge relativ kurz, viele Bilder sind ähnlich mit nur leicht unterschiedlichen Lenkwerten. Aufgrund der räumlichen Abgeschlossenheit der Teststrecke gibt es dazu wenig Varianz im Bildhintergrund, das könnte die Gleichartigkeit der Bilder verstärken.
 
-Allerdings ist die schnelle Konvergenz nicht zwingend negativ anzumerken, das neuronale Netz war schließlich schon mit derselben Aufgabe auf einer ähnlichen Bildermenge trainiert worden. Dazu kommt, dass nur ein Teil der Layer überhaupt für das Traning, also eine Veränderung der Gewichte, freigegeben war. Im Angesicht dieser Umstände, können die Fehlerkurven in Abbildung~\ref{img:loss} auch für eine schnelle, effiziente Anpassung der Gewichte des letzten Residual-Blocks stehen.\\
-Wie das CNN als Steuerungslogik in realen Szenarien abschneidet, wird in den nächsten Abschnitten untersucht.
+Allerdings ist die schnelle Konvergenz nicht zwingend negativ anzumerken, das neuronale Netz war schließlich schon mit derselben Aufgabe auf einer ähnlichen Bildermenge trainiert worden. Dazu kommt, dass nur ein Teil der Layer überhaupt für das Traning, also eine Veränderung der Gewichte, freigegeben war. Im Angesicht dieser Umstände, können die Fehlerkurven in Abbildung~\ref{img:loss} auch für eine schnelle, effiziente Anpassung der Gewichte des letzten Residual-Blocks stehen.
+
+Wie das CNN als Steuerungslogik in realen Streckenszenarien abschneidet, wird in den nächsten Abschnitten untersucht.
 
 \section{Testfahrt}
 Um die Lenkwinkelbestimmung des Netzes zu Testen, wird zunächst frei auf der Strecke gefahren. Das Fahrzeug startet auf einer Geraden und fährt den Kurs überwiegend Fehlerfrei ab. Der Onboard-Rechner (NUC) des Fahrzeugs verarbeitet die Bilder mit $20 fps$, getestet wird bis zu einer Geschwindigkeit von \SI{1.2}{\meter/\second}, ab da nimmt die Lenkfehlerhäufigkeit stark zu. Ein Lenkwinkelupdate (verarbeiteter Frame) pro gefahrene $6 cm$ ist zum sauberen Fahren die Grenze.\\
@@ -67,7 +68,8 @@ Der Autonomiewert wird nach der Formel berechnet und liefert die in Tabelle~\ref
   \end{center}
 \end{table}
 
-Der ursprüngliche DroNet Algorithmus ist nur $53 \%$ der Fahrzeit autonom unterwegs, was nicht überrascht, da er in einem anderen Anwendungsszenario entstand. Der Algorithmus des aktuellen Carolo-Projektteams ist deutlich besser, hat allerdings auch viele Fahrfehler gemacht. Die in dieser Arbeit entwickelte Steuerung (BA-RR) ist $87 \%$ der Fahrzeit autonom unterwegs, hier zeigt sich die deutliche Verbesserung, die insbesondere im Gegensatz zum DroNet Algorithmus erreicht wurde. Außerdem wird deutlich, das eine Steuerung mittels statistischer Auswertung von Bilddaten (CNN) nicht nur möglich ist, sondern einer Steuerung mittels klassicher Linienerkennung sogar überlegen sein kann. \\
+Der ursprüngliche DroNet Algorithmus ist nur $53 \%$ der Fahrzeit autonom unterwegs, was nicht überrascht, da er in einem anderen Anwendungsszenario entstand. Der Algorithmus des aktuellen Carolo-Projektteams ist deutlich besser, hat allerdings auch viele Fahrfehler gemacht. Die in dieser Arbeit entwickelte Steuerung (BA-RR) ist $87 \%$ der Fahrzeit autonom unterwegs, hier zeigt sich die deutliche Verbesserung, die insbesondere im Gegensatz zum DroNet Algorithmus erreicht wurde. Außerdem wird deutlich, das eine Steuerung mittels statistischer Auswertung von Bilddaten (CNN) nicht nur möglich ist, sondern einer Steuerung mittels klassicher Linienerkennung sogar überlegen sein kann. 
+
 Im Folgenden wird das Verhalten des Fahrzeugs in bestimmten Szenarien untersucht.
 
 \section{Einzelszenarien}
@@ -110,13 +112,15 @@ Da die Teststrecke nur eine Kreuzung hat, sind in den Traningsdaten sind nur wen
 	\label{img:szenariokreuzung}
 \end{figure}
 
-Tatsächlich erweisen sich die Kreuzungssituationen als größte Fehlerquelle. Wird die Kreuzung gerade angefahren, wird sie in $9/10$ Versuchen sauber überquert. Ist das Fahrzeug allerdings nicht mittig auf der Fahrbahn, sondern fährt die Kreuzung in einem leicht veränderten Winkel an, wird sie nur noch in $5/10$ Versuchen sauber durchfahren. In $50 \%$ der Testfälle mit leicht verändertem Blickwinkel verlässt das Fahrzeug die Fahrspur und wechselt die Spur.\\
+Tatsächlich erweisen sich die Kreuzungssituationen als größte Fehlerquelle. Wird die Kreuzung gerade angefahren, wird sie in $9/10$ Versuchen sauber überquert. Ist das Fahrzeug allerdings nicht mittig auf der Fahrbahn, sondern fährt die Kreuzung in einem leicht veränderten Winkel an, wird sie nur noch in $5/10$ Versuchen sauber durchfahren. In $50 \%$ der Testfälle mit leicht verändertem Blickwinkel verlässt das Fahrzeug die Fahrspur und wechselt die Spur.
+
 Fehlt die Seitenlinie zur Orientierung, erschwert das die Lenkwinkelbestimmung. Durch eine leicht schräge Anfahrt der Kreuzung (zum Beispiel nach einer nicht ganz sauber durchfahrenen Kurve) gerät schnell die andere Fahrbahn in den Blickwinkel, welche dann zur Orientierung verwendet wird. Das Fahrzeug wechselt die Fahrspur.
 
 
 \section{Visualisierung}
 \paragraph{Saliency}
-Gerade vor dem Hintergrund der Analyse des Netzes  ist es interessant zu Wissen, welche Bereiche des Bildes für die Bestimmung des Lenkwinkels tatsächlich von Bedeutung sind. Als Mensch kennt man das Konzept einer Fahrbahnmarkierung und der daraus entstehenden Fahrspur sehr genau. Man könnte davon ausgehen, dass für ein neuronales Netz diese Bereiche eines Bildes deswegen ebenfalls besonders interessant sind, um die Fahrtrichtung zu bestimmen.\\
+Gerade vor dem Hintergrund der Analyse des Netzes  ist es interessant zu Wissen, welche Bereiche des Bildes für die Bestimmung des Lenkwinkels tatsächlich von Bedeutung sind. Als Mensch kennt man das Konzept einer Fahrbahnmarkierung und der daraus entstehenden Fahrspur sehr genau. Man könnte davon ausgehen, dass für ein neuronales Netz diese Bereiche eines Bildes deswegen ebenfalls besonders interessant sind, um die Fahrtrichtung zu bestimmen.
+
 Auch in Bezug auf die in vorangegangenem Kapitel besprochenen Problematiken liegt ein gesteigertes Interesse vor, die wichtigen Bereiche der Fahrbahnbilder ausfindig zu machen.
 
 Für die Visualisierung werden so genannte Saliency-Maps verwendet. Diese wurden 2013 in einem Papert \cite{simonyan2013deep} erstmals vorgestellt. Die Idee ist, jene Bildpunkte zu identifizieren, welche für die größten Veränderungen im Output sorgen. Für diese Arbeit bedeutet das, genau die Bildpunkte visuell hervorzuheben, welche für eine große Veränderung im Lenkwinkeloutput sorgen. Dafür wird die Veränderung (Gradient) des Outputs (Lenkwinkel) in Bezug auf das Eingabebild berechnet, also das Verhältnis einer Änderung im Output zu einer Änderung im Input: $\frac{\partial Output}{\partial Input}$.    Für diese Analyse wird Keras-vis \citeI{raghakotkerasvis} genutzt, eine Visualisierungs-API für Keras.

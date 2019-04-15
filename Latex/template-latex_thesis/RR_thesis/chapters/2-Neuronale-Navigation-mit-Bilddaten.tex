@@ -29,7 +29,8 @@ CNNs sollen hier nicht detailliert erklärt werden, das Verständnis wird als Gr
 
 Je tiefer ein Neuronales Netz ist, desto schwieriger wird das Trainieren aller Layer, ein Problem in diesem Zusammehang ist das \glqq Vanishing Gradient Problem \grqq{}. Für tiefe Layer wird der berechnete Gradient so verschwindend klein, dass irgendwann keine Änderung der Gewichte in den Layern mehr stattfindet, so stagniert das Training und es können keine weiteren Fortschritte erzielt werden.
 
-Der Residual-Ansatz fügt einem normalen Block gewichteter Layer eine Abkürzung hinzu. Wie in Abbildung~\ref{img:ResBlock} zu sehen, wird der Input x des Blocks direkt auf den Output addiert. Nimmt man an, dass es für den Input x eine richtige Gewichtsverteilung H(x) der Layer im Block gibt, die erlernt werden soll, dann ist der Unterschied zwischen dem Input und dieser optimalen Verteilung F(x)=H(x)-x. F(x) ist das \glqq Residual \grqq{}, stellt man die Funktion um, erhält man H(x)=F(x)+x. Statt der optimalen Gewichtsverteilung für den Block, lernt das Netz jetzt F(x), also gerade den Unterschied zur Identitätsfunktion des Inputs x.\\
+Der Residual-Ansatz fügt einem normalen Block gewichteter Layer eine Abkürzung hinzu. Wie in Abbildung~\ref{img:ResBlock} zu sehen, wird der Input x des Blocks direkt auf den Output addiert. Nimmt man an, dass es für den Input x eine richtige Gewichtsverteilung H(x) der Layer im Block gibt, die erlernt werden soll, dann ist der Unterschied zwischen dem Input und dieser optimalen Verteilung F(x)=H(x)-x. F(x) ist das \glqq Residual \grqq{}, stellt man die Funktion um, erhält man H(x)=F(x)+x. Statt der optimalen Gewichtsverteilung für den Block, lernt das Netz jetzt F(x), also gerade den Unterschied zur Identitätsfunktion des Inputs x.
+
 Die Annahme der Autoren (\cite{DBLP:journals/corr/HeZRS15}) war, dass diese Residual-Funktion besser zu erlernen sei, als das originale Mapping. Selbst wenn das gelernte Residual F(x)=0, bekommt man für den Input x immernoch die Identitätsfunktion, also x selbst heraus. Das dieses Mapping meistens näher an der gewünschten optimalen Gewichtsverteilung liegt, war eine weitere Annahme.\\
 In Versuchen mit Neuronalen Netzen verschiedener Tiefe konnten diese Annahmen bestätigt werden. 
 
@@ -39,16 +40,16 @@ Fine Tuning beschreibt einen Prozess, in dem ein bereits trainiertes Neuronales 
 
 In diesem Zusammenhang wird auch \textsc{Layer-Freezing}, also das einfrieren von Layern vor dem Training verwendet. Eingefrorene Layer aktualisieren ihre Gewichte nicht und sind damit vom Trainingsprozess ausgeschlossen. So soll verhindert werden, dass bereits erlernte Eigenschaften eines Netzes, wie \glqq Katzenohr \grqq{} oder auch \glqq Linie \grqq{} nicht verloren gehen. Dazu werden frühere Layer meist eingefroren, spätere auf einem neuen Datensatz trainiert, um die bereits erlernten Eigenschaften zu nutzen und nicht zu verändern und Eigenschaften für die neue, ähnliche Aufgabe zu erlernen.
 
-
 \subsection{Data Augmentation}
-\note{TODO}
+Um qualitativ hochwertige Traningsdaten zu erhalten, bietet sich häufig eine Vermehrung der Datenbasis an. Dieses Verfahren wird als \textsc{Data Augmentation} bezeichnet. In der Bildverarbeitung können zum Beispiel durch Spiegelung oder Verschieben neue Traningsbilder generiert werden, die vorher noch nicht vorhanden waren. Dazu kann auch eine Anpassung der Label notwendig werden.
+
+Data Augmentation kann auch verwendet, um die Varianz einer Datenbasis zu erhöhen. Dazu können in der Bildverarbeitung zum Beispiel Rausch-Filter angewandt werden.
 
 \subsection{Stratified Sampling}
-\note{TODO}
-\subsection{Data Augmentation}
-\note{TODO}
-\subsection{Histogramausgleich}
-\note{TODO}
+Wenn eine Kategorie einer Datenmenge überrepräsentiert ist, kann es sinnvoll sein, die Stichprobenumfänge der Kategorien einzuschränken. Diesen Vorgang nennt man \textsc{Stratified Sampling}. Durch diese Beschränkung wird insbesondere bei Lernverfahren vermieden, dass die überrepräsentierte Kategorie sich im Ergebnis stärker auswirkt.
+
+\subsection{Histogrammausgleich}
+Der \textsc{Histogrammausgleich} ist ein Verfahren zur Regulierung der Helligkeit eines Bildes. Alle Grauwerte des Bildes werden um einen feste Konstante, entweder in den hellen oder den dunklen Bereich verschoben. Werte, die unten oder oben aus der SKala rausgeschoben werden, werden auf dem kleinsten beziehungsweise größten Wert der Skala gesetzt.
 
 
 \section{Ansätze}
@@ -61,6 +62,7 @@ Das Netzwerk \gls{ac:alvinn} sollte das \gls{gl:navlab} steuern, ein Testfahrzeu
 In \ref{img:ALVINNa} lässt sich die Architektur nachvollziehen. 
 Der rein visuelle Input wird untersützt durch eine laserbasierte Abstandsmessung und ein Inputneuron für die Kodierung der \glqq Straßenintensität\grqq{}, also ob die Straße heller oder dunkler wird. Der Bildinput ist die Blaustufenintensität des jeweiligen Bildpunkts.
 Aus heutiger Sicht ist das Netz mit nur einer hidden Layer mit 29 Neronen sehr klein, die im weiteren angesprochenen Architekturen haben deutlich mehr Layer und mehrere Hunderttausend Parameter. 
+
 Zudem interpretiert ALVINN die Aufgabe des Spurfolgens nicht als Regressionsproblem, sondern als Klassifikation. Die Ausgangsneuronen sind eine lineare Repräsentation der Lenkrichtung, die das Fahrzeug in Richtung Fahrbahnmitte steuert. Neuronen in der Mitte stehen für eine Fahrt geradeaus, Neuronen links und rechts für die jeweilige Fahrtrichtung.
 Grob gesagt gibt das Neuron mit dem höchsten Aktivierungslevel den einzuschlagenden Lenkwinkel, also die Fahrtrichtung an.
 Im Ergebnis konnte das Netz nach 40 Epochen Training auf simulierten Fahrbahnbildern, zu sehen in \ref{img:ALVINNb}, einen 400 Meter Weg durch einen Wald mit \SI{1/2}{\meter/\second} sicher abfahren.

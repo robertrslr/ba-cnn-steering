@@ -117,7 +117,8 @@ Die Spiegelung sorgt automatisch dafür, dass Aufnahmen der rechten Fahrbahnseit
 Zu jedem Bild muss der dazugehörige Lenkwinkel als Label dem Lernprozess zur Verfügung gestellt werden. Beim Sammeln der Daten sind alle Parameter; Geschwindigkeit, Lenkwinkel und Framenummer in der Bildbezeichnung hinterlegt worden. Mit einer Parsing-Funktion wird die Bezeichnung gefiltert, die Lenkwinkel werden zusammen mit der Framenummer als eindeutigem Identifikator in einer Textdatei gespeichert. Die Textdatei wird für jeden Bildordner, Traning-, Validierung- und Testordner angelegt. Die Lenkdaten stehen somit direkt, auch für eine Analyse wie der oben erstellten Verteilung, zur Verfügung.
 
 \paragraph{Bildverarbeitung}
-Mit den so vorbereiteten Daten wird im Weiteren eine Pipeline mit Bildoperationen eingerichtet. Die Abbildung~\ref{fig:dronetfrozen} macht die Struktur der Verarbeitung deutlich.\\
+Mit den so vorbereiteten Daten wird im Weiteren eine Pipeline mit Bildoperationen eingerichtet. Die Abbildung~\ref{fig:dronetfrozen} macht die Struktur der Verarbeitung deutlich.
+
 Als Bildquellen kommen entweder die ueye-Kamera auf dem Fahrzeug in Frage, oder die Traningsdaten. Im einem ersten Schritt werden die Bilder skaliert und dann auf die Bildgröße 200x200 Bildpunkte zugeschnitten. Hier wurde speziell darauf geachtet, den Bildausschnitt mit dem größten Informationsgehalt zu erhalten, also möglichst viel der Fahrbahn im zugeschnittenen Bild.
 
 Die Aufnahmen sind recht dunkel, selbst bei voll eingeschaltetem Raumlicht waren keine besseren Aufnahmen zu bekommen. Hier wird ein Histogrammausgleich für jedes Bild angewandt. Die Verteilung der Grauwerte wird so besser auf den gesamten Wertebereich aufgezogen, die Bilder werden heller.
