@@ -2,10 +2,11 @@
 % @author Jan Robert Rösler 
 %
 \chapter{Entwurf}
-In diesem Kapitel wird der vollständige Entwurf einer Steuerung für ein RC Fahrzeug dargestellt.\\
-Für dieses Kapitel war besonders Buch des Erfinders von Keras, Francois Chollet, hilfreich \cite{chollet2018deep}.
+In diesem Kapitel wird der vollständige Entwurf einer Steuerung für ein RC Fahrzeug dargestellt.
+Für dieses Kapitel war besonders Buch des Erfinders von Keras, Francois Chollet, hilfreich \cite{chollet2018deep}.\\
 
 Wie im vorangegangenen Kapitel erläutert, entstand die Idee für die Steuerung eines RC-Fahrzeuges mit Neuronalen Netzen im Kontext einer Arbeit der ETH Zürich.
+<<<<<<< HEAD
 Das dort entworfene DroNet wurde bereits kurz vorgestellt und wird die Basis für die neuronale Steuerung sein. 
 
 DroNet ist ein 8-Layer Convolutional Neural Network, das hauptsächlich aus drei Residual-Blöcken besteht. Als Input bekommt das Netz ein 8-Bit Graustufenbild mit 200 x 200 Pixel. Es gibt zwei Outputs, einmal einen Lenkwinkel aus dem Intervall $\interval{-1}{1}$ und einmal die Kollisionswahrscheinlichkeit in Prozent. hierbei gilt, Werte~< 0 entsprechen einer Rechtskurve, Werte~> 0 einer Linkskurve.
