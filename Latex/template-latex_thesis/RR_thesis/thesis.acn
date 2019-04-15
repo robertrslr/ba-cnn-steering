@@ -3,8 +3,8 @@
 \glossaryentry{UDS?\glossentry{ac:uds}|glsseeformat[Glossary:]{gl:uds}}{Z}
 \glossaryentry{ALVINN?\glossentry{ac:alvinn}|glsseeformat[Glossary:]{gl:alvinn}}{Z}
 \glossaryentry{VSCode?\glossentry{ac:vscode}|glsseeformat[Glossary:]{gl:vscode}}{Z}
-\glossaryentry{ALVINN?\glossentry{ac:alvinn}|setentrycounter[]{page}\glsnumberformat}{6}
-\glossaryentry{NUC?\glossentry{ac:nuc}|setentrycounter[]{page}\glsnumberformat}{13}
-\glossaryentry{IDS?\glossentry{ac:ids}|setentrycounter[]{page}\glsnumberformat}{13}
-\glossaryentry{VSCode?\glossentry{ac:vscode}|setentrycounter[]{page}\glsnumberformat}{16}
-\glossaryentry{UDS?\glossentry{ac:uds}|setentrycounter[]{page}\glsnumberformat}{22}
+\glossaryentry{ALVINN?\glossentry{ac:alvinn}|setentrycounter[]{page}\glsnumberformat}{7}
+\glossaryentry{NUC?\glossentry{ac:nuc}|setentrycounter[]{page}\glsnumberformat}{14}
+\glossaryentry{IDS?\glossentry{ac:ids}|setentrycounter[]{page}\glsnumberformat}{14}
+\glossaryentry{VSCode?\glossentry{ac:vscode}|setentrycounter[]{page}\glsnumberformat}{17}
+\glossaryentry{UDS?\glossentry{ac:uds}|setentrycounter[]{page}\glsnumberformat}{23}
