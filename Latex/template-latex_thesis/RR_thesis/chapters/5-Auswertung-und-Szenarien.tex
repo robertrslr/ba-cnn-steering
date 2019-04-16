@@ -130,7 +130,7 @@ Für die Visualisierung werden Saliency-Maps  \cite{simonyan2013deep} verwendet.
 \paragraph{Lernprozess}
 Um die Repräsentation der Bildeigenschaften im Netz deutlich zu machen, wird eine Saliency Map für jeden der drei Residual-Blöcke bestimmt. So lässt sich nachvollziehen, wie sich die ausschlaggebenden Bildbereiche auf dem Weg durch das Netz verändern. In Abbildung~\ref{img:saliency} sind diese drei Saliency Maps für ein Beispielbild einer Linkskurve dargestellt.
 
-Die hellen Bildbereiche sind eben die, die für eine Erhöhung des Outputs sorgen, also für einen positiven Lenkwinkel. Zur Erinnerung, ein positiver Lenkwinkel codiert eine Linkskurve. Die Saliency-Map wurde für die jeweils letzte Convolutional-Layer des Blocks berechnet.
+Die hellen Bildbereiche sind eben die, die für eine Erhöhung des Outputs sorgen, also für einen positiv höheren Lenkwinkel. Zur Erinnerung, ein positiver Lenkwinkel codiert eine Linkskurve. Die Saliency-Map wurde für die jeweils letzte Convolutional-Layer des Blocks berechnet. 
 
 \begin{figure}
 	\centering
@@ -157,10 +157,12 @@ Die hellen Bildbereiche sind eben die, die für eine Erhöhung des Outputs sorge
 \end{figure}%
 
 Zu sehen ist jeweils das Bild der Fahrbahn nach einem Histogrammausgleich, rechts daneben die berechnete Saliency-Map. Nach dem ersten Residual Block \ref{fig:saliena} scheint die Aufmerksamkeit insbesondere auf linienartigen Bereichen zu liegen, gut zu sehen an der hellen Hervorhebung der Bildpunkte. Neben der Fahrbahnbegrenzung spielt auch ein Teil der Wandlinien eine Rolle für die Bestimmung der Linkslenkung. In \ref{fig:salienb}, nach der letzten Convolutional-Layer des zweiten Residual-Blocks, zeigt sich eine Veränderung. Die Ausprägung der Linienstrukturen in der Saliency-Map beschränkt sich auf die Fahrbahnmarkierung, die unterbrochene Mittellinie tritt etwas deutlicher hervor. Insgesamt wirkt die Verteilung der prägnanten Bildbereiche zufälliger, fast wie ein Rauschen.
-Nach dem dritten und letzten Residual-Block \ref{fig:salienc} liegt der Aufmerksamkeitsfokus auf einem Stück der Außenlinie.  Die Bildpunkte, die hier liegen, sind die Entscheidenden für die Linkslenkung (Lenkwinkel $\interval{0}{1}$). Hier muss Berücksichtigt werden, dass nur der letzte Residual-Block von Anpassungen der Filter betroffen war. Die starke Konzentration auf den Abschnitt der Außenlinie ist darauf zurückzuführen.
+Nach dem dritten und letzten Residual-Block \ref{fig:salienc} liegt der Aufmerksamkeitsfokus auf einem Stück der Außenlinie.  Die Bildpunkte die hier liegen, sind die Entscheidenden für die Linkslenkung (Lenkwinkel $\interval{0}{1}$). Hier muss Berücksichtigt werden, dass nur der letzte Residual-Block von Anpassungen der Filter betroffen war. Die starke Konzentration auf den Abschnitt der Außenlinie ist darauf zurückzuführen.
 
 \paragraph{Kreuzung}
-Die angesprochene Schwierigkeit von Kreuzungssituationen wird mithilfe von Saliency-Maps noch einmal neu betrachtet. In Abbildung~\ref{img:kreuzung} ist das Kreuzungsbild der Saliency-Map gegenüber gestellt.
+Die angesprochene Schwierigkeit von Kreuzungssituationen wird mithilfe von Saliency-Maps noch einmal neu betrachtet. In Abbildung~\ref{img:kreuzung} ist ein Bild der Kreuzung der Saliency-Map gegenüber gestellt.
+
+Zunächst werden die Bildbereiche hervorgehoben, welche für eine Linkslenkung besonders interessant sind. 
 
 \begin{figure}[h]
 	\centering
@@ -169,8 +171,10 @@ Die angesprochene Schwierigkeit von Kreuzungssituationen wird mithilfe von Salie
 	\label{img:kreuzung}
 \end{figure}
 
-Ziel der Untersuchung 
+Dann werden die Bildbereiche hervorgehoben, die für eine Rechtslenkung besonders interessant sind.
 
 Festzustellen ist, dass trotz fehlender Fahrbahnbegrenzung die entfernten Linien hinter der Kreuzung bei der Orientierung eine Rolle spielen.  \note{Erklärung unvollständig}
+
+\note{NOCHMAL BERECHNEN: KREUZUNG MIT GRADIENT DECREASE AND MAINTAIN! EINMAL SALIENCY,EINMAL CAM}
 
 

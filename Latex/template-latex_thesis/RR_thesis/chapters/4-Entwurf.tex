@@ -123,6 +123,8 @@ Die Spiegelung sorgt automatisch dafür, dass Aufnahmen der rechten Fahrbahnseit
 	\label{fig:steuerungswinkel}
 \end{figure}%
 
+Weitere Methodiken der Data Augmentation, wie Bildverschiebung oder Bilddrehung, wurden nicht verwendet. In Versuchen konnte so keine Verbesserung erzielt werden.
+
 \paragraph{Data Splitting}
 Für die Verwendung im Traningsprozess wird die Datenbasis mittels Data Splitting \cite{picard1990data} \cite{reitermanova2010data}  Traningsdaten und Validierungsdaten aufgeteilt. Die hier verwendete Aufteilung ist im Verhältnis 4 zu 1. Damit entsteht ein Traningsbilderset mit 8.800 Bildern und ein Validierungsbilderset mit 2.200 Bildern.
 
@@ -130,7 +132,7 @@ Für die Verwendung im Traningsprozess wird die Datenbasis mittels Data Splittin
 \paragraph{Processing Pipeline}
 Mit den so vorbereiteten Daten wird im Weiteren eine Pipeline mit Bildoperationen eingerichtet. Die Daten-Label sind angepasst und Data Augmentation wurde durchgeführt. Die Processing Pipeline verarbeitet diese Daten und gibt den Output direkt an das neuronale Netz weiter. Die Bearbeitungsschritte der Pipeline erfolgen in Echtzeit, während die Daten geladen werden. Die Abbildung~\ref{fig:dronetfrozen} macht die Struktur der Verarbeitung deutlich. 
 
-Als Input kommen entweder die ueye-Kamera auf dem Fahrzeug in Frage, oder die Traningsdaten. Sowohl für Tranings-, als auch für den Steuerungsmodus wird die Pipeline verwendet. 
+Als Input kommen entweder die ueye-Kamera auf dem Fahrzeug oder die Traningsbasis in Frage. Sowohl für Tranings-, als auch für den Steuerungsmodus wird die Pipeline verwendet. 
 
 \paragraph{Skalierung}
 Im einem ersten Schritt werden die Bilder skaliert und dann auf die Bildgröße 200x200 Bildpunkte zugeschnitten. Hier wurde speziell darauf geachtet, den Bildausschnitt mit dem größten Informationsgehalt zu erhalten, also möglichst viel der Fahrbahn im zugeschnittenen Bild zu sehen.
@@ -139,7 +141,7 @@ Im einem ersten Schritt werden die Bilder skaliert und dann auf die Bildgröße 
 Wie bereits angemerkt, sind die Traningsbilder recht dunkel. Dem wird entgegengewirkt, es wird ein Histogrammausgleich für jedes Bild angewandt. Die Bilder werden heller.
 
 \paragraph{Normalisierung}
-Anschließend werden die Grauwerte auf den Wertebereich $\interval{0}{1}$ normalisiert. Für die Berechnung in CNNs ein üblicher Schritt, die Produkte der Multiplikationen bleiben in einem kleinen Wertebereich und ermöglichen so ein effizienteres Traning. Außerdem wird noch eine Umformung des Bildarrays von einem zweidimensionalen zu einem dreidimensionalen vorgenommen, dies ist im weiteren ebenfalls für die Verarbeitung im Netz von Bedeutung, auch wenn hier nur eine 1 für die eine Farbwertdimension (Grauwert) angefügt wird.
+Anschließend werden die Grauwerte auf den Wertebereich $\interval{0}{1}$ normalisiert. Für die Berechnung in CNNs ein üblicher Schritt, die Produkte der Multiplikationen bleiben in einem kleinen Wertebereich und ermöglichen so ein effizienteres Traning. Außerdem wird noch eine Umformung des Bildarrays von einem zweidimensionalen zu einem dreidimensionalen vorgenommen, dies ist im weiteren ebenfalls für die Verarbeitung im Netz von Bedeutung, auch wenn hier nur eine 1 für die eine Farbwertdimension angefügt wird.
 
 \begin{figure}[h]
 	\centering
@@ -188,7 +190,7 @@ Statt die Gewichtsmatrizen des gesamten Netzwerkes anzupassen, wird nur ein Fine
 \paragraph{Layer Freezing}
 Abbildung~\ref{img:dronetfrozen} veranschaulicht diese Aufteilung. Der Teil des Netzes in roten Klammern wird vom Training ausgeschlossen, der grün eingeklammerte Block wird trainiert. Die Annahme ist, dass die ersten beiden Blöcke bereits allgemeine Eigenschaften einer Fahrbahn erlernt haben, die gut auf neue Szenarien generalisieren. Der letzte Residual Block enthält knapp $70\%$ der Parameter des gesamten Netzes. Die Annahme ist, das hier die allgemeinen Eigenschaften zu einer komplexeren Repräsentation zusammenwachsen, die gut auf die Testfahrbahn generalisiert. Darüberhinaus soll vermieden werden, dass das recht kleine Bilderset mit insgesamt 11.000 Bildern zu einer Überanpassung (Overfitting) führt. Das könnte auftreten, da die Aufnahmen auf Fahrsituationen der Teststrecke begrenzt sind, die keine große Heterogenität aufweisen. Nur einen Teil der Gewichte des Ntzes zu verändern, erscheint auch in diesem Kontext sinnvoll.
 
-Zusätzlich wird die Ausgabe des Netzes verändert. Die Kollisionswahrscheinlichkeit spielt für diese Arbeit keine Rolle und die Traningsdaten enthalten keine entsprechenden Label, daher wird das entsprechende Ausgabe-Layer entfernt. Das Feedback für die Berechnung der Gewichtsanpassungen kommt nur vom Lenkwinkel.
+Zusätzlich wird die Ausgabe des Netzes verändert. Die Kollisionswahrscheinlichkeit wird in dieser Arbeit nicht betrachtet. Die Traningsdaten enthalten keine entsprechenden Label, daher wird das entsprechende Ausgabe-Layer entfernt. Das Feedback für die Berechnung der Gewichtsanpassungen kommt nur vom Lenkwinkel.
 
 \begin{figure}[h]
 	\centering
