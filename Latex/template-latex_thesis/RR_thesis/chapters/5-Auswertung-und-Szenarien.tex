@@ -121,11 +121,11 @@ Fehlt die Seitenlinie zur Orientierung, erschwert das die Lenkwinkelbestimmung. 
 \section{Visualisierung}
 
 \paragraph{Saliency}
-Gerade vor dem Hintergrund der Analyse des Netzes  ist es interessant zu Wissen, welche Bereiche des Bildes für die Bestimmung des Lenkwinkels tatsächlich von Bedeutung sind. Als Mensch kennt man das Konzept einer Fahrbahnmarkierung und der daraus entstehenden Fahrspur sehr genau. Man könnte davon ausgehen, dass für ein neuronales Netz diese Bereiche eines Bildes deswegen ebenfalls besonders interessant sind, um die Fahrtrichtung zu bestimmen.
+Gerade vor dem Hintergrund der Analyse des Netzes  ist es interessant zu Wissen, welche Bereiche des Bildes für die Bestimmung des Lenkwinkels tatsächlich von Bedeutung sind. Als Mensch kennt man das Konzept einer Fahrbahnmarkierung und der daraus entstehenden Fahrspur sehr genau. Man könnte davon ausgehen, dass für ein neuronales Netz diese Bereiche eines Bildes deswegen auch besonders interessant sind, um die Fahrtrichtung zu bestimmen.
 
 Auch in Bezug auf die in vorangegangenem Kapitel besprochenen Problematiken liegt ein gesteigertes Interesse vor, die wichtigen Bereiche der Fahrbahnbilder ausfindig zu machen.
 
-Für die Visualisierung werden so genannte Saliency-Maps verwendet. Diese wurden 2013 in einem Papert \cite{simonyan2013deep} erstmals vorgestellt. Die Idee ist, jene Bildpunkte zu identifizieren, welche für die größten Veränderungen im Output sorgen. Für diese Arbeit bedeutet das, genau die Bildpunkte visuell hervorzuheben, welche für eine große Veränderung im Lenkwinkeloutput sorgen. Dafür wird die Veränderung des Outputs in Bezug auf das Eingabebild berechnet, also das Verhältnis einer Änderung im Output zu einer Änderung im Input: $\frac{\partial Output}{\partial Input}$. Für diese Analyse wird Keras-vis \citeI{raghakotkerasvis} genutzt, eine Visualisierungs-API für Keras.
+Für die Visualisierung werden Saliency-Maps  \cite{simonyan2013deep} verwendet. Die Idee ist, jene Bildpunkte zu identifizieren, welche für die größten Veränderungen im Output sorgen. Für diese Arbeit bedeutet das, genau die Bildpunkte visuell hervorzuheben, welche für eine große Veränderung im Lenkwinkeloutput sorgen. Dafür wird die Veränderung des Outputs in Bezug auf das Eingabebild berechnet, also das Verhältnis einer Änderung im Output zu einer Änderung im Input: $\frac{\partial Output}{\partial Input}$. Für diese Analyse wird Keras-vis \citeI{raghakotkerasvis} genutzt, eine Visualisierungs-API für Keras.
 
 \paragraph{Lernprozess}
 Um die Repräsentation der Bildeigenschaften im Netz deutlich zu machen, wird eine Saliency Map für jeden der drei Residual-Blöcke bestimmt. So lässt sich nachvollziehen, wie sich die ausschlaggebenden Bildbereiche auf dem Weg durch das Netz verändern. In Abbildung~\ref{img:saliency} sind diese drei Saliency Maps für ein Beispielbild einer Linkskurve dargestellt.
@@ -169,8 +169,8 @@ Die angesprochene Schwierigkeit von Kreuzungssituationen wird mithilfe von Salie
 	\label{img:kreuzung}
 \end{figure}
 
-Es ist zu erkennen, dass besonders die Ecke der sich treffenden Fahrbahnlinien der gegenüberliegenden Seite hervortritt. Außerdem zeichnet sich die Außenlinie der linken Fahrbahnseite hinter der Kreuzung ab.
+Ziel der Untersuchung 
 
-Positiv ist, dass trotz fehlender Fahrbahnbegrenzung die entfernten Linien hinter der Kreuzung als Orientierung genutzt werden. Allerdings lässt sich in diesem Beispiel auch die Spurwechsel-Problematik erkennen. \note{Erklärung unvollständig}
+Festzustellen ist, dass trotz fehlender Fahrbahnbegrenzung die entfernten Linien hinter der Kreuzung bei der Orientierung eine Rolle spielen.  \note{Erklärung unvollständig}
 
 

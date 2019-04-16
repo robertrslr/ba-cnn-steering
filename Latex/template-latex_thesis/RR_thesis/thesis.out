@@ -12,27 +12,28 @@
 \BOOKMARK [2][-]{subsection.2.1.5}{Data Augmentation}{section.2.1}% 12
 \BOOKMARK [2][-]{subsection.2.1.6}{Stratified Sampling}{section.2.1}% 13
 \BOOKMARK [2][-]{subsection.2.1.7}{Histogrammausgleich}{section.2.1}% 14
-\BOOKMARK [1][-]{section.2.2}{Ans\344tze}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.2.1}{ALVINN}{section.2.2}% 16
-\BOOKMARK [2][-]{subsection.2.2.2}{NVIDIA DAVE-2}{section.2.2}% 17
-\BOOKMARK [0][-]{chapter.3}{Idee}{}% 18
-\BOOKMARK [1][-]{section.3.1}{DroNet und Carolo-Cup}{chapter.3}% 19
-\BOOKMARK [0][-]{chapter.4}{Entwurf}{}% 20
-\BOOKMARK [1][-]{section.4.1}{Hardware und Strecke}{chapter.4}% 21
-\BOOKMARK [1][-]{section.4.2}{Trainingsdaten}{chapter.4}% 22
-\BOOKMARK [1][-]{section.4.3}{Datenverarbeitung}{chapter.4}% 23
-\BOOKMARK [2][-]{subsection.4.3.1}{Software}{section.4.3}% 24
-\BOOKMARK [2][-]{subsection.4.3.2}{Preprocessing}{section.4.3}% 25
-\BOOKMARK [2][-]{subsection.4.3.3}{Real-Time-Processing}{section.4.3}% 26
-\BOOKMARK [1][-]{section.4.4}{Fine Tuning}{chapter.4}% 27
-\BOOKMARK [2][-]{subsection.4.4.1}{Netzarchitektur}{section.4.4}% 28
-\BOOKMARK [2][-]{subsection.4.4.2}{Trainingskonfiguration}{section.4.4}% 29
-\BOOKMARK [1][-]{section.4.5}{Steuerung}{chapter.4}% 30
-\BOOKMARK [0][-]{chapter.5}{Auswertung und Szenarien}{}% 31
-\BOOKMARK [1][-]{section.5.1}{Training}{chapter.5}% 32
-\BOOKMARK [1][-]{section.5.2}{Testfahrt}{chapter.5}% 33
-\BOOKMARK [1][-]{section.5.3}{Einzelszenarien}{chapter.5}% 34
-\BOOKMARK [1][-]{section.5.4}{Visualisierung}{chapter.5}% 35
-\BOOKMARK [0][-]{chapter.6}{Res\374mee}{}% 36
-\BOOKMARK [0][-]{section*.61}{Glossar}{}% 37
-\BOOKMARK [0][-]{chapter*.62}{Selbstst\344ndigkeitserkl\344rung}{}% 38
+\BOOKMARK [2][-]{subsection.2.1.8}{Saliency-Map}{section.2.1}% 15
+\BOOKMARK [1][-]{section.2.2}{Ans\344tze}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.1}{ALVINN}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.2}{NVIDIA DAVE-2}{section.2.2}% 18
+\BOOKMARK [0][-]{chapter.3}{Idee}{}% 19
+\BOOKMARK [1][-]{section.3.1}{DroNet und Carolo-Cup}{chapter.3}% 20
+\BOOKMARK [0][-]{chapter.4}{Entwurf}{}% 21
+\BOOKMARK [1][-]{section.4.1}{Hardware und Strecke}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.2}{Trainingsdaten}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.3}{Datenverarbeitung}{chapter.4}% 24
+\BOOKMARK [2][-]{subsection.4.3.1}{Software}{section.4.3}% 25
+\BOOKMARK [2][-]{subsection.4.3.2}{Preprocessing}{section.4.3}% 26
+\BOOKMARK [2][-]{subsection.4.3.3}{Real-Time-Processing}{section.4.3}% 27
+\BOOKMARK [1][-]{section.4.4}{Fine Tuning}{chapter.4}% 28
+\BOOKMARK [2][-]{subsection.4.4.1}{Netzarchitektur}{section.4.4}% 29
+\BOOKMARK [2][-]{subsection.4.4.2}{Trainingskonfiguration}{section.4.4}% 30
+\BOOKMARK [1][-]{section.4.5}{Steuerung}{chapter.4}% 31
+\BOOKMARK [0][-]{chapter.5}{Auswertung und Szenarien}{}% 32
+\BOOKMARK [1][-]{section.5.1}{Training}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.2}{Testfahrt}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.3}{Einzelszenarien}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.4}{Visualisierung}{chapter.5}% 36
+\BOOKMARK [0][-]{chapter.6}{Res\374mee}{}% 37
+\BOOKMARK [0][-]{section*.66}{Glossar}{}% 38
+\BOOKMARK [0][-]{chapter*.67}{Selbstst\344ndigkeitserkl\344rung}{}% 39
