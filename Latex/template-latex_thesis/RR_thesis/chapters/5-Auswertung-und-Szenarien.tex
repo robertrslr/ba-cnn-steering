@@ -14,15 +14,16 @@ Das Fine-Tuning wurde mit den im vorangegangenem Kapitel festgelegten Konfigurat
 	\label{img:loss}
 \end{figure}
 
-Festzustellen ist, dass beide Fehlerwerte sich zunächst stark fallend $0.0$ annähren und zwischen den Epochen $20-25$ und $100$ gleichbleibend $0.0$ zu sein scheinen. Aufgrund der Start-Traningsfehler von etwa $3.5$ lassen sich sehr kleine Werte nicht grafisch beurteilen. Ein direkter Blick auf die Fehlerwerte zeigt, dass beide sich im Bereich \num{10e-2} weiter $0.0$ annähern, mit dem Besten Validierungsfehler von $0.0344$ in Epoche $197$. Es besteht keine ausgeprägte Divergenz zwischen Trainings- und Validierungsfehler, das ist positiv zu beurteilen.
+Festzustellen ist, dass beide Fehlerwerte sich zunächst stark fallend $0.0$ annähren und zwischen den Epochen $20-25$ und $100$ gleichbleibend $0.0$ zu bleiben scheinen. Aufgrund der Start-Traningsfehler von etwa $3.5$ lassen sich sehr kleine Werte schwer grafisch beurteilen. Ein direkter Blick auf die Fehlerwerte zeigt, dass beide sich im Bereich \num{10e-2} weiter $0.0$ annähern, mit dem Besten Validierungsfehler von $0.0344$ in Epoche $197$. Es besteht keine ausgeprägte Divergenz zwischen Trainings- und Validierungsfehler, das ist positiv zu beurteilen.
 
 Bei kritischer Betrachtung muss angemerkt werden, dass die Regressionkurve, im konkreten Fall die Annäherung des Lenkwinkels, sehr rapide fällt.  Dieses kann Zeichen eines Overfittings sein. Die Bilder der Teststrecke könnten in der Menge zu homogen sein, die Teststrecke ist im Angesicht der dort aufgenommenen Bildermenge relativ kurz, viele Bilder sind ähnlich mit nur leicht unterschiedlichen Lenkwerten. Aufgrund der räumlichen Abgeschlossenheit der Teststrecke gibt es dazu wenig Varianz im Bildhintergrund, das könnte die Gleichartigkeit der Bilder verstärken.
 
-Allerdings ist die schnelle Konvergenz nicht zwingend negativ anzumerken, das neuronale Netz war schließlich schon mit derselben Aufgabe auf einer ähnlichen Bildermenge trainiert worden. Dazu kommt, dass nur ein Teil der Layer überhaupt für das Traning, also eine Veränderung der Gewichte, freigegeben war. Im Angesicht dieser Umstände, können die Fehlerkurven in Abbildung~\ref{img:loss} auch für eine schnelle, effiziente Anpassung der Gewichte des letzten Residual-Blocks stehen.
+Allerdings ist die schnelle Konvergenz nicht zwingend negativ anzumerken, das neuronale Netz war Pre-Trained. Es war mit einer verwandten Aufgabe auf einer ähnlichen Bildermenge trainiert worden. Dazu kommt, dass nur ein Teil der Layer überhaupt für das Traning, also eine Veränderung der Gewichte, freigegeben war. Im Angesicht dieser Umstände können die Fehlerkurven in Abbildung~\ref{img:loss} auch für eine schnelle, effiziente Anpassung der Gewichte des letzten Residual-Blocks stehen.
 
 Wie das CNN als Steuerungslogik in realen Streckenszenarien abschneidet, wird in den nächsten Abschnitten untersucht.
 
 \section{Testfahrt}
+
 Um die Lenkwinkelbestimmung des Netzes zu Testen, wird zunächst frei auf der Strecke gefahren. Das Fahrzeug startet auf einer Geraden und fährt den Kurs überwiegend Fehlerfrei ab. Der Onboard-Rechner (NUC) des Fahrzeugs verarbeitet die Bilder mit $20 fps$, getestet wird bis zu einer Geschwindigkeit von \SI{1.2}{\meter/\second}, ab da nimmt die Lenkfehlerhäufigkeit stark zu. Ein Lenkwinkelupdate (verarbeiteter Frame) pro gefahrene $6 cm$ ist zum sauberen Fahren die Grenze.\\
 \paragraph{Autonomiemetrik}
 Die Fahrleistung auf der Strecke soll gemessen werden, um Sie direkt mit anderen Algorithmen vergleichen zu können. Dazu wird eine Autonomie-Metrik bestimmt \cite{bojarski2016end}. Der Autonomiewert wird definiert als 
@@ -118,13 +119,15 @@ Fehlt die Seitenlinie zur Orientierung, erschwert das die Lenkwinkelbestimmung. 
 
 
 \section{Visualisierung}
+
 \paragraph{Saliency}
 Gerade vor dem Hintergrund der Analyse des Netzes  ist es interessant zu Wissen, welche Bereiche des Bildes für die Bestimmung des Lenkwinkels tatsächlich von Bedeutung sind. Als Mensch kennt man das Konzept einer Fahrbahnmarkierung und der daraus entstehenden Fahrspur sehr genau. Man könnte davon ausgehen, dass für ein neuronales Netz diese Bereiche eines Bildes deswegen ebenfalls besonders interessant sind, um die Fahrtrichtung zu bestimmen.
 
 Auch in Bezug auf die in vorangegangenem Kapitel besprochenen Problematiken liegt ein gesteigertes Interesse vor, die wichtigen Bereiche der Fahrbahnbilder ausfindig zu machen.
 
-Für die Visualisierung werden so genannte Saliency-Maps verwendet. Diese wurden 2013 in einem Papert \cite{simonyan2013deep} erstmals vorgestellt. Die Idee ist, jene Bildpunkte zu identifizieren, welche für die größten Veränderungen im Output sorgen. Für diese Arbeit bedeutet das, genau die Bildpunkte visuell hervorzuheben, welche für eine große Veränderung im Lenkwinkeloutput sorgen. Dafür wird die Veränderung (Gradient) des Outputs (Lenkwinkel) in Bezug auf das Eingabebild berechnet, also das Verhältnis einer Änderung im Output zu einer Änderung im Input: $\frac{\partial Output}{\partial Input}$.    Für diese Analyse wird Keras-vis \citeI{raghakotkerasvis} genutzt, eine Visualisierungs-API für Keras.
+Für die Visualisierung werden so genannte Saliency-Maps verwendet. Diese wurden 2013 in einem Papert \cite{simonyan2013deep} erstmals vorgestellt. Die Idee ist, jene Bildpunkte zu identifizieren, welche für die größten Veränderungen im Output sorgen. Für diese Arbeit bedeutet das, genau die Bildpunkte visuell hervorzuheben, welche für eine große Veränderung im Lenkwinkeloutput sorgen. Dafür wird die Veränderung des Outputs in Bezug auf das Eingabebild berechnet, also das Verhältnis einer Änderung im Output zu einer Änderung im Input: $\frac{\partial Output}{\partial Input}$. Für diese Analyse wird Keras-vis \citeI{raghakotkerasvis} genutzt, eine Visualisierungs-API für Keras.
 
+\paragraph{Lernprozess}
 Um die Repräsentation der Bildeigenschaften im Netz deutlich zu machen, wird eine Saliency Map für jeden der drei Residual-Blöcke bestimmt. So lässt sich nachvollziehen, wie sich die ausschlaggebenden Bildbereiche auf dem Weg durch das Netz verändern. In Abbildung~\ref{img:saliency} sind diese drei Saliency Maps für ein Beispielbild einer Linkskurve dargestellt.
 
 Die hellen Bildbereiche sind eben die, die für eine Erhöhung des Outputs sorgen, also für einen positiven Lenkwinkel. Zur Erinnerung, ein positiver Lenkwinkel codiert eine Linkskurve. Die Saliency-Map wurde für die jeweils letzte Convolutional-Layer des Blocks berechnet.

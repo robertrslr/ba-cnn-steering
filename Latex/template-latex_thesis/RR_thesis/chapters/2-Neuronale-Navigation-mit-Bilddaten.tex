@@ -14,7 +14,7 @@ Deep Learning gliedert sich selbst in viele Unterthemen auf, eine Darstellung de
 
 \subsection{CNN}
 \gls{ac:cnn}, haben sich gerade im Bereich der Bildverarbeitung als überlegen bewiesen. Aus der Biologie inspiriert, findet hier besonders das Prinzip des rezeptiven Feldes Anwendung. Die Aktivität jedes Neurons wird mithilfe einer Faltung berechnet, räumliche Informationen und Zusammenhänge werden so besser erhalten. 2012 konnte ein CNN, AlexNet \cite{krizhevsky2012imagenet}, beim ImageNet-Wettbewerb den Benchmark-Rekord von 25,8 \% auf 16,4 \% drücken, seitdem sind alle gut platzierten Modelle CNNs. Nicht nur in der Bilderkennung, sondern auch in der Spracherkennung (Parsen, Satzmodellierung, Machinelle Übersetzung) gelten CNNs als State-of-the-Art Methode und finden Anwendung in modernsten Technologien.\\
-CNNs sollen hier nicht detailliert erklärt werden, das Verständnis wird als Grundlage vorausgesetzt.
+CNNs werden hier nicht detailliert erklärt, das Verständnis wird als Grundlage vorausgesetzt.
 
 \subsection{ResNet}
 \textit{Residual Neural Networks}, oder kurz ResNet, ist eine weitere Technik, die ihren Ursprung in der Biologie hat. Das Verhalten so genannter Pyramidenzellen, Nervenzellen im menschlichen Gehirn, wird nachgebildet, indem Abkürzungen zwischen Layer eingebaut werden. Residual Netze wurden 2015 entwickelt, insbesondere ließ sich mit diesem Ansatz das Trainieren tiefer Netze verbessern \cite{DBLP:journals/corr/HeZRS15}. Abbildung~\ref{img:ResBlock} zeigt den schematischen Aufbau eines so genannten Residual Blocks. 
@@ -36,6 +36,7 @@ In Versuchen mit Neuronalen Netzen verschiedener Tiefe konnten diese Annahmen be
 
 
 \subsection{Pre-Trained und Fine Tuning}
+In dem Bereich des \textsc{Transfer Learning} gibt es verschiedene Verfahren.
 Fine Tuning beschreibt einen Prozess, in dem ein bereits trainiertes Neuronales Netz für eine ähnliche Aufgabe abgestimmt wird. Das Netz wird als \textsc{Pre-Trained} bezeichnet. Dabei können Teile der Layer des ursprünglichen Netzes ersetzt werden, oder neue hinzugefügt werden. Insbesondere bei Klassifizierungsaufgaben wird dazu häufig die Kategorisierung verändert, um zum Beispiel die von einem Netz erlernten Eigenschaften auf neue Kategorien anzuwenden.
 
 In diesem Zusammenhang wird auch \textsc{Layer-Freezing}, also das einfrieren von Layern vor dem Training verwendet. Eingefrorene Layer aktualisieren ihre Gewichte nicht und sind damit vom Trainingsprozess ausgeschlossen. So soll verhindert werden, dass bereits erlernte Eigenschaften eines Netzes, wie \glqq Katzenohr \grqq{} oder auch \glqq Linie \grqq{} nicht verloren gehen. Dazu werden frühere Layer meist eingefroren, spätere auf einem neuen Datensatz trainiert, um die bereits erlernten Eigenschaften zu nutzen und nicht zu verändern und Eigenschaften für die neue, ähnliche Aufgabe zu erlernen.

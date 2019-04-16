@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{15}
 % this bibliography was produced with the style dinat.bst v2.5
 \makeatletter
 \newcommand{\dinatlabel}[1]%
@@ -26,6 +26,14 @@
 \newblock (mitp Professional). --
 \newblock URL \url{https://books.google.de/books?id=ouVcDwAAQBAJ}. --
 \newblock ISBN 9783958458406
+
+\bibitem[van Dyk und Meng(2001)]{doi:10.1198/10618600152418584}
+\dinatlabel{van Dyk und Meng 2001} \textsc{Dyk}, David~A. van~; \textsc{Meng},
+  Xiao-Li:
+\newblock The Art of Data Augmentation.
+\newblock In: \emph{Journal of Computational and Graphical Statistics}
+\newblock 10 (2001), Nr.~1, S.~1--50. --
+\newblock URL \url{https://doi.org/10.1198/10618600152418584}
 
 \bibitem[Goodfellow u.\,a.(2016)Goodfellow, Bengio und
   Courville]{Goodfellow-et-al-2016}
@@ -58,6 +66,13 @@
 \newblock In: \emph{Advances in neural information processing systems}, 2012,
   S.~1097--1105
 
+\bibitem[Liu u.\,a.(2012)Liu, Wang und Agrawal]{liu2012stratified}
+\dinatlabel{Liu u.\,a. 2012} \textsc{Liu}, Tantan~; \textsc{Wang}, Fan~;
+  \textsc{Agrawal}, Gagan:
+\newblock Stratified sampling for data mining on the deep web.
+\newblock In: \emph{Frontiers of Computer Science}
+\newblock 6 (2012), Nr.~2, S.~179--196
+
 \bibitem[Loquercio u.\,a.(2018)Loquercio, Maqueda, Blanco und
   Scaramuzza]{Loquercio_2018}
 \dinatlabel{Loquercio u.\,a. 2018} \textsc{Loquercio}, Antonio~;
@@ -67,11 +82,30 @@
 \newblock In: \emph{{IEEE} Robotics and Automation Letters}
 \newblock (2018)
 
+\bibitem[Perez und Wang(2017)]{perez2017effectiveness}
+\dinatlabel{Perez und Wang 2017} \textsc{Perez}, Luis~; \textsc{Wang}, Jason:
+\newblock The effectiveness of data augmentation in image classification using
+  deep learning.
+\newblock In: \emph{arXiv preprint arXiv:1712.04621}
+\newblock (2017)
+
+\bibitem[Picard und Berk(1990)]{picard1990data}
+\dinatlabel{Picard und Berk 1990} \textsc{Picard}, Richard~R.~; \textsc{Berk},
+  Kenneth~N.:
+\newblock Data splitting.
+\newblock In: \emph{The American Statistician}
+\newblock 44 (1990), Nr.~2, S.~140--147
+
 \bibitem[Pomerleau(1989)]{pomerleau1989alvinn}
 \dinatlabel{Pomerleau 1989} \textsc{Pomerleau}, Dean~A.:
 \newblock Alvinn: An autonomous land vehicle in a neural network.
 \newblock In: \emph{Advances in neural information processing systems}, 1989,
   S.~305--313
+
+\bibitem[Reitermanova(2010)]{reitermanova2010data}
+\dinatlabel{Reitermanova 2010} \textsc{Reitermanova}, Z:
+\newblock Data splitting.
+\newblock In: \emph{WDS} Bd.~10, 2010, S.~31--36
 
 \bibitem[Simonyan u.\,a.(2013)Simonyan, Vedaldi und
   Zisserman]{simonyan2013deep}
