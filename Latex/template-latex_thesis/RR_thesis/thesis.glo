@@ -1,9 +1,9 @@
-\glossaryentry{ALVINN?\glossentry{gl:alvinn}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{CNN?\glossentry{gl:cnn}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{IDS?\glossentry{gl:ids}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{Intel NUC?\glossentry{gl:nuc}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{UDS?\glossentry{gl:uds}|setentrycounter[]{page}\glsnumberformat}{viii}
-\glossaryentry{VSCode?\glossentry{gl:vscode}|setentrycounter[]{page}\glsnumberformat}{viii}
+\glossaryentry{ALVINN?\glossentry{gl:alvinn}|setentrycounter[]{page}\glsnumberformat}{vii}
+\glossaryentry{CNN?\glossentry{gl:cnn}|setentrycounter[]{page}\glsnumberformat}{vii}
+\glossaryentry{IDS?\glossentry{gl:ids}|setentrycounter[]{page}\glsnumberformat}{vii}
+\glossaryentry{Intel NUC?\glossentry{gl:nuc}|setentrycounter[]{page}\glsnumberformat}{vii}
+\glossaryentry{UDS?\glossentry{gl:uds}|setentrycounter[]{page}\glsnumberformat}{vii}
+\glossaryentry{VSCode?\glossentry{gl:vscode}|setentrycounter[]{page}\glsnumberformat}{vii}
 \glossaryentry{CNN?\glossentry{gl:cnn}|setentrycounter[]{page}\glsnumberformat}{4}
 \glossaryentry{ALVINN?\glossentry{gl:alvinn}|setentrycounter[]{page}\glsnumberformat}{7}
 \glossaryentry{NAVLAB?\glossentry{gl:navlab}|setentrycounter[]{page}\glsnumberformat}{7}
@@ -14,7 +14,7 @@
 \glossaryentry{Carolo-Cup?\glossentry{gl:carolo}|setentrycounter[]{page}\glsnumberformat}{11}
 \glossaryentry{Intel NUC?\glossentry{gl:nuc}|setentrycounter[]{page}\glsnumberformat}{14}
 \glossaryentry{IDS?\glossentry{gl:ids}|setentrycounter[]{page}\glsnumberformat}{14}
-\glossaryentry{OpenCV?\glossentry{gl:opencv}|setentrycounter[]{page}\glsnumberformat}{16}
+\glossaryentry{OpenCV?\glossentry{gl:opencv}|setentrycounter[]{page}\glsnumberformat}{17}
 \glossaryentry{Anaconda?\glossentry{gl:anaconda}|setentrycounter[]{page}\glsnumberformat}{17}
 \glossaryentry{VSCode?\glossentry{gl:vscode}|setentrycounter[]{page}\glsnumberformat}{17}
 \glossaryentry{PyCharm?\glossentry{gl:pycharm}|setentrycounter[]{page}\glsnumberformat}{17}

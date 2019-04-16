@@ -1,4 +1,4 @@
-\babel@toc {ngerman}{}
+\select@language {ngerman}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Residual Block\relax }}{4}{figure.caption.8}
@@ -11,17 +11,17 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Das Carolo-Cup Fahrzeug\relax }}{14}{figure.caption.14}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Ein Ausschnitt der Teststrecke\relax }}{15}{figure.caption.16}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Kameraaufnahme der Fahrbahn\relax }}{16}{figure.caption.18}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Skalierung der Lenkwinkel-Wertebereiche\relax }}{17}{figure.caption.20}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Lenkwinkelverteilung im Bilderset\relax }}{18}{figure.caption.22}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Bildverarbeitungsschritte\relax }}{19}{figure.caption.24}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Beispiele verschiedener Bearbeitungsstufen, zugeschnitten (a), nach Histogrammausgleich (b) und nach Rausch-Filter (c) \relax }}{20}{figure.caption.25}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Angepasste Architektur\relax }}{21}{figure.caption.27}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Struktur des Lernprozesses\relax }}{22}{figure.caption.29}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Komponentenstruktur und Verbindung der Neuronalen Steuerung\relax }}{24}{figure.caption.30}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Skalierung der Lenkwinkel-Wertebereiche\relax }}{18}{figure.caption.20}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Lenkwinkelverteilung im Bilderset\relax }}{19}{figure.caption.22}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Bildverarbeitungsschritte\relax }}{20}{figure.caption.26}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Beispiele verschiedener Bearbeitungsstufen, zugeschnitten (a), nach Histogrammausgleich (b) und nach Rausch-Filter (c) \relax }}{20}{figure.caption.28}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Angepasste Architektur\relax }}{22}{figure.caption.30}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Struktur des Lernprozesses\relax }}{23}{figure.caption.32}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Komponentenstruktur und Verbindung der Neuronalen Steuerung\relax }}{24}{figure.caption.33}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Traningsfehler (train) und Validierungsfehler (val) \IeC {\"u}ber 100 Epochen\relax }}{25}{figure.caption.31}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Fehlerszenarien\relax }}{29}{figure.caption.36}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Kreuzungsszenario aus Sicht der Fahrzeugkamera\relax }}{29}{figure.caption.38}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Ausschlaggebende Bildbereiche\relax }}{31}{figure.caption.40}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Saliency-Map einer Kreuzungssituation\relax }}{32}{figure.caption.42}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Traningsfehler (train) und Validierungsfehler (val) \IeC {\"u}ber 100 Epochen\relax }}{25}{figure.caption.34}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Fehlerszenarien\relax }}{29}{figure.caption.39}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Kreuzungsszenario aus Sicht der Fahrzeugkamera\relax }}{29}{figure.caption.41}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Ausschlaggebende Bildbereiche\relax }}{31}{figure.caption.43}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Saliency-Map einer Kreuzungssituation\relax }}{32}{figure.caption.45}
 \addvspace {10\p@ }
