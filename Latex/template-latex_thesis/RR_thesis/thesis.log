@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.11)  16 APR 2019 08:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.11)  16 APR 2019 08:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1555,8 +1555,7 @@ Package: multibib 2008/12/10 v1.4 Multiple bibliographies for one document.
 \mb@biblabelwidth=\count296
 )
 \@auxoutI=\write4
-
-No file I.aux.
+ (./I.aux)
 \openout4 = `I.aux'.
 
 \glswrite=\write5
@@ -1572,8 +1571,8 @@ Package glossaries Info: Writing glossary file thesis.acn on input line 24.
 \openout8 = `thesis.slo'.
 
 Package glossaries Info: Writing glossary file thesis.slo on input line 24.
-(./thesisglossaries.tex)
-No file thesis.aux.
+
+(./thesisglossaries.tex) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
@@ -1592,6 +1591,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
 LaTeX Font Info:    ... okay on input line 27.
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
+
 (c:/texlive/2016/texmf-dist/tex/latex/base/ts1enc.dfu
 File: ts1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
@@ -1759,6 +1759,8 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 27.
 LaTeX Info: Redefining \pageref on input line 27.
 LaTeX Info: Redefining \nameref on input line 27.
+
+(./thesis.out) (./thesis.out)
 \@outlinefile=\write9
 \openout9 = `thesis.out'.
 
@@ -1790,7 +1792,7 @@ LaTeX Font Info:    Try loading font information for T1+phv on input line 9.
 (c:/texlive/2016/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
-<../style/HAW_Marke_schwarz.pdf, id=7, 387.4475pt x 142.5325pt>
+<../style/HAW_Marke_schwarz.pdf, id=147, 387.4475pt x 142.5325pt>
 File: ../style/HAW_Marke_schwarz.pdf Graphic file (type pdf)
 
 <use ../style/HAW_Marke_schwarz.pdf>
@@ -1834,7 +1836,18 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 44.
  [3
 
-]
+] (./thesis.toc
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 36.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 36.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 36.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 36.
+ [4
+
+])
 \tf@toc=\write10
 \openout10 = `thesis.toc'.
 
@@ -1850,9 +1863,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 47.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 47.
- [4
-
-]
+ [5] (./thesis.lof)
 \tf@lof=\write11
 \openout11 = `thesis.lof'.
 
@@ -1868,9 +1879,10 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 50.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 50.
- [5
 
-]
+[6
+
+] (./thesis.lot)
 \tf@lot=\write12
 \openout12 = `thesis.lot'.
 
@@ -1883,7 +1895,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
- [6
+ [7
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
@@ -1903,7 +1915,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 65.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 65.
- [7
+ [8
 
 
 ]
@@ -1913,10 +1925,6 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 4.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 4.
-
-Package natbib Warning: Citation `walter1950imitation' on page 1 undefined on i
-nput line 7.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 10.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1956,18 +1964,10 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 9.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 9.
-
-Package natbib Warning: Citation `Goodfellow-et-al-2016' on page 3 undefined on
- input line 12.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 15.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 15.
-
-Package natbib Warning: Citation `krizhevsky2012imagenet' on page 3 undefined o
-n input line 16.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 18.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1983,25 +1983,12 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 19.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 19.
-
-
-Package natbib Warning: Citation `DBLP:journals/corr/HeZRS15' on page 4 undefin
-ed on input line 20.
-
-
-LaTeX Warning: Reference `img:ResBlock' on page 4 undefined on input line 20.
-
-<figures/ResidualBlock.png, id=83, 572.1375pt x 330.23375pt>
+ <figures/ResidualBlock.png, id=308, 572.1375pt x 330.23375pt>
 File: figures/ResidualBlock.png Graphic file (type png)
 
 <use figures/ResidualBlock.png>
 Package pdftex.def Info: figures/ResidualBlock.png used on input line 24.
 (pdftex.def)             Requested size: 286.06804pt x 165.11646pt.
-
-
-Package natbib Warning: Citation `ResBlock' on page 4 undefined on input line 2
-6.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2010,14 +1997,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 31.
-[4 <./figures/ResidualBlock.png (PNG copy)>]
-
-LaTeX Warning: Reference `img:ResBlock' on page 5 undefined on input line 32.
-
-
-Package natbib Warning: Citation `DBLP:journals/corr/HeZRS15' on page 5 undefin
-ed on input line 34.
-
+ [4 <./figures/ResidualBlock.png (PNG copy)>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 38.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2030,6 +2010,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 42.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 42.
+
 [5]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 43.
@@ -2051,14 +2032,6 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 58.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 58.
-
-
-Package natbib Warning: Citation `pomerleau1989alvinn' on page 6 undefined on i
-nput line 60.
-
-
-LaTeX Warning: Reference `img:ALVINNa' on page 6 undefined on input line 62.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 65.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2067,11 +2040,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 65.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 65.
-[6]
-
-LaTeX Warning: Reference `img:ALVINNb' on page 7 undefined on input line 68.
-
-<figures/Architecture-ALVINN.png, id=109, 343.2825pt x 322.95656pt>
+ [6] <figures/Architecture-ALVINN.png, id=335, 343.2825pt x 322.95656pt>
 File: figures/Architecture-ALVINN.png Graphic file (type png)
 
 <use figures/Architecture-ALVINN.png>
@@ -2079,7 +2048,7 @@ Package pdftex.def Info: figures/Architecture-ALVINN.png used on input line 75.
 
 (pdftex.def)             Requested size: 177.75908pt x 167.23367pt.
 
-<figures/Strasse-ALVINN.png, id=111, 267.24844pt x 250.68657pt>
+<figures/Strasse-ALVINN.png, id=337, 267.24844pt x 250.68657pt>
 File: figures/Strasse-ALVINN.png Graphic file (type png)
 
 <use figures/Strasse-ALVINN.png>
@@ -2089,21 +2058,6 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 90.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 90.
-
-
-Package natbib Warning: Citation `bojarski2016end' on page 7 undefined on input
- line 93.
-
-
-Package natbib Warning: Citation `DarpaDave' on page 7 undefined on input line 
-93.
-
-
-LaTeX Warning: Reference `img:NVIDIA' on page 7 undefined on input line 94.
-
-
-LaTeX Warning: Reference `img:NVIDIA' on page 7 undefined on input line 95.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 96.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2112,18 +2066,13 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 96.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 96.
-[7 <./figures/Architecture-ALVINN.png> <./figures/Strasse-ALVINN.png>]
-<figures/NVIDIA-Training.png, id=126, 626.34pt x 292.09125pt>
+ [7 <./figures/Architecture-ALVINN.png> <./figures/Strasse-ALVINN.png>]
+<figures/NVIDIA-Training.png, id=355, 626.34pt x 292.09125pt>
 File: figures/NVIDIA-Training.png Graphic file (type png)
 
 <use figures/NVIDIA-Training.png>
 Package pdftex.def Info: figures/NVIDIA-Training.png used on input line 99.
 (pdftex.def)             Requested size: 375.80688pt x 175.25609pt.
-
-
-Package natbib Warning: Citation `NVIDIA-Components' on page 8 undefined on inp
-ut line 101.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 107.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2132,7 +2081,8 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 107.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 107.
-[8 <./figures/NVIDIA-Training.png>]) (./chapters/3-Idee.tex
+ [8 <./figures/NVIDIA-Training.png>])
+(./chapters/3-Idee.tex
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 4.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2151,14 +2101,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 6.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 6.
-
-Package natbib Warning: Citation `Loquercio_2018' on page 10 undefined on input
- line 8.
-
-
-LaTeX Warning: Reference `img:DroNet' on page 10 undefined on input line 11.
-
-<figures/Architecture-DRONET.png, id=139, 866.48718pt x 363.60844pt>
+<figures/Architecture-DRONET.png, id=372, 866.48718pt x 363.60844pt>
 File: figures/Architecture-DRONET.png Graphic file (type png)
 
 <use figures/Architecture-DRONET.png>
@@ -2181,23 +2124,11 @@ Package babel Info: Redefining ngerman shorthand "~
 [10
 
  <./figures/Architecture-DRONET.png>]
-
-LaTeX Warning: Reference `img:Carolo-Fahrzeug' on page 11 undefined on input li
-ne 29.
-
-<figures/Aufbau.png, id=154, 384.43625pt x 176.66pt>
+<figures/Aufbau.png, id=386, 384.43625pt x 176.66pt>
 File: figures/Aufbau.png Graphic file (type png)
  <use figures/Aufbau.png>
 Package pdftex.def Info: figures/Aufbau.png used on input line 33.
 (pdftex.def)             Requested size: 269.10353pt x 123.66115pt.
-
-
-LaTeX Warning: Reference `img:Aufbau' on page 11 undefined on input line 41.
-
-
-LaTeX Warning: Reference `sec:Autonome Navigation mit Bilddaten' on page 11 und
-efined on input line 41.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 42.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2206,6 +2137,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 42.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 42.
+
 [11 <./figures/Aufbau.png>]) (./chapters/4-Entwurf.tex
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 4.
@@ -2221,10 +2153,6 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 4.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 4.
-
-Package natbib Warning: Citation `chollet2018deep' on page 13 undefined on inpu
-t line 6.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 16.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2240,22 +2168,12 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 18.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 18.
-
-
-LaTeX Warning: Reference `img:Carolo-Fahrzeug' on page 14 undefined on input li
-ne 21.
-
-<figures/Fahrzeug.png, id=178, 869.2475pt x 652.4375pt>
+ <figures/Fahrzeug.png, id=412, 869.2475pt x 652.4375pt>
 File: figures/Fahrzeug.png Graphic file (type png)
 
 <use figures/Fahrzeug.png>
 Package pdftex.def Info: figures/Fahrzeug.png used on input line 28.
 (pdftex.def)             Requested size: 260.77626pt x 195.73276pt.
-
-
-LaTeX Warning: Reference `img:teststrecke' on page 14 undefined on input line 3
-6.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 38.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2264,8 +2182,8 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 38.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 38.
-[14 <./figures/Fahrzeug.png (PNG copy)>]
-<figures/Teststrecke-Ausschnitt.jpg, id=189, 2023.56pt x 1517.67pt>
+ [14 <./figures/Fahrzeug.png (PNG copy)>]
+<figures/Teststrecke-Ausschnitt.jpg, id=422, 2023.56pt x 1517.67pt>
 File: figures/Teststrecke-Ausschnitt.jpg Graphic file (type jpg)
 
 <use figures/Teststrecke-Ausschnitt.jpg>
@@ -2284,13 +2202,11 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 53.
- [15 <./figures/Teststrecke-Ausschnitt.jpg>]
-
-LaTeX Warning: Reference `img:rohbild' on page 16 undefined on input line 55.
-
-<figures/Rohbild.png, id=197, 754.82pt x 481.8pt>
+ [15 <./figures/Teststrecke-Ausschnitt.jpg>] <figures/Rohbild.png, id=429, 754.
+82pt x 481.8pt>
 File: figures/Rohbild.png Graphic file (type png)
- <use figures/Rohbild.png>
+
+<use figures/Rohbild.png>
 Package pdftex.def Info: figures/Rohbild.png used on input line 60.
 (pdftex.def)             Requested size: 301.92265pt x 192.71658pt.
 Package babel Info: Redefining ngerman shorthand "|
@@ -2309,14 +2225,13 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 71.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 71.
-
-[16 <./figures/Rohbild.png (PNG copy)>]
+ [16 <./figures/Rohbild.png (PNG copy)>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 78.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 78.
 
-<figures/Lenkwinkelskalierung.png, id=207, 268.00125pt x 102.3825pt>
+<figures/Lenkwinkelskalierung.png, id=438, 268.00125pt x 102.3825pt>
 File: figures/Lenkwinkelskalierung.png Graphic file (type png)
 
 <use figures/Lenkwinkelskalierung.png>
@@ -2326,10 +2241,6 @@ Package pdftex.def Info: figures/Lenkwinkelskalierung.png used on input line 86
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: Reference `img:skalierunglenkwinkel' on page 17 undefined on inp
-ut line 91.
 
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 94.
@@ -2349,20 +2260,10 @@ Package natbib Warning: Citation `perez2017effectiveness' on page 18 undefined
 on input line 96.
 
 
-LaTeX Warning: Reference `fig:steuerungswinkel' on page 18 undefined on input l
-ine 98.
-
-
-LaTeX Warning: Reference `fig:anglesa' on page 18 undefined on input line 98.
-
-
 Package natbib Warning: Citation `liu2012stratified' on page 18 undefined on in
 put line 100.
 
-
-LaTeX Warning: Reference `fig:anglesb' on page 18 undefined on input line 101.
-
-<figures/steeringAngleDistribution.png, id=219, 379.4175pt x 252.945pt>
+<figures/steeringAngleDistribution.png, id=452, 379.4175pt x 252.945pt>
 File: figures/steeringAngleDistribution.png Graphic file (type png)
 
 <use figures/steeringAngleDistribution.png>
@@ -2370,7 +2271,7 @@ Package pdftex.def Info: figures/steeringAngleDistribution.png used on input li
 ne 109.
 (pdftex.def)             Requested size: 209.12683pt x 139.42122pt.
 
-<figures/steeringAngleDistributionFlipped.png, id=220, 379.4175pt x 252.945pt>
+<figures/steeringAngleDistributionFlipped.png, id=453, 379.4175pt x 252.945pt>
 File: figures/steeringAngleDistributionFlipped.png Graphic file (type png)
 
 <use figures/steeringAngleDistributionFlipped.png>
@@ -2389,159 +2290,135 @@ Package natbib Warning: Citation `picard1990data' on page 18 undefined on input
 Package natbib Warning: Citation `reitermanova2010data' on page 18 undefined on
  input line 124.
 
-
-LaTeX Warning: Reference `fig:dronetfrozen' on page 18 undefined on input line 
-127.
-
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 128.
+(babel)             in language  on input line 126.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 128.
+(babel)             in language  on input line 126.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 128.
+(babel)             in language  on input line 129.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 128.
+(babel)             in language  on input line 129.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 129.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 129.
 [18 <./figures/Lenkwinkelskalierung.png>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 137.
+(babel)             in language  on input line 140.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 137.
+(babel)             in language  on input line 140.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 137.
+(babel)             in language  on input line 140.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 137.
+(babel)             in language  on input line 140.
  [19 <./figures/steeringAngleDistribution.png> <./figures/steeringAngleDistribu
 tionFlipped.png>]
-<figures/Pipeline.png, id=239, 753.81625pt x 272.01625pt>
+<figures/Pipeline.png, id=472, 753.81625pt x 272.01625pt>
 File: figures/Pipeline.png Graphic file (type png)
 
 <use figures/Pipeline.png>
-Package pdftex.def Info: figures/Pipeline.png used on input line 140.
+Package pdftex.def Info: figures/Pipeline.png used on input line 143.
 (pdftex.def)             Requested size: 422.13423pt x 152.32805pt.
 
-Overfull \hbox (3.88055pt too wide) in paragraph at lines 140--141
+Overfull \hbox (3.88055pt too wide) in paragraph at lines 143--144
  [][] 
  []
 
-
-LaTeX Warning: Reference `fig:dronetfrozen' on page 20 undefined on input line 
-146.
-
-
-LaTeX Warning: Reference `fig:pipelineexample' on page 20 undefined on input li
-ne 147.
-
-<figures/200x200.png, id=240, 200.75pt x 200.75pt>
+<figures/200x200.png, id=475, 200.75pt x 200.75pt>
 File: figures/200x200.png Graphic file (type png)
  <use figures/200x200.png>
-Package pdftex.def Info: figures/200x200.png used on input line 153.
+Package pdftex.def Info: figures/200x200.png used on input line 157.
 (pdftex.def)             Requested size: 124.22118pt x 124.22478pt.
 
-<figures/200x200Hist.png, id=241, 160.6pt x 161.60374pt>
+<figures/200x200Hist.png, id=476, 160.6pt x 161.60374pt>
 File: figures/200x200Hist.png Graphic file (type png)
 
 <use figures/200x200Hist.png>
-Package pdftex.def Info: figures/200x200Hist.png used on input line 159.
+Package pdftex.def Info: figures/200x200Hist.png used on input line 163.
 (pdftex.def)             Requested size: 124.22118pt x 124.99994pt.
 
-<figures/200x200Gauss.png, id=242, 150.5625pt x 151.3153pt>
+<figures/200x200Gauss.png, id=477, 150.5625pt x 151.3153pt>
 File: figures/200x200Gauss.png Graphic file (type png)
 
 <use figures/200x200Gauss.png>
-Package pdftex.def Info: figures/200x200Gauss.png used on input line 165.
+Package pdftex.def Info: figures/200x200Gauss.png used on input line 169.
 (pdftex.def)             Requested size: 124.22118pt x 124.8482pt.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 173.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 173.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 177.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 177.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 177.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 177.
- [20 <./figures/Pipeline.png> <./figures/200x200.png (PNG copy)> <./figures/200
-x200Hist.png> <./figures/200x200Gauss.png>]
-
-LaTeX Warning: Reference `img:dronetfrozen' on page 21 undefined on input line 
-180.
-
-<figures/Architecture-DRONET-FROZEN.png, id=253, 867.24pt x 364.36125pt>
-File: figures/Architecture-DRONET-FROZEN.png Graphic file (type png)
-
-<use figures/Architecture-DRONET-FROZEN.png>
-Package pdftex.def Info: figures/Architecture-DRONET-FROZEN.png used on input l
-ine 186.
-(pdftex.def)             Requested size: 433.61894pt x 182.18018pt.
-
-Overfull \hbox (15.36526pt too wide) in paragraph at lines 186--187
- [][] 
- []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Package natbib Warning: Citation `kingma2014adam' on page 21 undefined on input
- line 195.
-
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 197.
+(babel)             in language  on input line 177.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 197.
+(babel)             in language  on input line 177.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 197.
+(babel)             in language  on input line 181.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 197.
-[21]
+(babel)             in language  on input line 181.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 181.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 181.
+[20 <./figures/Pipeline.png>]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 187.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 187.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 187.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 187.
+ [21 <./figures/200x200.png (PNG copy)> <./figures/200x200Hist.png> <./figures/
+200x200Gauss.png>]
+<figures/Architecture-DRONET-FROZEN.png, id=493, 867.24pt x 364.36125pt>
+File: figures/Architecture-DRONET-FROZEN.png Graphic file (type png)
 
-LaTeX Warning: Reference `img:lernarchitektur' on page 22 undefined on input li
-ne 198.
+<use figures/Architecture-DRONET-FROZEN.png>
+Package pdftex.def Info: figures/Architecture-DRONET-FROZEN.png used on input l
+ine 190.
+(pdftex.def)             Requested size: 433.61894pt x 182.18018pt.
 
-<figures/Lernarchitektur.png, id=262, 564.1075pt x 262.9825pt>
+Overfull \hbox (15.36526pt too wide) in paragraph at lines 190--191
+ [][] 
+ []
+
+<figures/Lernarchitektur.png, id=497, 564.1075pt x 262.9825pt>
 File: figures/Lernarchitektur.png Graphic file (type png)
 
 <use figures/Lernarchitektur.png>
-Package pdftex.def Info: figures/Lernarchitektur.png used on input line 202.
+Package pdftex.def Info: figures/Lernarchitektur.png used on input line 206.
 (pdftex.def)             Requested size: 418.25368pt x 194.98921pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 207.
+(babel)             in language  on input line 211.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 207.
+(babel)             in language  on input line 211.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 207.
+(babel)             in language  on input line 211.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 207.
+(babel)             in language  on input line 211.
 [22 <./figures/Architecture-DRONET-FROZEN.png>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 209.
+(babel)             in language  on input line 213.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 209.
-
-
-LaTeX Warning: Reference `fig:steuerung' on page 23 undefined on input line 211
-.
-
+(babel)             in language  on input line 213.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 222.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 222.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 222.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 218.
-[23 <./figures/Lernarchitektur.png>]
-<figures/Steuerung.png, id=278, 915.42pt x 593.21625pt>
+(babel)             in language  on input line 222.
+ [23 <./figures/Lernarchitektur.png>] <figures/Steuerung.png, id=515, 915.42pt 
+x 593.21625pt>
 File: figures/Steuerung.png Graphic file (type png)
 
 <use figures/Steuerung.png>
-Package pdftex.def Info: figures/Steuerung.png used on input line 221.
+Package pdftex.def Info: figures/Steuerung.png used on input line 225.
 (pdftex.def)             Requested size: 418.25368pt x 271.03622pt.
 ) (./chapters/5-Auswertung-und-Szenarien.tex
 Package babel Info: Redefining ngerman shorthand "|
@@ -2563,10 +2440,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 7.
-
-LaTeX Warning: Reference `img:loss' on page 25 undefined on input line 8.
-
-<figures/loss.png, id=286, 390.45876pt x 279.0425pt>
+<figures/loss.png, id=523, 390.45876pt x 279.0425pt>
 File: figures/loss.png Graphic file (type png)
  <use figures/loss.png>
 Package pdftex.def Info: figures/loss.png used on input line 12.
@@ -2583,9 +2457,6 @@ Package babel Info: Redefining ngerman shorthand "~
 [25
 
  <./figures/loss.png>]
-
-LaTeX Warning: Reference `img:loss' on page 26 undefined on input line 21.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 25.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2594,10 +2465,6 @@ Package babel Info: Redefining ngerman shorthand "~
 Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
-
-
-Package natbib Warning: Citation `bojarski2016end' on page 26 undefined on inpu
-t line 28.
 
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 32.
@@ -2608,14 +2475,6 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 32.
 [26]
-
-LaTeX Warning: Reference `tab:testfahrten' on page 27 undefined on input line 3
-7.
-
-
-LaTeX Warning: Reference `tab:autonomie' on page 27 undefined on input line 55.
-
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -2633,30 +2492,19 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 75.
 
-
-LaTeX Warning: Reference `fig:fehlerszenarien' on page 28 undefined on input li
-ne 80.
-
-
-LaTeX Warning: Reference `fig:szena' on page 28 undefined on input line 80.
-
-
-LaTeX Warning: Reference `fig:szenb' on page 28 undefined on input line 80.
-
-
 Overfull \hbox (23.52505pt too wide) in paragraph at lines 78--81
  []\T1/cmr/bx/n/10.95 Fahrbahn wie-der-fin-den[] \T1/cmr/m/n/10.95 Im Hin-blick
  auf die Ein-gangs an-ge-spro-che-ne mög-li-che Overfitting-
  []
 
-<figures/szenario1.jpg, id=307, 2023.56pt x 1517.67pt>
+<figures/szenario1.jpg, id=548, 2023.56pt x 1517.67pt>
 File: figures/szenario1.jpg Graphic file (type jpg)
 
 <use figures/szenario1.jpg>
 Package pdftex.def Info: figures/szenario1.jpg used on input line 87.
 (pdftex.def)             Requested size: 167.3021pt x 125.46869pt.
 
-<figures/szenario2.jpg, id=308, 2023.56pt x 1517.67pt>
+<figures/szenario2.jpg, id=549, 2023.56pt x 1517.67pt>
 File: figures/szenario2.jpg Graphic file (type jpg)
 
 <use figures/szenario2.jpg>
@@ -2666,10 +2514,6 @@ Package pdftex.def Info: figures/szenario2.jpg used on input line 93.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: Reference `img:szenariokreuzung' on page 28 undefined on input l
-ine 106.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 107.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2678,7 +2522,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 107.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 107.
-[28] <figures/szenarioKreuzung.png, id=317, 200.75pt x 200.75pt>
+[28] <figures/szenarioKreuzung.png, id=557, 200.75pt x 200.75pt>
 File: figures/szenarioKreuzung.png Graphic file (type png)
 
 <use figures/szenarioKreuzung.png>
@@ -2699,48 +2543,26 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 120.
 
-
-Package natbib Warning: Citation `simonyan2013deep' on page 30 undefined on inp
-ut line 126.
-
-
-Package natbib Warning: Citation `raghakotkerasvis' on page 30 undefined on inp
-ut line 126.
-
-
-LaTeX Warning: Reference `img:saliency' on page 30 undefined on input line 128.
-
-
-<figures/firstBlock.png, id=325, 271.76532pt x 125.71968pt>
+<figures/firstBlock.png, id=567, 271.76532pt x 125.71968pt>
 File: figures/firstBlock.png Graphic file (type png)
 
 <use figures/firstBlock.png>
 Package pdftex.def Info: figures/firstBlock.png used on input line 136.
 (pdftex.def)             Requested size: 334.60422pt x 154.79733pt.
 
-<figures/secondBlock.png, id=326, 273.27094pt x 124.21407pt>
+<figures/secondBlock.png, id=568, 273.27094pt x 124.21407pt>
 File: figures/secondBlock.png Graphic file (type png)
 
 <use figures/secondBlock.png>
 Package pdftex.def Info: figures/secondBlock.png used on input line 142.
 (pdftex.def)             Requested size: 334.60422pt x 152.10384pt.
 
-<figures/thirdBlock.png, id=327, 271.76532pt x 125.71968pt>
+<figures/thirdBlock.png, id=569, 271.76532pt x 125.71968pt>
 File: figures/thirdBlock.png Graphic file (type png)
 
 <use figures/thirdBlock.png>
 Package pdftex.def Info: figures/thirdBlock.png used on input line 148.
 (pdftex.def)             Requested size: 334.60422pt x 154.79733pt.
-
-
-LaTeX Warning: Reference `fig:saliena' on page 30 undefined on input line 156.
-
-
-LaTeX Warning: Reference `fig:salienb' on page 30 undefined on input line 156.
-
-
-LaTeX Warning: Reference `fig:salienc' on page 30 undefined on input line 157.
-
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 158.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2749,7 +2571,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 158.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 158.
-[30]
+ [30]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 158.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2760,11 +2582,7 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 158.
  [31 <./figures/firstBlock.png> <./figures/secondBlock.png> <./figures/thirdBlo
 ck.png>]
-
-LaTeX Warning: Reference `img:kreuzung' on page 32 undefined on input line 160.
-
-
-<figures/Kreuzung.png, id=344, 270.25969pt x 118.94438pt>
+<figures/Kreuzung.png, id=590, 270.25969pt x 118.94438pt>
 File: figures/Kreuzung.png Graphic file (type png)
 
 <use figures/Kreuzung.png>
@@ -2897,12 +2715,7 @@ Package natbib Warning: There were undefined citations.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 95.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 95.
-(./thesis.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+(./thesis.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 95.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 95.
 
@@ -2912,50 +2725,65 @@ Package rerunfilecheck Warning: File `thesis.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  EFA46D7BD06EEA8C3394AE9082F19D53;2157.
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Before: EFA46D7BD06EEA8C3394AE9082F19D53;2157
+(rerunfilecheck)             After:  CD80895A0CA4B09462A2303357F8CDDC;2210.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 95.
  ) 
 Here is how much of TeX's memory you used:
- 40614 strings out of 493013
- 811288 string characters out of 6136993
- 974282 words of memory out of 5000000
- 43303 multiletter control sequences out of 15000+600000
+ 40683 strings out of 493013
+ 812265 string characters out of 6136993
+ 977753 words of memory out of 5000000
+ 43348 multiletter control sequences out of 15000+600000
  41265 words of font info for 69 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 82i,20n,77p,10419b,936s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
-ive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2016/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive
-/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2016/texm
-f-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2016/texmf-dist/fon
-ts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2016/texmf-dist/fonts/type1/p
-ublic/cm-super/sfbx2074.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-s
-uper/sfcc1095.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0
-900.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c
-:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/
-2016/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2016/texmf
--dist/fonts/type1/public/cm-super/sfsl1095.pfb><c:/texlive/2016/texmf-dist/font
-s/type1/public/cm-super/sfsx1095.pfb><c:/texlive/2016/texmf-dist/fonts/type1/pu
-blic/cm-super/sfsx1200.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-su
-per/sfti0900.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti10
-95.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texli
-ve/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2016/texmf-d
-ist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on thesis.pdf (47 pages, 3162631 bytes).
+ 82i,20n,82p,10419b,936s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{table.caption.37} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.36} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.39} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.33} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.caption.26} has been referenced but does not
+ exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section*.48} has been referenced but does not exist
+, replaced by a fixed one
+
+{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texliv
+e/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2016/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2
+016/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2016/texmf-
+dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2016/texmf-dist/fonts
+/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2016/texmf-dist/fonts/type1/pub
+lic/cm-super/sfbx2074.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-sup
+er/sfcc1095.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm090
+0.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/
+texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/20
+16/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2016/texmf-d
+ist/fonts/type1/public/cm-super/sfsl1095.pfb><c:/texlive/2016/texmf-dist/fonts/
+type1/public/cm-super/sfsx1095.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publ
+ic/cm-super/sfsx1200.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-supe
+r/sfti0900.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095
+.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive
+/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2016/texmf-dis
+t/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on thesis.pdf (48 pages, 3179293 bytes).
 PDF statistics:
- 539 PDF objects out of 1000 (max. 8388607)
- 415 compressed objects within 5 object streams
- 164 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 771 PDF objects out of 1000 (max. 8388607)
+ 644 compressed objects within 7 object streams
+ 174 named destinations out of 1000 (max. 500000)
+ 433 words of extra memory for PDF output out of 10000 (max. 10000000)
 

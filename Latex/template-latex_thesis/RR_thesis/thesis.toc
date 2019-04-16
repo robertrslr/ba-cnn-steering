@@ -1,7 +1,7 @@
 \select@language {ngerman}
-\contentsline {chapter}{Abbildungsverzeichnis}{iv}{section*.2}
-\contentsline {chapter}{Tabellenverzeichnis}{v}{section*.4}
-\contentsline {chapter}{Abk\IeC {\"u}rzungen}{vii}{section*.6}
+\contentsline {chapter}{Abbildungsverzeichnis}{v}{section*.2}
+\contentsline {chapter}{Tabellenverzeichnis}{vi}{section*.4}
+\contentsline {chapter}{Abk\IeC {\"u}rzungen}{viii}{section*.6}
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Autonome Navigation mit Bilddaten}{2}{section.1.1}
 \contentsline {chapter}{\numberline {2}Neuronale Navigation mit Bilddaten}{3}{chapter.2}
@@ -24,29 +24,32 @@
 \contentsline {paragraph}{\nonumberline Strecke}{14}{section*.15}
 \contentsline {paragraph}{\nonumberline Rechnerhardware}{15}{section*.17}
 \contentsline {section}{\numberline {4.2}Trainingsdaten}{15}{section.4.2}
-\contentsline {section}{\numberline {4.3}Vorverarbeitung und Fine Tuning}{17}{section.4.3}
+\contentsline {section}{\numberline {4.3}Datenverarbeitung}{17}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Software}{17}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Preprocessing}{17}{subsection.4.3.2}
 \contentsline {paragraph}{\nonumberline Data-Label Processing}{17}{section*.19}
 \contentsline {paragraph}{\nonumberline Stratified Sampling}{18}{section*.21}
 \contentsline {paragraph}{\nonumberline Data Splitting}{18}{section*.23}
+\contentsline {subsection}{\numberline {4.3.3}Real-Time-Processing}{19}{subsection.4.3.3}
 \contentsline {paragraph}{\nonumberline Processing Pipeline}{19}{section*.24}
-\contentsline {paragraph}{\nonumberline Histogrammausgleich}{19}{section*.25}
-\contentsline {paragraph}{\nonumberline Erh\IeC {\"o}hung der Varianz}{20}{section*.27}
-\contentsline {subsection}{\numberline {4.3.3}Fine Tuning}{21}{subsection.4.3.3}
-\contentsline {paragraph}{\nonumberline Netzarchitektur}{21}{section*.29}
-\contentsline {paragraph}{\nonumberline Lernarchitektur}{21}{section*.31}
-\contentsline {section}{\numberline {4.4}Steuerung}{23}{section.4.4}
+\contentsline {paragraph}{\nonumberline Skalierung}{19}{section*.25}
+\contentsline {paragraph}{\nonumberline Histogrammausgleich}{19}{section*.26}
+\contentsline {paragraph}{\nonumberline Normalisierung}{20}{section*.27}
+\contentsline {paragraph}{\nonumberline Varianz}{20}{section*.29}
+\contentsline {section}{\numberline {4.4}Fine Tuning}{20}{section.4.4}
+\contentsline {paragraph}{\nonumberline Netzarchitektur}{20}{section*.31}
+\contentsline {paragraph}{\nonumberline Traningsstruktur}{22}{section*.33}
+\contentsline {section}{\numberline {4.5}Steuerung}{23}{section.4.5}
 \contentsline {chapter}{\numberline {5}Auswertung und Szenarien}{25}{chapter.5}
 \contentsline {section}{\numberline {5.1}Training}{25}{section.5.1}
 \contentsline {section}{\numberline {5.2}Testfahrt}{26}{section.5.2}
-\contentsline {paragraph}{\nonumberline Autonomiemetrik}{27}{section*.35}
+\contentsline {paragraph}{\nonumberline Autonomiemetrik}{27}{section*.37}
 \contentsline {section}{\numberline {5.3}Einzelszenarien}{28}{section.5.3}
-\contentsline {paragraph}{\nonumberline Fahrbahn wiederfinden}{28}{section*.38}
-\contentsline {paragraph}{\nonumberline Kreuzung}{29}{section*.40}
+\contentsline {paragraph}{\nonumberline Fahrbahn wiederfinden}{28}{section*.40}
+\contentsline {paragraph}{\nonumberline Kreuzung}{29}{section*.42}
 \contentsline {section}{\numberline {5.4}Visualisierung}{30}{section.5.4}
-\contentsline {paragraph}{\nonumberline Saliency}{30}{section*.42}
-\contentsline {paragraph}{\nonumberline Kreuzung}{32}{section*.44}
+\contentsline {paragraph}{\nonumberline Saliency}{30}{section*.44}
+\contentsline {paragraph}{\nonumberline Kreuzung}{32}{section*.46}
 \contentsline {chapter}{\numberline {6}Res\IeC {\"u}mee}{33}{chapter.6}
-\contentsline {chapter}{Glossar}{38}{section*.48}
-\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{40}{chapter*.49}
+\contentsline {chapter}{Glossar}{38}{section*.50}
+\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{40}{chapter*.51}

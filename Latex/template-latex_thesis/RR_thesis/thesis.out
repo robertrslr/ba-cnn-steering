@@ -20,16 +20,17 @@
 \BOOKMARK [0][-]{chapter.4}{Entwurf}{}% 20
 \BOOKMARK [1][-]{section.4.1}{Hardware und Strecke}{chapter.4}% 21
 \BOOKMARK [1][-]{section.4.2}{Trainingsdaten}{chapter.4}% 22
-\BOOKMARK [1][-]{section.4.3}{Vorverarbeitung und Fine Tuning}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.3}{Datenverarbeitung}{chapter.4}% 23
 \BOOKMARK [2][-]{subsection.4.3.1}{Software}{section.4.3}% 24
 \BOOKMARK [2][-]{subsection.4.3.2}{Preprocessing}{section.4.3}% 25
-\BOOKMARK [2][-]{subsection.4.3.3}{Fine Tuning}{section.4.3}% 26
-\BOOKMARK [1][-]{section.4.4}{Steuerung}{chapter.4}% 27
-\BOOKMARK [0][-]{chapter.5}{Auswertung und Szenarien}{}% 28
-\BOOKMARK [1][-]{section.5.1}{Training}{chapter.5}% 29
-\BOOKMARK [1][-]{section.5.2}{Testfahrt}{chapter.5}% 30
-\BOOKMARK [1][-]{section.5.3}{Einzelszenarien}{chapter.5}% 31
-\BOOKMARK [1][-]{section.5.4}{Visualisierung}{chapter.5}% 32
-\BOOKMARK [0][-]{chapter.6}{Res\374mee}{}% 33
-\BOOKMARK [0][-]{section*.48}{Glossar}{}% 34
-\BOOKMARK [0][-]{chapter*.49}{Selbstst\344ndigkeitserkl\344rung}{}% 35
+\BOOKMARK [2][-]{subsection.4.3.3}{Real-Time-Processing}{section.4.3}% 26
+\BOOKMARK [1][-]{section.4.4}{Fine Tuning}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.5}{Steuerung}{chapter.4}% 28
+\BOOKMARK [0][-]{chapter.5}{Auswertung und Szenarien}{}% 29
+\BOOKMARK [1][-]{section.5.1}{Training}{chapter.5}% 30
+\BOOKMARK [1][-]{section.5.2}{Testfahrt}{chapter.5}% 31
+\BOOKMARK [1][-]{section.5.3}{Einzelszenarien}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.4}{Visualisierung}{chapter.5}% 33
+\BOOKMARK [0][-]{chapter.6}{Res\374mee}{}% 34
+\BOOKMARK [0][-]{section*.50}{Glossar}{}% 35
+\BOOKMARK [0][-]{chapter*.51}{Selbstst\344ndigkeitserkl\344rung}{}% 36
