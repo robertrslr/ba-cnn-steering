@@ -36,11 +36,11 @@
 \contentsline {paragraph}{\nonumberline Data-Label Processing}{17}{section*.24}
 \contentsline {paragraph}{\nonumberline Data Augmentation}{18}{section*.26}
 \contentsline {paragraph}{\nonumberline Stratified Sampling}{18}{section*.27}
-\contentsline {paragraph}{\nonumberline Data Splitting}{18}{section*.29}
+\contentsline {paragraph}{\nonumberline Data Splitting}{19}{section*.29}
 \contentsline {subsection}{\numberline {4.3.3}Real-Time-Processing}{19}{subsection.4.3.3}
 \contentsline {paragraph}{\nonumberline Processing Pipeline}{19}{section*.30}
 \contentsline {paragraph}{\nonumberline Skalierung}{19}{section*.31}
-\contentsline {paragraph}{\nonumberline Histogrammausgleich}{19}{section*.32}
+\contentsline {paragraph}{\nonumberline Histogrammausgleich}{20}{section*.32}
 \contentsline {paragraph}{\nonumberline Normalisierung}{20}{section*.33}
 \contentsline {paragraph}{\nonumberline Varianzerh\IeC {\"o}hung}{20}{section*.35}
 \contentsline {section}{\numberline {4.4}Fine Tuning}{21}{section.4.4}
@@ -56,19 +56,19 @@
 \contentsline {chapter}{\numberline {5}Auswertung und Szenarien}{26}{chapter.5}
 \contentsline {section}{\numberline {5.1}Training}{26}{section.5.1}
 \contentsline {section}{\numberline {5.2}Testfahrt}{27}{section.5.2}
-\contentsline {paragraph}{\nonumberline Autonomiemetrik}{28}{section*.47}
+\contentsline {paragraph}{\nonumberline Metrik}{28}{section*.47}
 \contentsline {section}{\numberline {5.3}Einzelszenarien}{29}{section.5.3}
 \contentsline {paragraph}{\nonumberline Fahrbahn wiederfinden}{29}{section*.50}
 \contentsline {paragraph}{\nonumberline Kreuzung}{30}{section*.52}
 \contentsline {section}{\numberline {5.4}Visualisierung}{31}{section.5.4}
 \contentsline {paragraph}{\nonumberline Saliency}{31}{section*.54}
 \contentsline {paragraph}{\nonumberline Lernprozess}{31}{section*.55}
-\contentsline {paragraph}{\nonumberline Kreuzung}{33}{section*.57}
-\contentsline {chapter}{\numberline {6}Res\IeC {\"u}mee}{34}{chapter.6}
-\contentsline {paragraph}{\nonumberline Zielsetzung}{34}{section*.59}
-\contentsline {paragraph}{\nonumberline Analyse}{34}{section*.60}
-\contentsline {paragraph}{\nonumberline Technische Kritik}{35}{section*.61}
-\contentsline {paragraph}{\nonumberline Kritik der Idee}{35}{section*.62}
-\contentsline {paragraph}{\nonumberline Ausblick}{35}{section*.63}
-\contentsline {chapter}{Glossar}{40}{section*.66}
-\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{42}{chapter*.67}
+\contentsline {paragraph}{\nonumberline Kreuzung}{32}{section*.57}
+\contentsline {chapter}{\numberline {6}Res\IeC {\"u}mee}{35}{chapter.6}
+\contentsline {paragraph}{\nonumberline Zielsetzung}{35}{section*.59}
+\contentsline {paragraph}{\nonumberline Analyse}{35}{section*.60}
+\contentsline {paragraph}{\nonumberline Technische Kritik}{36}{section*.61}
+\contentsline {paragraph}{\nonumberline Kritik der Idee}{36}{section*.62}
+\contentsline {paragraph}{\nonumberline Ausblick}{36}{section*.63}
+\contentsline {chapter}{Glossar}{41}{section*.66}
+\contentsline {chapter}{Selbstst\IeC {\"a}ndigkeitserkl\IeC {\"a}rung}{43}{chapter*.67}

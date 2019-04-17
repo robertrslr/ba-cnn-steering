@@ -14,9 +14,9 @@ Das Fine-Tuning wurde mit den im vorangegangenem Kapitel festgelegten Konfigurat
 	\label{img:loss}
 \end{figure}
 
-Festzustellen ist, dass beide Fehlerwerte sich zunächst stark fallend $0.0$ annähren und zwischen den Epochen $20-25$ und $100$ gleichbleibend $0.0$ zu bleiben scheinen. Aufgrund der Start-Traningsfehler von etwa $3.5$ lassen sich sehr kleine Werte schwer grafisch beurteilen. Ein direkter Blick auf die Fehlerwerte zeigt, dass beide sich im Bereich \num{10e-2} weiter $0.0$ annähern, mit dem Besten Validierungsfehler von $0.0344$ in Epoche $197$. Es besteht keine ausgeprägte Divergenz zwischen Trainings- und Validierungsfehler, das ist positiv zu beurteilen.
+Festzustellen ist, dass beide Fehlerwerte sich zunächst stark fallend $0.0$ annähren und zwischen den Epochen $20-25$ und $100$ gleichbleibend $0.0$ zu bleiben scheinen. Aufgrund des Start-Traningsfehles von etwa $3.5$ sind kleine Werte nur schlecht grafisch zu beurteilen. Ein direkter Blick auf die zugrundeliegenden Fehlerwerte zeigt, dass beide sich im Bereich \num{10e-2} weiter $0.0$ annähern, mit dem kleinsten Validierungsfehler von $0.0344$ in Epoche $197$. Es besteht keine ausgeprägte Divergenz zwischen Trainings- und Validierungsfehler, das ist positiv zu beurteilen.
 
-Bei kritischer Betrachtung muss angemerkt werden, dass die Regressionkurve, im konkreten Fall die Annäherung des Lenkwinkels, sehr rapide fällt.  Dieses kann Zeichen eines Overfittings sein. Die Bilder der Teststrecke könnten in der Menge zu homogen sein, die Teststrecke ist im Angesicht der dort aufgenommenen Bildermenge relativ kurz, viele Bilder sind ähnlich mit nur leicht unterschiedlichen Lenkwerten. Aufgrund der räumlichen Abgeschlossenheit der Teststrecke gibt es dazu wenig Varianz im Bildhintergrund, das könnte die Gleichartigkeit der Bilder verstärken.
+Bei kritischer Betrachtung muss angemerkt werden, dass die Regressionkurve, im konkreten Fall die Annäherung des Lenkwinkels, sehr rapide fällt. Das kann Zeichen eines Overfittings sein. Die Bilder der Teststrecke könnten in der Menge zu homogen sein, die Teststrecke ist im Angesicht der dort aufgenommenen Bildermenge relativ kurz, viele Bilder sind optisch ähnlich, mit nur kleinen Lenkwertunterschieden. Aufgrund der räumlichen Abgeschlossenheit der Teststrecke gibt es dazu wenig Varianz im Bildhintergrund, das könnte die Gleichartigkeit der Bilder verstärken. 
 
 Allerdings ist die schnelle Konvergenz nicht zwingend negativ anzumerken, das neuronale Netz war Pre-Trained. Es war mit einer verwandten Aufgabe auf einer ähnlichen Bildermenge trainiert worden. Dazu kommt, dass nur ein Teil der Layer überhaupt für das Traning, also eine Veränderung der Gewichte, freigegeben war. Im Angesicht dieser Umstände können die Fehlerkurven in Abbildung~\ref{img:loss} auch für eine schnelle, effiziente Anpassung der Gewichte des letzten Residual-Blocks stehen.
 
@@ -24,18 +24,19 @@ Wie das CNN als Steuerungslogik in realen Streckenszenarien abschneidet, wird in
 
 \section{Testfahrt}
 
-Um die Lenkwinkelbestimmung des Netzes zu Testen, wird zunächst frei auf der Strecke gefahren. Das Fahrzeug startet auf einer Geraden und fährt den Kurs überwiegend Fehlerfrei ab. Der Onboard-Rechner (NUC) des Fahrzeugs verarbeitet die Bilder mit $20 fps$, getestet wird bis zu einer Geschwindigkeit von \SI{1.2}{\meter/\second}, ab da nimmt die Lenkfehlerhäufigkeit stark zu. Ein Lenkwinkelupdate (verarbeiteter Frame) pro gefahrene $6 cm$ ist zum sauberen Fahren die Grenze.\\
-\paragraph{Autonomiemetrik}
-Die Fahrleistung auf der Strecke soll gemessen werden, um Sie direkt mit anderen Algorithmen vergleichen zu können. Dazu wird eine Autonomie-Metrik bestimmt \cite{bojarski2016end}. Der Autonomiewert wird definiert als 
+Um die Lenkwinkelbestimmung des Netzes zu Testen, wird zunächst frei auf der Strecke gefahren. Das Fahrzeug startet auf einer Geraden und fährt den Kurs überwiegend Fehlerfrei ab. Der Onboard-Rechner (NUC) des Fahrzeugs verarbeitet die Bilder mit $20 fps$, getestet wird bis zu einer Geschwindigkeit von \SI{1.2}{\meter/\second}, ab da nimmt die Lenkfehlerhäufigkeit stark zu. Ein Lenkwinkelupdate ($\widehat{=}$ 1 verarbeiteter Frame) pro gefahrene $6 cm$ ist die Obergrenze.
+
+\paragraph{Metrik}
+Die Fahrleistung auf der Strecke soll gemessen werden, um Sie direkt mit anderen Algorithmen vergleichen zu können. Dazu wird eine Autonomie-Metrik \cite{bojarski2016end} bestimmt. Der Autonomiewert wird definiert als 
 \begin{equation}
 \label{mat:autonomie}
 (1 -  \frac{\text{Anzahl Fehler}\cdot 2 s}{\text{Fahrzeit in Sekunden}})\cdot 100,
 \end{equation}
 wobei die Anzahl der Fehler die Summe der Situationen ist, in der das Fahrzeug die Außen- oder Mittellinie mit mehr als zwei Reifen überquert hat. Das Fahrzeug kann sich danach selbst wieder auf die Strecke bringen, oder per Hand zurückgelenkt werden. Die Zeit, die vergeht, bis das Fahrzeug wieder sauber auf die Straße zurückgekehrt ist, wird mit 2 Sekunden angenommen. Die Fahrzeit in Sekunden beschreibt die Dauer des Versuchs.
 
-Für den Test werden zwei Runden auf der Teststrecke gefahren, einmal im Uhrzeigersinn und einmal gegen den Uhrzeigersinn, beide Runden auf der jeweils Rechten Straßenseite. Als Geschwindigkeit wird \SI{1/2}{\meter/\second} festgelegt. In jede Richtung der Strecke wird $60$ Sekunden gefahren, das entspricht je einer Runde. Die Gesamtfahrzeit für alle Tests ist damit $120$ Sekunden.
+Für den Test werden zwei Runden auf der Teststrecke gefahren, einmal im Uhrzeigersinn und einmal gegen den Uhrzeigersinn, beide Runden auf der jeweils Rechten Straßenseite. Als Geschwindigkeit wird \SI{1/2}{\meter/\second} festgelegt. In jede Richtung der Strecke wird $60$ Sekunden gefahren, das entspricht je einer Runde. Die Gesamtfahrzeit pro Test ist damit $120$ Sekunden.
 
-Verglichen wird das unveränderte DroNet, die abgestimmte (finegetunte) Variante (bezeichnet als BA-RR) und der Steuerungsalgorithmus (Linienerkennung), der von der diesjährigen Carolo-Cup-Projektgruppe entwickelt wurde. Die erste Runde ist mit, die zweite gegen den Uhrzeigersinn. Die Testfahrten ergaben die in Tabelle~\ref{tab:testfahrten} gesammelten Daten.
+Verglichen wird das unveränderte DroNet, die nachtrainierte Variante dieser Arbeit, bezeichnet als BA-RR, und der Steuerungsalgorithmus, der von der diesjährigen Carolo-Cup-Projektgruppe entwickelt wurde. Der Steuerungsalgorithmus der Projektgruppe basiert auf klassicher Linienerkennung mit Bildverarbeitung. Die erste Runde ist im, die zweite gegen den Uhrzeigersinn. Die Testfahrten ergaben die in Tabelle~\ref{tab:testfahrten} gesammelten Daten.
 
 
 
@@ -59,7 +60,7 @@ Der Autonomiewert wird nach der Formel berechnet und liefert die in Tabelle~\ref
   \begin{center}
     \caption{Vergleich der Autonomie}
     \label{tab:autonomie}
-    \begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+    \begin{tabular}{l|r}
       \textbf{Algorithmus} & \textbf{Autonomiewert} \\
       \hline
       DroNet & 53 \% \\
@@ -69,9 +70,9 @@ Der Autonomiewert wird nach der Formel berechnet und liefert die in Tabelle~\ref
   \end{center}
 \end{table}
 
-Der ursprüngliche DroNet Algorithmus ist nur $53 \%$ der Fahrzeit autonom unterwegs, was nicht überrascht, da er in einem anderen Anwendungsszenario entstand. Der Algorithmus des aktuellen Carolo-Projektteams ist deutlich besser, hat allerdings auch viele Fahrfehler gemacht. Die in dieser Arbeit entwickelte Steuerung (BA-RR) ist $87 \%$ der Fahrzeit autonom unterwegs, hier zeigt sich die deutliche Verbesserung, die insbesondere im Gegensatz zum DroNet Algorithmus erreicht wurde. Außerdem wird deutlich, das eine Steuerung mittels statistischer Auswertung von Bilddaten (CNN) nicht nur möglich ist, sondern einer Steuerung mittels klassicher Linienerkennung sogar überlegen sein kann. 
+Der ursprüngliche DroNet Algorithmus ist nur $53 \%$ der Fahrzeit autonom unterwegs, was nicht überrascht, da er in einem anderen Anwendungsszenario entstand. Der Algorithmus des aktuellen Carolo-Projektteams ist deutlich besser, hat allerdings auch viele Fahrfehler gemacht. Die in dieser Arbeit entwickelte Steuerung (BA-RR) ist $87 \%$ der Fahrzeit autonom unterwegs, hier zeigt sich die deutliche Verbesserung, die insbesondere im Gegensatz zum DroNet Algorithmus erreicht wurde. Außerdem wird deutlich, das eine Steuerung mittels statistischer Auswertung von Bilddaten (CNN) nicht nur möglich ist, sondern einer Steuerung mittels klassicher Linienerkennung in diesem Fall sogar überlegen ist. 
 
-Im Folgenden wird das Verhalten des Fahrzeugs in bestimmten Szenarien untersucht.
+Im Folgenden wird das Verhalten des Fahrzeugs in speziellen Szenarien untersucht.
 
 \section{Einzelszenarien}
 

@@ -22,6 +22,6 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Traningsfehler (train) und Validierungsfehler (val) \IeC {\"u}ber 100 Epochen\relax }}{26}{figure.caption.46}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Fehlerszenarien\relax }}{30}{figure.caption.51}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Kreuzungsszenario aus Sicht der Fahrzeugkamera\relax }}{30}{figure.caption.53}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Ausschlaggebende Bildbereiche\relax }}{32}{figure.caption.56}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Saliency-Map einer Kreuzungssituation\relax }}{33}{figure.caption.58}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Ausschlaggebende Bildbereiche\relax }}{33}{figure.caption.56}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Saliency-Map einer Kreuzungssituation\relax }}{34}{figure.caption.58}
 \addvspace {10\p@ }
