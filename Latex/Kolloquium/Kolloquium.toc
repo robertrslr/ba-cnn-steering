@@ -1,5 +1,5 @@
-\beamer@sectionintoc {1}{Technischer Hintergrund}{2}{0}{1}
-\beamer@sectionintoc {2}{Idee}{8}{0}{2}
-\beamer@sectionintoc {3}{Entwurf}{10}{0}{3}
-\beamer@sectionintoc {4}{Ergebnis}{13}{0}{4}
-\beamer@sectionintoc {5}{Schluss}{16}{0}{5}
+\beamer@sectionintoc {1}{Technischer Hintergrund}{3}{0}{1}
+\beamer@sectionintoc {2}{Idee}{11}{0}{2}
+\beamer@sectionintoc {3}{Entwurf}{14}{0}{3}
+\beamer@sectionintoc {4}{Ergebnis}{18}{0}{4}
+\beamer@sectionintoc {5}{Schluss}{25}{0}{5}
