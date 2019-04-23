@@ -1,0 +1,625 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{MnSymbol}
+\usepackage{qtree}
+\usepackage{amssymb}
+\usepackage{extarrows}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows,automata}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usetheme{CambridgeUS}  %% Themenwahl
+\beamertemplatenavigationsymbolsempty
+%\useoutertheme{split}
+%\useinnertheme{rectangles}
+
+%\usecolortheme{beaver}
+
+\title{Roboter Navigation}
+\author{Jan Robert Rösler}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+
+\section{Intro}
+
+\frame{\tableofcontents[currentsection]}
+
+\begin{frame} 
+  \frametitle{Roboter ?} 
+ \begin{figure}[h]
+
+\centering
+ \includegraphics[scale = 0.4]{collage.png}\\
+ \footnotesize\sffamily\textbf{Quelle:} www.eu-robotics.net
+ \end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Strukturierung}
+
+\begin{figure}
+\begin{center}
+ \Tree [ .Roboter   [ .statisch \includegraphics[scale=0.3]{kuka.png}
+  ] [ .mobil  [ .\mbox{nicht autonom}  \includegraphics[scale=0.07]{fhr_ferngelenkter_roboter.png} ] [ .autonom  \includegraphics[scale=0.26]{curiosity.png} ] ] ]
+%\caption{Beispiel eines DOM-Knotenbaum\label{dom}}
+\end{center}
+\end{figure}
+ 
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Strukturierung}
+\framesubtitle{Mobil und Autonom}
+\begin{center}
+\includegraphics[scale = 0.7]{curiosity.png}
+\end{center}
+\end{frame}
+
+\section{mobile Roboter}
+
+
+
+\begin{frame}
+\begin{center}
+\begin{block}{}
+{\huge Initial Zustand} {\huge $\xrightarrow[\text{}]{\text{ \qquad \qquad \qquad }}$} {\huge Ziel Zustand}%hart gepanscht mit leerzeichen
+\end{block}
+\pause
+\begin{block}{}
+{\Large Roboter in Standby} \pause {\huge $\xrightarrow[\text{}]{\text{ \qquad \qquad }}$} \pause {\Large Bier zur Couch geliefert}
+\end{block}
+ \end{center}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Teile und Herrsche}
+\begin{center}
+
+
+%\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+ %                   semithick]
+
+ % \tikzstyle{every state}=[fill=white,draw=none,text=black]
+
+ % \node[initial,state] (A)                    {$Roboter in Standby$};
+%  \node[state]         (B) [ right of=A] {$Z1$};
+  %\node[state]         (C) [ right of=B] {$Z2$};
+ % \node[state]         (D) [right of=C] {$Z3$};
+ % \node[state]         (E) [right of=D]       {$Bier zur Couch geliefert$};
+
+ % \path (A) edge      		 node {Zu Kühlschrank fahren} (B)
+     % 	  (B) edge 		 node {Bier aus Kühlschrank nehmen} (C)
+      	%  (C) edge                node {Mit Bier zur Couch fahren} (D)
+        %    (D) edge 	           node {Bier abgeben} (E);
+      
+%\end{tikzpicture}
+
+Roboter in Standby $\xrightarrow[\text{}]{\text{\textit{Zu Kühlschrank fahren}}}$ Z1 $\xrightarrow[\text{}]{\text{\textit{Bier aus Kühlschrank nehmen}}}$ Z2\\ \quad \\ Z2 $\xrightarrow[\text{}]{\text{\textit{Mit Bier zur Couch fahren}}}$ Z3  $\xrightarrow[\text{}]{\text{\textit{Bier abgeben}}}$  Bier zur Couch geliefert
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Fortbewegung}
+
+\begin{block}{}
+\begin{center}
+Roboter in Standby $\xrightarrow[\text{}]{\text{\textit{Zu Kühlschrank fahren}}}$ Z1 \\
+\end{center}
+\end{block}
+\quad \\
+\quad \\
+\begin{center}
+\textit{Wie findet der Roboter zum Kühlschrank?}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Fortbewegung}
+\framesubtitle{Bug Algorithmus Ausgangslage}
+
+\begin{center}
+\includegraphics{TwoCrossmanyquestion.png}
+
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Reaktive Fortbewegung}
+\framesubtitle{Bug Algorithmus}
+
+\begin{center}
+\textbf{Annahmen:}
+\begin{itemize}
+\item Wir bewegen uns in einer Pixel-Welt (0 ist frei, 1 ist Hindernis)
+\item Keine weiteren Einschränkungen in der Bewegung
+\item Zielkoordinaten in der Karte sind bekannt (speziell Bug)\\
+
+\end{itemize}
+
+\textbf{Ablauf:}
+
+1. Bewege dich auf einer Geraden Richtung Zielkoordinaten
+
+ 2. Falls du auf ein Hindernis triffst, laufe gegen den Uhrzeidersinn drumherum, bis du auf einen Punkt der Geraden triffst, der näher an den 			Zielkoordinaten liegt, weiter bei 1.
+
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Reaktive Fortbewegung}
+\framesubtitle{Bug Algorithmus Demo}
+\begin{center}
+${\Huge \Longrightarrow}$ {\Large Matlab}
+\end{center}
+\end{frame}
+
+
+
+
+
+\section{Planung}
+
+ \begin{frame}
+\frametitle{Von Start zu Ziel }
+\begin{center}
+{\large \textit{Was ist meine Umgebung ?}} \\ 
+\quad \\
+\pause
+	{\Huge$\Downarrow$}\\
+\quad \\
+
+{\large \textit{Wo bin ich in der Umgebung?}}\\
+\quad \\
+\pause
+	{\Huge$\Downarrow$}\\
+\quad \\
+{\large \textit{Wie komme ich zu meinem Ziel ?}}\\
+\end{center}
+
+\end{frame}
+
+
+ \begin{frame}
+\frametitle{Bewegungsplanung}
+\begin{center}
+{\large \textbf{Mapping}} \\ 
+\quad \\
+
+	{\Huge$\Downarrow$}\\
+\quad \\
+
+{\large \textbf{Lokalisation}}\\
+\quad \\
+	{\Huge$\Downarrow$}\\
+\quad \\
+{\large \textbf{Navigation}}\\
+
+
+
+\end{center}
+
+\end{frame}
+
+
+
+
+\begin{frame} 
+  \frametitle{Buch als Grundlage} 
+
+\begin{columns}[T]
+\begin{column}[T]{5cm}
+\includegraphics[scale = 0.5]{buch.png}\\
+ \footnotesize\sffamily\textbf{Quelle:} www.buecher.de
+
+\end{column}
+
+\begin{column}[T]{5cm}
+\begin{itemize}
+
+\item  Peter Corke
+\item  Professor für Robotic Vision an der Queensland University of Technology
+\item sehr engagiert  auf dem ganzen Gebiet der Robotik \mbox{(Online Robot Academy)}
+\item Matlab Toolbox für Robotik und Robot Vision
+
+
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Was haben wir ?}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Konfigurationsraum}
+\begin{itemize}
+
+\item Raum der \textit{generalisierten Koordinaten} 
+\item Dimension des Raums ist gleich der Zahl der unabhängigen Freiheitsgerade 
+\item Stellt alle möglichen Positionen des Systems dar \\ %Da wir uns auf 2D Darstellung beschränken stimmt das 
+\end{itemize}
+\quad \\
+\quad \\
+
+
+\end{frame}
+
+\begin{frame}
+
+
+\begin{block}{}
+ \begin{figure}[h]
+\centering
+ \includegraphics[scale=0.8]{MovementArrows.png}
+ \end{figure}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+ \begin{block}{}
+\begin{figure}[h]
+\centering
+ \includegraphics[scale=0.8]{MovementArrows.png}
+ \end{figure}
+   \end{block}
+\begin{block}{}
+\qquad \qquad \qquad \qquad {\huge x} \qquad \qquad \qquad   {\huge y} \qquad \qquad \qquad \quad  {\huge $\Theta$}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+ \begin{block}{}
+\begin{figure}[h]
+\centering
+ \includegraphics[scale=0.8]{MovementArrows.png}
+ \end{figure}
+   \end{block}
+\begin{block}{}
+\qquad \qquad \qquad \qquad {\huge x} \qquad \qquad \qquad   {\huge y} \qquad \qquad \qquad \quad  {\huge $\Theta$}
+\end{block}
+\begin{center}
+{\Huge$\Downarrow$}
+\end{center}
+\begin{center}
+{\huge $r = (x,y,\Theta)$}
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Konfigurationsraum}
+\begin{itemize}
+
+\item Raum der \textit{generalisierten Koordinaten} 
+\item Dimension des Raums ist gleich der Zahl der unabhängigen Freiheitsgerade 
+\item Stellt alle möglichen Positionen des Systems dar \\ %Da wir uns auf 2D Darstellung beschränken stimmt das 
+\end{itemize}
+\quad \\
+\quad \\
+\centering
+\pause
+$\Rightarrow$  Im Beispiel beschreibbar durch Vektor $r = ( x,y,\Theta)$, also ist der Konfigurationsraum $\textbf{R}^3$
+
+\end{frame}
+
+
+
+\section{Navigation}
+
+
+
+\subsection{Mapping}
+\begin{frame}
+\frametitle{Karten}
+\begin{center}
+\textbf{Interne Repräsentationsarten von Karten:}
+\end{center}
+\begin{columns}[T]
+\begin{column}[T]{5cm}
+\begin{center}
+Metrisch
+\end{center}
+Objekte werden in einen zweidimensionalen Raum (klassische "Karte") eingeordnet, mit präzisen Koordinaten.
+\end{column}
+
+\begin{column}[T]{5cm}
+\begin{center}
+Topologisch
+\end{center}
+Es werden nur Objekte und ihre Relationen zueinander betrachtet, zum Beispiel die Entfernung zwischen zwei Orten. Die Karte ist dann ein Graph mit Knoten (Objekten) und Kanten (Wegen).
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+\subsection{Lokalisation}
+
+\begin{frame}
+\frametitle{Lokalisieren}
+\framesubtitle{Wie geht das ?}
+\begin{Definition}
+Odometrie beschreibt die Methode, mit der die Position und die Ausrichtung eines mobilen Systems anhand von  Messungen des Antriebssystems bestimmt werden.
+\end{Definition}
+\quad \\
+\begin{center}
+\textit{Sind die Daten des Antriebssystems immer korrekt (z.b. Radumdrehung) ?}
+\end{center}
+\end{frame}
+
+ \begin{frame}
+\frametitle{Umgebung und Messung}
+\framesubtitle{Datenassoziationsproblem}
+\begin{Definition}
+Das Datenassoziationsproblem beschreibt die Schwierigkeit, verschiedene Messungen eines Umgebungsmerkmals, zu verschiedenen Zeitpunkten, genau diesem Merkmal zuzuzordnen.
+\end{Definition}
+$\Rightarrow$ Hauptproblem beim SLAM-Verfahren\\
+$\Rightarrow$ Verschiedene Ansätze (z.b. Nearest-Neighbour)
+
+\end{frame}
+
+
+\subsubsection{SLAM}
+
+\begin{frame}
+\frametitle{Grundlage}
+
+Die Zeit sei $t$ und die Position eines mobilen Roboters $x_t$ (Hier kommt der Vektor $r = (x,y,\Theta)$ ins Spiel).
+Dann ist die Sequenz der Positionen bzw. der Weg gegeben durch:
+\begin{equation*}
+X_T = \{ x_0,x_1,x_2,....x_T \}
+\end{equation*}
+Die Sequenz der Odometriedaten (zwischen Zeitpunkt $t-1$ und $t$) ist dann:
+\begin{equation*}
+U_T = \{ u_0,u_1,u_2,....u_T \}
+\end{equation*}
+Die tatsächliche Karte der Umgebung sei $m$, die Messwerte der Umgebung sind gegeben durch:
+\begin{equation*}
+Z_T = \{ z_0,z_1,z_2,....u_T \}
+\end{equation*}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{SLAM Problem Modell}
+
+ \begin{figure}[h]
+\centering
+ \includegraphics[scale = 0.4]{SLAMProblem.png}\\
+ \footnotesize\sffamily\textbf{Quelle:}  Handbook of Robotics, Sicilian, Kathib and Editors, Springer Verlag
+ \end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Extended Kalman Filter}
+\begin{Definition}[Kalman-Filter]
+Der Standard Kalman Filter ist ein mathematisches Verfahren, mit dem es möglich ist den Messfehler in tatsächlichen Messwerten zu reduzieren und Schätzungen für nicht direkt messbare Systemgrößen zu erhalten, basierend auf Zustandsraummodellierung.
+\end{Definition}
+
+\begin{Definition}[Extended-Kalman-Filter]
+Der Extended-Kalman-Filter realisiert Zustandsüberführungen nicht über eine lineare Matrix, sondern mithilfe einer Taylor-Approximierung.
+\end{Definition}
+
+\end{frame}
+
+% maybe noch eine folie zum ablauf des extended kalman filter prozesses 
+
+\begin{frame}
+\frametitle{SLAM-Ablauf}
+\framesubtitle{Zeitpunkt $t$}
+
+\begin{center}
+Umgebungsmerkmale extrahieren \\
+{\large $\Downarrow$}\\
+Zuordnung der Messungen zu bereits beobachteten Merkmalen\\ (z.b. Nearest Neighbour)\\
+{\large $\Downarrow$}\\
+Update der Odometriewerte und Abgleich mit erneut erkannten Merkmalen der Umgebung (EKF)\\
+{\large $\Downarrow$}\\
+Update der Unsicherheiten bezüglich der Merkmale\\ (mehrfach Sichtungen erhöhen die Sicherheit)\\
+{\large $\Downarrow$}\\
+Neue Merkmale hinzufügen 
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{(EKF-)SLAM Ablauf}
+\framesubtitle{SLAM Demo}
+\begin{center}
+${\Huge \Longrightarrow}$ {\Large Matlab}
+\end{center}
+\end{frame}
+
+
+\subsection{Navigation}
+
+\begin{frame}
+\frametitle{Was haben wir bis jetzt erreicht ?}
+
+\begin{columns}[T]
+\begin{column}[T]{5cm}
+\begin{center}
+\includegraphics[scale = 0.7]{twocrossManyobstacles.png}
+\end{center}
+
+\end{column}
+
+\begin{column}[T]{5cm}
+\begin{center}
+{ \textit{Mapping}} \pause $\checkmark$ \\ 
+\quad \\
+\pause
+	{\large$\Downarrow$}\\
+\quad \\
+{ \textit{Lokalisation}}  \pause $\checkmark$  \\
+\quad \\
+\pause
+	{\large$\Downarrow$}\\
+\quad \\
+{ \textit{Navigation}}\\
+\end{center}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+
+
+\subsubsection{DStar}
+
+
+\begin{frame}
+\frametitle{Geometrisches Pfadplanungsproblem}
+\framesubtitle{Piano Movers Problem}
+\begin{itemize}
+\item Es gibt einen Arbeitsraum $\mathcal{W}$ (Hier $\mathcal{W} = \mathcal{R}^2$) und einen Bereich mit Hindernissen $\mathcal{O}\subset \mathcal{W}$.
+
+\item Ein Roboter $\mathcal{A}$ ist in $\mathcal{W}$ definiert (hier als starrer Körper ohne Gelenke).
+ \item Der Konfigurationsraum $\mathcal{C}$ ist festgelegt und es werden $\mathcal{C}_{frei}$ und $\mathcal{C}_{voll}$ definiert.
+ \item Es gibt eine Initialkonfiguration $q_{start} \in \mathcal{C}_{frei}$ und eine Zielkonfiguration $q_{ziel} \in \mathcal{C}_{frei}$.\\
+\quad \\
+
+\begin{block}{}
+\begin{center}
+\textbf{ Gesucht ist jetzt ein kontinuierlicher Pfad $\tau : [0,1] \rightarrow \mathcal{C}_{frei}$,  so das $\tau(0)=q_{start}$ und $\tau(1) = q_{ziel}$}
+\end{center}
+\end{block}
+
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Von A nach B}
+\framesubtitle{D* }
+
+\begin{itemize}
+\item Algorithmus für Pfadplanung
+\item  gut anwendbar in realen Situationen
+\item findet den Pfads mit den geringsten "Kosten"
+\item kann inkrementell umplanen
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{D* Algorithmus}
+\framesubtitle{Arbeitsweise}
+
+\begin{enumerate}
+\item Griddarstellung zu einem Kostengraphen generalisieren
+
+\item Jede Zelle erhält Kosten, eine Entfernung vom Ziel und einen Link zum Nachbarknoten, der den kürzesten Weg zum Ziel hat
+
+\item Ausgehend von der Zielzelle werden jeweils die Kosten zu den Nachbarzellen berechnet und entsprechende Werte aktualisiert
+
+\end{enumerate}
+
+
+
+\begin{center}
+
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{D* Algorithmus}
+\framesubtitle{D* Demo}
+\begin{center}
+${\Huge \Longrightarrow}$ {\Large Matlab}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{D* Algorithmus}
+\framesubtitle{Vorteile in der Anwendung}
+
+\begin{itemize}
+\item Kosten können auf Anwendung angepasst werden, zum Beispiel auch in Verbindung mit der Bodenbeschaffenheit bzw. Passierbarkeit stehen
+
+\item Inkrementelles Umplanen hat starken Realitätsbezug, Sensoren haben nur eine endliche Reichweite, nach einer gewissen Strecke zeigen sich eventuell unbekannte Geländebeschaffenheiten
+
+\end{itemize}
+
+\end{frame}
+
+
+\section{Schluss}
+
+\begin{frame}
+\frametitle{Blick zurück}
+\begin{itemize}
+
+\item Ein Teilgebiet der Planung in der Robotik beschäftigt sich mit Bewegungsplanung im Raum
+\item Diese Planung findet in drei Schritten statt: Mapping $\rightarrow$ Lokalisation $\rightarrow$ Navigation
+\item Es wurde SLAM und der D* Algorithmus in diesem Zusammenhang vorgestellt und demonstriert
+\item Peter Corke, Robotic Toolbox und Robot Academy
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Blick nach vorn}
+\begin{itemize}
+\item weitere Vorträge im Bereich Robotik folgen
+\item Ausblick in Bereiche, die in diesem Vortrag nicht erwähnt wurden
+\item besten Dank fürs Zuhören!
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Quellen}
+\begin{columns}[T]
+\begin{column}[T]{5cm}
+
+\end{column}
+
+\begin{column}[T]{5cm}
+ \begin{figure}[h]
+\centering
+% \includegraphics[scale = 0.6]{jever.png}\\
+% \footnotesize\sffamily\textbf{Quelle:}  Handbook of Robotics, Sicilian, Kathib and Editors, Springer Verlag
+ \end{figure}
+\end{column}
+
+\end{columns}
+\end{frame}
+
+\end{document}
