@@ -69,16 +69,13 @@ Matrix zu einem einspaltigen Inputvektor umwandeln.\newline
 \end{column}
 
 \begin{column}[T]{5cm}
-	\includegraphics[scale=0.22]{figures/inputimage.png}	 
+	\includegraphics[scale=0.3]{figures/inputimage.png}	 
 \end{column}
 
 \end{columns}
 
-
-
-
-
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Convolutional Neural Network}
@@ -133,10 +130,29 @@ Matrix zu einem einspaltigen Inputvektor umwandeln.\newline
 \frame{\tableofcontents[currentsection]}
 
 \begin{frame}
-\frametitle{Bilder}
+\frametitle{Daten}
+\framesubtitle{Bilder sammeln}
 
 \begin{figure}
-\centering
+	\centering
+	\includegraphics[width=0.4\linewidth]{figures/Fahrzeug.png}	 
+	%\caption{}
+	%Quelle: \protect\citeI{Architecture-ALVINN}
+	\label{img:fahrzeug}
+\end{figure}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Daten}
+\framesubtitle{Bildverarbeitung}
+
+\begin{minipage}{\textwidth}
+\begin{figure}
+
 	\begin{subfigure}{.25\textwidth}
 		  \includegraphics[scale=0.32]{figures/200x200.png}
 	\end{subfigure}%
@@ -147,17 +163,17 @@ Matrix zu einem einspaltigen Inputvektor umwandeln.\newline
 		  \includegraphics[scale=0.43]{figures/200x200Gauss.png}
 	\end{subfigure}%
 \end{figure}
+\end{minipage}
 
-
+\begin{minipage}{\textwidth}
 \includegraphics[width=\linewidth]{figures/Pipeline.png}	
-
-
+\end{minipage}
 
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Traning}
+\frametitle{Training}
 \includegraphics[width=\linewidth]{figures/Lernarchitektur.png}	 
 \end{frame}
 
@@ -198,11 +214,10 @@ Autonomiewert = (1 -  \frac{\text{Anzahl Fehler}\cdot 2 s}{\text{Fahrzeit in Sek
 \begin{frame}
 \frametitle{Testfahrt}
 \framesubtitle{Performancemessung}
-
 \begin{table}[h]
   \begin{center}
     \label{tab:testfahrten}
-    \begin{tabular}{l|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+    \begin{tabular}{l|c|r} 
       \textbf{Algorithmus} & \textbf{Fehler Runde 1} & \textbf{Fehler Runde 2}\\
       \hline
       DroNet & 16 & 12\\
@@ -211,6 +226,9 @@ Autonomiewert = (1 -  \frac{\text{Anzahl Fehler}\cdot 2 s}{\text{Fahrzeit in Sek
     \end{tabular}
   \end{center}
 \end{table}
+Gesamtfahrzeit = 120 Sekunden\\
+Runde 1 im Uhrzeigersinn (60 Sekunden)\\
+Runde 2 gegen den Uhrzeigersinn (60 Sekunden)
 
 \end{frame}
 
