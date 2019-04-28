@@ -1,4 +1,9 @@
 \beamer@slide {img:menge}{4}
-\beamer@slide {img:fahrzeug}{15}
-\beamer@slide {tab:testfahrten}{23}
-\beamer@slide {tab:autonomie}{24}
+\beamer@slide {img:nn}{5}
+\beamer@slide {img:chainrule}{6}
+\beamer@slide {img:maxpooling}{9}
+\beamer@slide {img:relu}{10}
+\beamer@slide {img:maxpooling}{11}
+\beamer@slide {img:fahrzeug}{21}
+\beamer@slide {tab:testfahrten}{30}
+\beamer@slide {tab:autonomie}{31}

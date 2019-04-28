@@ -17,6 +17,7 @@
 
 %\usecolortheme{beaver}
 
+
 \title{Bildbasierte Navigation mit Neuronalen Netzen: Kolloquium}
 \author{Jan Robert Rösler}
 \date{\today}
@@ -43,11 +44,37 @@
 
 \end{frame}
 
+
 \begin{frame} 
 \frametitle{Deep Learning} 
+\centering
+Künstliche neuronale Netze sind universelle Funktionsapproximatoren.\\
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\linewidth]{figures/NN.jpg}
+	%\quelle{https://cdn-images-1.medium.com/max/1600/1*q1M7LGiDTirwU-4LcFq7_Q.png}
+	\label{img:nn}
+\end{figure}
 
 \end{frame}
+
+\begin{frame} 
+\frametitle{Deep Learning} 
+\centering
+Berechnung mit Backpropagation.\\
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/chainrule.png}
+	%\quelle{https://cdn-images-1.medium.com/max/1600/1*q1M7LGiDTirwU-4LcFq7_Q.png}
+	\label{img:chainrule}
+\end{figure}
+
+\end{frame}
+
+
+
 
 \begin{frame}
 
@@ -79,36 +106,139 @@ Matrix zu einem einspaltigen Inputvektor umwandeln.\newline
 
 \begin{frame}
 \frametitle{Convolutional Neural Network}
+\framesubtitle{Convolutional-Layer}
+
+\begin{columns}[T]
+
+\begin{column}[T]{5cm}
+\begin{itemize}
+\item{Input Bilddaten als Matrix}
+\item{Neuronenaktivität wird über diskrete Faltung mit Faltungsmatrix (convolution) berechnet}
+\item{Extrahierung von Bildeigenschaften in feature-maps}
+\end{itemize}
+
+
+\end{column}
+
+\begin{column}[T]{7cm}
+	\includegraphics[scale=0.44]{figures/convolution.jpg}
+	%Quelle: https://saama-dbe0.kxcdn.com/wp-content/uploads/2017/12/01.jpg?iv=136
+\end{column}
+
+\end{columns}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Convolutional Neural Network 2}
+\frametitle{Convolutional Neural Network}
+\framesubtitle{Pooling-Layer}
+
+Subsampling der prägnanten Bildteile.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/maxpool.jpeg}
+	%\quelle{http://cs231n.github.io/assets/cnn/maxpool.jpeg}
+	\label{img:maxpooling}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Convolutional Neural Network}
+\framesubtitle{Aktivierungsfunktion -  ReLu}
+Die Aktivierungsfunktion wandelt den mittels Faltung ermittelten Neuroneninput in den Output um. \textbf{F(x) = max(0,x)}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/relu.png}
+	%\quelle{https://en.wikipedia.org/wiki/Rectifier_(neural_networks)#/media/File:Rectifier_and_softplus_functions.svg}
+	\label{img:relu}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Convolutional Neural Network}
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/network.png}
+	%\quelle{https://cdn-images-1.medium.com/max/1600/1*dvDZzVJ88XWX-nLliWgvWw.png}
+	\label{img:maxpooling}
+\end{figure}
 
 \end{frame}
+
+
+
+
 
 \begin{frame}
 \frametitle{Vanishing Gradient Problem}
 
+Wird der durch Backpropagation berechnete Gradient an einer Stelle eines (tiefen) neuronalen Netzes sehr klein oder sogar Null, erfahren die Gewicht der früheren Layer sehr kleine oder gar keine Aktualisierungen mehr. Der ``verschwindende'' Gradient hält das Netz vom Lernen ab.
 \end{frame}
 
-\begin{frame}
 
+\begin{frame}
 \frametitle{Residual Networks}
 
 \begin{columns}[T]
 
 \begin{column}[T]{5cm}
-
+\textbf{Annahme:}\\
+Die Funktion $H(x)$ ist die optimale Lösung für ein Problem. Sie soll approximiert werden.
 
 \end{column}
 
-\begin{column}[T]{5cm}
-	\includegraphics[scale=0.27]{figures/ResidualBlock.png}	 
+\begin{column}[T]{7cm}
+	\includegraphics[scale=0.5]{figures/block.png}	 
 \end{column}
 
 \end{columns}
+\end{frame}
 
+
+\begin{frame}
+\frametitle{Residual Networks}
+\framesubtitle{Identity Shortcut}
+
+\begin{columns}[T]
+
+\begin{column}[T]{5cm}
+\textbf{Umwandlung:}\\
+Statt H(x) wird $H(x) = F(x) + x$ gelernt.\\ F(x) ist das Residual, die Differenz $H(x) - x$.
+
+
+\end{column}
+
+\begin{column}[T]{7cm}
+	\includegraphics[scale=0.6]{figures/ResidualBlock.png}	 
+\end{column}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Residual Networks}
+\framesubtitle{Identity Shortcut}
+
+\begin{columns}[T]
+
+\begin{column}[T]{5cm}
+\textbf{Vorteile:}\\
+\begin{itemize}
+\item{Freier Gradientenfluss}
+\item{Durch lernen von F(x)=0 wird H(x) = x}\\
+$\xrightarrow{}$Identitätsfunktion leicht zu erlernen
+\end{itemize}
+
+
+\end{column}
+
+\begin{column}[T]{7cm}
+	\includegraphics[scale=0.6]{figures/ResidualBlock.png}	 
+\end{column}
+
+\end{columns}
 \end{frame}
 
 \section{Idee}
@@ -116,12 +246,40 @@ Matrix zu einem einspaltigen Inputvektor umwandeln.\newline
 
 \begin{frame}
 \frametitle{DroNet}
-\includegraphics[width=\linewidth]{figures/Architecture-DRONET.png}	
+\textbf{Projekt der ETH Zürich:}\\
+ Lenkwinkel- und Kollisionsbestimmung mit einem neuronalen Netz.\\
+Trainiert auf einem öffentlichen Datensatz mit Fahrbahnbildern, angewendet auf einer Drohne.\\
+\quad \\
+\quad \\
+\quad \\
+\textbf{Input:}\\
+200x200 Pixel Graustufenbild \\
+\quad \\
+\textbf{Output:}\\
+Lenkwert von -1 (rechts) bis 1 (links) und Kollisionswahrscheinlichkeit in Prozent
+
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Ziel}
+\frametitle{DroNet}
+\framesubtitle{Architektur}
+\includegraphics[width=\linewidth]{figures/Architecture-DRONET.png}	
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Idee}
+
+\textbf{Anstoß:} DroNet Projekt ETH Zürich \\
+
+\textbf{Rahmen:} Carolo-Cup\\
+
+\textbf{Basis:} HAW Teststrecke, Carolo-Cup Fahrzeugplattform\\
+
+\textbf{Ziel:} Entwicklung einer bildbasierten Fahrzeugsteuerung mit einem neuronalen Netz
+
+
 
 \end{frame}
 
@@ -133,13 +291,31 @@ Matrix zu einem einspaltigen Inputvektor umwandeln.\newline
 \frametitle{Daten}
 \framesubtitle{Bilder sammeln}
 
-\begin{figure}
+\begin{columns}[T]
+
+\begin{column}[T]{5cm}
+\begin{itemize}
+\item{Algorithmus TeamWorstcase}
+\item{ca 20.000 Aufnahmen}
+\item{6000  davon geeignet für Training}
+
+\end{itemize}
+
+\end{column}
+
+\begin{column}[T]{5cm}
+	\begin{figure}
 	\centering
 	\includegraphics[width=0.4\linewidth]{figures/Fahrzeug.png}	 
 	%\caption{}
 	%Quelle: \protect\citeI{Architecture-ALVINN}
 	\label{img:fahrzeug}
 \end{figure}
+\end{column}
+
+\end{columns}
+
+
 
 
 \end{frame}
@@ -168,8 +344,12 @@ Matrix zu einem einspaltigen Inputvektor umwandeln.\newline
 \begin{minipage}{\textwidth}
 \includegraphics[width=\linewidth]{figures/Pipeline.png}	
 \end{minipage}
+\end{frame}
 
-
+\begin{frame}
+\frametitle{Architektur}
+\framesubtitle{Anpassungen}
+\includegraphics[width=\linewidth]{figures/Architecture-DRONET-FROZEN.png}	
 \end{frame}
 
 \begin{frame}
@@ -254,7 +434,15 @@ Runde 2 gegen den Uhrzeigersinn (60 Sekunden)
 \begin{frame}
 \frametitle{Auswertung}
 \framesubtitle{Visualisierung}
-Verschiedene Möglichkeiten
+Sichtbarmachen von wichtigen Bildbereichen
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Auswertung}
+\framesubtitle{Attention-Heatmap}
+
 
 \end{frame}
 
@@ -268,6 +456,13 @@ Verschiedene Möglichkeiten
 
 \begin{frame}
 \frametitle{Ausblick}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Quellen}
+
+%\ref{img:chainrule} Quelle: https://becominghuman.ai/back-propagation-in-convolutional-neural-networks-intuition-and-code-714ef1c38199 \\
 
 \end{frame}
 
