@@ -145,8 +145,8 @@ Subsampling der prägnanten Bildteile.
 
 \begin{frame}
 \frametitle{Convolutional Neural Network}
-\framesubtitle{Aktivierungsfunktion -  ReLu}
-Die Aktivierungsfunktion wandelt den mittels Faltung ermittelten Neuroneninput in den Output um. \textbf{F(x) = max(0,x)}
+\framesubtitle{Aktivierungsfunktion -  ReLU}
+Das Rectified-Linear-Unit wandelt den mittels Faltung ermittelten Neuroneninput in den Output um. \textbf{F(x) = max(0,x)}
 
 \begin{figure}
 	\centering
@@ -371,6 +371,25 @@ Lenkwert von -1 (rechts) bis 1 (links) und Kollisionswahrscheinlichkeit in Proze
 \frametitle{Auswertung}
 \framesubtitle{Training}
 
+\begin{columns}[T]
+
+\begin{column}[T]{5cm}
+\begin{itemize}
+\item{}
+
+
+\end{itemize}
+
+
+\end{column}
+
+\begin{column}[T]{6cm}
+	\includegraphics[scale=0.44]{figures/loss.png}
+	%Quelle: https://saama-dbe0.kxcdn.com/wp-content/uploads/2017/12/01.jpg?iv=136
+\end{column}
+
+\end{columns}
+
 \end{frame}
 
 
@@ -434,15 +453,83 @@ Runde 2 gegen den Uhrzeigersinn (60 Sekunden)
 \begin{frame}
 \frametitle{Auswertung}
 \framesubtitle{Visualisierung}
-Sichtbarmachen von wichtigen Bildbereichen
+Sichtbarmachen von wichtigen Bildbereichen:\\
+Betrachtung der Veränderung des Outputs bei einer Veränderung des Inputs.\\
+Hervorheben der Bildpunkte, die für\\
+\begin{itemize}
+\item{eine Erhöhung (Linkskurve)}
+\item{eine Verminderung (Rechtskurve)}
+\end{itemize}
+des Lenkwerts besonders von Bedeutung sind.
+Hellere Bildbereiche kennzeichnen diese Bedeutung.
 
 \end{frame}
 
 
 \begin{frame}
-\frametitle{Auswertung}
-\framesubtitle{Attention-Heatmap}
+\frametitle{Attention-Heatmap}
+\framesubtitle{Linkskurve}
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/left.png}	 
+	%\caption{}
+	%Quelle: \protect\citeI{Architecture-ALVINN}
+	\label{img:left}
+	\end{figure}
+\end{frame}
 
+\begin{frame}
+\frametitle{Attention-Heatmap}
+\framesubtitle{Rechtskurve}
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/right.png}	 
+	%\caption{}
+	%Quelle: \protect\citeI{Architecture-ALVINN}
+	\label{img:right}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Attention-Heatmap}
+\framesubtitle{Kreuzung}
+
+\begin{columns}[T]
+
+\begin{column}[T]{2cm}
+\quad \\
+\quad \\
+\textbf{Links} \\
+\quad \\
+\quad \\
+\quad \\
+\quad \\
+\quad \\
+\quad \\
+\quad \\
+\textbf{Rechts}	
+\end{column}
+
+\begin{column}[T]{8cm}
+	\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/kreuzungleft.png}	 
+	%\caption{}
+	%Quelle: \protect\citeI{Architecture-ALVINN}
+	\label{img:kreuzungleft}
+	\end{figure}
+
+	\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{figures/kreuzungright.png}	 
+	%\caption{}
+	%Quelle: \protect\citeI{Architecture-ALVINN}
+	\label{img:kreuzungright}
+	\end{figure}
+\end{column}
+
+\end{columns}
 
 \end{frame}
 
@@ -451,11 +538,23 @@ Sichtbarmachen von wichtigen Bildbereichen
 
 \begin{frame}
 \frametitle{Bewertung}
-
+Zielsetzung:\\
+\begin{itemize}
+\item{Steuerung mit neuronalem Netz entwickelt}
+\item{Erprobung der Steuerung in Testfahrt}\\
+$\xrightarrow{}$\textbf{Ziel erreicht}\\
+\end{itemize}
+\pause
+Aber:\\
+\begin{itemize}
+\item{Begrenzte Testumgebung}\\
+$\xrightarrow{}$Generalisierbarkeit unklar
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Ausblick}
+Ansatzpunkte weiterer Fragestellungen:
 
 \end{frame}
 

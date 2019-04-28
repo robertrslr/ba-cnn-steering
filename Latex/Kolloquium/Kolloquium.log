@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.11)  28 APR 2019 20:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.11)  28 APR 2019 22:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1470,7 +1470,11 @@ ed.sty)
 (c:/texlive/2016/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemeinfol
 ines.sty)
 (c:/texlive/2016/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemebeave
-r.sty)) (./Kolloquium.aux)
+r.sty)) (./Kolloquium.aux
+
+LaTeX Warning: Label `img:maxpooling' multiply defined.
+
+)
 \openout1 = `Kolloquium.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
@@ -1689,7 +1693,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 
 [3
 
-] <figures/Mengen.png, id=63, 655.44875pt x 352.31625pt>
+] <figures/Mengen.png, id=82, 655.44875pt x 352.31625pt>
 File: figures/Mengen.png Graphic file (type png)
 
 <use figures/Mengen.png>
@@ -1702,7 +1706,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 
 [4
 
- <./figures/Mengen.png>] <figures/NN.jpg, id=74, 495.8525pt x 443.6575pt>
+ <./figures/Mengen.png>] <figures/NN.jpg, id=93, 495.8525pt x 443.6575pt>
 File: figures/NN.jpg Graphic file (type jpg)
 
 <use figures/NN.jpg>
@@ -1715,7 +1719,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 
 [5
 
- <./figures/NN.jpg>] <figures/chainrule.png, id=83, 1220.56pt x 399.091pt>
+ <./figures/NN.jpg>] <figures/chainrule.png, id=102, 1220.56pt x 399.091pt>
 File: figures/chainrule.png Graphic file (type png)
 
 <use figures/chainrule.png>
@@ -1729,7 +1733,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 [6
 
  <./figures/chainrule.png>]
-<figures/inputimage.png, id=95, 301.8778pt x 392.21532pt>
+<figures/inputimage.png, id=114, 301.8778pt x 392.21532pt>
 File: figures/inputimage.png Graphic file (type png)
 
 <use figures/inputimage.png>
@@ -1743,7 +1747,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 [7
 
  <./figures/inputimage.png>]
-<figures/convolution.jpg, id=106, 469.755pt x 174.6525pt>
+<figures/convolution.jpg, id=125, 469.755pt x 174.6525pt>
 File: figures/convolution.jpg Graphic file (type jpg)
 
 <use figures/convolution.jpg>
@@ -1762,7 +1766,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 [8
 
  <./figures/convolution.jpg>]
-<figures/maxpool.jpeg, id=114, 789.95125pt x 369.38pt>
+<figures/maxpool.jpeg, id=133, 789.95125pt x 369.38pt>
 File: figures/maxpool.jpeg Graphic file (type jpg)
 
 <use figures/maxpool.jpeg>
@@ -1775,7 +1779,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 
 [9
 
- <./figures/maxpool.jpeg>] <figures/relu.png, id=123, 803.0pt x 584.1825pt>
+ <./figures/maxpool.jpeg>] <figures/relu.png, id=142, 803.0pt x 584.1825pt>
 File: figures/relu.png Graphic file (type png)
 
 <use figures/relu.png>
@@ -1792,7 +1796,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 
 [10
 
- <./figures/relu.png>] <figures/network.png, id=133, 1606.0pt x 650.43pt>
+ <./figures/relu.png>] <figures/network.png, id=152, 1606.0pt x 650.43pt>
 File: figures/network.png Graphic file (type png)
 
 <use figures/network.png>
@@ -1839,7 +1843,7 @@ line 197.
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
-<figures/block.png, id=148, 429.10312pt x 247.67531pt>
+<figures/block.png, id=168, 429.10312pt x 247.67531pt>
 File: figures/block.png Graphic file (type png)
  <use figures/block.png>
 Package pdftex.def Info: figures/block.png used on input line 197.
@@ -1857,7 +1861,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 [13
 
  <./figures/block.png>]
-<figures/ResidualBlock.png, id=161, 331.2375pt x 180.675pt>
+<figures/ResidualBlock.png, id=180, 331.2375pt x 180.675pt>
 File: figures/ResidualBlock.png Graphic file (type png)
 
 <use figures/ResidualBlock.png>
@@ -1896,7 +1900,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 
 [17
 
-] <figures/Architecture-DRONET.png, id=198, 866.48718pt x 363.60844pt>
+] <figures/Architecture-DRONET.png, id=216, 866.48718pt x 363.60844pt>
 File: figures/Architecture-DRONET.png Graphic file (type png)
 
 <use figures/Architecture-DRONET.png>
@@ -1924,7 +1928,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 
 [20
 
-] <figures/Fahrzeug.png, id=227, 869.2475pt x 652.4375pt>
+] <figures/Fahrzeug.png, id=244, 869.2475pt x 652.4375pt>
 File: figures/Fahrzeug.png Graphic file (type png)
 
 <use figures/Fahrzeug.png>
@@ -1938,27 +1942,27 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 [21
 
  <./figures/Fahrzeug.png (PNG copy)>]
-<figures/200x200.png, id=236, 200.75pt x 200.75pt>
+<figures/200x200.png, id=253, 200.75pt x 200.75pt>
 File: figures/200x200.png Graphic file (type png)
  <use figures/200x200.png>
 Package pdftex.def Info: figures/200x200.png used on input line 347.
 (pdftex.def)             Requested size: 64.2413pt x 64.2413pt.
 
-<figures/200x200Hist.png, id=237, 160.6pt x 161.60374pt>
+<figures/200x200Hist.png, id=254, 160.6pt x 161.60374pt>
 File: figures/200x200Hist.png Graphic file (type png)
 
 <use figures/200x200Hist.png>
 Package pdftex.def Info: figures/200x200Hist.png used on input line 347.
 (pdftex.def)             Requested size: 64.23885pt x 64.64035pt.
 
-<figures/200x200Gauss.png, id=238, 150.5625pt x 151.3153pt>
+<figures/200x200Gauss.png, id=255, 150.5625pt x 151.3153pt>
 File: figures/200x200Gauss.png Graphic file (type png)
 
 <use figures/200x200Gauss.png>
 Package pdftex.def Info: figures/200x200Gauss.png used on input line 347.
 (pdftex.def)             Requested size: 64.7406pt x 65.0643pt.
 
-<figures/Pipeline.png, id=239, 753.81625pt x 272.01625pt>
+<figures/Pipeline.png, id=256, 753.81625pt x 272.01625pt>
 File: figures/Pipeline.png Graphic file (type png)
 
 <use figures/Pipeline.png>
@@ -1973,7 +1977,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 
  <./figures/200x200.png (PNG copy)> <./figures/200x200Hist.png> <./figures/200x
 200Gauss.png> <./figures/Pipeline.png>]
-<figures/Architecture-DRONET-FROZEN.png, id=250, 867.24pt x 364.36125pt>
+<figures/Architecture-DRONET-FROZEN.png, id=267, 867.24pt x 364.36125pt>
 File: figures/Architecture-DRONET-FROZEN.png Graphic file (type png)
 
 <use figures/Architecture-DRONET-FROZEN.png>
@@ -1988,7 +1992,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 [23
 
  <./figures/Architecture-DRONET-FROZEN.png>]
-<figures/Lernarchitektur.png, id=258, 564.1075pt x 262.9825pt>
+<figures/Lernarchitektur.png, id=275, 564.1075pt x 262.9825pt>
 File: figures/Lernarchitektur.png Graphic file (type png)
 
 <use figures/Lernarchitektur.png>
@@ -2002,7 +2006,7 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 [24
 
  <./figures/Lernarchitektur.png>]
-<figures/Steuerung.png, id=267, 915.42pt x 593.21625pt>
+<figures/Steuerung.png, id=284, 915.42pt x 593.21625pt>
 File: figures/Steuerung.png Graphic file (type png)
 
 <use figures/Steuerung.png>
@@ -2026,14 +2030,25 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 
 [26
 
-]
+] <figures/loss.png, id=306, 390.45876pt x 279.0425pt>
+File: figures/loss.png Graphic file (type png)
+
+<use figures/loss.png>
+Package pdftex.def Info: figures/loss.png used on input line 393.
+(pdftex.def)             Requested size: 171.80237pt x 122.77907pt.
+
+Overfull \hbox (1.08585pt too wide) in paragraph at lines 393--393
+[][]  
+ []
+
+
 Overfull \hbox (39.21567pt too wide) has occurred while \output is active
  [][][][]  
  []
 
 [27
 
-]
+ <./figures/loss.png>]
 Overfull \hbox (39.21567pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -2068,28 +2083,55 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 
 [32
 
-]
+] <figures/left.png, id=355, 435.87843pt x 149.05687pt>
+File: figures/left.png Graphic file (type png)
+
+<use figures/left.png>
+Package pdftex.def Info: figures/left.png used on input line 479.
+(pdftex.def)             Requested size: 342.2953pt x 117.0531pt.
+
 Overfull \hbox (39.21567pt too wide) has occurred while \output is active
  [][][][]  
  []
 
 [33
 
-] (./Kolloquium.toc)
+ <./figures/left.png>]
+<figures/right.png, id=365, 435.87843pt x 149.05687pt>
+File: figures/right.png Graphic file (type png)
+ <use figures/right.png>
+Package pdftex.def Info: figures/right.png used on input line 491.
+(pdftex.def)             Requested size: 342.2953pt x 117.0531pt.
+
 Overfull \hbox (39.21567pt too wide) has occurred while \output is active
  [][][][]  
  []
 
 [34
 
-]
+ <./figures/right.png>]
+<figures/kreuzungleft.png, id=375, 435.87843pt x 149.05687pt>
+File: figures/kreuzungleft.png Graphic file (type png)
+
+<use figures/kreuzungleft.png>
+Package pdftex.def Info: figures/kreuzungleft.png used on input line 534.
+(pdftex.def)             Requested size: 227.62204pt x 77.8398pt.
+
+<figures/kreuzungright.png, id=376, 435.87843pt x 149.05687pt>
+File: figures/kreuzungright.png Graphic file (type png)
+
+<use figures/kreuzungright.png>
+Package pdftex.def Info: figures/kreuzungright.png used on input line 534.
+(pdftex.def)             Requested size: 227.62204pt x 77.8398pt.
+
 Overfull \hbox (39.21567pt too wide) has occurred while \output is active
  [][][][]  
  []
 
 [35
 
-]
+ <./figures/kreuzungleft.png> <./figures/kreuzungright.png>]
+(./Kolloquium.toc)
 Overfull \hbox (39.21567pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -2104,6 +2146,27 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 [37
 
 ]
+Overfull \hbox (39.21567pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[38
+
+]
+Overfull \hbox (39.21567pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[39
+
+]
+Overfull \hbox (39.21567pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[40
+
+]
 \tf@nav=\write6
 \openout6 = `Kolloquium.nav'.
 
@@ -2113,33 +2176,27 @@ Overfull \hbox (39.21567pt too wide) has occurred while \output is active
 \tf@snm=\write8
 \openout8 = `Kolloquium.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 470.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 470.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 569.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 569.
  (./Kolloquium.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 470.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 470.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 569.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 569.
+Package rerunfilecheck Info: File `Kolloquium.out' has not changed.
+(rerunfilecheck)             Checksum: 7C47AD0F88BFE8B02E88BF5A98BA99F9;224.
 
-
-Package rerunfilecheck Warning: File `Kolloquium.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Kolloquium.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  7C47AD0F88BFE8B02E88BF5A98BA99F9;224.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 24840 strings out of 493013
- 484127 string characters out of 6136993
- 537919 words of memory out of 5000000
- 27708 multiletter control sequences out of 15000+600000
+ 24888 strings out of 493013
+ 484937 string characters out of 6136993
+ 538834 words of memory out of 5000000
+ 27743 multiletter control sequences out of 15000+600000
  25778 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,17n,66p,805b,715s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2155,10 +2212,10 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb><c:/texlive/2016/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2016/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmssi10.pfb>
-Output written on Kolloquium.pdf (37 pages, 1190532 bytes).
+Output written on Kolloquium.pdf (40 pages, 1484950 bytes).
 PDF statistics:
- 437 PDF objects out of 1000 (max. 8388607)
- 343 compressed objects within 4 object streams
- 88 named destinations out of 1000 (max. 500000)
- 174 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 490 PDF objects out of 1000 (max. 8388607)
+ 383 compressed objects within 4 object streams
+ 98 named destinations out of 1000 (max. 500000)
+ 239 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2,4 +2,4 @@
 \beamer@sectionintoc {2}{Idee}{16}{0}{2}
 \beamer@sectionintoc {3}{Entwurf}{20}{0}{3}
 \beamer@sectionintoc {4}{Ergebnis}{26}{0}{4}
-\beamer@sectionintoc {5}{Schluss}{34}{0}{5}
+\beamer@sectionintoc {5}{Schluss}{36}{0}{5}
